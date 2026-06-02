@@ -257,12 +257,12 @@ a:hover {
 
 .dpr-speed-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
 .dpr-speed-card {
-  min-height: 168px;
+  min-height: 150px;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -280,6 +280,7 @@ a:hover {
 .dpr-speed-card p {
   margin: 0;
   color: #536273;
+  line-height: 1.72;
 }
 
 .dpr-abstract {
@@ -293,6 +294,7 @@ a:hover {
 .dpr-abstract p {
   margin: 0;
   color: #38485b;
+  line-height: 1.78;
 }
 
 .dpr-actions {

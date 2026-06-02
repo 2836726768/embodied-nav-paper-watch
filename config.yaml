@@ -13,6 +13,11 @@ api_sleep_seconds: 3.1
 api_retry_count: 1
 api_retry_sleep_seconds: 8
 strict_focus: true
+openclaw_enabled: true
+openclaw_model: "openai-codex/gpt-5.5"
+openclaw_thinking: "minimal"
+openclaw_timeout_seconds: 180
+openclaw_cache_dir: "cache/openclaw"
 
 categories:
   - "cs.RO"

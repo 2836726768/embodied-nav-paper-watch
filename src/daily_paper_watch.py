@@ -2,11 +2,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import math
 import os
 import re
+import subprocess
 import sys
 import time
 import urllib.parse
@@ -1649,13 +1651,13 @@ def build_readout(item: ScoredPaper, rank: int, max_score: float, deep_read_coun
         tldr_bits.append(f"结果线索：{shorten(result, 170)}")
     evidence = []
     if motivation:
-        evidence.append({"label": "Motivation evidence", "text": shorten(motivation, 260)})
+        evidence.append({"label": "问题证据", "text": shorten(motivation, 260)})
     if method:
-        evidence.append({"label": "Method evidence", "text": shorten(method, 260)})
+        evidence.append({"label": "方法证据", "text": shorten(method, 260)})
     if result:
-        evidence.append({"label": "Result evidence", "text": shorten(result, 260)})
+        evidence.append({"label": "结果证据", "text": shorten(result, 260)})
     if benchmark and benchmark not in {motivation, method, result}:
-        evidence.append({"label": "Benchmark evidence", "text": shorten(benchmark, 260)})
+        evidence.append({"label": "基准证据", "text": shorten(benchmark, 260)})
     return {
         "section": section,
         "priority": priority,
@@ -1752,6 +1754,289 @@ def build_current_meta(
         "warnings": fetch_warnings,
         "papers": papers,
     }
+
+
+OPENCLAW_ENRICHMENT_FIELDS = (
+    "title_zh",
+    "tldr_zh",
+    "relevance_zh",
+    "problem_zh",
+    "method_zh",
+    "contribution_zh",
+    "experiments_zh",
+    "limitations_zh",
+    "read_suggestion_zh",
+    "abstract_zh",
+)
+
+
+def paper_display_title(paper: dict[str, Any]) -> str:
+    openclaw = paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
+    return str(openclaw.get("title_zh") or paper.get("title") or "")
+
+
+def paper_original_title(paper: dict[str, Any]) -> str:
+    return str(paper.get("title") or "")
+
+
+def openclaw_cache_file(paper: dict[str, Any], config: dict[str, Any], model: str) -> Path:
+    cache_dir_value = str(config.get("openclaw_cache_dir") or "cache/openclaw")
+    cache_dir = Path(cache_dir_value)
+    if not cache_dir.is_absolute():
+        cache_dir = ROOT_DIR / cache_dir
+    source = "\n".join(
+        [
+            model,
+            str(paper.get("id") or ""),
+            str(paper.get("title") or ""),
+            str(paper.get("summary") or ""),
+        ]
+    )
+    digest = hashlib.sha256(source.encode("utf-8")).hexdigest()[:16]
+    paper_id = re.sub(r"[^a-zA-Z0-9_.-]+", "-", str(paper.get("id") or "paper"))
+    return cache_dir / f"{paper_id}-{digest}.json"
+
+
+def extract_json_object(text: str) -> dict[str, Any]:
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
+        cleaned = re.sub(r"\s*```$", "", cleaned)
+    try:
+        parsed = json.loads(cleaned)
+        return parsed if isinstance(parsed, dict) else {}
+    except Exception:
+        pass
+    start = cleaned.find("{")
+    end = cleaned.rfind("}")
+    if start >= 0 and end > start:
+        parsed = json.loads(cleaned[start : end + 1])
+        return parsed if isinstance(parsed, dict) else {}
+    return {}
+
+
+def normalize_openclaw_enrichment(value: dict[str, Any]) -> dict[str, str]:
+    normalized: dict[str, str] = {}
+    for field in OPENCLAW_ENRICHMENT_FIELDS:
+        text = normalize_space(str(value.get(field) or ""))
+        normalized[field] = text
+    return normalized
+
+
+def build_openclaw_prompt(paper: dict[str, Any], config: dict[str, Any]) -> str:
+    keywords = ", ".join(str(item) for item in paper.get("matched_keywords", [])[:8])
+    topics = ", ".join(str(item) for item in paper.get("topic_lanes", [])[:5])
+    return f"""\
+你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。
+
+输出要求：
+- 只输出一个 JSON 对象，不要 Markdown，不要解释。
+- 所有字段必须是中文短文本。
+- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。
+- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。
+
+JSON 字段：
+title_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh
+
+论文信息：
+标题：{paper.get("title")}
+作者：{", ".join(str(item) for item in paper.get("authors", [])[:8])}
+类别：{", ".join(str(item) for item in paper.get("categories", []))}
+命中关键词：{keywords or "无显式关键词"}
+主题标签：{topics or "具身智能导航"}
+推荐理由：{paper.get("reason")}
+英文摘要：
+{paper.get("summary")}
+"""
+
+
+def run_openclaw_enrichment(paper: dict[str, Any], config: dict[str, Any], model: str) -> dict[str, str]:
+    cache_file = openclaw_cache_file(paper, config, model)
+    if cache_file.exists():
+        cached = json.loads(cache_file.read_text(encoding="utf-8"))
+        if isinstance(cached, dict):
+            return normalize_openclaw_enrichment(cached)
+
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        "openclaw",
+        "infer",
+        "model",
+        "run",
+        "--json",
+        "--model",
+        model,
+        "--thinking",
+        str(config.get("openclaw_thinking") or "minimal"),
+        "--prompt",
+        build_openclaw_prompt(paper, config),
+    ]
+    timeout = as_int(config, "openclaw_timeout_seconds", 180)
+    completed = subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=timeout)
+    outer = json.loads(completed.stdout)
+    outputs = outer.get("outputs") if isinstance(outer, dict) else []
+    text = ""
+    if isinstance(outputs, list) and outputs:
+        first = outputs[0]
+        if isinstance(first, dict):
+            text = str(first.get("text") or "")
+    parsed = extract_json_object(text)
+    normalized = normalize_openclaw_enrichment(parsed)
+    cache_file.write_text(json.dumps(normalized, ensure_ascii=False, indent=2), encoding="utf-8")
+    return normalized
+
+
+def fallback_openclaw_enrichment(paper: dict[str, Any]) -> dict[str, str]:
+    readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    title = str(paper.get("title") or "")
+    return {
+        "title_zh": title,
+        "tldr_zh": str(readout.get("tldr") or paper.get("reason") or "具身智能导航相关论文，待进一步精读。"),
+        "relevance_zh": str(paper.get("reason") or "命中具身智能导航相关关键词。"),
+        "problem_zh": str(readout.get("motivation") or "摘要未说明。"),
+        "method_zh": str(readout.get("method") or "摘要未说明。"),
+        "contribution_zh": str(readout.get("conclusion") or "摘要未说明。"),
+        "experiments_zh": str(readout.get("result") or "摘要未说明。"),
+        "limitations_zh": str(readout.get("limitation") or "摘要未说明。"),
+        "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
+        "abstract_zh": "OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。",
+    }
+
+
+def enrich_current_meta_with_openclaw(current_meta: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
+    model = str(config.get("openclaw_model") or "openai-codex/gpt-5.5")
+    enabled = as_bool(config, "openclaw_enabled", False)
+    if not enabled:
+        current_meta["openclaw"] = {"enabled": False, "model": model}
+        return current_meta
+
+    enriched_count = 0
+    warnings: list[str] = []
+    for paper in current_meta.get("papers", []):
+        if not isinstance(paper, dict):
+            continue
+        try:
+            enrichment = run_openclaw_enrichment(paper, config, model)
+        except Exception as exc:
+            warnings.append(f"{paper.get('id') or paper.get('title')}: {exc.__class__.__name__}: {exc}")
+            enrichment = fallback_openclaw_enrichment(paper)
+        paper["openclaw"] = enrichment
+        readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+        readout["source"] = "OpenClaw" if not enrichment.get("abstract_zh", "").startswith("OpenClaw 中文摘要暂未生成") else "local"
+        readout["tldr"] = enrichment.get("tldr_zh") or readout.get("tldr")
+        readout["motivation"] = enrichment.get("problem_zh") or readout.get("motivation")
+        readout["method"] = enrichment.get("method_zh") or readout.get("method")
+        readout["result"] = enrichment.get("experiments_zh") or readout.get("result")
+        readout["conclusion"] = enrichment.get("contribution_zh") or readout.get("conclusion")
+        readout["limitation"] = enrichment.get("limitations_zh") or readout.get("limitation")
+        paper["readout"] = readout
+        enriched_count += 1
+
+    current_meta["openclaw"] = {
+        "enabled": True,
+        "model": model,
+        "enriched_count": enriched_count,
+        "warnings": warnings,
+    }
+    if warnings:
+        current_meta.setdefault("warnings", [])
+        if isinstance(current_meta["warnings"], list):
+            current_meta["warnings"].extend(f"OpenClaw: {warning}" for warning in warnings)
+    return current_meta
+
+
+def render_report_from_meta(current_meta: dict[str, Any], config: dict[str, Any]) -> str:
+    domain = str(config.get("domain_name") or "具身智能导航")
+    papers = current_meta.get("papers", []) if isinstance(current_meta.get("papers"), list) else []
+    categories = ", ".join(str(item) for item in current_meta.get("categories", [])) or ", ".join(as_list(config, "categories"))
+    lines: list[str] = [
+        f"# {domain}论文日报 {current_meta.get('date')}",
+        "",
+        f"- 生成时间：{current_meta.get('generated_at')}",
+        f"- 来源：arXiv 公开 API；类别：{categories}",
+        f"- 扫描条目：{current_meta.get('scanned_count', 0)}；时间窗口候选：{current_meta.get('candidate_count', 0)}；入选：{current_meta.get('selected_count', len(papers))}",
+        "",
+    ]
+    openclaw_meta = current_meta.get("openclaw") if isinstance(current_meta.get("openclaw"), dict) else {}
+    if openclaw_meta.get("enabled"):
+        lines.extend([f"- 中文解读：OpenClaw / {openclaw_meta.get('model')}", ""])
+
+    warnings = current_meta.get("warnings") if isinstance(current_meta.get("warnings"), list) else []
+    if warnings:
+        lines.extend(["## 抓取或生成警告", ""])
+        for warning in warnings:
+            lines.append(f"- {warning}")
+        lines.append("")
+
+    if not papers:
+        lines.extend(
+            [
+                "## 今日精选",
+                "",
+                "今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 `min_score` 或增大 `days_window` 做补扫。",
+                "",
+            ]
+        )
+        return "\n".join(lines).rstrip() + "\n"
+
+    lines.extend(["## 今日精选", ""])
+    for paper in papers:
+        openclaw = paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
+        readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+        authors = ", ".join(str(item) for item in paper.get("authors", [])[:6]) + (
+            " et al." if len(paper.get("authors", [])) > 6 else ""
+        )
+        title_zh = paper_display_title(paper)
+        original_title = paper_original_title(paper)
+        lines.extend(
+            [
+                f"### {paper.get('rank')}. {title_zh}",
+                "",
+                f"- 原题：{original_title}",
+                f"- 分区：{paper.get('section')}；评分：{float(paper.get('score_10') or 0.0):.1f}/10",
+                f"- 作者：{authors or 'Unknown'}",
+                f"- 日期：published {paper.get('published')}；updated {paper.get('updated')}",
+                f"- 类别：{', '.join(str(item) for item in paper.get('categories', []))}",
+                f"- 链接：[abs]({paper.get('abs_url')}) / [PDF]({paper.get('pdf_url')})",
+                f"- 命中关键词：{', '.join(str(item) for item in paper.get('matched_keywords', [])) or 'BM25 token match'}",
+                f"- 为什么和具身导航相关：{openclaw.get('relevance_zh') or paper.get('reason')}",
+                "",
+                "#### 中文速读",
+                "",
+                f"- 一句话：{openclaw.get('tldr_zh') or readout.get('tldr')}",
+                f"- 研究问题：{openclaw.get('problem_zh') or readout.get('motivation')}",
+                f"- 方法要点：{openclaw.get('method_zh') or readout.get('method')}",
+                f"- 贡献/结果：{openclaw.get('contribution_zh') or readout.get('conclusion')}",
+                f"- 实验信息：{openclaw.get('experiments_zh') or readout.get('result')}",
+                f"- 注意事项：{openclaw.get('limitations_zh') or readout.get('limitation')}",
+                f"- 阅读建议：{openclaw.get('read_suggestion_zh') or '建议核验任务设置、数据集和泛化实验。'}",
+                "",
+                "#### 中文摘要",
+                "",
+                openclaw.get("abstract_zh") or "OpenClaw 中文摘要暂未生成；请参考英文摘要原文。",
+                "",
+                "#### 英文摘要原文",
+                "",
+                str(paper.get("summary") or ""),
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
+            "## 候选速览",
+            "",
+            "| Rank | Score | 中文标题 | 关键词 |",
+            "|---:|---:|---|---|",
+        ]
+    )
+    for paper in papers:
+        title = paper_display_title(paper)
+        lines.append(
+            f"| {paper.get('rank')} | {float(paper.get('score_10') or 0.0):.1f} | [{md_escape(title)}]({paper.get('abs_url')}) | {md_escape(', '.join(str(item) for item in paper.get('matched_keywords', [])[:4]))} |"
+        )
+    lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def extract_report_meta(report_path: Path) -> dict[str, Any]:
@@ -2159,11 +2444,13 @@ def yaml_quote(value: Any) -> str:
 
 def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, Any]) -> str:
     readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    openclaw = paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
     tags = [f"query:{tag}" for tag in paper.get("matched_keywords", [])[:8]]
     tags.extend(f"topic:{tag}" for tag in paper.get("topic_lanes", [])[:5])
     lines = [
         "---",
-        f"title: {yaml_quote(paper.get('title'))}",
+        f"title: {yaml_quote(paper_display_title(paper))}",
+        f"original_title: {yaml_quote(paper.get('title'))}",
         f"authors: {yaml_quote(', '.join(paper.get('authors', [])))}",
         f"date: {str(current_meta.get('date') or '').replace('-', '')}",
         f"pdf: {yaml_quote(paper.get('pdf_url'))}",
@@ -2176,16 +2463,18 @@ def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, An
         f"method: {yaml_quote(readout.get('method'))}",
         f"result: {yaml_quote(readout.get('result'))}",
         f"conclusion: {yaml_quote(readout.get('conclusion'))}",
+        f"abstract_zh: {yaml_quote(openclaw.get('abstract_zh'))}",
         f"abstract_en: {yaml_quote(paper.get('summary'))}",
         "---",
         "",
-        "## 速览",
+        "## 中文速读",
         "",
-        f"**TLDR**：{readout.get('tldr', '')} \\",
-        f"**Motivation**：{readout.get('motivation', '')} \\",
-        f"**Method**：{readout.get('method', '')} \\",
-        f"**Result**：{readout.get('result', '')} \\",
-        f"**Conclusion**：{readout.get('conclusion', '')}",
+        f"**一句话**：{openclaw.get('tldr_zh') or readout.get('tldr', '')} \\",
+        f"**为什么相关**：{openclaw.get('relevance_zh') or paper.get('reason', '')} \\",
+        f"**研究问题**：{openclaw.get('problem_zh') or readout.get('motivation', '')} \\",
+        f"**方法要点**：{openclaw.get('method_zh') or readout.get('method', '')} \\",
+        f"**实验/结果**：{openclaw.get('experiments_zh') or readout.get('result', '')} \\",
+        f"**阅读判断**：{openclaw.get('read_suggestion_zh') or readout.get('conclusion', '')}",
         "",
         "---",
         "",
@@ -2195,9 +2484,13 @@ def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, An
         f"- 主题 lane：{', '.join(paper.get('topic_lanes', []))}",
         f"- 命中关键词：{', '.join(paper.get('matched_keywords', [])) or 'BM25 token match'}",
         f"- 推荐理由：{paper.get('reason')}",
-        f"- 核验重点：{readout.get('limitation')}",
+        f"- 核验重点：{openclaw.get('limitations_zh') or readout.get('limitation')}",
         "",
-        "## Original Abstract",
+        "## 中文摘要",
+        "",
+        openclaw.get("abstract_zh") or "OpenClaw 中文摘要暂未生成；请参考英文摘要原文。",
+        "",
+        "## 英文摘要原文",
         "",
         str(paper.get("summary") or ""),
         "",
@@ -2211,7 +2504,7 @@ def render_docs_day_readme(current_meta: dict[str, Any]) -> str:
     quick = [paper for paper in papers if paper.get("section") == "速读区"]
 
     def item_line(paper: dict[str, Any]) -> str:
-        return f"- [{paper.get('title')}]({paper.get('slug')}.md)  评分：{float(paper.get('score_10') or 0.0):.1f}/10；{paper.get('reason')}"
+        return f"- [{paper_display_title(paper)}]({paper.get('slug')}.md)  评分：{float(paper.get('score_10') or 0.0):.1f}/10；{paper.get('reason')}"
 
     lines = [
         f"# 日报 · {current_meta.get('date')}",
@@ -2621,12 +2914,12 @@ a:hover {
 
 .dpr-speed-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
 .dpr-speed-card {
-  min-height: 168px;
+  min-height: 150px;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -2644,6 +2937,7 @@ a:hover {
 .dpr-speed-card p {
   margin: 0;
   color: #536273;
+  line-height: 1.72;
 }
 
 .dpr-abstract {
@@ -2657,6 +2951,7 @@ a:hover {
 .dpr-abstract p {
   margin: 0;
   color: #38485b;
+  line-height: 1.78;
 }
 
 .dpr-actions {
@@ -2923,7 +3218,7 @@ def dpr_sidebar(current_meta: dict[str, Any], config: dict[str, Any], *, active_
         lane = str((paper.get("topic_lanes") or ["embodied navigation"])[0])
         return f"""\
 <a class="dpr-side-card {section_class}{active}" href="{html_attr(dpr_link(str(paper.get("detail_url") or ""), base_href))}">
-  <span class="dpr-side-title">{html_text(paper.get("title"))}</span>
+  <span class="dpr-side-title">{html_text(paper_display_title(paper))}</span>
   <span class="dpr-side-note">{html_text(shorten(str(readout.get("tldr") or paper.get("reason") or ""), 86))}</span>
   <span class="dpr-side-meta">{dpr_stars(float(paper.get("score_10") or 0.0))}<span class="dpr-tag">{html_text(lane)}</span></span>
 </a>"""
@@ -2937,7 +3232,7 @@ def dpr_sidebar(current_meta: dict[str, Any], config: dict[str, Any], *, active_
     <a href="{html_attr(dpr_link("daily/" + str(current_meta.get("date")) + "/index.html", base_href))}">当日固定页</a>
     <a href="{html_attr(dpr_link(docs_readme, base_href))}">Markdown 日报</a>
   </nav>
-  <h2 class="dpr-sidebar-heading">Daily Papers</h2>
+  <h2 class="dpr-sidebar-heading">每日论文</h2>
   <p class="dpr-date">{html_text(current_meta.get("date"))}</p>
   <h3 class="dpr-section-title">精读区</h3>
   <div class="dpr-paper-list">{''.join(side_item(paper) for paper in deep) or '<p class="dpr-side-note">暂无精读论文</p>'}</div>
@@ -2958,44 +3253,54 @@ def dpr_daily_brief(current_meta: dict[str, Any]) -> str:
 
 def dpr_paper_body(paper: dict[str, Any], current_meta: dict[str, Any], *, base_href: str = "") -> str:
     readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    openclaw = paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
     authors = short_authors(tuple(str(item) for item in paper.get("authors", [])), limit=8)
     tags = list(paper.get("matched_keywords", [])[:4]) + list(paper.get("topic_lanes", [])[:2])
     tags_html = " ".join(f'<span class="dpr-tag">{html_text(tag)}</span>' for tag in tags)
     keywords = [str(item) for item in paper.get("matched_keywords", [])]
     abstract_html = highlight_terms(str(paper.get("summary") or ""), keywords)
+    title_zh = paper_display_title(paper)
+    original_title = paper_original_title(paper)
+    abstract_zh = str(openclaw.get("abstract_zh") or "OpenClaw 中文摘要暂未生成；请参考英文摘要原文。")
     return f"""\
 <article class="dpr-reader">
   <div class="dpr-title-card">
     <div class="dpr-title-cell"><h1>{html_text(config_domain_title(current_meta))}</h1></div>
-    <div class="dpr-title-cell"><h2>{html_text(paper.get("title"))}</h2></div>
+    <div class="dpr-title-cell"><h2>{html_text(title_zh)}</h2></div>
   </div>
 
   <section class="dpr-info">
     <div class="dpr-info-col">
-      <p class="dpr-field"><span class="dpr-label">Evidence:</span> {html_text(paper.get("reason"))}</p>
-      <p class="dpr-field"><span class="dpr-label">TLDR:</span> {html_text(readout.get("tldr"))}</p>
+      <p class="dpr-field"><span class="dpr-label">一句话：</span>{html_text(openclaw.get("tldr_zh") or readout.get("tldr"))}</p>
+      <p class="dpr-field"><span class="dpr-label">为什么相关：</span>{html_text(openclaw.get("relevance_zh") or paper.get("reason"))}</p>
+      <p class="dpr-field"><span class="dpr-label">原题：</span>{html_text(original_title)}</p>
     </div>
     <div class="dpr-info-col">
-      <p class="dpr-field"><span class="dpr-label">Authors:</span> {html_text(authors)}</p>
-      <p class="dpr-field"><span class="dpr-label">Date:</span> {html_text(paper.get("published"))}</p>
-      <p class="dpr-field"><span class="dpr-label">PDF:</span> <a href="{html_attr(paper.get("pdf_url"))}">{html_text(paper.get("pdf_url"))}</a></p>
-      <p class="dpr-field"><span class="dpr-label">Tags:</span> {tags_html}</p>
-      <p class="dpr-field"><span class="dpr-label">Score:</span> {float(paper.get("score_10") or 0.0):.1f}</p>
+      <p class="dpr-field"><span class="dpr-label">作者：</span>{html_text(authors)}</p>
+      <p class="dpr-field"><span class="dpr-label">日期：</span>{html_text(paper.get("published"))}</p>
+      <p class="dpr-field"><span class="dpr-label">PDF：</span><a href="{html_attr(paper.get("pdf_url"))}">{html_text(paper.get("pdf_url"))}</a></p>
+      <p class="dpr-field"><span class="dpr-label">标签：</span>{tags_html}</p>
+      <p class="dpr-field"><span class="dpr-label">评分：</span>{float(paper.get("score_10") or 0.0):.1f}/10</p>
     </div>
   </section>
 
   <section class="dpr-speed">
-    <h2>速览</h2>
+    <h2>中文速读</h2>
     <div class="dpr-speed-grid">
-      <div class="dpr-speed-card"><h3>Motivation</h3><p>{html_text(readout.get("motivation"))}</p></div>
-      <div class="dpr-speed-card"><h3>Method</h3><p>{html_text(readout.get("method"))}</p></div>
-      <div class="dpr-speed-card"><h3>Result</h3><p>{html_text(readout.get("result"))}</p></div>
-      <div class="dpr-speed-card"><h3>Conclusion</h3><p>{html_text(readout.get("conclusion"))}</p></div>
+      <div class="dpr-speed-card"><h3>研究问题</h3><p>{html_text(openclaw.get("problem_zh") or readout.get("motivation"))}</p></div>
+      <div class="dpr-speed-card"><h3>方法要点</h3><p>{html_text(openclaw.get("method_zh") or readout.get("method"))}</p></div>
+      <div class="dpr-speed-card"><h3>实验/结果</h3><p>{html_text(openclaw.get("experiments_zh") or readout.get("result"))}</p></div>
+      <div class="dpr-speed-card"><h3>阅读判断</h3><p>{html_text(openclaw.get("read_suggestion_zh") or readout.get("conclusion"))}</p></div>
     </div>
   </section>
 
   <section class="dpr-abstract">
-    <h2>Original Abstract</h2>
+    <h2>中文摘要</h2>
+    <p>{html_text(abstract_zh)}</p>
+  </section>
+
+  <section class="dpr-abstract">
+    <h2>英文摘要原文</h2>
     <p>{abstract_html}</p>
     <div class="dpr-actions">
       <a class="dpr-button primary" href="{html_attr(paper.get("abs_url"))}">Abs</a>
@@ -3047,7 +3352,7 @@ def render_archive_page(history: list[dict[str, Any]], config: dict[str, Any]) -
     for meta in history:
         date_text = str(meta.get("date") or "")
         papers = meta.get("papers") if isinstance(meta.get("papers"), list) else []
-        first_titles = [str(paper.get("title") or "") for paper in papers[:2] if isinstance(paper, dict)]
+        first_titles = [paper_display_title(paper) for paper in papers[:2] if isinstance(paper, dict)]
         preview = "；".join(title for title in first_titles if title) or "当天没有筛到达到阈值的新论文。"
         selected_count = meta.get("selected_count", len(papers))
         daily_href = html_attr(f"../daily/{date_text}/index.html")
@@ -3137,12 +3442,12 @@ def render_daily_page(markdown: str, meta: dict[str, Any], config: dict[str, Any
       </div>
       <section class="dpr-info">
         <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">Generated:</span> {html_text(generated_at)}</p>
-          <p class="dpr-field"><span class="dpr-label">Selected:</span> {html_text(selected_count)} 篇</p>
+          <p class="dpr-field"><span class="dpr-label">生成时间：</span>{html_text(generated_at)}</p>
+          <p class="dpr-field"><span class="dpr-label">入选论文：</span>{html_text(selected_count)} 篇</p>
         </div>
         <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">Scanned:</span> {html_text(scanned_count)} 条</p>
-          <p class="dpr-field"><span class="dpr-label">Candidates:</span> {html_text(candidate_count)} 条</p>
+          <p class="dpr-field"><span class="dpr-label">扫描条目：</span>{html_text(scanned_count)} 条</p>
+          <p class="dpr-field"><span class="dpr-label">时间窗口候选：</span>{html_text(candidate_count)} 条</p>
           <div class="dpr-actions">
             <a class="dpr-button primary" href="{report_href}">Markdown 全文</a>
             <a class="dpr-button" href="{archive_href}">返回归档</a>
@@ -3199,7 +3504,7 @@ def render_paper_detail_page(paper: dict[str, Any], current_meta: dict[str, Any]
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{html_text(paper.get("title"))}</title>
+  <title>{html_text(paper_display_title(paper))}</title>
   <link rel="stylesheet" href="../../assets/app.css">
 </head>
 <body>
@@ -3223,6 +3528,9 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--min-score", type=float, default=None, help="Override min_score.")
     parser.add_argument("--out-dir", default=None, help="Override output directory.")
     parser.add_argument("--site-dir", default=None, help="Override static website output directory.")
+    parser.add_argument("--use-openclaw", action="store_true", help="Use OpenClaw to generate Chinese paper readouts.")
+    parser.add_argument("--no-openclaw", action="store_true", help="Disable OpenClaw enrichment even if enabled in config.")
+    parser.add_argument("--openclaw-model", default=None, help="Override OpenClaw model id.")
     parser.add_argument("--no-site", action="store_true", help="Skip static website generation.")
     parser.add_argument("--dry-run", action="store_true", help="Generate the report and print it; no delivery side effects.")
     return parser.parse_args(argv)
@@ -3234,6 +3542,12 @@ def main(argv: list[str]) -> int:
     config = load_config(config_path)
     if args.min_score is not None:
         config["min_score"] = args.min_score
+    if args.use_openclaw:
+        config["openclaw_enabled"] = True
+    if args.no_openclaw:
+        config["openclaw_enabled"] = False
+    if args.openclaw_model:
+        config["openclaw_model"] = args.openclaw_model
 
     tz_name = str(config.get("timezone") or "Asia/Shanghai")
     tz = ZoneInfo(tz_name)
@@ -3260,17 +3574,6 @@ def main(argv: list[str]) -> int:
         )
         print(target_report_path.read_text(encoding="utf-8", errors="replace"))
         return 0
-    report = render_report(
-        scored,
-        config=config,
-        scanned_count=scanned_count,
-        candidate_count=len(papers),
-        fetch_warnings=fetch_warnings,
-        run_time=run_time,
-        tz=tz,
-        max_items=max_items,
-    )
-    report_path = write_report(report, out_dir, run_time, tz)
     current_meta = build_current_meta(
         scored,
         config=config,
@@ -3281,6 +3584,9 @@ def main(argv: list[str]) -> int:
         tz=tz,
         max_items=max_items,
     )
+    current_meta = enrich_current_meta_with_openclaw(current_meta, config)
+    report = render_report_from_meta(current_meta, config)
+    report_path = write_report(report, out_dir, run_time, tz)
     if not args.no_site:
         generate_site(
             report_path=report_path,
