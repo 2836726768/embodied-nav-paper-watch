@@ -3,112 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>通过专家引导GRPO实现精确意图对齐的VLA无人机导航</title>
+  <title>面向精确意图对齐的 VLA 无人机导航：专家引导的 GRPO 方法</title>
   <link rel="stylesheet" href="../../assets/app.css">
 </head>
 <body>
-<div class="dpr-app">
-  <aside class="dpr-sidebar">
-  <h1 class="dpr-title">Embodied Nav Paper Reader</h1>
-  <nav class="dpr-nav">
-    <a href="../../index.html">首页</a>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
     <a href="../../archive/index.html">归档</a>
-    <a href="../../daily/2026-06-02/index.html">当日固定页</a>
-    <a href="../../docs/202606/02/README.md">Markdown 日报</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
   </nav>
-  <h2 class="dpr-sidebar-heading">每日论文</h2>
-  <p class="dpr-date">2026-06-02</p>
-  <h3 class="dpr-section-title">精读区</h3>
-  <div class="dpr-paper-list"><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01565v1-hierarchical-semantic-augmented-navigation-optimal-transport-and-graph-driven-reasonin.html">
-  <span class="dpr-side-title">层次语义增强导航：用于视觉语言导航的最优传输与图驱动推理</span>
-  <span class="dpr-side-note">HSAN面向VLN-CE，通过动态层次语义场景图、最优传输拓扑规划和图感知强化学习策略，提升长程室内导航成功率与未见环境泛化。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★★<span></span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01205v1-imagineuav-aerial-vision-language-navigation-via-world-action-modeling-and-kinodynamic.html">
-  <span class="dpr-side-title">ImagineUAV：通过世界-动作建模与动力学规划实现空中视觉语言导航</span>
-  <span class="dpr-side-note">面向无人机VLN，ImagineUAV先按语言指令想象未来观测，再提取6自由度动作，并用动力学规划生成无碰撞轨迹。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★<span>☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01621v1-goal2pixel-grounding-goals-to-pixels-for-vision-language-navigation.html">
-  <span class="dpr-side-title">Goal2Pixel：将目标落地到像素的视觉语言导航方法</span>
-  <span class="dpr-side-note">Goal2Pixel 将 VLN-CE 从低层动作预测改写为可导航像素 grounding，让 VLM 预测图像中的可行进像素并反投影为 3D 路标，从而减少 VLM 调…</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★<span>☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a></div>
-  <h3 class="dpr-section-title">速读区</h3>
-  <div class="dpr-paper-list"><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01545v1-hierarchical-object-representation-for-spatial-robot-perception-points-meshes-and-supe.html">
-  <span class="dpr-side-title">用于空间机器人感知的层级对象表示：点、网格与超二次曲面</span>
-  <span class="dpr-side-note">提出面向3D场景图的层级对象几何表示，从RGB-D数据构建点、网格到超二次曲面，用于对象级重建、重定位、地图对齐和安全导航规划。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★<span>☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01313v1-psg-nav-probabilistic-scene-graph-navigation-via-multiverse-decision-making.html">
-  <span class="dpr-side-title">PSG-Nav：通过多宇宙决策进行概率场景图导航</span>
-  <span class="dpr-side-note">PSG-Nav面向开放词汇导航，用3D概率场景图建模语义不确定性，并通过多宇宙决策选择更优导航地标，在MP3D、HM3D、HSSD上取得新的最优结果。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★<span>☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.00990v1-oscar-obstacle-survival-curves-for-adaptive-robot-navigation.html">
-  <span class="dpr-side-title">OSCAR：用于自适应机器人导航的障碍物生存曲线</span>
-  <span class="dpr-side-note">该论文提出一种面向图导航的自适应等待与绕行策略，利用不同障碍物类别的清除时间分布来决定机器人在被临时障碍阻挡时应等待多久。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01951v1-co-training-with-ego-centric-video-and-demonstration-for-robot-navigation-task.html">
-  <span class="dpr-side-title">用第一人称视频与示范协同训练机器人导航任务</span>
-  <span class="dpr-side-note">论文提出将人类第一人称行走视频转换为地面移动机器人模仿学习数据，并与机器人采集数据联合训练 VLA 模型，以提升语言理解和动作生成鲁棒性。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick active" href="../../papers/2026-06-02/2606.02313v1-towards-precise-intent-aligned-vla-aerial-navigation-via-expert-guided-grpo.html">
-  <span class="dpr-side-title">通过专家引导GRPO实现精确意图对齐的VLA无人机导航</span>
-  <span class="dpr-side-note">本文提出EG-GRPO强化学习框架，用少量专家数据增强在线探索，使VLA无人机在复杂人类指令下获得更高成功率和意图对齐能力。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a></div>
-</aside>
+</header>
 
-  <main class="dpr-main"><article class="dpr-reader">
-  <div class="dpr-title-card">
-    <div class="dpr-title-cell"><h1>具身智能导航论文精读 · 2026-06-02</h1></div>
-    <div class="dpr-title-cell"><h2>通过专家引导GRPO实现精确意图对齐的VLA无人机导航</h2></div>
-  </div>
-
-  <section class="dpr-info">
-    <div class="dpr-info-col">
-      <p class="dpr-field"><span class="dpr-label">一句话：</span>本文提出EG-GRPO强化学习框架，用少量专家数据增强在线探索，使VLA无人机在复杂人类指令下获得更高成功率和意图对齐能力。</p>
-      <p class="dpr-field"><span class="dpr-label">为什么相关：</span>与具身智能导航高度相关，聚焦UAV空中导航、VLA端到端策略、复杂语言意图对齐和强化学习微调，可为语言条件机器人导航策略训练提供参考。</p>
-      <p class="dpr-field"><span class="dpr-label">原题：</span>Towards Precise Intent-Aligned VLA Aerial Navigation via Expert-Guided GRPO</p>
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 4.1</span>
+      <span class="badge">rank #8</span>
     </div>
-    <div class="dpr-info-col">
-      <p class="dpr-field"><span class="dpr-label">作者：</span>Tianyang Chen, Wenjun Li, Xin zhou, Yuze Wu, Fei Gao</p>
-      <p class="dpr-field"><span class="dpr-label">日期：</span>2026-06-01</p>
-      <p class="dpr-field"><span class="dpr-label">PDF：</span><a href="https://arxiv.org/pdf/2606.02313v1">https://arxiv.org/pdf/2606.02313v1</a></p>
-      <p class="dpr-field"><span class="dpr-label">标签：</span><span class="dpr-tag">aerial navigation</span> <span class="dpr-tag">reinforcement learning</span> <span class="dpr-tag">Robot Navigation</span> <span class="dpr-tag">Planning / Policy</span></p>
-      <p class="dpr-field"><span class="dpr-label">评分：</span>4.1/10</p>
+    <h1 class="paper-title">面向精确意图对齐的 VLA 无人机导航：专家引导的 GRPO 方法</h1>
+    <p class="paper-original">Towards Precise Intent-Aligned VLA Aerial Navigation via Expert-Guided GRPO</p>
+    <div class="paper-meta">
+      <span>Tianyang Chen, Wenjun Li, Xin zhou, Yuze Wu, Fei Gao</span>
+      <span>published 2026-06-01</span>
+      <span>cs.RO</span>
     </div>
-  </section>
-
-  <section class="dpr-speed">
-    <h2>中文速读</h2>
-    <div class="dpr-speed-grid">
-      <div class="dpr-speed-card"><h3>研究问题</h3><p>标准监督微调在无人机VLA导航中面临数据稀缺、泛化有限、复杂细粒度人类意图监督不足的问题；强化微调虽适合意图对齐，但在大范围连续空中空间中探索效率低。</p></div>
-      <div class="dpr-speed-card"><h3>方法要点</h3><p>提出EG-GRPO，即专家引导的Group Relative Policy Optimization，用少量专家数据增强在线rollout；同时设计异构流水线支持并行仿真与推理以提升训练效率。</p></div>
-      <div class="dpr-speed-card"><h3>实验/结果</h3><p>在多个由复杂人类意图指定的任务上，EG-GRPO相较SFT基线成功率提升至2.13倍，意图对齐性能提升60.9%，异构流水线将rollout时间减少43.5%。</p></div>
-      <div class="dpr-speed-card"><h3>阅读判断</h3><p>建议关注其专家数据如何引导GRPO、意图对齐奖励如何设计，以及该框架对UAV导航、语言条件策略和连续空间探索的启发；若研究VLN、ObjectNav或PointNav，可重点比较其与地面导航任务的差异。</p></div>
+    <div class="paper-tags"><span class="tag">aerial navigation</span><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span><span class="tag">Embodied AI / VLA</span><span class="tag">Aerial / UAV</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了 VLA 模型在无人机空中导航中难以通过标准监督微调充分泛化并精确对齐复杂人类意图的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文用专家引导的强化学习微调，让无人机 VLA 导航策略更好理解并执行复杂语言意图。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验；尤其需核验任务场景规模、仿真到真实迁移、真实 UAV 结果、安全约束以及与其他导航或强化学习方法的对比。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出 EG-GRPO，用少量专家数据增强在线强化学习 rollout，面向 VLA 空中导航提升探索效率</li><li>设计异构并行仿真与推理流水线，将 rollout 时间减少 43.5%</li><li>在复杂人类意图指定的多任务空中导航中，相比 SFT 基线成功率提升至 2.13 倍，意图对齐提升 60.9%</li></ul>
+      </section>
     </div>
-  </section>
-
-  <section class="dpr-abstract">
-    <h2>中文摘要</h2>
-    <p>VLA模型为无人机执行由细粒度指令指定的复杂任务提供了端到端范式，但SFT存在数据稀缺、泛化有限和复杂人类意图监督弱的问题。本文提出面向VLA空中导航的高效强化学习框架，核心是EG-GRPO，用少量专家数据增强在线rollout，并通过异构并行仿真与推理流水线减少rollout时间。实验显示该方法在复杂意图任务中显著提升成功率和意图对齐表现。</p>
-  </section>
-
-  <section class="dpr-abstract">
-    <h2>英文摘要原文</h2>
-    <p>Vision-Language-Action (VLA) models offer a promising end-to-end paradigm for unmanned aerial vehicles (UAVs) to accomplish complex tasks specified by fine-grained instructions. However, standard supervised fine-tuning (SFT) suffers from data scarcity, limited generalization, and weak supervision for nuanced and complicated human intents. Reinforcement fine-tuning offers a natural way to mitigate these challenges and align policy behaviors with human intents through designable feedback, but applying it to <mark class="hit-mark">aerial navigation</mark> remains challenging due to inefficient exploration in expansive continuous spaces. To address these challenges, we introduce an efficient <mark class="hit-mark">reinforcement learning</mark> (RL) framework for VLA-based <mark class="hit-mark">aerial navigation</mark>. At its core, we propose EG-GRPO (Expert-Guided Group Relative Policy Optimization) to augment online rollouts with few-shot expert data. Additionally, we design a heterogeneous pipeline enabling parallel simulation and inference, which reduces rollout time by 43.5%. Across multiple tasks specified by complex human intents, EG-GRPO improves the success rate to 2.13x that of the SFT baseline, while improving intent alignment performance by 60.9%. These results demonstrate that our framework can move <mark class="hit-mark">aerial navigation</mark> toward precise intent-aligned flight.</p>
-    <div class="dpr-actions">
-      <a class="dpr-button primary" href="https://arxiv.org/abs/2606.02313v1">Abs</a>
-      <a class="dpr-button" href="https://arxiv.org/pdf/2606.02313v1">PDF</a>
-      <a class="dpr-button" href="../../reports/2026-06-02.html">日报全文</a>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>VLA 模型为无人机执行由细粒度指令指定的复杂任务提供了端到端范式，但标准监督微调存在数据稀缺、泛化有限和对复杂人类意图监督不足的问题。强化微调可通过可设计反馈对齐策略行为与人类意图，但在广阔连续空中空间中探索效率低。为此，论文提出面向 VLA 空中导航的高效强化学习框架，核心为 EG-GRPO，用少量专家数据增强在线 rollout，并设计异构并行仿真与推理流水线，使 rollout 时间减少 43.5%。在多个复杂意图任务上，EG-GRPO 将成功率提升至 SFT 基线的 2.13 倍，并使意图对齐性能提升 60.9%。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Vision-Language-Action (VLA) models offer a promising end-to-end paradigm for unmanned aerial vehicles (UAVs) to accomplish complex tasks specified by fine-grained instructions. However, standard supervised fine-tuning (SFT) suffers from data scarcity, limited generalization, and weak supervision for nuanced and complicated human intents. Reinforcement fine-tuning offers a natural way to mitigate these challenges and align policy behaviors with human intents through designable feedback, but applying it to <mark class="hit-mark">aerial navigation</mark> remains challenging due to inefficient exploration in expansive continuous spaces. To address these challenges, we introduce an efficient <mark class="hit-mark">reinforcement learning</mark> (RL) framework for VLA-based <mark class="hit-mark">aerial navigation</mark>. At its core, we propose EG-GRPO (Expert-Guided Group Relative Policy Optimization) to augment online rollouts with few-shot expert data. Additionally, we design a heterogeneous pipeline enabling parallel simulation and inference, which reduces rollout time by 43.5%. Across multiple tasks specified by complex human intents, EG-GRPO improves the success rate to 2.13x that of the SFT baseline, while improving intent alignment performance by 60.9%. These results demonstrate that our framework can move <mark class="hit-mark">aerial navigation</mark> toward precise intent-aligned flight.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.02313v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.02313v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-02.html">日报全文</a>
     </div>
-  </section>
-</article>
+  </article>
 </main>
-</div>
-<div class="dpr-chatbar">
-  <input data-static-chat-input placeholder="针对这篇论文提问，仅自己可见..." aria-label="paper question">
-  <button type="button">发送</button>
-</div>
-
 <script src="../../assets/app.js"></script>
 </body>
 </html>

@@ -7,39 +7,29 @@
   <link rel="stylesheet" href="../../assets/app.css">
 </head>
 <body>
-<div class="dpr-app">
-  <aside class="dpr-sidebar">
-  <h1 class="dpr-title">Embodied Nav Paper Reader</h1>
-  <nav class="dpr-nav">
-    <a href="../../index.html">首页</a>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
     <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
   </nav>
-  <h2 class="dpr-sidebar-heading">日报 2026-06-01</h2>
-  <p class="dpr-date">历史日报全文阅读页</p>
-</aside>
+</header>
 
-  <main class="dpr-main">
-    <article class="dpr-reader">
-      <div class="dpr-title-card">
-        <div class="dpr-title-cell"><h1>具身智能导航论文日报</h1></div>
-        <div class="dpr-title-cell"><h2>2026-06-01</h2></div>
-      </div>
-      <section class="dpr-info">
-        <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">生成时间：</span>2026-06-01 23:59:36 CST</p>
-          <p class="dpr-field"><span class="dpr-label">入选论文：</span> 篇</p>
-        </div>
-        <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">扫描条目：</span>2 条</p>
-          <p class="dpr-field"><span class="dpr-label">时间窗口候选：</span>2 条</p>
-          <div class="dpr-actions">
-            <a class="dpr-button primary" href="../../reports/2026-06-01.html">Markdown 全文</a>
-            <a class="dpr-button" href="../../archive/index.html">返回归档</a>
-          </div>
-        </div>
-      </section>
-      <section class="dpr-abstract dpr-markdown">
-        <h1>具身智能导航论文日报 2026-06-01</h1>
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · 2026-06-01</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/2026-06-01.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-01</h1>
 <ul>
 <li>生成时间：2026-06-01 23:59:36 CST</li>
 <li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
@@ -51,16 +41,7 @@
 <li>cs.LG: HTTP 429 Unknown Error</li>
 </ul>
 <h2>今日精选</h2>
-<p>今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 <code>min_score</code> 或增大 <code>days_window</code> 做补扫。</p>
-      </section>
-    </article>
-  </main>
-</div>
-<div class="dpr-chatbar">
-  <input data-static-chat-input placeholder="针对这篇论文提问，仅自己可见..." aria-label="paper question">
-  <button type="button">发送</button>
-</div>
-
-<script src="../../assets/app.js"></script>
+<p>今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 <code>min_score</code> 或增大 <code>days_window</code> 做补扫。</p></article>
+</main>
 </body>
 </html>

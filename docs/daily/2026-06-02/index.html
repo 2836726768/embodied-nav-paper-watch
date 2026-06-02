@@ -7,77 +7,29 @@
   <link rel="stylesheet" href="../../assets/app.css">
 </head>
 <body>
-<div class="dpr-app">
-  <aside class="dpr-sidebar">
-  <h1 class="dpr-title">Embodied Nav Paper Reader</h1>
-  <nav class="dpr-nav">
-    <a href="../../index.html">首页</a>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
     <a href="../../archive/index.html">归档</a>
-    <a href="../../daily/2026-06-02/index.html">当日固定页</a>
-    <a href="../../docs/202606/02/README.md">Markdown 日报</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
   </nav>
-  <h2 class="dpr-sidebar-heading">每日论文</h2>
-  <p class="dpr-date">2026-06-02</p>
-  <h3 class="dpr-section-title">精读区</h3>
-  <div class="dpr-paper-list"><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01565v1-hierarchical-semantic-augmented-navigation-optimal-transport-and-graph-driven-reasonin.html">
-  <span class="dpr-side-title">层次语义增强导航：用于视觉语言导航的最优传输与图驱动推理</span>
-  <span class="dpr-side-note">HSAN面向VLN-CE，通过动态层次语义场景图、最优传输拓扑规划和图感知强化学习策略，提升长程室内导航成功率与未见环境泛化。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★★<span></span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01205v1-imagineuav-aerial-vision-language-navigation-via-world-action-modeling-and-kinodynamic.html">
-  <span class="dpr-side-title">ImagineUAV：通过世界-动作建模与动力学规划实现空中视觉语言导航</span>
-  <span class="dpr-side-note">面向无人机VLN，ImagineUAV先按语言指令想象未来观测，再提取6自由度动作，并用动力学规划生成无碰撞轨迹。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★<span>☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card deep" href="../../papers/2026-06-02/2606.01621v1-goal2pixel-grounding-goals-to-pixels-for-vision-language-navigation.html">
-  <span class="dpr-side-title">Goal2Pixel：将目标落地到像素的视觉语言导航方法</span>
-  <span class="dpr-side-note">Goal2Pixel 将 VLN-CE 从低层动作预测改写为可导航像素 grounding，让 VLM 预测图像中的可行进像素并反投影为 3D 路标，从而减少 VLM 调…</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★★<span>☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a></div>
-  <h3 class="dpr-section-title">速读区</h3>
-  <div class="dpr-paper-list"><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01545v1-hierarchical-object-representation-for-spatial-robot-perception-points-meshes-and-supe.html">
-  <span class="dpr-side-title">用于空间机器人感知的层级对象表示：点、网格与超二次曲面</span>
-  <span class="dpr-side-note">提出面向3D场景图的层级对象几何表示，从RGB-D数据构建点、网格到超二次曲面，用于对象级重建、重定位、地图对齐和安全导航规划。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★<span>☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01313v1-psg-nav-probabilistic-scene-graph-navigation-via-multiverse-decision-making.html">
-  <span class="dpr-side-title">PSG-Nav：通过多宇宙决策进行概率场景图导航</span>
-  <span class="dpr-side-note">PSG-Nav面向开放词汇导航，用3D概率场景图建模语义不确定性，并通过多宇宙决策选择更优导航地标，在MP3D、HM3D、HSSD上取得新的最优结果。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★★<span>☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.00990v1-oscar-obstacle-survival-curves-for-adaptive-robot-navigation.html">
-  <span class="dpr-side-title">OSCAR：用于自适应机器人导航的障碍物生存曲线</span>
-  <span class="dpr-side-note">该论文提出一种面向图导航的自适应等待与绕行策略，利用不同障碍物类别的清除时间分布来决定机器人在被临时障碍阻挡时应等待多久。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.01951v1-co-training-with-ego-centric-video-and-demonstration-for-robot-navigation-task.html">
-  <span class="dpr-side-title">用第一人称视频与示范协同训练机器人导航任务</span>
-  <span class="dpr-side-note">论文提出将人类第一人称行走视频转换为地面移动机器人模仿学习数据，并与机器人采集数据联合训练 VLA 模型，以提升语言理解和动作生成鲁棒性。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a><a class="dpr-side-card quick" href="../../papers/2026-06-02/2606.02313v1-towards-precise-intent-aligned-vla-aerial-navigation-via-expert-guided-grpo.html">
-  <span class="dpr-side-title">通过专家引导GRPO实现精确意图对齐的VLA无人机导航</span>
-  <span class="dpr-side-note">本文提出EG-GRPO强化学习框架，用少量专家数据增强在线探索，使VLA无人机在复杂人类指令下获得更高成功率和意图对齐能力。</span>
-  <span class="dpr-side-meta"><span class="dpr-stars">★★<span>☆☆☆</span></span><span class="dpr-tag">Robot Navigation</span></span>
-</a></div>
-</aside>
+</header>
 
-  <main class="dpr-main">
-    <article class="dpr-reader">
-      <div class="dpr-title-card">
-        <div class="dpr-title-cell"><h1>具身智能导航论文日报</h1></div>
-        <div class="dpr-title-cell"><h2>2026-06-02</h2></div>
-      </div>
-      <section class="dpr-info">
-        <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">生成时间：</span>2026-06-02 15:29:24 CST</p>
-          <p class="dpr-field"><span class="dpr-label">入选论文：</span>8 篇</p>
-        </div>
-        <div class="dpr-info-col">
-          <p class="dpr-field"><span class="dpr-label">扫描条目：</span>480 条</p>
-          <p class="dpr-field"><span class="dpr-label">时间窗口候选：</span>351 条</p>
-          <div class="dpr-actions">
-            <a class="dpr-button primary" href="../../reports/2026-06-02.html">Markdown 全文</a>
-            <a class="dpr-button" href="../../archive/index.html">返回归档</a>
-          </div>
-        </div>
-      </section>
-      <section class="dpr-abstract dpr-markdown">
-        <h1>具身智能导航论文日报 2026-06-02</h1>
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · 2026-06-02</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/2026-06-02.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-02</h1>
 <ul>
 <li>生成时间：2026-06-02 15:29:24 CST</li>
 <li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
@@ -87,7 +39,7 @@
 <li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
 </ul>
 <h2>今日精选</h2>
-<h3>1. 层次语义增强导航：用于视觉语言导航的最优传输与图驱动推理</h3>
+<h3>1. 层次化语义增强导航：用于视觉语言导航的最优传输与图驱动推理</h3>
 <ul>
 <li>原题：Hierarchical Semantic-Augmented Navigation: Optimal Transport and Graph-Driven Reasoning for Vision-Language Navigation</li>
 <li>分区：精读区；评分：10.0/10</li>
@@ -96,23 +48,27 @@
 <li>类别：cs.RO, cs.CV</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01565v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01565v1">PDF</a></li>
 <li>命中关键词：vision-language navigation, VLN, VLN-CE, spatial reasoning, scene graph, reinforcement learning</li>
-<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦连续环境视觉语言导航，强调场景图、语义地图、空间推理、长程目标选择和低层控制。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，直接面向VLN-CE任务，核心涉及语义地图、场景图、空间推理、长程目标选择和低层机器人导航控制。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了VLN-CE中智能体在复杂3D室内环境里难以结合语言指令与视觉观测完成长程导航的问题，重点针对场景理解不足、规划低效和决策不够鲁棒。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出HSAN，用层次化语义场景图、最优传输拓扑规划和图感知强化学习来提升连续环境中的视觉语言导航。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：HSAN面向VLN-CE，通过动态层次语义场景图、最优传输拓扑规划和图感知强化学习策略，提升长程室内导航成功率与未见环境泛化。</li>
-<li>研究问题：VLN-CE要求智能体结合自然语言指令与视觉观测在复杂3D室内空间中导航，现有方法在长程任务中受限于场景理解不足、规划低效和决策不稳健。</li>
-<li>方法要点：方法构建动态层次语义场景图，使用视觉语言模型表示对象、区域和分区；采用基于最优传输的拓扑规划器选择长期目标；再用图感知强化学习策略完成子目标导航与避障。</li>
-<li>贡献/结果：贡献在于把层次语义场景图、基于Kantorovich对偶的最优传输规划、谱图理论和多模态学习结合，用于改进VLN-CE中的语义空间推理和层次导航决策。</li>
-<li>实验信息：摘要称在多个具有挑战性的VLN-CE数据集上进行了大量实验，并达到最先进性能，导航成功率和未见环境泛化有显著提升。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议VLN-CE、语义建图、场景图导航、空间推理和层次规划研究者重点阅读，尤其关注其长期目标选择与图感知低层策略的结合方式。</li>
+<li>提出动态层次化语义场景图，支持从物体、区域到分区的多层空间推理</li>
+<li>提出基于最优传输的拓扑规划器，用语义相关性和空间可达性选择长期目标</li>
+<li>结合图感知强化学习策略进行低层控制，并在多个VLN-CE数据集上达到最先进性能</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议VLN、语义建图、场景图导航和空间推理研究者重点阅读，尤其关注其层次化场景图如何构建、最优传输规划如何落到导航目标选择，以及强化学习策略如何与图结构交互。</p>
 <h4>中文摘要</h4>
-<p>连续环境视觉语言导航要求自主智能体无缝融合自然语言指令和视觉观测，在复杂3D室内空间中导航。现有方法在长程任务中常因场景理解有限、规划低效和缺少稳健决策框架而失败。本文提出层次语义增强导航HSAN框架，通过三项协同创新重新定义VLN-CE：首先，HSAN利用视觉语言模型构建动态层次语义场景图，捕获从对象到区域再到分区的多层环境表示，从而支持细粒度空间推理；其次，它采用基于最优传输的拓扑规划器，并以Kantorovich对偶为基础，通过平衡语义相关性和空间可达性来选择长期目标，并提供最优性理论保证；第三，图感知强化学习策略实现精确低层控制，在导航到子目标的同时稳健避障。通过整合谱图理论、最优传输和先进多模态学习，HSAN针对以往静态地图和启发式规划器的不足进行改进。摘要称，在多个具有挑战性的VLN-CE数据集上的大量实验表明，HSAN达到最先进性能，并在导航成功率和未见环境泛化方面显著提升。</p>
+<p>连续环境中的视觉语言导航要求自主智能体融合自然语言指令和视觉观测，在复杂3D室内空间中导航。现有方法在长程任务中常受限于场景理解不足、规划低效和决策框架不够鲁棒。论文提出HSAN框架，通过三项协同创新改进VLN-CE：构建动态层次化语义场景图，利用视觉语言模型捕获从物体到区域再到分区的多层环境表示；使用基于最优传输的拓扑规划器，并基于Kantorovich对偶在语义相关性和空间可达性之间选择长期目标；采用图感知强化学习策略进行低层控制，以导航到子目标并鲁棒避障。实验表明HSAN在多个VLN-CE数据集上取得最先进性能，并提升导航成功率和未见环境泛化。</p>
 <h4>英文摘要原文</h4>
 <p>Vision-Language Navigation in Continuous Environments (VLN-CE) poses a formidable challenge for autonomous agents, requiring seamless integration of natural language instructions and visual observations to navigate complex 3D indoor spaces. Existing approaches often falter in long-horizon tasks due to limited scene understanding, inefficient planning, and lack of robust decision-making frameworks. We introduce the \textbf{Hierarchical Semantic-Augmented Navigation (HSAN)} framework, a groundbreaking approach that redefines VLN-CE through three synergistic innovations. First, HSAN constructs a dynamic hierarchical semantic scene graph, leveraging vision-language models to capture multi-level environmental representations, from objects to regions to zones, enabling nuanced spatial reasoning. Second, it employs an optimal transport-based topological planner, grounded in Kantorovich&#x27;s duality, to select long-term goals by balancing semantic relevance and spatial accessibility with theoretical guarantees of optimality. Third, a graph-aware reinforcement learning policy ensures precise low-level control, navigating subgoals while robustly avoiding obstacles. By integrating spectral graph theory, optimal transport, and advanced multi-modal learning, HSAN addresses the shortcomings of static maps and heuristic planners prevalent in prior work. Extensive experiments on multiple challenging VLN-CE datasets demonstrate that HSAN achieves state-of-the-art performance, with significant improvements in navigation success and generalization to unseen environments.</p>
-<h3>2. ImagineUAV：通过世界-动作建模与动力学规划实现空中视觉语言导航</h3>
+<h3>2. ImagineUAV：通过世界-动作建模与运动动力学规划实现空中视觉语言导航</h3>
 <ul>
 <li>原题：ImagineUAV: Aerial Vision-Language Navigation via World-Action Modeling and Kinodynamic Planning</li>
 <li>分区：精读区；评分：7.8/10</li>
@@ -121,23 +77,27 @@
 <li>类别：cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01205v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01205v1">PDF</a></li>
 <li>命中关键词：vision-language navigation, VLN, aerial navigation</li>
-<li>为什么和具身导航相关：高度相关于具身智能导航，聚焦UAV空中视觉语言导航、6-DoF飞行、部分可观测环境、语言指令接地、轨迹规划与真实飞行。</li>
+<li>为什么和具身导航相关：该工作直接面向UAV视觉语言导航，与VLN、具身智能导航、语言指令跟随、空间运动规划和真实机器人飞行高度相关。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了无人机视觉语言导航中如何将自由形式语言指令落地为部分可观测环境下的6自由度飞行动作的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>ImagineUAV先“想象”指令条件下的未来视觉观测，再推断飞行动作，并用运动动力学规划生成无碰撞轨迹。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：面向无人机VLN，ImagineUAV先按语言指令想象未来观测，再提取6自由度动作，并用动力学规划生成无碰撞轨迹。</li>
-<li>研究问题：UAV的VLN需要将自由形式语言指令接地到部分可观测环境中的6自由度飞行；现有VLA模型虽有语义推理能力，但存在几何不一致和动力学不匹配导致的脆弱性。</li>
-<li>方法要点：提出ImagineUAV，采用级联世界-动作建模；用潜在视频扩散模型生成指令条件下的未来观测，显式想象环境演化，再由动作提取器推断6-DoF运动，最后通过动力学规划器细化为无碰撞轨迹，并使用步数蒸馏推理流程支持实时执行。</li>
-<li>贡献/结果：将想象式未来观测生成、动作提取和动力学无碰撞规划结合，用于空中VLN；以1.3B参数实现对既有VLN和VLA基线的超越，并展示真实飞行实用性。</li>
-<li>实验信息：摘要说明在基准测试和真实世界飞行中优于先前VLN与VLA基线，但未说明具体数据集、指标或实验细节。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议关注其如何用视频扩散进行空间与环境演化推理、如何从想象观测提取6-DoF动作，以及动力学规划如何弥补VLA在几何和动力学上的不足。</li>
+<li>提出面向UAV VLN的ImagineUAV框架，采用级联世界-动作建模而非直接动作回归</li>
+<li>利用潜在视频扩散模型生成语言指令条件下的未来观测，并从中推断6-DoF飞行动作</li>
+<li>结合运动动力学规划器生成无碰撞轨迹，并通过步蒸馏推理支持实时执行</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读其未来观测生成如何与动作提取、运动动力学规划衔接，以及真实飞行实验中对几何一致性、碰撞规避和实时性的评估。</p>
 <h4>中文摘要</h4>
-<p>无人机视觉语言导航需要在部分可观测条件下，将自由形式指令接地为6自由度飞行。VLA模型擅长语义推理，但受几何不一致和动力学不匹配影响。ImagineUAV通过级联世界-动作建模，先生成指令条件未来观测，再提取6-DoF运动，并用动力学规划生成无碰撞轨迹；步数蒸馏推理支持实时执行。</p>
+<p>无人机视觉语言导航需要在部分可观测条件下将自由形式指令落地为6自由度飞行。现有VLA模型擅长语义推理，但会因几何不一致和动力学不匹配而脆弱。论文提出ImagineUAV，一个想象驱动的级联世界-动作建模框架：用潜在视频扩散模型生成指令条件下的未来观测，显式想象环境演化，再由动作提取器推断6-DoF运动，并通过运动动力学规划器细化为无碰撞轨迹。步蒸馏推理流程支持实时执行。摘要称该1.3B参数模型在基准和真实飞行中超过既有VLN和VLA基线。</p>
 <h4>英文摘要原文</h4>
 <p>Vision-language navigation (VLN) for UAVs demands grounding free-form instructions into 6-DoF flight under partial observability. While Vision-Language-Action (VLA) models excel at semantic reasoning, they suffer from brittleness due to geometric inconsistency and dynamics mismatch. To address this, we propose ImagineUAV, an imagination-driven framework leveraging cascaded world-action modeling. Instead of direct regression, ImagineUAV employs a latent video diffusion model to generate instruction-conditioned future observations, explicitly imagining environmental evolution, from which 6-DoF motions are inferred via an action extractor. A kinodynamic planner then refines these estimates into collision-free trajectories. Additionally, a step-distilled inference pipeline ensures real-time execution. With only 1.3B parameters, ImagineUAV outperforms prior VLN and VLA baselines on benchmarks and real-world flights, validating the practicality of imagination-driven aerial navigation.</p>
-<h3>3. Goal2Pixel：将目标落地到像素的视觉语言导航方法</h3>
+<h3>3. Goal2Pixel：将目标 grounding 到像素用于视觉语言导航</h3>
 <ul>
 <li>原题：Goal2Pixel: Grounding Goals to Pixels for Vision-Language Navigation</li>
 <li>分区：精读区；评分：7.4/10</li>
@@ -146,23 +106,27 @@
 <li>类别：cs.CV, cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01621v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01621v1">PDF</a></li>
 <li>命中关键词：vision-language navigation, VLN, VLN-CE</li>
-<li>为什么和具身导航相关：高度相关于具身智能导航、VLN-CE、机器人导航、目标到空间位置的视觉 grounding，以及从图像平面到 3D waypoint 的空间推理。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦连续环境中的视觉语言导航 VLN-CE，并把语言目标、图像像素、机器人运动通过可导航像素 grounding 连接起来。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了 VLN-CE 中基于 VLM 的方法通常直接预测低层动作，导致接口含糊、依赖短视野动作原语、且需要反复调用 VLM、效率较低的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>Goal2Pixel 不让 VLM 直接选动作，而是让它在图像上点出可导航像素，再转换成 3D 路点来导航。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：Goal2Pixel 将 VLN-CE 从低层动作预测改写为可导航像素 grounding，让 VLM 预测图像中的可行进像素并反投影为 3D 路标，从而减少 VLM 调用并提升导航表现。</li>
-<li>研究问题：现有基于 VLM 的 VLN-CE 方法多将导航建模为低层动作预测，接口含糊、依赖短视野运动原语，并因反复查询 VLM 而效率较低。</li>
-<li>方法要点：提出纯像素范式 Goal2Pixel，用图像平面作为 VLM 推理和机器人运动的统一空间接口；模型预测可见可导航像素，并反投影为 3D waypoint；左、右、底部辅助区域分别表示左转、右转和停止；使用可见性感知关键帧记忆表示历史，并加入语义嵌入和坐标感知辅助损失适配预训练 VLM。</li>
-<li>贡献/结果：将 VLN-CE 重构为可导航像素 grounding，提供像素到 3D 路标的导航接口，并通过关键帧记忆和辅助训练设计实现更少 VLM 调用下的竞争性性能。</li>
-<li>实验信息：在 R2R-CE Val-Unseen 上达到 54.1% SR 和 52.5% SPL，每个 episode 仅需 7.75 次 VLM 调用；相比直接动作预测的 32.9% SR 和 46.62 次调用，调用次数减少约 6 倍；摘要称 RxR-CE 上也有相同趋势。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议关注其将语言目标落地到图像像素并转为 3D waypoint 的接口设计，以及关键帧记忆如何支持长程 VLN-CE；对研究 VLN、GoalNav、ObjectNav 中的空间 grounding 和高效 VLM 调用有参考价值。</li>
+<li>提出 Goal2Pixel，将 VLN-CE 从低层动作预测改为可导航像素 grounding</li>
+<li>设计图像平面空间接口，将可见可导航像素反投影为 3D waypoint，并用辅助区域表达转向和停止</li>
+<li>提出可见性感知关键帧记忆，并通过语义嵌入和坐标感知辅助损失适配预训练 VLM</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验</p>
+<h4>阅读建议</h4>
+<p>建议 VLN-CE、ObjectNav/GoalNav 和机器人导航研究者重点阅读其像素 grounding 接口、3D waypoint 转换、关键帧记忆和 VLM 调用效率设计。</p>
 <h4>中文摘要</h4>
-<p>VLM 已成为连续环境视觉语言导航的常用基础，但多数方法将导航视为低层动作预测，存在接口模糊、短视野动作依赖和反复调用 VLM 的低效问题。Goal2Pixel 将 VLN-CE 改写为可导航像素 grounding，通过预测可见可导航像素并反投影为 3D waypoint 来驱动机器人前进，同时用图像辅助区域表示转向和停止，并通过可见性感知关键帧记忆、语义嵌入和坐标感知辅助损失提升长程导航与适配能力。</p>
+<p>视觉语言模型已成为连续环境视觉语言导航 VLN-CE 的常用基础，但多数方法将导航视为低层动作预测，存在歧义、短视野动作绑定和频繁调用 VLM 的低效问题。Goal2Pixel 提出纯像素范式，将 VLN-CE 重构为可导航像素 grounding：模型预测可见可导航像素，并反投影为 3D 路点；非前进行动通过图像辅助区域表示左转、右转和停止。方法还引入可见性感知关键帧记忆、语义嵌入和坐标感知辅助损失。在 R2R-CE Val-Unseen 上取得 54.1% SR、52.5% SPL，且每个 episode 仅需 7.75 次 VLM 调用；RxR-CE 上也呈现相同趋势。</p>
 <h4>英文摘要原文</h4>
 <p>Vision-language models (VLMs) have become a common foundation for vision-and-language navigation in continuous environments (VLN-CE). Yet most VLM-based methods cast navigation as low-level action prediction, an interface that is ambiguous, tied to short-horizon motion primitives, and inefficient due to repeated VLM querying. We propose Goal2Pixel, a pure pixel-based paradigm that reformulates VLN-CE as navigable pixel grounding. Rather than predicting actions, Goal2Pixel uses the image plane as a unified spatial interface between VLM reasoning and robot motion: the model predicts a visible navigable pixel to the agent, which is back-projected into a 3D waypoint for forward navigation. For non-forward actions, we append auxiliary directive regions to the image plane, where the left/right/bottom regions are interpreted as turning left, turning right, and stopping, respectively. To enable long-horizon navigation, we propose a visibility-aware keyframe memory for compact and informative history representation. To adapt pretrained VLMs to navigable pixel grounding, we introduce semantic embeddings and coordinate-aware auxiliary losses. Goal2Pixel achieves competitive state-of-the-art performance while requiring fewer VLM inference calls than prior methods. On R2R-CE Val-Unseen it achieves 54.1% SR and 52.5% SPL with just 7.75 VLM calls per episode, 6x fewer than the 46.62 required by direct action prediction at 32.9% SR. The same trend holds on RxR-CE.Project Page: https://baobao0926.github.io/Goal2Pixel/.</p>
-<h3>4. 用于空间机器人感知的层级对象表示：点、网格与超二次曲面</h3>
+<h3>4. 面向空间机器人感知的层次化物体表示：点、网格与超二次曲面</h3>
 <ul>
 <li>原题：Hierarchical Object Representation for Spatial Robot Perception: Points, Meshes, and Superquadrics</li>
 <li>分区：速读区；评分：6.1/10</li>
@@ -171,23 +135,27 @@
 <li>类别：cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01545v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01545v1">PDF</a></li>
 <li>命中关键词：robot navigation, localization</li>
-<li>为什么和具身导航相关：与机器人导航、语义地图、3D场景图、对象级空间推理和定位强相关；尤其适合关注密集杂乱环境中ObjectNav、地图对齐、碰撞检测与长期自主导航的研究者。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，重点在3D场景图、语义建图、物体级空间表示、机器人重定位、地图对齐和密集杂乱环境中的安全导航规划。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了3D场景图中物体几何表示过于简化，难以支持高保真重建、鲁棒重定位、地图对齐和安全导航规划的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出一种从RGB-D数据构建点、网格到超二次曲面的层次化物体表示，用于机器人场景理解、地图对齐和导航碰撞检测。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：提出面向3D场景图的层级对象几何表示，从RGB-D数据构建点、网格到超二次曲面，用于对象级重建、重定位、地图对齐和安全导航规划。</li>
-<li>研究问题：现有层级3D场景图多使用局部点云或3D包围盒等简化对象几何，难以支持高保真对象重建、鲁棒重定位、地图对齐和精确安全的导航碰撞检查。</li>
-<li>方法要点：构建四层层级对象表示，将场景从原始传感器数据逐步抽象为稠密3D网格和超二次曲面等解析几何基元；并提出从机器人RGB-D图像流生成该表示的流程。</li>
-<li>贡献/结果：提出用于3D场景图的对象几何层级表示；支持对象级重建、基于对象的鲁棒重定位和地图对齐，以及面向安全机器人导航规划的高效解析碰撞检查。</li>
-<li>实验信息：在HOPE、ReplicaCAD、Kimera-Multi和Unitree B2机器人采集的NUS Campus Dataset等数据集上进行实验，覆盖室内和室外开放集对象场景；超二次曲面地图对齐优于对象级地图对齐方法ROMAN。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议重点阅读其对象表示如何嵌入3D场景图、超二次曲面如何服务地图对齐与碰撞检测，以及该表示对导航规划、ObjectNav和长期自主定位的潜在价值。</li>
+<li>提出面向3D场景图的层次化物体几何表示，覆盖点、网格和超二次曲面</li>
+<li>构建从机器人RGB-D图像流生成层次化物体表示的处理流水线</li>
+<li>在多个数据集和Unitree B2机器人采集的NUS Campus数据上验证，并开源代码</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其超二次曲面物体表示如何接入3D场景图、如何服务重定位和地图对齐，以及解析碰撞检测对ObjectNav、长期自主导航和机器人规划的潜在价值。</p>
 <h4>中文摘要</h4>
-<p>层级3D场景图是长期自主系统中结合度量、语义和拓扑信息的可操作表示，但对象几何表示常被简化。本文提出一种层级对象表示，从RGB-D机器人数据构建点、网格和超二次曲面等层次，用于高保真对象重建、鲁棒重定位、地图对齐和密集杂乱环境中的安全导航规划，并在多个室内外数据集和真实机器人场景中验证。</p>
+<p>层次化3D场景图是一种可操作且可扩展的长期自主表示，融合场景中的度量、语义和拓扑信息。但3D场景图中的物体几何表示问题常被忽视，多数方法使用部分点云或3D包围盒等简化模型。本文提出一种层次化物体表示，可用于高保真物体级重建、基于物体的鲁棒重定位或地图对齐，以及面向密集杂乱环境中安全机器人导航规划的高效解析碰撞检测。该表示包含四个层次，将场景从原始传感器数据逐步抽象为稠密3D网格，再到超二次曲面等解析基元，提供稀疏且解析的物体几何表示。作者开发了从机器人RGB-D图像流构建该表示的流水线，并在室内外真实开放集物体场景中展示其效果。实验覆盖HOPE、ReplicaCAD、Kimera-Multi和Unitree B2机器人采集的NUS Campus Dataset，验证了室内外环境中的有效性。结果显示，基于超二次曲面的地图对齐方法优于当前物体级地图对齐方法ROMAN。代码已开源。</p>
 <h4>英文摘要原文</h4>
 <p>Hierarchical 3D Scene Graphs (3DSG) have emerged as an actionable and scalable representation for long-term autonomy incorporating metric, semantic, and topological information in the scene. However, the question of geometric representation of objects in 3DSG has been overlooked as most methods use simplified geometric models such as partial point clouds or 3D bounding boxes. In this work, we introduce a hierarchical object representation that can be leveraged for high-fidelity object-level reconstruction, object-based robust re-localization or map alignment, and efficient and analytical collision checking for safe robot navigation planning in dense and cluttered environments. The representation is structurally organized into four distinct layers, progressively abstracting the scene from raw sensor data to dense 3D meshes to analytical primitives such as superquadrics, which provide a sparse and analytical representation for object geometry. We develop a pipeline that builds the hierarchical object representation from RGB-D image stream captured by a robot, and demonstrate its working in real-world open-set object scenes in both indoor and outdoor environments. Extensive experiments across diverse datasets including HOPE, ReplicaCAD, Kimera-Multi, and NUS Campus Dataset collected using Unitree B2 Robot validate our pipeline in both indoor and outdoor environments. We show that our superquadric-based map alignment method outperforms the current state-of-the-art object based map alignment method ROMAN. Our code can be found at https://github.com/perceptica-robotics/Hickory.</p>
-<h3>5. PSG-Nav：通过多宇宙决策进行概率场景图导航</h3>
+<h3>5. PSG-Nav：通过多宇宙决策实现概率场景图导航</h3>
 <ul>
 <li>原题：PSG-Nav: Probabilistic Scene Graph Navigation via Multiverse Decision Making</li>
 <li>分区：速读区；评分：5.8/10</li>
@@ -196,20 +164,24 @@
 <li>类别：cs.RO, cs.AI</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01313v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01313v1">PDF</a></li>
 <li>命中关键词：open-vocabulary navigation, scene graph, open-vocabulary</li>
-<li>为什么和具身导航相关：与具身智能导航高度相关，核心涉及开放词汇导航、语义地图、3D场景图、空间推理和机器人导航决策，尤其适合关注ObjectNav或开放词汇目标导航的研究者。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦开放词汇导航、3D场景图、语义地图、空间推理和机器人导航决策，可为ObjectNav/VLN类任务中的不确定语义推理提供参考。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了开放词汇导航中由语义歧义和模型错误带来的感知不确定性，以及确定性局部最优方法难以进行全局更优导航决策的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>PSG-Nav用概率3D场景图表示不确定语义，并通过采样多个可能世界来选择更可靠的导航地标。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：PSG-Nav面向开放词汇导航，用3D概率场景图建模语义不确定性，并通过多宇宙决策选择更优导航地标，在MP3D、HM3D、HSSD上取得新的最优结果。</li>
-<li>研究问题：开放词汇导航中，智能体需要处理语义歧义和模型错误带来的感知不确定性；现有方法多采用局部最优的确定性决策，难以在多个复合可能世界中进行全局更优的导航决策。</li>
-<li>方法要点：方法构建3D概率场景图，用完整的语义类别分布表示感知不确定性；提出多宇宙决策，从联合分布中采样多个最可能的世界设定，并根据地标与这些可能世界的兼容性评估导航地标；还引入证据经验校准器，通过过往成功和失败记忆在线交叉验证检测结果。</li>
-<li>贡献/结果：主要贡献是将概率语义分布引入3D场景图导航，提出基于多种可能世界的导航地标推理机制，并用在线终身适应的经验校准缓解开放词汇导航中的假阳性问题。</li>
-<li>实验信息：摘要说明在MP3D、HM3D和HSSD常用基准上进行了大量实验，成功率分别达到66.1%、44.8%和67.9%，并取得新的最先进结果。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议重点阅读其3D概率场景图表示、多宇宙决策如何从语义分布推理导航地标，以及经验校准器如何利用成功失败记忆减少开放词汇误检。</li>
+<li>提出3D概率场景图，用完整语义类别分布建模开放词汇导航中的感知不确定性</li>
+<li>提出多宇宙决策机制，从联合分布采样多个可能世界并评估最优导航地标</li>
+<li>引入证据经验校准器，利用过去成功和失败记忆进行在线终身适应，并在MP3D、HM3D、HSSD上取得新的SOTA结果</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读概率场景图如何构建、多宇宙决策如何选择导航地标，以及证据经验校准器如何利用成功/失败记忆；同时核验其在开放词汇ObjectNav式导航中的实验设置和泛化能力。</p>
 <h4>中文摘要</h4>
-<p>开放词汇导航要求具身智能体处理由语义歧义和模型错误带来的显著感知不确定性。论文提出PSG-Nav，构建使用完整语义类别分布的3D概率场景图来表示不确定性，并通过多宇宙决策从联合分布中采样多个最可能世界，基于地标与多宇宙的兼容性评估导航地标。为缓解开放词汇导航中的认知不确定性假阳性，方法引入证据经验校准器，通过过去成功和失败记忆在线适应。实验在MP3D、HM3D和HSSD上显示该方法取得新的最优成功率。</p>
+<p>开放词汇导航要求具身智能体处理由语义歧义和模型错误产生的显著感知不确定性。多数现有工作采用局部最优的确定性方法，限制了对多个组合可能性的复杂导航决策，而这些可能性对获得全局更优解很关键。本文提出概率场景图导航PSG-Nav，构建3D概率场景图，使用完整语义类别分布来表示感知不确定性。为高效利用局部分布组合并推理最优导航地标，论文提出多宇宙决策，从联合分布中采样多个最可能的世界设定，并根据地标与多宇宙的兼容性评估导航地标。为缓解开放词汇导航中由认知不确定性导致的假阳性，论文引入证据经验校准器，通过将检测结果与过去成功和失败记忆交叉验证，实现在线终身适应。在MP3D、HM3D和HSSD上的大量实验表明，PSG-Nav取得新的SOTA结果，成功率分别为66.1%、44.8%和67.9%。代码可在https://psg-nav.github.io/获取。</p>
 <h4>英文摘要原文</h4>
 <p>Open-vocabulary navigation requires embodied agents to manage significant perception uncertainty stemming from semantic ambiguity and model errors. However, most existing works settle for local optimal deterministic approaches, depriving complex navigation decision-making over multiple composite possibilities that are critical for globally better solutions. In this paper, we propose Probabilistic Scene Graph Navigation (PSG-Nav), which constructs a 3D Probabilistic Scene Graph that uses full semantic categorical distributions to account for perception uncertainty. To efficiently use the local distributions to compose and reason about the optimal navigation landmarks, we propose Multiverse Decision to sample multiple most likely world settings from the joint distribution, and evaluate navigation landmarks based on the compatibility between landmarks and multiverses. To mitigate false positives due to epistemic uncertainty in open-vocabulary navigation, we introduce the Evidential Experience Calibrator, which enables online lifelong adaptation by cross-validating detections against memories of past successes and failures. Extensive experiments on widely-used benchmarks MP3D, HM3D, and HSSD demonstrate that PSG-Nav establishes new state-of-the-art results, achieving Success Rates of 66.1%, 44.8%, and 67.9%, respectively. Code is available at: https://psg-nav.github.io/</p>
 <h3>6. OSCAR：用于自适应机器人导航的障碍物生存曲线</h3>
@@ -221,23 +193,27 @@
 <li>类别：cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.00990v1">abs</a> / <a href="https://arxiv.org/pdf/2606.00990v1">PDF</a></li>
 <li>命中关键词：robot navigation</li>
-<li>为什么和具身导航相关：与机器人导航和图上路径规划高度相关，关注已知路线图中临时障碍导致的导航决策问题，可为移动机器人在动态环境中的空间推理和路径选择提供参考。</li>
+<li>为什么和具身导航相关：与机器人图导航和路径规划高度相关，关注临时障碍物、路线图边阻塞、等待-绕行决策和真实移动机器人导航，不涉及VLN/ObjectNav/PointNav。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了移动机器人在已知路线图上导航时，面对临时障碍物阻塞关键边时应等待还是绕行的自适应决策问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>OSCAR让机器人根据不同障碍物通常会堵多久，在线学习该等还是绕路。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：该论文提出一种面向图导航的自适应等待与绕行策略，利用不同障碍物类别的清除时间分布来决定机器人在被临时障碍阻挡时应等待多久。</li>
-<li>研究问题：移动机器人沿已知路线图导航时，关键边可能被临时障碍阻挡；等待过久会浪费时间，过早绕行也可能低效，固定规则难以适应不同障碍物类型的持续时间差异。</li>
-<li>方法要点：提出OSCAR框架，在遇到障碍时假设可获得障碍类别标签，在线学习按类别条件化的剩余清除时间分布，并处理机器人绕行前未观察到清除时间的右删失数据；随后将生存模型集成到时间相关图规划器中，维护障碍记忆并计算每条受阻边的等待耐心阈值。</li>
-<li>贡献/结果：核心贡献是把障碍物清除时间的生存建模引入图式机器人导航，使机器人能够跨episode持续更新不同类别障碍的持续时间估计，并在等待与绕行之间做自适应权衡。</li>
-<li>实验信息：摘要说明在仿真和真实移动机器人上评估；真实场景为大学中庭，障碍包括人、椅子、垃圾桶和管状物。仿真中，少于每类20次观测后，学习策略的到达目标时间收敛到接近已知真实清除分布的oracle，误差在1%以内，并优于所有启发式基线。真实部署包含50次导航episode，结果显示策略能在线改进并从经验中调整等待阈值。</li>
-<li>注意事项：摘要未说明除需要遇障时可获得障碍类别标签外的其他局限。</li>
-<li>阅读建议：建议关注其如何把类别条件化清除时间分布与图规划结合，以及如何利用右删失观测更新等待阈值；对研究动态障碍下的机器人导航、图规划和在线自适应策略的读者较有价值。</li>
+<li>提出OSCAR自适应生存建模框架，用于图导航中的临时障碍物阻塞决策</li>
+<li>学习按障碍物类别条件化的剩余清除时间分布，并利用右删失观测进行在线更新</li>
+<li>将生存模型集成到时间相关图规划器中，维护障碍物记忆并计算每条阻塞边的等待阈值</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>需要障碍物类别标签在遇到时可用；其他局限性摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其生存模型如何与图规划器耦合、右删失观测如何更新清除时间估计，以及等待阈值是否可迁移到更复杂的室内导航、ObjectNav或真实服务机器人场景。</p>
 <h4>中文摘要</h4>
-<p>移动机器人沿已知路线图行驶时，若临时障碍阻挡关键边，可能产生代价高昂的导航错误：在停放的推车后等待过久会浪费时间，而对几秒后就会移开的人立刻绕行也不高效。标准反应式避障处理局部绕障，固定等待或绕行规则则忽略不同障碍类型持续时间的差异。论文提出OSCAR，一个用于临时阻塞下图式导航的自适应生存建模框架。假设遇到障碍时可获得类别标签，机器人从在线经验中学习类别条件化的剩余清除时间分布，并纳入绕行前未观察到清除的右删失观测。这些生存模型被集成进时间相关图规划器，规划器维护障碍记忆，并在每条受阻边计算等待多久再选择替代路线的耐心阈值。该方法跨episode持续更新清除时间估计，用于平衡等待和绕行。实验在仿真和大学中庭真实移动机器人上进行，包含人、椅子、垃圾桶和管状物等障碍。仿真中，学习策略在每类障碍少于20次观测后，到达目标时间收敛到接近拥有真实清除分布的oracle的1%以内，并优于所有启发式基线。真实部署表明策略能在50次导航episode中在线改进，并从经验中调整耐心阈值。</p>
+<p>移动机器人沿已知路线图导航时，如果临时障碍物阻塞关键边，可能因等待过久或过早绕行而产生高代价。OSCAR通过按障碍物类别学习剩余清除时间分布，并将其用于时间相关图规划，在每个阻塞边计算等待多久再绕行的耐心阈值。该方法在仿真和大学中庭真实机器人实验中验证，能够在线改进导航决策。</p>
 <h4>英文摘要原文</h4>
 <p>A mobile robot following a graph of known routes can make costly navigation errors when a temporary obstacle blocks a critical edge: waiting too long behind a parked cart wastes time, but immediately rerouting around a person who would move in a few seconds is also inefficient. Standard reactive obstacle avoidance addresses local motion around obstacles, while fixed wait-or-reroute rules ignore how long different obstacle types tend to persist. We propose OSCAR: an adaptive survival-modeling framework for graph-based navigation with temporary blockages. Assuming obstacle class labels are available at encounter time, the robot learns class-conditioned residual clearance-time distributions from online experience, including right-censored observations when it reroutes before observing clearance. These survival models are integrated into a time-dependent graph planner that maintains obstacle memory and computes a patience threshold at each blocked edge: how long to wait before taking an alternate route. The method continuously updates its clearance estimates across episodes and uses them to balance waiting against rerouting. We evaluate the approach in simulation and on a real mobile robot in a university atrium with obstacles including people, chairs, bins, and tubes. In simulation, the learned policy&#x27;s time-to-goal converges to within 1% of an oracle with access to ground-truth clearance distributions after fewer than 20 observations per obstacle class, outperforming all heuristic baselines. Real-world deployment confirms that the policy improves online, adapting its patience thresholds from experience across 50 navigation episodes.</p>
-<h3>7. 用第一人称视频与示范协同训练机器人导航任务</h3>
+<h3>7. 结合第一视角视频与示范数据的机器人导航任务协同训练</h3>
 <ul>
 <li>原题：Co-training with Ego-centric Video and Demonstration for Robot Navigation Task</li>
 <li>分区：速读区；评分：4.7/10</li>
@@ -246,23 +222,27 @@
 <li>类别：cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.01951v1">abs</a> / <a href="https://arxiv.org/pdf/2606.01951v1">PDF</a></li>
 <li>命中关键词：robot navigation, mobile robot navigation</li>
-<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦移动机器人导航和 VLA 模型训练，强调从人类第一人称视频扩展导航学习数据；与 ObjectNav 式目标搜索导航有一定相关性。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦移动机器人导航、语言理解与动作生成，适用于关注 VLA、机器人导航数据扩展和模仿学习的研究者。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了移动机器人导航中高质量真实机器人训练数据采集成本高、耗时长，以及如何利用人类第一视角行走视频辅助机器人模仿学习的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>把人类第一视角行走视频转换成移动机器人可用的导航训练数据，并与机器人示范数据一起训练 VLA 模型。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：论文提出将人类第一人称行走视频转换为地面移动机器人模仿学习数据，并与机器人采集数据联合训练 VLA 模型，以提升语言理解和动作生成鲁棒性。</li>
-<li>研究问题：真实机器人高质量训练数据采集成本高且耗时；将人类第一人称视频用于移动机器人导航存在困难，主要因为行走过程中的视角变化会影响动作映射。</li>
-<li>方法要点：方法从人类第一人称行走视频中估计相机运动，并将其转换为适配地面移动机器人的动作表示；随后将人类视频派生数据与机器人采集数据共同用于 VLA 模型训练。</li>
-<li>贡献/结果：提出一个把第一人称行走视频转化为移动机器人模仿学习数据的框架；证明人类第一人称视频可作为可扩展数据源，辅助移动机器人导航学习。</li>
-<li>实验信息：在水果搜索导航任务上进行实验，结果显示联合使用人类视频派生数据和机器人采集数据训练，比单独使用任一数据源能获得更好的语言理解和更鲁棒的动作生成。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议关注其视频到机器人动作表示的转换方式、相机运动估计如何处理步行视角变化，以及该思路是否可迁移到 ObjectNav、VLN 或其他目标搜索导航任务。</li>
+<li>提出将人类第一视角行走视频转换为移动机器人导航模仿学习数据的框架</li>
+<li>通过估计相机运动并转换为地面移动机器人动作表示，缓解视角变化带来的数据迁移问题</li>
+<li>联合训练人类衍生数据与机器人采集数据，使 VLA 模型获得更好的语言理解和更鲁棒的动作生成</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其第一视角视频到机器人动作表示的转换方式，以及协同训练对 ObjectNav 或语言条件目标搜索类导航任务的可迁移性。</p>
 <h4>中文摘要</h4>
-<p>VLA 模型适用于多种机器人任务，但依赖大量高质量训练数据，而真实机器人数据采集昂贵且耗时。已有工作尝试用人类第一人称视频增强操作数据集，但用于移动机器人导航时会受到运动视角变化影响。本文提出将第一人称行走视频转换为移动机器人模仿学习数据的框架，通过估计人类视频中的相机运动并转换为地面移动机器人动作表示，再与机器人数据联合训练 VLA 模型。水果搜索导航实验表明，人类第一人称视频能有效扩展移动机器人导航学习数据。</p>
+<p>VLA 模型适用于多种机器人任务，但依赖大规模高质量训练数据，而真实机器人采集成本高。已有工作尝试用人类第一视角视频增强操作数据集，但用于移动机器人导航时会受到行走视角变化影响。本文提出将第一视角行走视频转换为移动机器人模仿学习数据的框架，通过估计相机运动并转换为地面移动机器人动作表示，再与机器人采集数据共同训练 VLA 模型。实验在水果搜索导航任务上表明，人类第一视角视频可作为移动机器人学习的有效且可扩展数据源。</p>
 <h4>英文摘要原文</h4>
 <p>Vision-language-action (VLA) models are promising for diverse robotic tasks, but their performance heavily depends on large-scale high-quality training data, whose collection on real robots is costly and time-consuming. While prior work has explored augmenting manipulation datasets with egocentric human videos, applying such approaches to mobile robot navigation remains challenging due to viewpoint changes during locomotion. In this paper, we propose a framework that converts egocentric walking videos into datasets for mobile robot imitation learning. The proposed method estimates camera motion from human videos and transforms it into action representations compatible with ground mobile robots. By jointly training a VLA model on human-derived and robot-collected datasets, the model achieves improved language understanding and more robust action generation than training with either data source alone. Experiments on a fruit-search navigation task demonstrate that human egocentric videos provide an effective and scalable data source for mobile robot learning.</p>
-<h3>8. 通过专家引导GRPO实现精确意图对齐的VLA无人机导航</h3>
+<h3>8. 面向精确意图对齐的 VLA 无人机导航：专家引导的 GRPO 方法</h3>
 <ul>
 <li>原题：Towards Precise Intent-Aligned VLA Aerial Navigation via Expert-Guided GRPO</li>
 <li>分区：速读区；评分：4.1/10</li>
@@ -271,20 +251,24 @@
 <li>类别：cs.RO</li>
 <li>链接：<a href="https://arxiv.org/abs/2606.02313v1">abs</a> / <a href="https://arxiv.org/pdf/2606.02313v1">PDF</a></li>
 <li>命中关键词：aerial navigation, reinforcement learning</li>
-<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦UAV空中导航、VLA端到端策略、复杂语言意图对齐和强化学习微调，可为语言条件机器人导航策略训练提供参考。</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦 UAV 空中导航、Vision-Language-Action 策略、强化学习微调和复杂指令下的意图对齐，可为语言条件导航与机器人策略学习提供参考。</li>
 </ul>
-<h4>中文速读</h4>
+<h4>解决的问题</h4>
+<p>这篇论文解决了 VLA 模型在无人机空中导航中难以通过标准监督微调充分泛化并精确对齐复杂人类意图的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文用专家引导的强化学习微调，让无人机 VLA 导航策略更好理解并执行复杂语言意图。</p>
+<h4>核心贡献</h4>
 <ul>
-<li>一句话：本文提出EG-GRPO强化学习框架，用少量专家数据增强在线探索，使VLA无人机在复杂人类指令下获得更高成功率和意图对齐能力。</li>
-<li>研究问题：标准监督微调在无人机VLA导航中面临数据稀缺、泛化有限、复杂细粒度人类意图监督不足的问题；强化微调虽适合意图对齐，但在大范围连续空中空间中探索效率低。</li>
-<li>方法要点：提出EG-GRPO，即专家引导的Group Relative Policy Optimization，用少量专家数据增强在线rollout；同时设计异构流水线支持并行仿真与推理以提升训练效率。</li>
-<li>贡献/结果：贡献是将专家引导强化学习用于VLA空中导航，缓解连续空间探索低效问题，并通过并行仿真推理降低rollout时间，推动精确意图对齐飞行。</li>
-<li>实验信息：在多个由复杂人类意图指定的任务上，EG-GRPO相较SFT基线成功率提升至2.13倍，意图对齐性能提升60.9%，异构流水线将rollout时间减少43.5%。</li>
-<li>注意事项：摘要未说明</li>
-<li>阅读建议：建议关注其专家数据如何引导GRPO、意图对齐奖励如何设计，以及该框架对UAV导航、语言条件策略和连续空间探索的启发；若研究VLN、ObjectNav或PointNav，可重点比较其与地面导航任务的差异。</li>
+<li>提出 EG-GRPO，用少量专家数据增强在线强化学习 rollout，面向 VLA 空中导航提升探索效率</li>
+<li>设计异构并行仿真与推理流水线，将 rollout 时间减少 43.5%</li>
+<li>在复杂人类意图指定的多任务空中导航中，相比 SFT 基线成功率提升至 2.13 倍，意图对齐提升 60.9%</li>
 </ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验；尤其需核验任务场景规模、仿真到真实迁移、真实 UAV 结果、安全约束以及与其他导航或强化学习方法的对比。</p>
+<h4>阅读建议</h4>
+<p>建议关注其奖励或反馈如何刻画复杂人类意图、专家数据如何参与 GRPO、并行仿真推理流水线细节，以及该方法能否迁移到 VLN、ObjectNav、PointNav 或其他具身导航任务。</p>
 <h4>中文摘要</h4>
-<p>VLA模型为无人机执行由细粒度指令指定的复杂任务提供了端到端范式，但SFT存在数据稀缺、泛化有限和复杂人类意图监督弱的问题。本文提出面向VLA空中导航的高效强化学习框架，核心是EG-GRPO，用少量专家数据增强在线rollout，并通过异构并行仿真与推理流水线减少rollout时间。实验显示该方法在复杂意图任务中显著提升成功率和意图对齐表现。</p>
+<p>VLA 模型为无人机执行由细粒度指令指定的复杂任务提供了端到端范式，但标准监督微调存在数据稀缺、泛化有限和对复杂人类意图监督不足的问题。强化微调可通过可设计反馈对齐策略行为与人类意图，但在广阔连续空中空间中探索效率低。为此，论文提出面向 VLA 空中导航的高效强化学习框架，核心为 EG-GRPO，用少量专家数据增强在线 rollout，并设计异构并行仿真与推理流水线，使 rollout 时间减少 43.5%。在多个复杂意图任务上，EG-GRPO 将成功率提升至 SFT 基线的 2.13 倍，并使意图对齐性能提升 60.9%。</p>
 <h4>英文摘要原文</h4>
 <p>Vision-Language-Action (VLA) models offer a promising end-to-end paradigm for unmanned aerial vehicles (UAVs) to accomplish complex tasks specified by fine-grained instructions. However, standard supervised fine-tuning (SFT) suffers from data scarcity, limited generalization, and weak supervision for nuanced and complicated human intents. Reinforcement fine-tuning offers a natural way to mitigate these challenges and align policy behaviors with human intents through designable feedback, but applying it to aerial navigation remains challenging due to inefficient exploration in expansive continuous spaces. To address these challenges, we introduce an efficient reinforcement learning (RL) framework for VLA-based aerial navigation. At its core, we propose EG-GRPO (Expert-Guided Group Relative Policy Optimization) to augment online rollouts with few-shot expert data. Additionally, we design a heterogeneous pipeline enabling parallel simulation and inference, which reduces rollout time by 43.5%. Across multiple tasks specified by complex human intents, EG-GRPO improves the success rate to 2.13x that of the SFT baseline, while improving intent alignment performance by 60.9%. These results demonstrate that our framework can move aerial navigation toward precise intent-aligned flight.</p>
 <h2>候选速览</h2>
@@ -299,31 +283,31 @@
 <tr>
 <td>1</td>
 <td>10.0</td>
-<td><a href="https://arxiv.org/abs/2606.01565v1">层次语义增强导航：用于视觉语言导航的最优传输与图驱动推理</a></td>
+<td><a href="https://arxiv.org/abs/2606.01565v1">层次化语义增强导航：用于视觉语言导航的最优传输与图驱动推理</a></td>
 <td>vision-language navigation, VLN, VLN-CE, spatial reasoning</td>
 </tr>
 <tr>
 <td>2</td>
 <td>7.8</td>
-<td><a href="https://arxiv.org/abs/2606.01205v1">ImagineUAV：通过世界-动作建模与动力学规划实现空中视觉语言导航</a></td>
+<td><a href="https://arxiv.org/abs/2606.01205v1">ImagineUAV：通过世界-动作建模与运动动力学规划实现空中视觉语言导航</a></td>
 <td>vision-language navigation, VLN, aerial navigation</td>
 </tr>
 <tr>
 <td>3</td>
 <td>7.4</td>
-<td><a href="https://arxiv.org/abs/2606.01621v1">Goal2Pixel：将目标落地到像素的视觉语言导航方法</a></td>
+<td><a href="https://arxiv.org/abs/2606.01621v1">Goal2Pixel：将目标 grounding 到像素用于视觉语言导航</a></td>
 <td>vision-language navigation, VLN, VLN-CE</td>
 </tr>
 <tr>
 <td>4</td>
 <td>6.1</td>
-<td><a href="https://arxiv.org/abs/2606.01545v1">用于空间机器人感知的层级对象表示：点、网格与超二次曲面</a></td>
+<td><a href="https://arxiv.org/abs/2606.01545v1">面向空间机器人感知的层次化物体表示：点、网格与超二次曲面</a></td>
 <td>robot navigation, localization</td>
 </tr>
 <tr>
 <td>5</td>
 <td>5.8</td>
-<td><a href="https://arxiv.org/abs/2606.01313v1">PSG-Nav：通过多宇宙决策进行概率场景图导航</a></td>
+<td><a href="https://arxiv.org/abs/2606.01313v1">PSG-Nav：通过多宇宙决策实现概率场景图导航</a></td>
 <td>open-vocabulary navigation, scene graph, open-vocabulary</td>
 </tr>
 <tr>
@@ -335,26 +319,17 @@
 <tr>
 <td>7</td>
 <td>4.7</td>
-<td><a href="https://arxiv.org/abs/2606.01951v1">用第一人称视频与示范协同训练机器人导航任务</a></td>
+<td><a href="https://arxiv.org/abs/2606.01951v1">结合第一视角视频与示范数据的机器人导航任务协同训练</a></td>
 <td>robot navigation, mobile robot navigation</td>
 </tr>
 <tr>
 <td>8</td>
 <td>4.1</td>
-<td><a href="https://arxiv.org/abs/2606.02313v1">通过专家引导GRPO实现精确意图对齐的VLA无人机导航</a></td>
+<td><a href="https://arxiv.org/abs/2606.02313v1">面向精确意图对齐的 VLA 无人机导航：专家引导的 GRPO 方法</a></td>
 <td>aerial navigation, reinforcement learning</td>
 </tr>
 </tbody>
-</table></div>
-      </section>
-    </article>
-  </main>
-</div>
-<div class="dpr-chatbar">
-  <input data-static-chat-input placeholder="针对这篇论文提问，仅自己可见..." aria-label="paper question">
-  <button type="button">发送</button>
-</div>
-
-<script src="../../assets/app.js"></script>
+</table></div></article>
+</main>
 </body>
 </html>

@@ -148,6 +148,10 @@ class DailyPaperWatchTests(unittest.TestCase):
 
             index_html = (site_dir / "index.html").read_text(encoding="utf-8")
             self.assertIn("Vision-Language Navigation", index_html)
+            self.assertIn("解决的问题", index_html)
+            self.assertIn("TL;DR", index_html)
+            self.assertIn("核心贡献", index_html)
+            self.assertIn("局限性", index_html)
             self.assertTrue((site_dir / "reports" / "2026-06-02.html").exists())
             self.assertTrue((site_dir / "archive" / "index.html").exists())
             self.assertTrue((site_dir / "daily" / "2026-06-02" / "index.html").exists())

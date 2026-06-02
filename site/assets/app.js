@@ -1,8 +1,8 @@
 (function () {
-  const input = document.querySelector('[data-static-chat-input]');
-  if (input) {
-    input.addEventListener('focus', () => {
-      input.placeholder = '当前是本地静态阅读页；问答入口可后续接 OpenClaw。';
+  const lang = document.querySelector('[data-lang-toggle]');
+  if (lang) {
+    lang.addEventListener('click', () => {
+      document.body.classList.toggle('show-english');
     });
   }
 })();

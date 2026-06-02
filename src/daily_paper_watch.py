@@ -1758,11 +1758,13 @@ def build_current_meta(
 
 OPENCLAW_ENRICHMENT_FIELDS = (
     "title_zh",
+    "solved_problem_zh",
     "tldr_zh",
     "relevance_zh",
     "problem_zh",
     "method_zh",
     "contribution_zh",
+    "key_contributions_zh",
     "experiments_zh",
     "limitations_zh",
     "read_suggestion_zh",
@@ -1786,6 +1788,7 @@ def openclaw_cache_file(paper: dict[str, Any], config: dict[str, Any], model: st
         cache_dir = ROOT_DIR / cache_dir
     source = "\n".join(
         [
+            "openclaw-enrichment-v2",
             model,
             str(paper.get("id") or ""),
             str(paper.get("title") or ""),
@@ -1815,9 +1818,21 @@ def extract_json_object(text: str) -> dict[str, Any]:
     return {}
 
 
-def normalize_openclaw_enrichment(value: dict[str, Any]) -> dict[str, str]:
-    normalized: dict[str, str] = {}
+def text_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [normalize_space(str(item)) for item in value if normalize_space(str(item))]
+    if isinstance(value, str):
+        lines = [normalize_space(re.sub(r"^[-*•\d.\s]+", "", line)) for line in value.splitlines()]
+        return [line for line in lines if line]
+    return []
+
+
+def normalize_openclaw_enrichment(value: dict[str, Any]) -> dict[str, Any]:
+    normalized: dict[str, Any] = {}
     for field in OPENCLAW_ENRICHMENT_FIELDS:
+        if field == "key_contributions_zh":
+            normalized[field] = text_list(value.get(field))[:4]
+            continue
         text = normalize_space(str(value.get(field) or ""))
         normalized[field] = text
     return normalized
@@ -1832,11 +1847,18 @@ def build_openclaw_prompt(paper: dict[str, Any], config: dict[str, Any]) -> str:
 输出要求：
 - 只输出一个 JSON 对象，不要 Markdown，不要解释。
 - 所有字段必须是中文短文本。
+- key_contributions_zh 必须是 3 个左右的中文字符串数组。
 - 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。
 - 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。
 
 JSON 字段：
-title_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh
+title_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh
+
+字段说明：
+- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。
+- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。
+- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。
+- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。
 
 论文信息：
 标题：{paper.get("title")}
@@ -1850,7 +1872,7 @@ title_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, experim
 """
 
 
-def run_openclaw_enrichment(paper: dict[str, Any], config: dict[str, Any], model: str) -> dict[str, str]:
+def run_openclaw_enrichment(paper: dict[str, Any], config: dict[str, Any], model: str) -> dict[str, Any]:
     cache_file = openclaw_cache_file(paper, config, model)
     if cache_file.exists():
         cached = json.loads(cache_file.read_text(encoding="utf-8"))
@@ -1886,16 +1908,22 @@ def run_openclaw_enrichment(paper: dict[str, Any], config: dict[str, Any], model
     return normalized
 
 
-def fallback_openclaw_enrichment(paper: dict[str, Any]) -> dict[str, str]:
+def fallback_openclaw_enrichment(paper: dict[str, Any]) -> dict[str, Any]:
     readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
     title = str(paper.get("title") or "")
     return {
         "title_zh": title,
+        "solved_problem_zh": str(readout.get("motivation") or "这篇论文解决了具身智能导航相关问题，摘要信息有限。"),
         "tldr_zh": str(readout.get("tldr") or paper.get("reason") or "具身智能导航相关论文，待进一步精读。"),
         "relevance_zh": str(paper.get("reason") or "命中具身智能导航相关关键词。"),
         "problem_zh": str(readout.get("motivation") or "摘要未说明。"),
         "method_zh": str(readout.get("method") or "摘要未说明。"),
         "contribution_zh": str(readout.get("conclusion") or "摘要未说明。"),
+        "key_contributions_zh": [
+            str(readout.get("method") or "摘要未说明具体方法贡献。"),
+            str(readout.get("result") or "摘要未说明实验贡献。"),
+            str(paper.get("reason") or "与具身导航相关，需要进一步核验。"),
+        ],
         "experiments_zh": str(readout.get("result") or "摘要未说明。"),
         "limitations_zh": str(readout.get("limitation") or "摘要未说明。"),
         "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
@@ -1924,7 +1952,7 @@ def enrich_current_meta_with_openclaw(current_meta: dict[str, Any], config: dict
         readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
         readout["source"] = "OpenClaw" if not enrichment.get("abstract_zh", "").startswith("OpenClaw 中文摘要暂未生成") else "local"
         readout["tldr"] = enrichment.get("tldr_zh") or readout.get("tldr")
-        readout["motivation"] = enrichment.get("problem_zh") or readout.get("motivation")
+        readout["motivation"] = enrichment.get("solved_problem_zh") or enrichment.get("problem_zh") or readout.get("motivation")
         readout["method"] = enrichment.get("method_zh") or readout.get("method")
         readout["result"] = enrichment.get("experiments_zh") or readout.get("result")
         readout["conclusion"] = enrichment.get("contribution_zh") or readout.get("conclusion")
@@ -1988,6 +2016,13 @@ def render_report_from_meta(current_meta: dict[str, Any], config: dict[str, Any]
         )
         title_zh = paper_display_title(paper)
         original_title = paper_original_title(paper)
+        key_contributions = text_list(openclaw.get("key_contributions_zh"))
+        if not key_contributions:
+            key_contributions = [
+                str(openclaw.get("method_zh") or readout.get("method") or "摘要未说明具体方法贡献。"),
+                str(openclaw.get("experiments_zh") or readout.get("result") or "摘要未说明实验结果。"),
+                str(openclaw.get("relevance_zh") or paper.get("reason") or "与具身导航相关，需要进一步核验。"),
+            ]
         lines.extend(
             [
                 f"### {paper.get('rank')}. {title_zh}",
@@ -2001,15 +2036,25 @@ def render_report_from_meta(current_meta: dict[str, Any], config: dict[str, Any]
                 f"- 命中关键词：{', '.join(str(item) for item in paper.get('matched_keywords', [])) or 'BM25 token match'}",
                 f"- 为什么和具身导航相关：{openclaw.get('relevance_zh') or paper.get('reason')}",
                 "",
-                "#### 中文速读",
+                "#### 解决的问题",
                 "",
-                f"- 一句话：{openclaw.get('tldr_zh') or readout.get('tldr')}",
-                f"- 研究问题：{openclaw.get('problem_zh') or readout.get('motivation')}",
-                f"- 方法要点：{openclaw.get('method_zh') or readout.get('method')}",
-                f"- 贡献/结果：{openclaw.get('contribution_zh') or readout.get('conclusion')}",
-                f"- 实验信息：{openclaw.get('experiments_zh') or readout.get('result')}",
-                f"- 注意事项：{openclaw.get('limitations_zh') or readout.get('limitation')}",
-                f"- 阅读建议：{openclaw.get('read_suggestion_zh') or '建议核验任务设置、数据集和泛化实验。'}",
+                openclaw.get("solved_problem_zh") or openclaw.get("problem_zh") or readout.get("motivation") or "摘要未说明。",
+                "",
+                "#### TL;DR（一句话总结）",
+                "",
+                openclaw.get("tldr_zh") or readout.get("tldr") or "摘要未说明。",
+                "",
+                "#### 核心贡献",
+                "",
+                *[f"- {item}" for item in key_contributions[:4]],
+                "",
+                "#### 局限性 / 需要核验",
+                "",
+                openclaw.get("limitations_zh") or readout.get("limitation") or "摘要未说明，需要看正文核验。",
+                "",
+                "#### 阅读建议",
+                "",
+                openclaw.get("read_suggestion_zh") or "建议核验任务设置、数据集和泛化实验。",
                 "",
                 "#### 中文摘要",
                 "",
@@ -2445,6 +2490,13 @@ def yaml_quote(value: Any) -> str:
 def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, Any]) -> str:
     readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
     openclaw = paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
+    key_contributions = text_list(openclaw.get("key_contributions_zh"))
+    if not key_contributions:
+        key_contributions = [
+            str(openclaw.get("method_zh") or readout.get("method") or "摘要未说明具体方法贡献。"),
+            str(openclaw.get("experiments_zh") or readout.get("result") or "摘要未说明实验结果。"),
+            str(openclaw.get("relevance_zh") or paper.get("reason") or "与具身导航相关，需要进一步核验。"),
+        ]
     tags = [f"query:{tag}" for tag in paper.get("matched_keywords", [])[:8]]
     tags.extend(f"topic:{tag}" for tag in paper.get("topic_lanes", [])[:5])
     lines = [
@@ -2458,7 +2510,9 @@ def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, An
         f"score: {float(paper.get('score_10') or 0.0):.1f}",
         f"evidence: {yaml_quote(paper.get('reason'))}",
         f"selection_source: {yaml_quote(paper.get('section'))}",
+        f"solved_problem: {yaml_quote(openclaw.get('solved_problem_zh'))}",
         f"tldr: {yaml_quote(readout.get('tldr'))}",
+        f"key_contributions: {json.dumps(key_contributions[:4], ensure_ascii=False)}",
         f"motivation: {yaml_quote(readout.get('motivation'))}",
         f"method: {yaml_quote(readout.get('method'))}",
         f"result: {yaml_quote(readout.get('result'))}",
@@ -2467,14 +2521,21 @@ def render_docs_paper_markdown(paper: dict[str, Any], current_meta: dict[str, An
         f"abstract_en: {yaml_quote(paper.get('summary'))}",
         "---",
         "",
-        "## 中文速读",
+        "## 解决的问题",
         "",
-        f"**一句话**：{openclaw.get('tldr_zh') or readout.get('tldr', '')} \\",
-        f"**为什么相关**：{openclaw.get('relevance_zh') or paper.get('reason', '')} \\",
-        f"**研究问题**：{openclaw.get('problem_zh') or readout.get('motivation', '')} \\",
-        f"**方法要点**：{openclaw.get('method_zh') or readout.get('method', '')} \\",
-        f"**实验/结果**：{openclaw.get('experiments_zh') or readout.get('result', '')} \\",
-        f"**阅读判断**：{openclaw.get('read_suggestion_zh') or readout.get('conclusion', '')}",
+        openclaw.get("solved_problem_zh") or openclaw.get("problem_zh") or readout.get("motivation", ""),
+        "",
+        "## TL;DR（一句话总结）",
+        "",
+        openclaw.get("tldr_zh") or readout.get("tldr", ""),
+        "",
+        "## 核心贡献",
+        "",
+        *[f"- {item}" for item in key_contributions[:4]],
+        "",
+        "## 局限性 / 需要核验",
+        "",
+        openclaw.get("limitations_zh") or readout.get("limitation") or "摘要未说明，需要看正文核验。",
         "",
         "---",
         "",
@@ -3514,6 +3575,771 @@ def render_paper_detail_page(paper: dict[str, Any], current_meta: dict[str, Any]
 </div>
 {dpr_chatbar()}
 <script src="../../assets/app.js"></script>
+</body>
+</html>
+"""
+
+
+def site_css() -> str:
+    return """\
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-soft: #f1f5f4;
+  --ink: #172033;
+  --muted: #687386;
+  --line: #dfe5eb;
+  --accent: #0f766e;
+  --accent-ink: #0f5e59;
+  --red: #b4232a;
+  --blue: #2563eb;
+  --amber: #9a5b00;
+  --shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+a {
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.watch-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 62px;
+  padding: 0 max(24px, calc((100vw - 1180px) / 2));
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.watch-brand {
+  color: #111827;
+  font-size: 17px;
+  font-weight: 760;
+}
+
+.watch-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.watch-shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 34px 0 72px;
+}
+
+.watch-hero {
+  padding: 22px 0 26px;
+}
+
+.kicker {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.watch-hero h1 {
+  margin: 0;
+  color: #101828;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.lead {
+  width: min(760px, 100%);
+  margin: 16px 0 0;
+  color: #475467;
+  font-size: 18px;
+}
+
+.hero-actions,
+.paper-actions,
+.archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: #26364a;
+  font-weight: 650;
+}
+
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 30px;
+}
+
+.stat-box {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.stat-box strong {
+  display: block;
+  color: #101828;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.stat-box span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.watch-section {
+  margin-top: 26px;
+}
+
+.watch-section h2 {
+  margin: 0 0 14px;
+  color: #101828;
+  font-size: 25px;
+}
+
+.overview {
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.overview p,
+.overview ul {
+  margin: 0;
+}
+
+.overview ul {
+  padding-left: 20px;
+}
+
+.paper-list {
+  display: grid;
+  gap: 18px;
+}
+
+.paper-card,
+.paper-detail,
+.markdown-page {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.paper-card {
+  padding: 22px;
+}
+
+.paper-detail,
+.markdown-page {
+  padding: 28px;
+}
+
+.paper-topline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #475467;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge.deep {
+  border-color: #b7e4c7;
+  background: #e8f7ee;
+  color: #16703a;
+}
+
+.badge.quick {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.badge.score {
+  border-color: #f5d28a;
+  background: #fff7df;
+  color: var(--amber);
+}
+
+.paper-title {
+  margin: 0;
+  color: #101828;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.paper-original {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.paper-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: #eef4ff;
+  color: #2456a6;
+  font-size: 12px;
+}
+
+.paper-note-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.note-block {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.note-block.wide {
+  grid-column: 1 / -1;
+}
+
+.note-block h3 {
+  margin: 0 0 8px;
+  color: var(--red);
+  font-size: 16px;
+}
+
+.note-block p {
+  margin: 0;
+  color: #344054;
+}
+
+.note-block ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #344054;
+}
+
+.abstract-block {
+  margin-top: 20px;
+  padding: 18px;
+  border-left: 4px solid var(--accent);
+  background: var(--surface-soft);
+  color: #344054;
+}
+
+.archive-list {
+  display: grid;
+  gap: 12px;
+}
+
+.archive-row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.archive-date {
+  color: var(--red);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.archive-title {
+  display: block;
+  color: #101828;
+  font-weight: 760;
+}
+
+.archive-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.markdown-page h1,
+.markdown-page h2,
+.markdown-page h3,
+.markdown-page h4 {
+  color: #101828;
+}
+
+.markdown-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-page th,
+.markdown-page td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-page th {
+  background: #f8fafc;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.hit-mark {
+  padding: 0 3px;
+  border-radius: 4px;
+  background: #fff2b8;
+}
+
+@media (max-width: 820px) {
+  .watch-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 16px;
+  }
+
+  .watch-shell {
+    width: min(100vw - 24px, 1180px);
+    padding-top: 22px;
+  }
+
+  .stat-grid,
+  .paper-note-grid,
+  .archive-row {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-card,
+  .paper-detail,
+  .markdown-page {
+    padding: 18px;
+  }
+}
+"""
+
+
+def site_js() -> str:
+    return """\
+(function () {
+  const lang = document.querySelector('[data-lang-toggle]');
+  if (lang) {
+    lang.addEventListener('click', () => {
+      document.body.classList.toggle('show-english');
+    });
+  }
+})();
+"""
+
+
+def paper_openclaw(paper: dict[str, Any]) -> dict[str, Any]:
+    return paper.get("openclaw") if isinstance(paper.get("openclaw"), dict) else {}
+
+
+def paper_contributions(paper: dict[str, Any]) -> list[str]:
+    openclaw = paper_openclaw(paper)
+    readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    items = text_list(openclaw.get("key_contributions_zh"))
+    if items:
+        return items[:4]
+    return [
+        str(openclaw.get("method_zh") or readout.get("method") or "摘要未说明具体方法贡献。"),
+        str(openclaw.get("experiments_zh") or readout.get("result") or "摘要未说明实验结果。"),
+        str(openclaw.get("relevance_zh") or paper.get("reason") or "与具身导航相关，需要进一步核验。"),
+    ]
+
+
+def paper_solved_problem(paper: dict[str, Any]) -> str:
+    openclaw = paper_openclaw(paper)
+    readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    return str(openclaw.get("solved_problem_zh") or openclaw.get("problem_zh") or readout.get("motivation") or "摘要未说明。")
+
+
+def paper_tldr(paper: dict[str, Any]) -> str:
+    openclaw = paper_openclaw(paper)
+    readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    return str(openclaw.get("tldr_zh") or readout.get("tldr") or "摘要未说明。")
+
+
+def paper_limitations(paper: dict[str, Any]) -> str:
+    openclaw = paper_openclaw(paper)
+    readout = paper.get("readout") if isinstance(paper.get("readout"), dict) else {}
+    return str(openclaw.get("limitations_zh") or readout.get("limitation") or "摘要未说明，需要看正文核验。")
+
+
+def site_nav(config: dict[str, Any], *, base_href: str = "") -> str:
+    title = html_text(config.get("project_name") or "Daily Paper Reader")
+    return f"""\
+<header class="watch-header">
+  <a class="watch-brand" href="{html_attr(base_href + "index.html")}">{title}</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="{html_attr(base_href + "index.html")}">今日</a>
+    <a href="{html_attr(base_href + "archive/index.html")}">归档</a>
+    <a href="{html_attr(base_href + "index.html#papers")}">论文</a>
+    <a href="{html_attr(base_href + "archive/index.html")}">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+"""
+
+
+def section_badge_class(section: str) -> str:
+    return "deep" if section == "精读区" else "quick"
+
+
+def paper_card(paper: dict[str, Any], *, base_href: str = "") -> str:
+    tags = list(paper.get("matched_keywords", [])[:5]) + list(paper.get("topic_lanes", [])[:2])
+    tags_html = "".join(f'<span class="tag">{html_text(tag)}</span>' for tag in tags)
+    authors = short_authors(tuple(str(item) for item in paper.get("authors", [])), limit=6)
+    contributions = "".join(f"<li>{html_text(item)}</li>" for item in paper_contributions(paper))
+    detail_url = html_attr(dpr_link(str(paper.get("detail_url") or ""), base_href))
+    return f"""\
+<article class="paper-card" id="paper-{html_attr(paper.get("rank"))}">
+  <div class="paper-topline">
+    <span class="badge {section_badge_class(str(paper.get("section") or ""))}">{html_text(paper.get("section") or "速读区")}</span>
+    <span class="badge score">score {float(paper.get("score_10") or 0.0):.1f}</span>
+    <span class="badge">rank #{html_text(paper.get("rank"))}</span>
+  </div>
+  <h3 class="paper-title"><a href="{detail_url}">{html_text(paper_display_title(paper))}</a></h3>
+  <p class="paper-original">{html_text(paper_original_title(paper))}</p>
+  <div class="paper-meta">
+    <span>{html_text(authors)}</span>
+    <span>published {html_text(paper.get("published"))}</span>
+    <span>{html_text(", ".join(str(item) for item in paper.get("categories", [])))}</span>
+  </div>
+  <div class="paper-tags">{tags_html}</div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>{html_text(paper_solved_problem(paper))}</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>{html_text(paper_tldr(paper))}</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>{html_text(paper_limitations(paper))}</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul>{contributions}</ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="{detail_url}">阅读详情</a>
+    <a class="button" href="{html_attr(paper.get("abs_url"))}">Abs</a>
+    <a class="button" href="{html_attr(paper.get("pdf_url"))}">PDF</a>
+  </div>
+</article>
+"""
+
+
+def overview_text(current_meta: dict[str, Any]) -> str:
+    papers = current_meta.get("papers", []) if isinstance(current_meta.get("papers"), list) else []
+    topics = list((current_meta.get("topic_counts") or {}).items())[:4]
+    topic_text = "、".join(f"{topic}({count})" for topic, count in topics) if topics else "暂无明显聚类"
+    top_titles = "；".join(paper_display_title(paper) for paper in papers[:3])
+    openclaw_meta = current_meta.get("openclaw") if isinstance(current_meta.get("openclaw"), dict) else {}
+    model_text = f"；中文解读由 OpenClaw/{openclaw_meta.get('model')} 生成" if openclaw_meta.get("enabled") else ""
+    return (
+        f"今日筛到 {current_meta.get('selected_count', len(papers))} 篇具身智能导航相关论文，"
+        f"精读 {current_meta.get('deep_count', 0)} 篇、速读 {current_meta.get('quick_count', 0)} 篇。"
+        f"主题信号集中在 {topic_text}。优先阅读：{top_titles or '暂无'}{model_text}。"
+    )
+
+
+def render_index_page(current_meta: dict[str, Any], history: list[dict[str, Any]], config: dict[str, Any]) -> str:
+    papers = current_meta.get("papers", []) if isinstance(current_meta.get("papers"), list) else []
+    paper_cards = "".join(paper_card(paper) for paper in papers) or "<p>暂无论文候选。</p>"
+    date_text = html_text(current_meta.get("date"))
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html_text(current_meta.get("title"))}</title>
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+{site_nav(config)}
+<main class="watch-shell">
+  <section class="watch-hero" id="today">
+    <p class="kicker">静态网页 · {date_text}</p>
+    <h1>具身智能导航每日论文阅读</h1>
+    <p class="lead">按评分、中文解读和原文摘要快速筛选当天候选；重点展示解决的问题、TL;DR、核心贡献和局限性。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="daily/{html_attr(current_meta.get("date"))}/index.html">当日固定页</a>
+      <a class="button" href="archive/index.html">查看归档</a>
+      <a class="button" href="reports/{html_attr(current_meta.get("date"))}.html">Markdown 日报</a>
+    </div>
+  </section>
+  <section class="stat-grid" aria-label="统计">
+    <div class="stat-box"><strong>{html_text(current_meta.get("selected_count", len(papers)))}</strong><span>论文</span></div>
+    <div class="stat-box"><strong>{html_text(current_meta.get("deep_count", 0))}</strong><span>精读</span></div>
+    <div class="stat-box"><strong>{html_text(current_meta.get("quick_count", 0))}</strong><span>速读</span></div>
+    <div class="stat-box"><strong>{html_text(current_meta.get("candidate_count", 0))}</strong><span>候选</span></div>
+  </section>
+  <section class="watch-section">
+    <h2>今日概览</h2>
+    <div class="overview"><p>{html_text(overview_text(current_meta))}</p></div>
+  </section>
+  <section class="watch-section" id="papers">
+    <h2>重点论文</h2>
+    <div class="paper-list">{paper_cards}</div>
+  </section>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>
+"""
+
+
+def render_paper_detail_page(paper: dict[str, Any], current_meta: dict[str, Any], config: dict[str, Any]) -> str:
+    tags = list(paper.get("matched_keywords", [])[:8]) + list(paper.get("topic_lanes", [])[:4])
+    tags_html = "".join(f'<span class="tag">{html_text(tag)}</span>' for tag in tags)
+    authors = short_authors(tuple(str(item) for item in paper.get("authors", [])), limit=10)
+    contributions = "".join(f"<li>{html_text(item)}</li>" for item in paper_contributions(paper))
+    openclaw = paper_openclaw(paper)
+    abstract_zh = str(openclaw.get("abstract_zh") or "OpenClaw 中文摘要暂未生成；请参考英文摘要原文。")
+    abstract_html = highlight_terms(str(paper.get("summary") or ""), [str(item) for item in paper.get("matched_keywords", [])])
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html_text(paper_display_title(paper))}</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+{site_nav(config, base_href="../../")}
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge {section_badge_class(str(paper.get("section") or ""))}">{html_text(paper.get("section") or "速读区")}</span>
+      <span class="badge score">score {float(paper.get("score_10") or 0.0):.1f}</span>
+      <span class="badge">rank #{html_text(paper.get("rank"))}</span>
+    </div>
+    <h1 class="paper-title">{html_text(paper_display_title(paper))}</h1>
+    <p class="paper-original">{html_text(paper_original_title(paper))}</p>
+    <div class="paper-meta">
+      <span>{html_text(authors)}</span>
+      <span>published {html_text(paper.get("published"))}</span>
+      <span>{html_text(", ".join(str(item) for item in paper.get("categories", [])))}</span>
+    </div>
+    <div class="paper-tags">{tags_html}</div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>{html_text(paper_solved_problem(paper))}</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>{html_text(paper_tldr(paper))}</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>{html_text(paper_limitations(paper))}</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul>{contributions}</ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>{html_text(abstract_zh)}</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>{abstract_html}</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="{html_attr(paper.get("abs_url"))}">Abs</a>
+      <a class="button" href="{html_attr(paper.get("pdf_url"))}">PDF</a>
+      <a class="button" href="../../reports/{html_attr(current_meta.get("date"))}.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
+"""
+
+
+def render_archive_page(history: list[dict[str, Any]], config: dict[str, Any]) -> str:
+    rows = []
+    for meta in history:
+        date_text = str(meta.get("date") or "")
+        papers = meta.get("papers") if isinstance(meta.get("papers"), list) else []
+        first_titles = [paper_display_title(paper) for paper in papers[:2] if isinstance(paper, dict)]
+        preview = "；".join(title for title in first_titles if title) or "当天没有筛到达到阈值的新论文。"
+        rows.append(
+            f"""\
+<div class="archive-row">
+  <div class="archive-date">{html_text(date_text)}</div>
+  <div>
+    <span class="archive-title">{html_text(meta.get("title") or f"日报 {date_text}")}</span>
+    <span class="archive-meta">入选 {html_text(meta.get("selected_count", len(papers)))} 篇 · {html_text(preview)}</span>
+  </div>
+  <div class="archive-actions">
+    <a class="button primary" href="../daily/{html_attr(date_text)}/index.html">阅读</a>
+    <a class="button" href="../reports/{html_attr(date_text)}.html">Markdown</a>
+  </div>
+</div>"""
+        )
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>历史归档 · {html_text(config.get("project_name") or "Daily Paper Reader")}</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+{site_nav(config, base_href="../")}
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Archive</p>
+    <h1>历史归档</h1>
+    <p class="lead">首页始终展示最新一天；每个日期都会保存为固定页面。</p>
+  </section>
+  <section class="archive-list">{''.join(rows) or '<p>暂无历史日报。</p>'}</section>
+</main>
+</body>
+</html>
+"""
+
+
+def render_daily_page(markdown: str, meta: dict[str, Any], config: dict[str, Any]) -> str:
+    date_text = str(meta.get("date") or "")
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html_text(meta.get("title") or f"日报 {date_text}")}</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+{site_nav(config, base_href="../../")}
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · {html_text(date_text)}</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/{html_attr(date_text)}.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page">{markdown_to_html(markdown)}</article>
+</main>
+</body>
+</html>
+"""
+
+
+def render_report_detail_page(markdown: str, meta: dict[str, Any], config: dict[str, Any]) -> str:
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html_text(meta.get("title"))}</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+{site_nav(config, base_href="../")}
+<main class="watch-shell">
+  <article class="markdown-page">{markdown_to_html(markdown)}</article>
+</main>
 </body>
 </html>
 """

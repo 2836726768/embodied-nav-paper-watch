@@ -7,6 +7,7 @@
 - 每日抓取近 `1-3` 天 arXiv 候选论文，默认类别为 `cs.RO`、`cs.CV`、`cs.AI`、`cs.LG`。
 - 用关键词命中和 BM25 风格 token 相关度筛选具身智能导航论文。
 - 默认调用 OpenClaw 生成中文标题、中文摘要、研究问题、方法要点、实验信息、注意事项和阅读建议。
+- 网页参考 `slam3d-paper-watch` 的静态日报形式，重点展示“解决的问题”、“TL;DR（一句话总结）”、“核心贡献”和“局限性”。
 - 生成 Markdown 日报到 `out/YYYY-MM-DD.md`，并把同样内容打印到 stdout，方便 OpenClaw cron announce 推送。
 - 同步生成静态网页到 `site/index.html`，采用 Daily Paper Reader 风格的左侧精读/速读队列与右侧论文阅读页。
 - 保留历史日报：`site/archive/index.html` 列出全部 `out/*.md`，每一天都有固定页 `site/daily/YYYY-MM-DD/index.html`。
