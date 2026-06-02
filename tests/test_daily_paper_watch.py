@@ -149,6 +149,8 @@ class DailyPaperWatchTests(unittest.TestCase):
             index_html = (site_dir / "index.html").read_text(encoding="utf-8")
             self.assertIn("Vision-Language Navigation", index_html)
             self.assertTrue((site_dir / "reports" / "2026-06-02.html").exists())
+            self.assertTrue((site_dir / "archive" / "index.html").exists())
+            self.assertTrue((site_dir / "daily" / "2026-06-02" / "index.html").exists())
             self.assertTrue(any((site_dir / "papers" / "2026-06-02").glob("*.html")))
             self.assertTrue((site_dir / "docs" / "202606" / "02" / "README.md").exists())
             self.assertTrue((site_dir / "docs" / "202606" / "02" / "papers.meta.json").exists())

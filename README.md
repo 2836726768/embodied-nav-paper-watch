@@ -8,6 +8,7 @@
 - 用关键词命中和 BM25 风格 token 相关度筛选具身智能导航论文。
 - 生成 Markdown 日报到 `out/YYYY-MM-DD.md`，并把同样内容打印到 stdout，方便 OpenClaw cron announce 推送。
 - 同步生成静态网页到 `site/index.html`，采用 Daily Paper Reader 风格的左侧精读/速读队列与右侧论文阅读页。
+- 保留历史日报：`site/archive/index.html` 列出全部 `out/*.md`，每一天都有固定页 `site/daily/YYYY-MM-DD/index.html`。
 - 严格限定具身智能导航方向：论文需要明确包含导航任务、导航策略、VLN/ObjectNav/PointNav、机器人导航规划等核心信号。
 
 ## Run Locally
@@ -30,7 +31,7 @@ cd /workspace/embodied-nav-paper-watch
 python3 -m http.server 8080 --directory site
 ```
 
-然后访问 `http://127.0.0.1:8080/`。如果只是本机查看，也可以直接打开 `site/index.html`。
+然后访问 `http://127.0.0.1:8080/`。历史归档在 `http://127.0.0.1:8080/archive/`。如果只是本机查看，也可以直接打开 `site/index.html`。
 
 ## GitHub Pages
 
@@ -46,6 +47,12 @@ Folder: /docs
 
 ```text
 https://2836726768.github.io/embodied-nav-paper-watch/
+```
+
+历史归档地址：
+
+```text
+https://2836726768.github.io/embodied-nav-paper-watch/archive/
 ```
 
 每次重新生成网页后，同步发布目录：

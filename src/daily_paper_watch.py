@@ -2294,10 +2294,14 @@ def generate_site(
 ) -> None:
     assets_dir = site_dir / "assets"
     reports_dir = site_dir / "reports"
+    archive_dir = site_dir / "archive"
+    daily_dir = site_dir / "daily"
     papers_dir = site_dir / "papers" / str(current_meta.get("date") or "latest")
     data_dir = site_dir / "data"
     assets_dir.mkdir(parents=True, exist_ok=True)
     reports_dir.mkdir(parents=True, exist_ok=True)
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    daily_dir.mkdir(parents=True, exist_ok=True)
     papers_dir.mkdir(parents=True, exist_ok=True)
     for stale in papers_dir.glob("*.html"):
         stale.unlink()
@@ -2310,13 +2314,23 @@ def generate_site(
     for md_path in sorted(out_dir.glob("*.md")):
         meta = extract_report_meta(md_path)
         history_by_date[str(meta["date"])] = meta
-        detail_html = render_report_detail_page(md_path.read_text(encoding="utf-8", errors="replace"), meta, config)
+        markdown = md_path.read_text(encoding="utf-8", errors="replace")
+        detail_html = render_report_detail_page(markdown, meta, config)
         (reports_dir / f"{md_path.stem}.html").write_text(detail_html, encoding="utf-8")
+        daily_day_dir = daily_dir / md_path.stem
+        daily_day_dir.mkdir(parents=True, exist_ok=True)
+        (daily_day_dir / "index.html").write_text(render_daily_page(markdown, meta, config), encoding="utf-8")
 
     history_by_date[str(current_meta["date"])] = current_meta
     current_markdown = report_path.read_text(encoding="utf-8", errors="replace")
     (reports_dir / f"{current_meta['date']}.html").write_text(
         render_report_detail_page(current_markdown, current_meta, config),
+        encoding="utf-8",
+    )
+    current_daily_dir = daily_dir / str(current_meta["date"])
+    current_daily_dir.mkdir(parents=True, exist_ok=True)
+    (current_daily_dir / "index.html").write_text(
+        render_daily_page(current_markdown, current_meta, config),
         encoding="utf-8",
     )
     for paper in current_meta.get("papers", []):
@@ -2327,6 +2341,7 @@ def generate_site(
         )
 
     history = sorted(history_by_date.values(), key=lambda item: str(item.get("date") or ""), reverse=True)
+    (archive_dir / "index.html").write_text(render_archive_page(history, config), encoding="utf-8")
     (site_dir / "index.html").write_text(render_index_page(current_meta, history, config), encoding="utf-8")
     (data_dir / "reports.json").write_text(
         json.dumps({"current": current_meta, "history": history}, ensure_ascii=False, indent=2),
@@ -2688,6 +2703,118 @@ a:hover {
   padding-left: 20px;
 }
 
+.dpr-archive-list {
+  display: grid;
+  gap: 14px;
+}
+
+.dpr-archive-row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.dpr-archive-date {
+  color: #a72a25;
+  font-size: 20px;
+  font-weight: 760;
+}
+
+.dpr-archive-title {
+  display: block;
+  color: #1f2f46;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.dpr-archive-meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dpr-archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.dpr-markdown {
+  display: grid;
+  gap: 14px;
+}
+
+.dpr-markdown h1,
+.dpr-markdown h2,
+.dpr-markdown h3,
+.dpr-markdown h4 {
+  margin: 10px 0 0;
+  color: #1f2f46;
+}
+
+.dpr-markdown h1 {
+  color: #a72a25;
+  font-size: 26px;
+}
+
+.dpr-markdown h2 {
+  color: #a72a25;
+  font-size: 22px;
+}
+
+.dpr-markdown h3 {
+  font-size: 18px;
+}
+
+.dpr-markdown p,
+.dpr-markdown ul {
+  margin: 0;
+  color: #38485b;
+}
+
+.dpr-markdown ul {
+  padding-left: 22px;
+}
+
+.dpr-markdown code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
+.dpr-markdown .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.dpr-markdown table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.dpr-markdown th,
+.dpr-markdown td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.dpr-markdown th {
+  color: #1f2f46;
+  background: #f8fafc;
+}
+
 .dpr-chatbar {
   position: fixed;
   left: calc(330px + 7vw);
@@ -2745,7 +2872,8 @@ a:hover {
 
   .dpr-title-card,
   .dpr-info,
-  .dpr-speed-grid {
+  .dpr-speed-grid,
+  .dpr-archive-row {
     grid-template-columns: 1fr;
   }
 
@@ -2759,6 +2887,10 @@ a:hover {
     left: 16px;
     right: 16px;
     width: auto;
+  }
+
+  .dpr-archive-actions {
+    justify-content: flex-start;
   }
 }
 """
@@ -2801,6 +2933,8 @@ def dpr_sidebar(current_meta: dict[str, Any], config: dict[str, Any], *, active_
   <h1 class="dpr-title">{html_text(config.get("project_name") or "Embodied Nav Paper Reader")}</h1>
   <nav class="dpr-nav">
     <a href="{html_attr(dpr_link("index.html", base_href))}">首页</a>
+    <a href="{html_attr(dpr_link("archive/index.html", base_href))}">归档</a>
+    <a href="{html_attr(dpr_link("daily/" + str(current_meta.get("date")) + "/index.html", base_href))}">当日固定页</a>
     <a href="{html_attr(dpr_link(docs_readme, base_href))}">Markdown 日报</a>
   </nav>
   <h2 class="dpr-sidebar-heading">Daily Papers</h2>
@@ -2883,6 +3017,148 @@ def dpr_chatbar() -> str:
   <input data-static-chat-input placeholder="针对这篇论文提问，仅自己可见..." aria-label="paper question">
   <button type="button">发送</button>
 </div>
+"""
+
+
+def dpr_static_sidebar(
+    config: dict[str, Any],
+    *,
+    base_href: str = "",
+    heading: str = "历史日报",
+    note: str = "按日期保留每日具身智能导航论文筛选结果。",
+) -> str:
+    home_href = html_attr(dpr_link("index.html", base_href))
+    archive_href = html_attr(dpr_link("archive/index.html", base_href))
+    return f"""\
+<aside class="dpr-sidebar">
+  <h1 class="dpr-title">{html_text(config.get("project_name") or "Embodied Nav Paper Reader")}</h1>
+  <nav class="dpr-nav">
+    <a href="{home_href}">首页</a>
+    <a href="{archive_href}">归档</a>
+  </nav>
+  <h2 class="dpr-sidebar-heading">{html_text(heading)}</h2>
+  <p class="dpr-date">{html_text(note)}</p>
+</aside>
+"""
+
+
+def render_archive_page(history: list[dict[str, Any]], config: dict[str, Any]) -> str:
+    rows = []
+    for meta in history:
+        date_text = str(meta.get("date") or "")
+        papers = meta.get("papers") if isinstance(meta.get("papers"), list) else []
+        first_titles = [str(paper.get("title") or "") for paper in papers[:2] if isinstance(paper, dict)]
+        preview = "；".join(title for title in first_titles if title) or "当天没有筛到达到阈值的新论文。"
+        selected_count = meta.get("selected_count", len(papers))
+        daily_href = html_attr(f"../daily/{date_text}/index.html")
+        report_href = html_attr(f"../reports/{date_text}.html")
+        rows.append(
+            f"""\
+<div class="dpr-archive-row">
+  <div class="dpr-archive-date">{html_text(date_text)}</div>
+  <div>
+    <span class="dpr-archive-title">{html_text(meta.get("title") or f"日报 {date_text}")}</span>
+    <span class="dpr-archive-meta">入选 {html_text(selected_count)} 篇 · {html_text(preview)}</span>
+  </div>
+  <div class="dpr-archive-actions">
+    <a class="dpr-button primary" href="{daily_href}">阅读</a>
+    <a class="dpr-button" href="{report_href}">Markdown</a>
+  </div>
+</div>"""
+        )
+    rows_html = "".join(rows) or '<p class="dpr-side-note">暂无历史日报。</p>'
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>历史归档 · {html_text(config.get("project_name") or "Embodied Nav Paper Reader")}</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="dpr-app">
+  {dpr_static_sidebar(config, base_href="../")}
+  <main class="dpr-main">
+    <article class="dpr-reader">
+      <div class="dpr-title-card">
+        <div class="dpr-title-cell"><h1>具身智能导航论文归档</h1></div>
+        <div class="dpr-title-cell"><h2>{len(history)} 天日报</h2></div>
+      </div>
+      <section class="dpr-daily">
+        <h2>保存策略</h2>
+        <ul>
+          <li>首页始终展示最新一天。</li>
+          <li>每个日期都有固定页面，路径为 daily/YYYY-MM-DD/。</li>
+          <li>Markdown 全文仍保留在 reports/YYYY-MM-DD.html。</li>
+        </ul>
+      </section>
+      <section class="dpr-archive-list">{rows_html}</section>
+    </article>
+  </main>
+</div>
+</body>
+</html>
+"""
+
+
+def render_daily_page(markdown: str, meta: dict[str, Any], config: dict[str, Any]) -> str:
+    date_text = str(meta.get("date") or "")
+    papers = meta.get("papers") if isinstance(meta.get("papers"), list) else []
+    has_structured_papers = any(isinstance(paper, dict) and paper.get("detail_url") for paper in papers)
+    sidebar = (
+        dpr_sidebar(meta, config, base_href="../../")
+        if has_structured_papers
+        else dpr_static_sidebar(config, base_href="../../", heading=f"日报 {date_text}", note="历史日报全文阅读页")
+    )
+    report_href = html_attr(f"../../reports/{date_text}.html")
+    archive_href = html_attr("../../archive/index.html")
+    selected_count = meta.get("selected_count", len(papers))
+    scanned_count = meta.get("scanned_count", 0)
+    candidate_count = meta.get("candidate_count", 0)
+    generated_at = meta.get("generated_at") or ""
+    return f"""\
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html_text(meta.get("title") or f"日报 {date_text}")}</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<div class="dpr-app">
+  {sidebar}
+  <main class="dpr-main">
+    <article class="dpr-reader">
+      <div class="dpr-title-card">
+        <div class="dpr-title-cell"><h1>具身智能导航论文日报</h1></div>
+        <div class="dpr-title-cell"><h2>{html_text(date_text)}</h2></div>
+      </div>
+      <section class="dpr-info">
+        <div class="dpr-info-col">
+          <p class="dpr-field"><span class="dpr-label">Generated:</span> {html_text(generated_at)}</p>
+          <p class="dpr-field"><span class="dpr-label">Selected:</span> {html_text(selected_count)} 篇</p>
+        </div>
+        <div class="dpr-info-col">
+          <p class="dpr-field"><span class="dpr-label">Scanned:</span> {html_text(scanned_count)} 条</p>
+          <p class="dpr-field"><span class="dpr-label">Candidates:</span> {html_text(candidate_count)} 条</p>
+          <div class="dpr-actions">
+            <a class="dpr-button primary" href="{report_href}">Markdown 全文</a>
+            <a class="dpr-button" href="{archive_href}">返回归档</a>
+          </div>
+        </div>
+      </section>
+      <section class="dpr-abstract dpr-markdown">
+        {markdown_to_html(markdown)}
+      </section>
+    </article>
+  </main>
+</div>
+{dpr_chatbar()}
+<script src="../../assets/app.js"></script>
+</body>
+</html>
 """
 
 

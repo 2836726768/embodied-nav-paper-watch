@@ -339,6 +339,118 @@ a:hover {
   padding-left: 20px;
 }
 
+.dpr-archive-list {
+  display: grid;
+  gap: 14px;
+}
+
+.dpr-archive-row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.dpr-archive-date {
+  color: #a72a25;
+  font-size: 20px;
+  font-weight: 760;
+}
+
+.dpr-archive-title {
+  display: block;
+  color: #1f2f46;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.dpr-archive-meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dpr-archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.dpr-markdown {
+  display: grid;
+  gap: 14px;
+}
+
+.dpr-markdown h1,
+.dpr-markdown h2,
+.dpr-markdown h3,
+.dpr-markdown h4 {
+  margin: 10px 0 0;
+  color: #1f2f46;
+}
+
+.dpr-markdown h1 {
+  color: #a72a25;
+  font-size: 26px;
+}
+
+.dpr-markdown h2 {
+  color: #a72a25;
+  font-size: 22px;
+}
+
+.dpr-markdown h3 {
+  font-size: 18px;
+}
+
+.dpr-markdown p,
+.dpr-markdown ul {
+  margin: 0;
+  color: #38485b;
+}
+
+.dpr-markdown ul {
+  padding-left: 22px;
+}
+
+.dpr-markdown code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
+.dpr-markdown .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.dpr-markdown table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.dpr-markdown th,
+.dpr-markdown td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.dpr-markdown th {
+  color: #1f2f46;
+  background: #f8fafc;
+}
+
 .dpr-chatbar {
   position: fixed;
   left: calc(330px + 7vw);
@@ -396,7 +508,8 @@ a:hover {
 
   .dpr-title-card,
   .dpr-info,
-  .dpr-speed-grid {
+  .dpr-speed-grid,
+  .dpr-archive-row {
     grid-template-columns: 1fr;
   }
 
@@ -410,5 +523,9 @@ a:hover {
     left: 16px;
     right: 16px;
     width: auto;
+  }
+
+  .dpr-archive-actions {
+    justify-content: flex-start;
   }
 }
