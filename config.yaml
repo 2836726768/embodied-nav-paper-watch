@@ -1,0 +1,109 @@
+project_name: "Embodied Nav Paper Reader"
+domain_name: "具身智能导航"
+timezone: "Asia/Shanghai"
+
+output_dir: "out"
+site_dir: "site"
+days_window: 3
+max_results_per_category: 120
+max_items: 10
+deep_read_count: 3
+min_score: 2.0
+api_sleep_seconds: 3.1
+api_retry_count: 1
+api_retry_sleep_seconds: 8
+strict_focus: true
+
+categories:
+  - "cs.RO"
+  - "cs.CV"
+  - "cs.AI"
+  - "cs.LG"
+
+priority_keywords:
+  - "embodied navigation"
+  - "vision-language navigation"
+  - "vision language navigation"
+  - "VLN"
+  - "object goal navigation"
+  - "object-goal navigation"
+  - "point goal navigation"
+  - "point-goal navigation"
+  - "robot navigation"
+  - "navigation policy"
+
+keywords:
+  - "open-vocabulary navigation"
+  - "aerial navigation"
+  - "mobile robot navigation"
+  - "embodied agent navigation"
+  - "semantic map"
+  - "semantic mapping"
+  - "active mapping"
+  - "spatial reasoning"
+  - "3D scene graph"
+  - "scene graph"
+  - "habitat"
+  - "simulation-to-real"
+  - "sim-to-real"
+  - "goal-conditioned"
+  - "language-guided navigation"
+  - "visual navigation"
+  - "mapless navigation"
+  - "exploration policy"
+  - "robotics navigation"
+
+core_focus_keywords:
+  - "navigation"
+  - "navigate"
+  - "navigating"
+  - "vision-language navigation"
+  - "vision language navigation"
+  - "VLN"
+  - "VLN-CE"
+  - "objectnav"
+  - "object-nav"
+  - "object goal navigation"
+  - "pointnav"
+  - "point-nav"
+  - "point goal navigation"
+  - "robot navigation"
+  - "visual navigation"
+  - "language-guided navigation"
+  - "open-vocabulary navigation"
+  - "aerial navigation"
+
+embodiment_context_keywords:
+  - "embodied"
+  - "robot"
+  - "robotic"
+  - "mobile robot"
+  - "agent"
+  - "UAV"
+  - "3D indoor"
+  - "3D scene"
+  - "semantic map"
+  - "scene graph"
+  - "Habitat"
+  - "MP3D"
+  - "HM3D"
+  - "HSSD"
+  - "simulator"
+
+related_keywords:
+  - "embodied AI"
+  - "large language model"
+  - "multimodal"
+  - "open-vocabulary"
+  - "3D grounding"
+  - "point cloud"
+  - "SLAM"
+  - "localization"
+  - "path planning"
+  - "reinforcement learning"
+
+exclude_keywords:
+  - "protein"
+  - "molecule"
+  - "medical image"
+  - "genomics"
