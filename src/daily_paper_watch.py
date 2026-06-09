@@ -185,9 +185,26 @@ def arxiv_id_from_url(url: str) -> str:
     return clean.rsplit("/", 1)[-1]
 
 
-def build_arxiv_url(category: str, max_results: int) -> str:
+def arxiv_date_query(dt: datetime) -> str:
+    return dt.astimezone(timezone.utc).strftime("%Y%m%d%H%M")
+
+
+def build_arxiv_url(
+    category: str,
+    max_results: int,
+    *,
+    start_dt: datetime | None = None,
+    end_dt: datetime | None = None,
+) -> str:
+    search_query = f"cat:{category}"
+    if start_dt and end_dt:
+        end_inclusive = end_dt - timedelta(minutes=1)
+        search_query = (
+            f"{search_query} AND submittedDate:["
+            f"{arxiv_date_query(start_dt)} TO {arxiv_date_query(end_inclusive)}]"
+        )
     params = {
-        "search_query": f"cat:{category}",
+        "search_query": search_query,
         "start": "0",
         "max_results": str(max_results),
         "sortBy": "submittedDate",
@@ -257,12 +274,17 @@ def parse_arxiv_feed(xml_text: str) -> list[Paper]:
     return papers
 
 
-def fetch_recent_papers(config: dict[str, Any], days: int, max_results: int) -> tuple[list[Paper], int, list[str]]:
+def fetch_arxiv_papers(
+    config: dict[str, Any],
+    max_results: int,
+    *,
+    start_dt: datetime | None = None,
+    end_dt: datetime | None = None,
+) -> tuple[list[Paper], int, list[str]]:
     categories = as_list(config, "categories") or ["cs.RO", "cs.CV", "cs.AI", "cs.LG"]
     sleep_seconds = as_float(config, "api_sleep_seconds", 3.1)
     retry_count = max(as_int(config, "api_retry_count", 1), 1)
     retry_sleep_seconds = max(as_float(config, "api_retry_sleep_seconds", 8.0), 0.0)
-    cutoff = datetime.now(timezone.utc) - timedelta(days=max(days, 1))
     seen: set[str] = set()
     papers: list[Paper] = []
     scanned = 0
@@ -271,7 +293,7 @@ def fetch_recent_papers(config: dict[str, Any], days: int, max_results: int) -> 
     for index, category in enumerate(categories):
         if index:
             time.sleep(max(sleep_seconds, 0.0))
-        url = build_arxiv_url(category, max_results)
+        url = build_arxiv_url(category, max_results, start_dt=start_dt, end_dt=end_dt)
         batch: list[Paper] = []
         last_error: str | None = None
         for attempt in range(1, retry_count + 1):
@@ -294,10 +316,27 @@ def fetch_recent_papers(config: dict[str, Any], days: int, max_results: int) -> 
             if paper.paper_id in seen:
                 continue
             seen.add(paper.paper_id)
-            if max(paper.published, paper.updated) < cutoff:
+            paper_time = max(paper.published, paper.updated)
+            if start_dt and paper_time < start_dt:
+                continue
+            if end_dt and paper_time >= end_dt:
                 continue
             papers.append(paper)
     return papers, scanned, warnings
+
+
+def fetch_recent_papers(config: dict[str, Any], days: int, max_results: int) -> tuple[list[Paper], int, list[str]]:
+    cutoff = datetime.now(timezone.utc) - timedelta(days=max(days, 1))
+    return fetch_arxiv_papers(config, max_results=max_results, start_dt=cutoff)
+
+
+def fetch_papers_between(
+    config: dict[str, Any],
+    start_dt: datetime,
+    end_dt: datetime,
+    max_results: int,
+) -> tuple[list[Paper], int, list[str]]:
+    return fetch_arxiv_papers(config, max_results=max_results, start_dt=start_dt, end_dt=end_dt)
 
 
 def phrase_hits(text: str, phrases: list[str]) -> list[str]:
@@ -4345,10 +4384,26 @@ def render_report_detail_page(markdown: str, meta: dict[str, Any], config: dict[
 """
 
 
+def run_date_window(value: str, tz: ZoneInfo) -> tuple[datetime, datetime, datetime]:
+    try:
+        day = datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError as exc:
+        raise ValueError("--run-date must use YYYY-MM-DD") from exc
+    local_start = datetime(day.year, day.month, day.day, tzinfo=tz)
+    local_end = local_start + timedelta(days=1)
+    local_run_time = local_start.replace(hour=9)
+    return (
+        local_run_time.astimezone(timezone.utc),
+        local_start.astimezone(timezone.utc),
+        local_end.astimezone(timezone.utc),
+    )
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate a local embodied-navigation arXiv daily report.")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG), help="Path to config.yaml.")
     parser.add_argument("--days", type=int, default=None, help="Override days_window.")
+    parser.add_argument("--run-date", default=None, help="Generate one local-date archive, formatted as YYYY-MM-DD.")
     parser.add_argument("--max-results", type=int, default=None, help="Override max_results_per_category.")
     parser.add_argument("--max-items", type=int, default=None, help="Override max_items in report.")
     parser.add_argument("--min-score", type=float, default=None, help="Override min_score.")
@@ -4389,8 +4444,21 @@ def main(argv: list[str]) -> int:
     if not site_dir.is_absolute():
         site_dir = ROOT_DIR / site_dir
 
-    run_time = datetime.now(timezone.utc)
-    papers, scanned_count, fetch_warnings = fetch_recent_papers(config, days=days, max_results=max_results)
+    if args.run_date:
+        try:
+            run_time, start_dt, end_dt = run_date_window(args.run_date, tz)
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 2
+        papers, scanned_count, fetch_warnings = fetch_papers_between(
+            config,
+            start_dt=start_dt,
+            end_dt=end_dt,
+            max_results=max_results,
+        )
+    else:
+        run_time = datetime.now(timezone.utc)
+        papers, scanned_count, fetch_warnings = fetch_recent_papers(config, days=days, max_results=max_results)
     scored = score_papers(papers, config)
     target_report_path = out_dir / f"{run_time.astimezone(tz):%Y-%m-%d}.md"
     if scanned_count == 0 and not papers and fetch_warnings and existing_report_selected_count(target_report_path) > 0:

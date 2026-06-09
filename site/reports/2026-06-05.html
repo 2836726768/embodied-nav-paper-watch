@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身智能导航论文日报 2026-06-05</title>
+  <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../index.html">今日</a>
+    <a href="../archive/index.html">归档</a>
+    <a href="../index.html#papers">论文</a>
+    <a href="../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-05</h1>
+<ul>
+<li>生成时间：2026-06-05 09:00:00 CST</li>
+<li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
+<li>扫描条目：546；时间窗口候选：388；入选：2</li>
+</ul>
+<ul>
+<li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
+</ul>
+<h2>今日精选</h2>
+<h3>1. 像飞行员一样思考：细粒度长航程无人机导航</h3>
+<ul>
+<li>原题：Think Like a Pilot: Fine-Grained Long-Horizon UAV Navigation</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Xiangyi Zheng, Xiangyu Wang, Qinan Liao, Zimu Tang, Yue Liao, Dongyue Lyu et al.</li>
+<li>日期：published 2026-06-05；updated 2026-06-05</li>
+<li>类别：cs.RO, cs.AI, cs.CV</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.06836v1">abs</a> / <a href="https://arxiv.org/pdf/2606.06836v1">PDF</a></li>
+<li>命中关键词：vision-language navigation, VLN</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦UAV场景下的Vision-Language Navigation、长程指令跟随、连续6-DoF轨迹控制和飞行中空间/任务推理。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了语言引导无人机在长航程、多阶段语义指令下，同时进行任务状态推理、子目标规划和连续可行飞行控制的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>提出一个面向长航程细粒度无人机VLN的基准FLIGHT，并设计异步VLA架构，让无人机边理解任务边输出连续飞行动作。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出FLIGHT细粒度长航程指令引导无人机导航与推理基准，包含Fine-grained VLN和Long-horizon Flow两个数据划分</li>
+<li>提供多阶段指令与密集6-DoF轨迹标注，面向连续、平滑、物理可行的UAV导航控制</li>
+<li>提出FLIGHT VLA异步架构，用低频Streaming Pilot VLM进行飞行状态推理与子目标预测，用高频扩散动作模型生成连续控制</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读FLIGHT任务定义、6-DoF轨迹标注方式、Pilot Reasoning监督文本构造、异步VLM与扩散动作模型的耦合方式，以及闭环评估指标是否适合自己的UAV/VLN研究。</p>
+<h4>中文摘要</h4>
+<p>语言引导的无人机智能体需要执行长航程语义指令，并生成平滑、物理可行的连续飞行命令，但现有VLN基准通常使用离散或粗粒度动作，现有UAV VLA任务则多关注短时原子机动。为弥补这一任务设置空缺，论文提出FLIGHT基准，结合多阶段指令和密集6-DoF轨迹标注，包含Fine-grained VLN和Long-horizon Flow两个数据划分。论文进一步提出FLIGHT VLA异步架构，将低频Streaming Pilot VLM的任务状态推理与高频扩散动作模型的连续控制解耦，并用Pilot Reasoning文本监督当前飞行状态总结和下一子目标预测。闭环评估中，FLIGHT VLA在FLIGHT基准上超过代表性VLN和VLA基线，并提升多阶段完成、子目标遵循、终端控制和UAV视频推理能力。</p>
+<h4>英文摘要原文</h4>
+<p>Language-guided UAV agents must execute long-horizon semantic instructions while producing smooth, physically feasible continuous flight commands, yet existing Vision-Language Navigation (VLN) benchmarks typically use discrete or coarse actions and existing UAV Vision-Language-Action (VLA) tasks focus on short, atomic maneuvers. To address this gap in UAV task settings, we introduce \textbf{FLIGHT}, a \textbf{F}ine-grained \textbf{L}ong-horizon \textbf{I}nstruction-\textbf{G}uided benchmark for \textbf{H}ybrid UAV navigation and reasoning \textbf{T}asks, which combines multi-stage instructions with dense 6-DoF trajectory annotations across two dataset splits: Fine-grained VLN and Long-horizon Flow. To endow the UAV agent with the capability of real-time in-flight reasoning over task execution status and mission planning, while simultaneously accommodating high-frequency, real-time precise control, we further propose \textbf{FLIGHT VLA}, an asynchronous architecture that decouples a low-frequency Streaming Pilot Vision-Language Model (VLM) for task-state reasoning from a high-frequency diffusion action model for continuous control, supervised by explicit \textbf{Pilot Reasoning} texts that summarize the current flight state and anticipate the next subgoal. In closed-loop evaluation, FLIGHT VLA consistently surpasses representative VLN and VLA baselines on our FLIGHT benchmarks, achieving stronger multi-stage completion, subgoal adherence, and terminal control. Its trained Streaming Pilot Reasoning VLM further improves UAV video reasoning, validating the effectiveness of our design.</p>
+<h3>2. 超越航点：面向视觉语言导航的轨迹中心航点范式</h3>
+<ul>
+<li>原题：Beyond Waypoints: A Trajectory-Centric Waypointing Paradigm for Vision-Language Navigation</li>
+<li>分区：精读区；评分：8.9/10</li>
+<li>作者：Haoxiang Shi, Xiang Deng, Haoyu Zhang, Qiaohui Chu, Yaowei Wang, Liqiang Nie</li>
+<li>日期：published 2026-06-05；updated 2026-06-05</li>
+<li>类别：cs.RO, cs.AI, cs.CV</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.07244v1">abs</a> / <a href="https://arxiv.org/pdf/2606.07244v1">PDF</a></li>
+<li>命中关键词：vision-language navigation, VLN, VLN-CE</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦连续环境中的视觉语言导航 VLN-CE，涉及航点预测、轨迹生成、避障、语义规划与低层控制一致性。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了 VLN-CE 中传统“预测航点—选择航点—低层控制执行”解耦范式容易产生不可达航点、规划与控制不一致的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文把孤立航点改为带可执行轨迹的航点，让视觉语言导航中的规划和执行更一致、更可达。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出 Trajectory Waypoint 新范式，将候选航点与可执行轨迹绑定</li>
+<li>设计 TSDF 引导的扩散策略航点预测器，引导轨迹远离障碍并保证航点可达性</li>
+<li>提出轨迹增强导航器，在 VLN-CE 基准上优于基线方法</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其轨迹航点表示、TSDF 如何引导扩散策略、轨迹信息如何注入导航器，以及该范式对 VLN-CE 中可达性和规划执行一致性的实际提升。</p>
+<h4>中文摘要</h4>
+<p>连续环境中的视觉语言导航 VLN-CE 要求智能体在类真实环境中遵循自然语言指令导航。多数 VLN-CE 方法采用三阶段框架：航点预测器提出可导航航点，导航器选择最佳航点，低层控制器执行移动。然而，这种解耦范式常导致不可达航点或规划与控制不一致。本文不再预测孤立航点，而是提出 Trajectory Waypoint 新范式，将每个候选航点建立在可执行轨迹之上。为此，作者设计了一个由 TSDF 引导的扩散策略形式的 Trajectory Waypoint Predictor，使轨迹生成远离障碍，从而内在保证预测航点的可达性。作者进一步提出轨迹增强导航器，将关联轨迹作为额外信息注入规划，实现高层语义决策与低层执行的严格一致。VLN-CE 基准上的大量实验表明，该 Trajectory Waypoint 范式相较基线取得更优性能。</p>
+<h4>英文摘要原文</h4>
+<p>Vision-Language Navigation in Continuous Environments (VLN-CE) requires agents to follow natural-language instructions while navigating in real-world-like environments. Most VLN-CE approach\-es adopt a three-stage framework: a waypoint predictor proposes navigable waypoints, and a navigator selects the best waypoint, with a low-level controller executing the movement to it. However, this decoupled paradigm often leads to unreachable waypoints or inconsistencies between planning and control. In this work, instead of predicting isolated waypoints, we introduce a novel paradigm called Trajectory Waypoint, which grounds each candidate waypoint in an executable trajectory. To realize this, we design a Trajectory Waypoint Predictor formulated as a TSDF-guided diffusion policy, which steers trajectory generation away from obstacles, inherently ensuring the reachability of the predicted waypoints. We further propose a trajectory-enhanced navigator that injects the associated trajectory as additional information for planning, enabling strict consistency between high-level semantic decisions and low-level execution. Extensive experiments on the VLN-CE benchmark show that our Trajectory Waypoint paradigm achieves superior performance over the baselines.</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.06836v1">像飞行员一样思考：细粒度长航程无人机导航</a></td>
+<td>vision-language navigation, VLN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8.9</td>
+<td><a href="https://arxiv.org/abs/2606.07244v1">超越航点：面向视觉语言导航的轨迹中心航点范式</a></td>
+<td>vision-language navigation, VLN, VLN-CE</td>
+</tr>
+</tbody>
+</table></div></article>
+</main>
+</body>
+</html>

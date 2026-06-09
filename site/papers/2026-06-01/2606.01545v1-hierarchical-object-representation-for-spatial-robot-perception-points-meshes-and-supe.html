@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>面向空间机器人感知的层次化物体表示：点、网格与超二次曲面</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 6.1</span>
+      <span class="badge">rank #6</span>
+    </div>
+    <h1 class="paper-title">面向空间机器人感知的层次化物体表示：点、网格与超二次曲面</h1>
+    <p class="paper-original">Hierarchical Object Representation for Spatial Robot Perception: Points, Meshes, and Superquadrics</p>
+    <div class="paper-meta">
+      <span>Ceng Zhang, Wan Su, Mohamed Samshad, Gregory S. Chirikjian, Rajat Talak</span>
+      <span>published 2026-06-01</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">robot navigation</span><span class="tag">localization</span><span class="tag">Robot Navigation</span><span class="tag">Semantic Mapping</span><span class="tag">Planning / Policy</span><span class="tag">Active Mapping / SLAM</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了3D场景图中物体几何表示过于简化，难以支持高保真重建、鲁棒重定位、地图对齐和安全导航规划的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出一种从RGB-D数据构建点、网格到超二次曲面的层次化物体表示，用于机器人场景理解、地图对齐和导航碰撞检测。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出面向3D场景图的层次化物体几何表示，覆盖点、网格和超二次曲面</li><li>构建从机器人RGB-D图像流生成层次化物体表示的处理流水线</li><li>在多个数据集和Unitree B2机器人采集的NUS Campus数据上验证，并开源代码</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>层次化3D场景图是一种可操作且可扩展的长期自主表示，融合场景中的度量、语义和拓扑信息。但3D场景图中的物体几何表示问题常被忽视，多数方法使用部分点云或3D包围盒等简化模型。本文提出一种层次化物体表示，可用于高保真物体级重建、基于物体的鲁棒重定位或地图对齐，以及面向密集杂乱环境中安全机器人导航规划的高效解析碰撞检测。该表示包含四个层次，将场景从原始传感器数据逐步抽象为稠密3D网格，再到超二次曲面等解析基元，提供稀疏且解析的物体几何表示。作者开发了从机器人RGB-D图像流构建该表示的流水线，并在室内外真实开放集物体场景中展示其效果。实验覆盖HOPE、ReplicaCAD、Kimera-Multi和Unitree B2机器人采集的NUS Campus Dataset，验证了室内外环境中的有效性。结果显示，基于超二次曲面的地图对齐方法优于当前物体级地图对齐方法ROMAN。代码已开源。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Hierarchical 3D Scene Graphs (3DSG) have emerged as an actionable and scalable representation for long-term autonomy incorporating metric, semantic, and topological information in the scene. However, the question of geometric representation of objects in 3DSG has been overlooked as most methods use simplified geometric models such as partial point clouds or 3D bounding boxes. In this work, we introduce a hierarchical object representation that can be leveraged for high-fidelity object-level reconstruction, object-based robust re-<mark class="hit-mark">localization</mark> or map alignment, and efficient and analytical collision checking for safe <mark class="hit-mark">robot navigation</mark> planning in dense and cluttered environments. The representation is structurally organized into four distinct layers, progressively abstracting the scene from raw sensor data to dense 3D meshes to analytical primitives such as superquadrics, which provide a sparse and analytical representation for object geometry. We develop a pipeline that builds the hierarchical object representation from RGB-D image stream captured by a robot, and demonstrate its working in real-world open-set object scenes in both indoor and outdoor environments. Extensive experiments across diverse datasets including HOPE, ReplicaCAD, Kimera-Multi, and NUS Campus Dataset collected using Unitree B2 Robot validate our pipeline in both indoor and outdoor environments. We show that our superquadric-based map alignment method outperforms the current state-of-the-art object based map alignment method ROMAN. Our code can be found at https://github.com/perceptica-robotics/Hickory.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.01545v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.01545v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-01.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

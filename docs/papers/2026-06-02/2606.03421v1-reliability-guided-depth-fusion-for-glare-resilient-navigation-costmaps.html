@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>面向抗眩光导航代价地图的可靠性引导深度融合</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 6.0</span>
+      <span class="badge">rank #5</span>
+    </div>
+    <h1 class="paper-title">面向抗眩光导航代价地图的可靠性引导深度融合</h1>
+    <p class="paper-original">Reliability-Guided Depth Fusion for Glare-Resilient Navigation Costmaps</p>
+    <div class="paper-meta">
+      <span>Shang-En Tsai</span>
+      <span>published 2026-06-02</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了反光地面、玻璃边界和光滑室内表面上的镜面眩光破坏主动双目 RGB-D 深度测量，进而在占据栅格代价地图中累积虚假障碍的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>它用逐像素深度可靠性来过滤受眩光污染的深度，从而构建更稳健的机器人导航代价地图。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出轻量级 Depth Reliability Map 网络，预测眩光干扰下逐像素深度可信度</li><li>提出可靠性引导的加权与门控融合机制，用于调制占据栅格代价地图更新</li><li>在真实移动机器人平台上验证，覆盖反光地面、玻璃墙和自然光眩光条件</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>反光地面、玻璃边界和光滑室内表面上的镜面眩光经常破坏主动双目 RGB-D 深度测量，产生空洞和尖峰，并在占据栅格代价地图中累积为持续的幻影障碍。本文提出一种基于显式深度可靠性建模的抗眩光代价地图构建方法。轻量级 DRM-Net 预测每像素测量可信度，可靠性引导的加权与门控融合机制在污染测量累积进地图前调制占据更新。方法使用位姿对齐的多视角参考深度构造来降低循环监督偏差，并通过多类实验评估。真实移动机器人实验表明，该方法在反光地面、玻璃墙和自然光眩光条件下减少虚假障碍插入、改善自由空间保留，并保持实时吞吐。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Specular glare on reflective floors, glass boundaries, and glossy indoor surfaces frequently corrupts active-stereo RGB-D depth measurements, producing holes and spikes that accumulate as persistent phantom obstacles in occupancy-grid costmaps. This paper presents a glare-resilient costmap construction method based on explicit depth-reliability modeling. A lightweight Depth Reliability Map network (DRM-Net) predicts per-pixel measurement trustworthiness under specular interference, and a reliability-guided weighted-and-gated fusion (RGF) mechanism modulates occupancy updates before corrupted measurements are accumulated into the map. To support robust training and evaluation, the method uses pose-aligned multi-view reference-depth construction to reduce circular-supervision bias and is evaluated through fusion-variant ablations, parameter-sensitivity analysis, cross-condition tests, paired navigation comparisons, reliability-map metrics, and embedded runtime profiling. Experiments on a real mobile robotic platform equipped with an Intel RealSense D435 and a Jetson Orin Nano show that the proposed method reduces false obstacle insertion, improves free-space preservation, and maintains real-time throughput under reflective-floor, glass-wall, and natural-light glare conditions. These results support treating glare as a measurement-reliability problem rather than as a dense depth-completion problem for safety-critical indoor navigation.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.03421v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.03421v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-02.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

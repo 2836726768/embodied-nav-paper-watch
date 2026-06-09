@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MinNav：面向主动式微型空中机器人的极简光流导航</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">MinNav：面向主动式微型空中机器人的极简光流导航</h1>
+    <p class="paper-original">MinNav: Minimalist Navigation Using Optical Flow For Active Tiny Aerial Robots</p>
+    <div class="paper-meta">
+      <span>Aniket Patil, Mandeep Singh, Uday Girish Maradana, Nitin J. Sanket</span>
+      <span>published 2026-06-06</span>
+      <span>cs.RO, cs.CV</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span><span class="tag">Aerial / UAV</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了微型无人机仅使用单目相机、在没有场景先验的情况下穿越静态/动态障碍和未知形状缝隙的导航问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>MinNav 用光流及其不确定性，让微型无人机在未知环境中主动探索并避障穿行。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明具体失败案例、环境规模、与哪些深度方法对比、评测细节和泛化边界，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出基于光流和光流不确定性的 MinNav 导航栈</li><li>利用机器人主动探索行为提升发现障碍和导航的成功率</li><li>在多种真实环境中验证，整体成功率为 70%，并提供视频、补充材料、代码和数据集</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>单目相机导航对微型空中机器人自主运行很重要，因为它在灵活性、成本和精度之间有良好平衡。论文提出 MinNav，一个基于光流及其不确定性的导航栈，可在没有任何场景组件及其位置或顺序先验的情况下，穿越包含静态和动态障碍以及未知形状缝隙的场景。方法还利用机器人的主动性，通过探索式移动寻找障碍并导航，从而提升成功率。论文在多种真实环境中进行了实验展示，整体成功率为 70%。作者称这是首个仅使用单目相机、无先验处理上述导航情况的方案。该方法性能与基于深度的方法相当，但计算量低多个数量级，可直接在微型空中机器人上运行，并提供视频、补充材料、代码和数据集。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Navigation using a monocular camera is pivotal for autonomous operation on tiny aerial robots due to their perfect balance of versatility, cost and accuracy. In this paper, we introduce MinNav, a navigation stack based on optical flow and its uncertainty to fly through a scene with static and dynamic obstacles and unknown-shaped gaps without any prior knowledge of the scene components and/or their locations/ordering. We further improve success rate by using the activeness of the robot to move around in an exploratory way to find obstacles and navigate. We successfully evaluate and demonstrate the proposed approach in many real-world experiments in various environments with static and dynamic obstacles and unknown-shaped gaps with an overall success rate of 70%. To the best of our knowledge, this is the first solution to tackle all the aforementioned navigation cases without prior knowledge using a monocular camera. Our approach is on par in performance with depth based methods with factors of magnitude less computation required and can readily run onboard tiny aerial robots. The accompanying video, supplementary material, code and dataset can be found at https://pear.wpi.edu/research/minnav.html</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.07813v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.07813v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-06.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

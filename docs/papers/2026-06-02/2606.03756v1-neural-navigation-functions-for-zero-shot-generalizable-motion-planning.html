@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>用于零样本泛化运动规划的神经导航函数</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 7.1</span>
+      <span class="badge">rank #4</span>
+    </div>
+    <h1 class="paper-title">用于零样本泛化运动规划的神经导航函数</h1>
+    <p class="paper-original">Neural Navigation Functions for Zero-Shot Generalizable Motion Planning</p>
+    <div class="paper-meta">
+      <span>Benjamin D. Shaffer, Pei-An Hsieh, Brooks Kinch, Nathaniel Trask, M. Ani Hsieh</span>
+      <span>published 2026-06-02</span>
+      <span>cs.RO, cs.LG</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了机器人运动规划中如何在未见过的环境几何形状上进行零样本迁移，并保持无碰撞和目标可达等导航性质的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出 Neural-NF，把学习模块嵌入结构化椭圆规划器中，让机器人在新几何环境里零样本生成安全导航策略。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出 Neural-NF，一种可零样本迁移到未见环境几何的学习式反应导航函数</li><li>将拉普拉斯导出的内在特征映射为局部 PDE 系数，并通过边值问题生成全局一致价值函数</li><li>在构造上保证无碰撞、朝目标单调下降和目标处全局最小，并相比直接预测价值函数的学习规划器最高提升约 5 倍</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>论文提出 Neural Navigation Functions，即 Neural-NF，一种学习式反应导航函数，能够在未见过的环境几何之间进行零样本迁移。Neural-NF 将数据驱动的适应能力放入结构化椭圆规划器中，在保持规划器结构的同时学习导航目标。具体做法是将拉普拉斯导出的内在特征映射到局部 PDE 系数，并通过求解相应边值问题，在每个目标域上产生全局一致的价值函数。对于每个可接受的学习模型，由此得到的策略在构造上无碰撞、具有单调下降性质，并在目标处有全局最小值。这也允许对任意参数设置给出线性可解的最优控制解释。实验上，Neural-NF 在多样几何中实现强零样本迁移，并相比直接预测价值函数的学习规划器最高提升约 5 倍。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>We introduce Neural Navigation Functions (Neural-NF), a learned reactive navigation function capable of zero-shot transfer across unseen environment geometries. Neural-NF places data-driven adaptation within a structured elliptic planner, where the navigation objective is learned while planner structure is preserved by construction. Specifically, intrinsic Laplacian-derived features are mapped to local PDE coefficients, and solving the resulting boundary value problem produces a globally consistent value function on each target domain. For every admissible learned model, the resulting policy is collision-free, provides monotonic descent and a global minimum at the goal by construction. This admits a linearly-solvable optimal-control interpretation for any parameter setting. Empirically, Neural-NF achieves strong zero-shot transfer across diverse geometries and outperforms learned planners that directly predict the value function by up to a $5\times$ improvement.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.03756v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.03756v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-02.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

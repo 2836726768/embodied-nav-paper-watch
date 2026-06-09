@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAD：面向敏捷四旋翼飞行的地图感知世界模型</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 6.1</span>
+      <span class="badge">rank #5</span>
+    </div>
+    <h1 class="paper-title">MAD：面向敏捷四旋翼飞行的地图感知世界模型</h1>
+    <p class="paper-original">MAD: Mapping-Aware World Models for Agile Quadrotor Flight</p>
+    <div class="paper-meta">
+      <span>Xinhong Zhang, Runqing Wang, Yunfan Ren, Ding Yu, Boyu Zhou, Jian Sun, Fang Deng, Jie Chen, Gang Wang</span>
+      <span>published 2026-06-03</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">visual navigation</span><span class="tag">aerial navigation</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span><span class="tag">Active Mapping / SLAM</span><span class="tag">Aerial / UAV</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了杂乱场景中四旋翼仅依赖深度图到控制指令的反应式策略难以记忆已观测区域、推断附近占据空间并在部分可见和低延迟条件下安全高速飞行的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>MAD让无人机在飞行中学习带占据和可见性地图记忆的世界模型，从而更安全、更快地完成视觉导航和竞速。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验具体场景复杂度、基线设置、真实机器人测试规模、传感器限制和对动态障碍或长程全局导航的适用性。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出MAD地图感知世界模型，用占据和可见性栅格图重建替代原始图像重建作为核心自监督信号</li><li>在DiffAero中使用GPU并行地图构建模块，为占据、可见性和本体状态学习提供高吞吐监督</li><li>在仿真视觉导航、竞速和真实四旋翼室内外飞行中展示更高成功率、更快速度和更好跨任务迁移</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>在杂乱场景中进行敏捷四旋翼飞行，不能只依赖从深度图到控制命令的反应式映射；飞行器需要记住哪些区域已被观测，推断附近占据空间，并在部分可见和严格延迟条件下行动。本文提出Mapping-Aware Dreamer，即MAD，一种用于基于视觉的四旋翼飞行的几何感知世界模型。MAD不以原始图像重建作为主要自监督目标，而是学习循环潜在动力学，同时重建机器人中心的占据和可见性栅格地图以及本体状态。这一设计迫使潜在状态以直接服务于碰撞避免的形式编码局部几何、可见性历史和自运动。MAD在DiffAero中训练，使用GPU并行地图构建模块为占据和可见性提供高吞吐监督。学习到的表示被用于三种策略学习模式：基于想象的MAD-Dreamer，以及基于PPO和SHAC的特征提取器变体。在视觉导航和竞速任务中，基于MAD的智能体相比对应视觉-only基线取得更高成功率、更快飞行速度和更好跨任务迁移。模型还可以从深度观测中产生可解释的地图预测和准确的自运动估计。作者进一步将学习到的策略部署到搭载Intel RealSense D435i的真实四旋翼上，并展示了在有限感知下的室内外安全飞行，在仿真中达到9.66 m/s，在真实森林实验中达到5.05 m/s。这些结果表明，地图感知世界模型在模块化空中导航和端到端学习之间提供了一种实用折中。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Agile quadrotor flight in cluttered scenes requires more than a reactive mapping from a depth image to a control command: the vehicle must remember which regions have been observed, infer nearby occupied space, and act under partial visibility and tight latency. In this paper, we present Mapping-Aware Dreamer (MAD), a geometry-aware world model for vision-based quadrotor flight. Instead of using raw-image reconstruction as the main self-supervised objective, MAD learns recurrent latent dynamics that reconstruct robocentric occupancy and visibility grid maps together with proprioceptive states. This design forces the latent state to encode local geometry, visibility history, and ego-motion in a form that is directly relevant to collision avoidance. MAD is trained in DiffAero using a GPU-parallel map-construction module that provides high-throughput supervision for occupancy and visibility. The learned representation is used in three policy-learning modes: imagination-based MAD-Dreamer and feature-extractor variants based on PPO and SHAC. Across <mark class="hit-mark">visual navigation</mark> and racing tasks, MAD-based agents achieve higher success rates, faster flight, and better cross-task transfer than corresponding vision-only baselines. The model also produces interpretable map predictions and accurate ego-motion estimates from depth observations. We further deploy the learned policy on a physical quadrotor with an Intel RealSense D435i and demonstrate safe indoor and outdoor flight under limited sensing, reaching 9.66 m/s in simulation and 5.05 m/s in real-world forest experiments. These results show that mapping-aware world models provide a practical middle ground between modular <mark class="hit-mark">aerial navigation</mark> and end-to-end learning.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.04534v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.04534v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-03.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

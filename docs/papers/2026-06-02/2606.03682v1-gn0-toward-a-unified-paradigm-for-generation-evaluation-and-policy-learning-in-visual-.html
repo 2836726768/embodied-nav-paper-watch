@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GN0：面向视觉语言导航中生成、评估与策略学习的统一范式</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">GN0：面向视觉语言导航中生成、评估与策略学习的统一范式</h1>
+    <p class="paper-original">GN0: Toward a Unified Paradigm for Generation, Evaluation, and Policy Learning in Visual-Language Navigation</p>
+    <div class="paper-meta">
+      <span>Xinhai Li, Xiaotao Zhang, Yuehao Huang, Jiankun Dong, Tianhang Wang, Sunyao Zhou, Yunzi Wu, Chengnuo Sun, Yunfei Ge, Qizhen Weng et al.</span>
+      <span>published 2026-06-02</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">embodied navigation</span><span class="tag">VLN</span><span class="tag">VLN-CE</span><span class="tag">spatial reasoning</span><span class="tag">Robot Navigation</span><span class="tag">VLN</span><span class="tag">Planning / Policy</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了VLN系统受导航数据数量与质量限制、泛化能力和长程导航能力不足的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出一个统一的VLN框架，用3DGS场景生成数据、搭建仿真与评测，并训练导航基础模型。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>构建GN-Matrix大规模导航数据集和自动化导航数据生成流程</li><li>提出基于3DGS的高保真仿真平台与GN-Bench BEV基准，包含动态3DGS虚拟人用于人机交互评估</li><li>提出RL驱动的导航基础模型BAE，统一地图式与无地图任务，并在GN-Bench和VLN-CE上超过现有VLN方法</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>具身导航连接智能体与物理世界，是通用机器人智能的基础。VLN受导航数据可用性和质量限制，泛化与长程能力受约束。本文整理多样3D场景并开发自动化大规模导航数据流程，形成GN-Matrix数据集；基于3DGS引擎提出支持交互漫游和碰撞感知导航的高保真仿真平台；提出首个基于BEV并结合动态3DGS虚拟人的GN-Bench，用于人机交互评估；进一步开发RL驱动的导航基础模型BAE，通过监督学习、DAgger和强化学习探索统一指令跟随、人跟随和目标导航等任务。GN-BAE将3DGS渲染BEV表示作为紧凑记忆，以释放VLM的潜在空间推理能力。实验显示GN0在GN-Bench和VLN-CE上优于现有VLN方法。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p><mark class="hit-mark">Embodied navigation</mark> connects intelligent agents with the physical world and is fundamental for general robotic intelligence. Limited availability and quality of navigation data have constrained Vision-and-Language Navigation (<mark class="hit-mark">VLN</mark>) systems' generalization and long-horizon capabilities. To address this, we curate diverse 3D scenes and develop an automated pipeline for large-scale navigation data, resulting in the GN-Matrix dataset. Building on a 3D Gaussian Splatting (3DGS) engine, we introduce a high-fidelity simulation platform supporting interactive roaming and collision-aware navigation. We further propose GN-Bench, the first BEV-based benchmark incorporating dynamic 3DGS avatars for human-robot interaction evaluation. To leverage the simulator, we develop an RL-driven navigation foundation model, Break and Establish (BAE). After supervised learning, DAgger exposes the model to rollout-induced states, breaking narrow expert-centric distributions and enabling downstream RL exploration. This unified <mark class="hit-mark">VLN</mark> paradigm integrates map-based and map-free tasks, including instruction following, human following, and goal navigation. GN-BAE formalizes high-fidelity 3DGS-rendered Bird's Eye View representations as compact memory, unlocking latent <mark class="hit-mark">spatial reasoning</mark> in VLMs. Extensive evaluations on GN-Bench and <mark class="hit-mark"><mark class="hit-mark">VLN</mark>-CE</mark> show that GN0 outperforms state-of-the-art <mark class="hit-mark">VLN</mark> methods. Overall, GN-Matrix offers a unified framework spanning data, simulation, and learning, advancing <mark class="hit-mark">embodied navigation</mark> in research and industrial applications.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.03682v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.03682v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-02.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

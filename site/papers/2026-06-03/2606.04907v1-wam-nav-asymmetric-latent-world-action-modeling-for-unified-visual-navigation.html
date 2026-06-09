@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WAM-Nav：用于统一视觉导航的非对称潜在世界-动作建模</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">WAM-Nav：用于统一视觉导航的非对称潜在世界-动作建模</h1>
+    <p class="paper-original">WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation</p>
+    <div class="paper-meta">
+      <span>Ning Yang, Yan Huang, Kaiwen Peng, Ziheng He, Kai Wang, Cui Miao, Kailin Lyu, Guo Li, Xiaofeng Wang, Zheng Zhu et al.</span>
+      <span>published 2026-06-03</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">point-goal navigation</span><span class="tag">visual navigation</span><span class="tag">sim-to-real</span><span class="tag">Robot Navigation</span><span class="tag">ObjectNav / GoalNav</span><span class="tag">Planning / Policy</span><span class="tag">Sim2Real / Benchmark</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了视觉导航中反应式策略缺乏前瞻推理、难以主动避障，以及传统视觉想象模块化方法误差累积和推理低效的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>WAM-Nav把动作生成和短期视觉前瞻联合建模，用一个统一策略支持图像目标、点目标和无目标探索导航。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明失败案例、计算开销细节、地图或场景图使用情况，以及不同环境复杂度下的局限，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出WAM-Nav潜在世界-动作模型，联合学习动作生成和潜在视觉前瞻</li><li>使用共享Diffusion Transformer进行非对称联合扩散，减少自回归视觉预测的延迟和误差累积</li><li>统一支持Image-Goal、Point-Goal和No-Goal探索，并在仿真和真实环境中验证sim-to-real效果</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>视觉导航需要在复杂几何和物理约束下生成平滑、无碰撞轨迹。现有反应式策略缺乏前瞻推理，传统视觉想象模块化方法存在误差累积和推理低效。WAM-Nav通过潜在世界-动作模型联合学习动作生成和视觉前瞻，使用共享Diffusion Transformer同时生成长时程动作和短时程视觉前瞻，并结合双流上下文条件和统一目标对齐模块，支持Image-Goal、Point-Goal和No-Goal探索。在ClutterScenes和InternScenes上表现出强泛化，并在真实室内外环境中实现有效零样本sim-to-real迁移。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p><mark class="hit-mark">Visual navigation</mark> requires generating smooth and collision-free trajectories under complex geometric and physical constraints. Existing reactive policies that directly map observations to actions lack anticipatory reasoning, limiting their ability to proactively avoid obstacles. While visual imagination offers predictive foresight, conventional modular approaches separate scene prediction from policy learning, often leading to error accumulation and inefficient inference. To address these limitations, we propose WAM-Nav, a Latent World-Action Model for embodied <mark class="hit-mark">visual navigation</mark> that jointly learns action generation and latent visual foresight, enabling more robust and foresighted navigation decisions without compromising inference efficiency. Specifically, WAM-Nav utilizes a shared Diffusion Transformer for asymmetric joint diffusion to concurrently generate long-horizon actions and short-horizon visual foresight, reducing the inference latency and visual error accumulation inherent in multi-step autoregressive rollouts. To further encourage smooth and consistent trajectory generation, we introduce a dual-stream contextual conditioning mechanism that integrates episode-level ego-motion history with sequential visual observations. Combined with a unified goal alignment module that preserves balanced representations across goal types, WAM-Nav naturally supports Image-Goal, Point-Goal, and No-Goal exploration within a single policy. Extensive experiments on the challenging ClutterScenes and InternScenes benchmarks demonstrate strong generalization of WAM-Nav, particularly on Image-Goal and <mark class="hit-mark">Point-Goal navigation</mark>, where it improves success rates by 15.7% and 3.3%, respectively. Real-world deployment further validates effective zero-shot <mark class="hit-mark">sim-to-real</mark> transfer, achieving an average 85% task success rate across diverse indoor and outdoor environments.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.04907v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.04907v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-03.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

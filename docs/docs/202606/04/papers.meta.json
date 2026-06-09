@@ -1,15 +1,201 @@
 {
   "label": "2026-06-04",
   "date": "2026-06-04",
-  "generated_at": "2026-06-04 09:00:30 CST",
-  "count": 0,
-  "deep_count": 0,
+  "generated_at": "2026-06-04 09:00:00 CST",
+  "count": 2,
+  "deep_count": 2,
   "quick_count": 0,
-  "papers": [],
-  "errors": [
-    "cs.RO: TimeoutError: The read operation timed out",
-    "cs.CV: HTTP 429 Unknown Error",
-    "cs.AI: HTTP 429 Unknown Error",
-    "cs.LG: HTTP 429 Unknown Error"
-  ]
+  "papers": [
+    {
+      "rank": 1,
+      "id": "2606.06147v1",
+      "slug": "2606.06147v1-worldfly-a-world-model-based-vision-language-action-model-for-uav-navigation",
+      "detail_url": "papers/2026-06-04/2606.06147v1-worldfly-a-world-model-based-vision-language-action-model-for-uav-navigation.html",
+      "title": "WorldFly: A World-Model-Based Vision-Language-Action Model for UAV Navigation",
+      "authors": [
+        "Shengtao Zheng",
+        "Kai Li",
+        "Weichen Zhang",
+        "Yu Meng",
+        "Chen Gao",
+        "Xinlei Chen",
+        "Yong Li",
+        "Xiao-Ping Zhang"
+      ],
+      "summary": "End-to-end Vision-Language-Action (VLA) models have shown promise in UAV navigation. However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions. We argue that the ability to \"imagine\" future states -- inherent in World Models -- is critical for robust decision-making under such partial observability. To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions. To this end, we propose WorldFly, a novel world-model-based VLA framework that employs a dual-branch coupled flow matching mechanism to jointly generate future video predictions and navigation actions, thereby explicitly guiding the agent's policy via spatial imagination. Extensive evaluations on our benchmark demonstrate that WorldFly outperforms other baselines, particularly in unseen environments, validating the effectiveness of integrating world models into embodied aerial agents.",
+      "published": "2026-06-04",
+      "updated": "2026-06-04",
+      "categories": [
+        "cs.AI"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.06147v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.06147v1",
+      "score": 130.9066,
+      "bm25_score": 130.9066,
+      "phrase_score": 0.0,
+      "matched_keywords": [],
+      "reason": "具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 10.0,
+      "topic_lanes": [
+        "Planning / Policy",
+        "Embodied AI / VLA",
+        "Aerial / UAV"
+      ],
+      "study_type": "Planning / Policy",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 10.0,
+        "topic_lanes": [
+          "Planning / Policy",
+          "Embodied AI / VLA",
+          "Aerial / UAV"
+        ],
+        "study_type": "Planning / Policy",
+        "tldr": "WorldFly 让无人机在导航时先“想象”未来视角，再用这种空间想象来辅助动作决策。",
+        "motivation": "这篇论文解决了端到端 VLA 模型在无人机城市导航中，面对严重遮挡和急转弯导致的剧烈视角变化时，仅依赖历史观测直接预测动作而鲁棒性不足的问题。",
+        "method": "论文提出 WorldFly，一个基于世界模型的 VLA 框架，使用双分支耦合流匹配机制，同时生成未来视频预测和导航动作，用未来空间状态的想象显式引导无人机策略。",
+        "result": "摘要说明在 Urban Canyon Traversal Benchmark 上进行了大量评估，WorldFly 优于其他基线，尤其在未见环境中表现更好；真实机器人或真实 UAV 结果摘要未说明。",
+        "conclusion": "论文构建了 Urban Canyon Traversal Benchmark，用于评估严重遮挡和剧烈视角变化场景中的空间理解；并提出 WorldFly，将世界模型融入具身空中智能体的 VLA 导航决策。",
+        "limitation": "摘要未说明，需要看正文核验。",
+        "benchmark_hint": "To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions.",
+        "keyword_hits": {
+          "title": [],
+          "abstract": []
+        },
+        "external_urls": [],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions."
+          },
+          {
+            "label": "方法证据",
+            "text": "To this end, we propose WorldFly, a novel world-model-based VLA framework that employs a dual-branch coupled flow matching mechanism to jointly generate future video predictions and navigation actions, thereby explicitly guiding the agent's policy via spatial…"
+          },
+          {
+            "label": "结果证据",
+            "text": "However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions."
+          },
+          {
+            "label": "基准证据",
+            "text": "To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "WorldFly：一种基于世界模型的无人机导航视觉-语言-动作模型",
+        "solved_problem_zh": "这篇论文解决了端到端 VLA 模型在无人机城市导航中，面对严重遮挡和急转弯导致的剧烈视角变化时，仅依赖历史观测直接预测动作而鲁棒性不足的问题。",
+        "tldr_zh": "WorldFly 让无人机在导航时先“想象”未来视角，再用这种空间想象来辅助动作决策。",
+        "relevance_zh": "与具身智能导航高度相关，聚焦 UAV 导航、VLA 策略、部分可观测场景下的空间理解与未来状态预测，尤其适合关注空中机器人导航和复杂城市环境决策的研究者。",
+        "problem_zh": "现有端到端视觉-语言-动作模型通常基于历史观测直接输出导航动作，在密集城市环境中遇到遮挡、急转弯和大幅视角跳变时，难以进行稳健决策。摘要强调，具备预测或想象未来状态的世界模型能力，对部分可观测条件下的导航很关键。",
+        "method_zh": "论文提出 WorldFly，一个基于世界模型的 VLA 框架，使用双分支耦合流匹配机制，同时生成未来视频预测和导航动作，用未来空间状态的想象显式引导无人机策略。",
+        "contribution_zh": "论文构建了 Urban Canyon Traversal Benchmark，用于评估严重遮挡和剧烈视角变化场景中的空间理解；并提出 WorldFly，将世界模型融入具身空中智能体的 VLA 导航决策。",
+        "key_contributions_zh": [
+          "提出面向 UAV 导航的世界模型式 VLA 框架 WorldFly",
+          "通过双分支耦合流匹配联合生成未来视频预测和导航动作",
+          "构建 Urban Canyon Traversal Benchmark，用于评估城市峡谷场景中的遮挡、急转弯和空间理解"
+        ],
+        "experiments_zh": "摘要说明在 Urban Canyon Traversal Benchmark 上进行了大量评估，WorldFly 优于其他基线，尤其在未见环境中表现更好；真实机器人或真实 UAV 结果摘要未说明。",
+        "limitations_zh": "摘要未说明，需要看正文核验。",
+        "read_suggestion_zh": "建议重点阅读其世界模型如何与 VLA 动作生成耦合、未来视频预测如何影响导航策略，以及 benchmark 是否能迁移到其他 UAV 导航或具身导航任务。",
+        "abstract_zh": "端到端视觉-语言-动作模型在无人机导航中显示出潜力，但现有方法通常依赖历史观测直接预测动作，在密集城市环境中，严重遮挡和急转弯会造成剧烈视角变化，从而带来困难。作者认为，世界模型所具备的“想象”未来状态能力，对部分可观测条件下的稳健决策至关重要。为此，论文构建了 Urban Canyon Traversal Benchmark，用于评估严重遮挡和剧烈视角变化场景中的空间理解。论文进一步提出 WorldFly，一种基于世界模型的 VLA 框架，通过双分支耦合流匹配机制联合生成未来视频预测和导航动作，从而用空间想象显式引导智能体策略。实验表明，WorldFly 在该 benchmark 上优于其他基线，尤其在未见环境中表现突出，验证了将世界模型集成到具身空中智能体中的有效性。"
+      }
+    },
+    {
+      "rank": 2,
+      "id": "2606.05372v1",
+      "slug": "2606.05372v1-efficient-computation-of-distance-functions-for-navigation-vector-fields-in-lie-groups",
+      "detail_url": "papers/2026-06-04/2606.05372v1-efficient-computation-of-distance-functions-for-navigation-vector-fields-in-lie-groups.html",
+      "title": "Efficient Computation of Distance Functions for Navigation Vector Fields in Lie Groups",
+      "authors": [
+        "Vinicius M. Gonçalves",
+        "João Baião",
+        "Felipe Bartelt",
+        "Douglas G. Macharet",
+        "Gustavo M. Freitas",
+        "Héctor Azpúrua",
+        "Luciano C. A. Pimenta"
+      ],
+      "summary": "Vector-field-based methods are widely used for robot control and are often applied to the path-tracking problem. Some vector field approaches require repeatedly computing the distance between the robot configuration and the curve, as well as the corresponding closest point. Recently, vector fields have been extended to Lie Groups. In this case, this computation can be expensive, especially when performed at high control frequencies on embedded platforms. This paper proposes a method for efficiently computing the distance between a point and a curve represented as what is called a G-polynomial curve, which is a curve representation that generalizes polynomial curves to matrix Lie groups. The proposed approach exploits the structure of these curves to reduce the problem to a small number of polynomial root-finding computations. Simulation results show that the method significantly reduces computation time while maintaining accuracy compared to existing optimization-based approaches. Practical formulas are also provided for the case of the group SE(3), and the method is validated experimentally on a robotic manipulator. The methodology is implemented in a computational package, available online.",
+      "published": "2026-06-04",
+      "updated": "2026-06-04",
+      "categories": [
+        "cs.RO",
+        "cs.CG"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.05372v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.05372v1",
+      "score": 80.1381,
+      "bm25_score": 79.3381,
+      "phrase_score": 0.0,
+      "matched_keywords": [],
+      "reason": "具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 6.12,
+      "topic_lanes": [
+        "Robot Navigation"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 6.12,
+        "topic_lanes": [
+          "Robot Navigation"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "论文提出一种更快计算李群中点到曲线距离的方法，用于提升机器人导航向量场控制的实时性。",
+        "motivation": "这篇论文解决了基于向量场的机器人导航与路径跟踪中，在李群配置空间里反复计算机器人到曲线距离和最近点开销过高的问题。",
+        "method": "论文针对称为G-多项式曲线的李群曲线表示，利用其结构将点到曲线距离计算转化为少量多项式求根计算，并给出SE(3)情形的实用公式。",
+        "result": "摘要说明进行了仿真，对比现有基于优化的方法显著降低计算时间且保持精度；还在机器人机械臂上进行了实验验证。",
+        "conclusion": "核心贡献是为李群中导航向量场提供一种高效距离函数计算方法，在保持精度的同时减少相对优化方法的计算时间。",
+        "limitation": "摘要未说明，需要看正文核验；尤其需核验在移动机器人、UAV导航、高维复杂轨迹和嵌入式实时控制中的适用范围。",
+        "benchmark_hint": "",
+        "keyword_hits": {
+          "title": [],
+          "abstract": []
+        },
+        "external_urls": [],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "Vector-field-based methods are widely used for robot control and are often applied to the path-tracking problem."
+          },
+          {
+            "label": "方法证据",
+            "text": "This paper proposes a method for efficiently computing the distance between a point and a curve represented as what is called a G-polynomial curve, which is a curve representation that generalizes polynomial curves to matrix Lie groups."
+          },
+          {
+            "label": "结果证据",
+            "text": "Simulation results show that the method significantly reduces computation time while maintaining accuracy compared to existing optimization-based approaches."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "李群中导航向量场距离函数的高效计算",
+        "solved_problem_zh": "这篇论文解决了基于向量场的机器人导航与路径跟踪中，在李群配置空间里反复计算机器人到曲线距离和最近点开销过高的问题。",
+        "tldr_zh": "论文提出一种更快计算李群中点到曲线距离的方法，用于提升机器人导航向量场控制的实时性。",
+        "relevance_zh": "与机器人导航和路径跟踪直接相关，重点在连续控制、配置空间距离计算和SE(3)运动群上的高效空间推理；不涉及VLN、ObjectNav或PointNav。",
+        "problem_zh": "一些导航向量场方法需要高频计算机器人配置到参考曲线的距离及最近点；当向量场扩展到李群后，这类计算在嵌入式平台和高控制频率下可能代价较高。",
+        "method_zh": "论文针对称为G-多项式曲线的李群曲线表示，利用其结构将点到曲线距离计算转化为少量多项式求根计算，并给出SE(3)情形的实用公式。",
+        "contribution_zh": "核心贡献是为李群中导航向量场提供一种高效距离函数计算方法，在保持精度的同时减少相对优化方法的计算时间。",
+        "key_contributions_zh": [
+          "提出李群中点到G-多项式曲线距离的高效计算方法",
+          "将距离与最近点计算归约为少量多项式求根问题",
+          "给出SE(3)实用公式，并在仿真和机器人机械臂实验中验证"
+        ],
+        "experiments_zh": "摘要说明进行了仿真，对比现有基于优化的方法显著降低计算时间且保持精度；还在机器人机械臂上进行了实验验证。",
+        "limitations_zh": "摘要未说明，需要看正文核验；尤其需核验在移动机器人、UAV导航、高维复杂轨迹和嵌入式实时控制中的适用范围。",
+        "read_suggestion_zh": "适合关注机器人导航向量场、SE(3)轨迹跟踪、配置空间距离计算和实时控制的研究者阅读；若研究VLN、ObjectNav或语义场景图导航，相关性较弱。",
+        "abstract_zh": "基于向量场的方法广泛用于机器人控制，并常用于路径跟踪。一些向量场方法需要反复计算机器人配置到曲线的距离及其最近点。最近，向量场被扩展到李群中，此时该计算可能很昂贵，尤其是在嵌入式平台上以高控制频率运行时。本文提出一种高效计算点到G-多项式曲线距离的方法，G-多项式曲线是将多项式曲线推广到矩阵李群的曲线表示。该方法利用曲线结构，将问题化为少量多项式求根计算。仿真结果显示，相比现有基于优化的方法，该方法在保持精度的同时显著减少计算时间。论文还给出SE(3)情况下的实用公式，并在机器人机械臂上进行实验验证。该方法已实现为在线可用的计算软件包。"
+      }
+    }
+  ],
+  "errors": []
 }

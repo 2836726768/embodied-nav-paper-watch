@@ -1,0 +1,313 @@
+{
+  "label": "2026-06-06",
+  "date": "2026-06-06",
+  "generated_at": "2026-06-06 09:00:00 CST",
+  "count": 3,
+  "deep_count": 3,
+  "quick_count": 0,
+  "papers": [
+    {
+      "rank": 1,
+      "id": "2606.07813v1",
+      "slug": "2606.07813v1-minnav-minimalist-navigation-using-optical-flow-for-active-tiny-aerial-robots",
+      "detail_url": "papers/2026-06-06/2606.07813v1-minnav-minimalist-navigation-using-optical-flow-for-active-tiny-aerial-robots.html",
+      "title": "MinNav: Minimalist Navigation Using Optical Flow For Active Tiny Aerial Robots",
+      "authors": [
+        "Aniket Patil",
+        "Mandeep Singh",
+        "Uday Girish Maradana",
+        "Nitin J. Sanket"
+      ],
+      "summary": "Navigation using a monocular camera is pivotal for autonomous operation on tiny aerial robots due to their perfect balance of versatility, cost and accuracy. In this paper, we introduce MinNav, a navigation stack based on optical flow and its uncertainty to fly through a scene with static and dynamic obstacles and unknown-shaped gaps without any prior knowledge of the scene components and/or their locations/ordering. We further improve success rate by using the activeness of the robot to move around in an exploratory way to find obstacles and navigate. We successfully evaluate and demonstrate the proposed approach in many real-world experiments in various environments with static and dynamic obstacles and unknown-shaped gaps with an overall success rate of 70%. To the best of our knowledge, this is the first solution to tackle all the aforementioned navigation cases without prior knowledge using a monocular camera. Our approach is on par in performance with depth based methods with factors of magnitude less computation required and can readily run onboard tiny aerial robots. The accompanying video, supplementary material, code and dataset can be found at https://pear.wpi.edu/research/minnav.html",
+      "published": "2026-06-06",
+      "updated": "2026-06-06",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.07813v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07813v1",
+      "score": 148.3634,
+      "bm25_score": 147.2634,
+      "phrase_score": 0.0,
+      "matched_keywords": [],
+      "reason": "具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 10.0,
+      "topic_lanes": [
+        "Robot Navigation",
+        "Aerial / UAV"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 10.0,
+        "topic_lanes": [
+          "Robot Navigation",
+          "Aerial / UAV"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "MinNav 用光流及其不确定性，让微型无人机在未知环境中主动探索并避障穿行。",
+        "motivation": "这篇论文解决了微型无人机仅使用单目相机、在没有场景先验的情况下穿越静态/动态障碍和未知形状缝隙的导航问题。",
+        "method": "提出 MinNav，一个基于光流及其不确定性的导航栈；机器人利用自身主动运动进行探索，以发现障碍并完成导航，不需要预先知道场景组件、位置或顺序。",
+        "result": "摘要说明在多种真实环境中进行了大量实验，包含静态障碍、动态障碍和未知形状缝隙，整体成功率为 70%。",
+        "conclusion": "论文提出一种面向微型无人机的低计算量单目导航方案，在真实环境中展示了对静态/动态障碍和未知形状缝隙的处理能力，并声称性能接近基于深度的方法。",
+        "limitation": "摘要未说明具体失败案例、环境规模、与哪些深度方法对比、评测细节和泛化边界，需要看正文核验。",
+        "benchmark_hint": "The accompanying video, supplementary material, code and dataset can be found at https://pear.wpi.edu/research/minnav.html",
+        "keyword_hits": {
+          "title": [],
+          "abstract": []
+        },
+        "external_urls": [
+          "https://pear.wpi.edu/research/minnav.html"
+        ],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "Our approach is on par in performance with depth based methods with factors of magnitude less computation required and can readily run onboard tiny aerial robots."
+          },
+          {
+            "label": "方法证据",
+            "text": "In this paper, we introduce MinNav, a navigation stack based on optical flow and its uncertainty to fly through a scene with static and dynamic obstacles and unknown-shaped gaps without any prior knowledge of the scene components and/or their locations/orderi…"
+          },
+          {
+            "label": "结果证据",
+            "text": "We successfully evaluate and demonstrate the proposed approach in many real-world experiments in various environments with static and dynamic obstacles and unknown-shaped gaps with an overall success rate of 70%."
+          },
+          {
+            "label": "基准证据",
+            "text": "The accompanying video, supplementary material, code and dataset can be found at https://pear.wpi.edu/research/minnav.html"
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "MinNav：面向主动式微型空中机器人的极简光流导航",
+        "solved_problem_zh": "这篇论文解决了微型无人机仅使用单目相机、在没有场景先验的情况下穿越静态/动态障碍和未知形状缝隙的导航问题。",
+        "tldr_zh": "MinNav 用光流及其不确定性，让微型无人机在未知环境中主动探索并避障穿行。",
+        "relevance_zh": "与机器人/UAV 导航高度相关，重点在单目视觉导航、动态障碍避让、未知缝隙通过和低算力机载部署；与 VLN/ObjectNav/PointNav 的语义目标导航不同，更偏底层几何与运动感知导航。",
+        "problem_zh": "微型空中机器人受限于算力、载荷和传感器，难以依赖深度传感器或复杂地图；论文关注在未知场景中，仅凭单目相机完成对静态障碍、动态障碍和未知形状缝隙的导航。",
+        "method_zh": "提出 MinNav，一个基于光流及其不确定性的导航栈；机器人利用自身主动运动进行探索，以发现障碍并完成导航，不需要预先知道场景组件、位置或顺序。",
+        "contribution_zh": "论文提出一种面向微型无人机的低计算量单目导航方案，在真实环境中展示了对静态/动态障碍和未知形状缝隙的处理能力，并声称性能接近基于深度的方法。",
+        "key_contributions_zh": [
+          "提出基于光流和光流不确定性的 MinNav 导航栈",
+          "利用机器人主动探索行为提升发现障碍和导航的成功率",
+          "在多种真实环境中验证，整体成功率为 70%，并提供视频、补充材料、代码和数据集"
+        ],
+        "experiments_zh": "摘要说明在多种真实环境中进行了大量实验，包含静态障碍、动态障碍和未知形状缝隙，整体成功率为 70%。",
+        "limitations_zh": "摘要未说明具体失败案例、环境规模、与哪些深度方法对比、评测细节和泛化边界，需要看正文核验。",
+        "read_suggestion_zh": "建议关注其光流不确定性如何用于导航决策、主动探索策略如何设计、真实无人机实验设置，以及与深度导航方法在算力和成功率上的具体对比。",
+        "abstract_zh": "单目相机导航对微型空中机器人自主运行很重要，因为它在灵活性、成本和精度之间有良好平衡。论文提出 MinNav，一个基于光流及其不确定性的导航栈，可在没有任何场景组件及其位置或顺序先验的情况下，穿越包含静态和动态障碍以及未知形状缝隙的场景。方法还利用机器人的主动性，通过探索式移动寻找障碍并导航，从而提升成功率。论文在多种真实环境中进行了实验展示，整体成功率为 70%。作者称这是首个仅使用单目相机、无先验处理上述导航情况的方案。该方法性能与基于深度的方法相当，但计算量低多个数量级，可直接在微型空中机器人上运行，并提供视频、补充材料、代码和数据集。"
+      }
+    },
+    {
+      "rank": 2,
+      "id": "2606.08029v1",
+      "slug": "2606.08029v1-intentnav-learning-spatial-visual-object-navigation-from-human-demonstrations",
+      "detail_url": "papers/2026-06-06/2606.08029v1-intentnav-learning-spatial-visual-object-navigation-from-human-demonstrations.html",
+      "title": "IntentNav: Learning Spatial-Visual Object Navigation from Human Demonstrations",
+      "authors": [
+        "Yuxin Cai",
+        "Zongtai Li",
+        "Maonan Wang",
+        "Muyi Bao",
+        "Haokun Zhu",
+        "Ruofei Bai",
+        "Ding Zhao",
+        "Zirui Li",
+        "Wenshan Wang",
+        "Wei-Yun Yau",
+        "Ji Zhang",
+        "Chen Lv"
+      ],
+      "summary": "Object navigation requires a robot to search for an unobserved target in an unknown environment by deciding where to explore next under partial observability. Effective search resembles human-like exploration: selectively probing visually promising frontiers while relying on spatial memory to avoid redundant revisits. We propose IntentNav, a spatial-visual imitation framework that learns human-like ObjectNav policies from human demonstrations. To infer high-level search intent from low-level human actions, we introduce Frontier-based Human-Intent Labeling, which looks ahead in human demonstrations and labels the frontier that best explains the demonstrator's future search direction. We construct a spatial-visual candidate space, where BEV memory tracks explored regions, unexplored frontiers, and trajectory history, while egocentric visual memory provides semantic cues for each candidate. A VLM policy is trained to select among these grounded candidates, using Intent-Aligned Objective to encourage consistent and human-like exploration. IntentNav achieves state-of-the-art performance on the MP3D, HM3D-v1 and HM3D-v2 ObjectNav benchmarks. The proposed candidate-level navigation interface transfers zero-shot to wheeled, quadruped, and humanoid robots without further VLM fine-tuning. \\href{https://anonymous.4open.science/w/IntentNav/}{Project page}.",
+      "published": "2026-06-06",
+      "updated": "2026-06-06",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.08029v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08029v1",
+      "score": 141.331,
+      "bm25_score": 137.531,
+      "phrase_score": 3.0,
+      "matched_keywords": [
+        "objectnav"
+      ],
+      "reason": "命中 objectnav；具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 9.53,
+      "topic_lanes": [
+        "Robot Navigation",
+        "Planning / Policy",
+        "Sim2Real / Benchmark"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 9.53,
+        "topic_lanes": [
+          "Robot Navigation",
+          "Planning / Policy",
+          "Sim2Real / Benchmark"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "IntentNav 从人类示范中学习 ObjectNav 策略，让机器人在候选前沿中选择最像人类搜索意图的探索目标。",
+        "motivation": "这篇论文解决了机器人在未知环境、部分可观测条件下寻找未观测目标时，如何像人类一样结合空间记忆与视觉语义选择下一步探索方向的问题。",
+        "method": "论文提出空间-视觉模仿学习框架 IntentNav，通过 Frontier-based Human-Intent Labeling 从人类低层动作中推断高层搜索意图；构建包含 BEV 记忆、未探索前沿、轨迹历史和自我中心视觉语义线索的候选空间；训练 VLM 策略在具身候选目标中进行选择，并用 Intent-Aligned Objective 促进与人类探索意图一致的决策。",
+        "result": "摘要说明在 MP3D、HM3D-v1 和 HM3D-v2 ObjectNav 基准上取得最先进性能，并说明候选级导航接口可零样本迁移到轮式、四足和人形机器人，无需进一步微调 VLM。",
+        "conclusion": "核心贡献是将人类示范中的未来搜索方向转化为前沿级意图标签，并把空间记忆与视觉语义候选结合起来训练 ObjectNav 策略，实现更人类化的探索。",
+        "limitation": "摘要未说明，需要看正文核验。",
+        "benchmark_hint": "IntentNav achieves state-of-the-art performance on the MP3D, HM3D-v1 and HM3D-v2 ObjectNav benchmarks.",
+        "keyword_hits": {
+          "title": [],
+          "abstract": [
+            "objectnav"
+          ]
+        },
+        "external_urls": [
+          "https://anonymous.4open.science/w/IntentNav/}{Project"
+        ],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "Object navigation requires a robot to search for an unobserved target in an unknown environment by deciding where to explore next under partial observability."
+          },
+          {
+            "label": "方法证据",
+            "text": "We propose IntentNav, a spatial-visual imitation framework that learns human-like ObjectNav policies from human demonstrations."
+          },
+          {
+            "label": "结果证据",
+            "text": "IntentNav achieves state-of-the-art performance on the MP3D, HM3D-v1 and HM3D-v2 ObjectNav benchmarks."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "IntentNav：从人类示范中学习空间-视觉目标导航",
+        "solved_problem_zh": "这篇论文解决了机器人在未知环境、部分可观测条件下寻找未观测目标时，如何像人类一样结合空间记忆与视觉语义选择下一步探索方向的问题。",
+        "tldr_zh": "IntentNav 从人类示范中学习 ObjectNav 策略，让机器人在候选前沿中选择最像人类搜索意图的探索目标。",
+        "relevance_zh": "该工作与具身智能导航高度相关，聚焦 ObjectNav、未知环境探索、BEV 空间记忆、视觉语义线索、前沿选择和机器人零样本迁移。",
+        "problem_zh": "ObjectNav 需要智能体在未知场景中根据部分观测搜索目标，核心难点是如何选择有希望的未探索前沿，同时避免重复访问已探索区域。",
+        "method_zh": "论文提出空间-视觉模仿学习框架 IntentNav，通过 Frontier-based Human-Intent Labeling 从人类低层动作中推断高层搜索意图；构建包含 BEV 记忆、未探索前沿、轨迹历史和自我中心视觉语义线索的候选空间；训练 VLM 策略在具身候选目标中进行选择，并用 Intent-Aligned Objective 促进与人类探索意图一致的决策。",
+        "contribution_zh": "核心贡献是将人类示范中的未来搜索方向转化为前沿级意图标签，并把空间记忆与视觉语义候选结合起来训练 ObjectNav 策略，实现更人类化的探索。",
+        "key_contributions_zh": [
+          "提出 IntentNav 空间-视觉模仿学习框架，用于从人类示范学习 ObjectNav 策略",
+          "提出 Frontier-based Human-Intent Labeling，从人类轨迹中标注最能解释未来搜索方向的前沿候选",
+          "在 MP3D、HM3D-v1 和 HM3D-v2 ObjectNav 基准上达到最先进性能，并可零样本迁移到轮式、四足和人形机器人"
+        ],
+        "experiments_zh": "摘要说明在 MP3D、HM3D-v1 和 HM3D-v2 ObjectNav 基准上取得最先进性能，并说明候选级导航接口可零样本迁移到轮式、四足和人形机器人，无需进一步微调 VLM。",
+        "limitations_zh": "摘要未说明，需要看正文核验。",
+        "read_suggestion_zh": "建议重点阅读人类意图标注方法、空间-视觉候选空间设计、VLM 如何选择前沿候选，以及机器人零样本迁移设置；ObjectNav、前沿探索和场景记忆方向研究者尤其值得关注。",
+        "abstract_zh": "目标导航要求机器人在未知环境和部分可观测条件下搜索未观测目标，并决定下一步探索哪里。有效搜索类似人类探索：选择视觉上有希望的前沿，同时依靠空间记忆避免重复访问。论文提出 IntentNav，一种从人类示范学习人类式 ObjectNav 策略的空间-视觉模仿框架。为从低层人类动作中推断高层搜索意图，论文提出基于前沿的人类意图标注方法，通过向前查看人类示范，标注最能解释示范者未来搜索方向的前沿。论文构建空间-视觉候选空间，其中 BEV 记忆记录已探索区域、未探索前沿和轨迹历史，自我中心视觉记忆为每个候选提供语义线索。训练 VLM 策略在这些具身候选中选择，并使用意图对齐目标鼓励一致且类人的探索。IntentNav 在 MP3D、HM3D-v1 和 HM3D-v2 ObjectNav 基准上达到最先进性能，候选级导航接口可零样本迁移到轮式、四足和人形机器人，无需进一步 VLM 微调。"
+      }
+    },
+    {
+      "rank": 3,
+      "id": "2606.07506v1",
+      "slug": "2606.07506v1-affordance-based-hierarchical-reinforcement-learning-for-quadruped-pedipulation",
+      "detail_url": "papers/2026-06-06/2606.07506v1-affordance-based-hierarchical-reinforcement-learning-for-quadruped-pedipulation.html",
+      "title": "Affordance-Based Hierarchical Reinforcement Learning for Quadruped Pedipulation",
+      "authors": [
+        "Tuba Girgin",
+        "Jose Castelblanco",
+        "Gabriel Rodriguez",
+        "Emre Girgin",
+        "Cagri Kilic"
+      ],
+      "summary": "The object manipulation capabilities of quadruped robots is an open research challenge. While previous studies have focused on low-level policy learning, task execution still relies on expert-designed high-level trajectories. Autonomous selection of both an affordable interaction point on the target object and an affordable robot base pose removes the need for pre-designed trajectories. This study proposes a three-level hierarchical reinforcement learning (RL) framework that utilizes pose affordances to guide the navigation policy, while the navigation policy drives the locomotion policy. In addition, the pedipulation policy is guided by interaction-point affordances, enabling object-centric pose alignment of the quadruped robot and effective end-effector manipulation planning. We train the proposed framework in the IsaacSim ecosystem and evaluate it in both simulation and real-world settings. We investigate the effectiveness of pose affordance across multiple scenarios in simulation while various object interaction tasks are validated on real-world setting forming an object-interaction dataset. The results show that the proposed framework can autonomously identify candidate poses based on their affordance and successfully execute object manipulation tasks in the real world without human guidance.",
+      "published": "2026-06-06",
+      "updated": "2026-06-06",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.07506v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.07506v1",
+      "score": 127.9477,
+      "bm25_score": 120.7477,
+      "phrase_score": 6.4,
+      "matched_keywords": [
+        "navigation policy",
+        "reinforcement learning"
+      ],
+      "reason": "命中 navigation policy、reinforcement learning；具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 8.62,
+      "topic_lanes": [
+        "Robot Navigation",
+        "Planning / Policy"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 8.62,
+        "topic_lanes": [
+          "Robot Navigation",
+          "Planning / Policy"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "论文用三层层级强化学习，让四足机器人根据可供性自主导航到合适位姿并完成物体操作。",
+        "motivation": "这篇论文解决了四足机器人在物体交互任务中依赖人工设计高层轨迹、难以自主选择交互点和机器人基座位姿的问题。",
+        "method": "提出三层层级强化学习框架：使用位姿可供性指导导航策略，导航策略驱动运动策略；同时用交互点可供性指导足部操作策略，实现面向物体的位姿对齐和末端执行器操作规划。",
+        "result": "摘要说明在IsaacSim生态中训练，在仿真和真实世界中评估；仿真中考察多场景下位姿可供性的有效性，真实环境中验证多种物体交互任务并形成物体交互数据集。",
+        "conclusion": "核心贡献是将位姿可供性和交互点可供性引入四足机器人层级强化学习，使机器人能够自主选择候选基座位姿与交互点，并在仿真和真实场景中执行物体操作任务。",
+        "limitation": "摘要未说明，需要看正文核验。",
+        "benchmark_hint": "We investigate the effectiveness of pose affordance across multiple scenarios in simulation while various object interaction tasks are validated on real-world setting forming an object-interaction dataset.",
+        "keyword_hits": {
+          "title": [
+            "reinforcement learning"
+          ],
+          "abstract": [
+            "navigation policy"
+          ]
+        },
+        "external_urls": [],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "The object manipulation capabilities of quadruped robots is an open research challenge."
+          },
+          {
+            "label": "方法证据",
+            "text": "While previous studies have focused on low-level policy learning, task execution still relies on expert-designed high-level trajectories."
+          },
+          {
+            "label": "结果证据",
+            "text": "The results show that the proposed framework can autonomously identify candidate poses based on their affordance and successfully execute object manipulation tasks in the real world without human guidance."
+          },
+          {
+            "label": "基准证据",
+            "text": "We investigate the effectiveness of pose affordance across multiple scenarios in simulation while various object interaction tasks are validated on real-world setting forming an object-interaction dataset."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "基于可供性的四足机器人层级强化学习足部操作",
+        "solved_problem_zh": "这篇论文解决了四足机器人在物体交互任务中依赖人工设计高层轨迹、难以自主选择交互点和机器人基座位姿的问题。",
+        "tldr_zh": "论文用三层层级强化学习，让四足机器人根据可供性自主导航到合适位姿并完成物体操作。",
+        "relevance_zh": "与具身智能导航相关，重点在导航策略、位姿选择、空间对齐和真实机器人执行；虽然不是VLN、ObjectNav或PointNav，但涉及机器人面向物体交互的导航与规划策略。",
+        "problem_zh": "四足机器人具备物体操作能力仍是开放挑战；已有方法多关注低层策略学习，而任务执行仍依赖专家设计的高层轨迹，限制了自主性。",
+        "method_zh": "提出三层层级强化学习框架：使用位姿可供性指导导航策略，导航策略驱动运动策略；同时用交互点可供性指导足部操作策略，实现面向物体的位姿对齐和末端执行器操作规划。",
+        "contribution_zh": "核心贡献是将位姿可供性和交互点可供性引入四足机器人层级强化学习，使机器人能够自主选择候选基座位姿与交互点，并在仿真和真实场景中执行物体操作任务。",
+        "key_contributions_zh": [
+          "提出基于可供性的三层层级强化学习框架，连接导航策略、运动策略和足部操作策略",
+          "利用位姿可供性指导机器人基座导航与物体中心位姿对齐",
+          "在IsaacSim中训练，并在仿真和真实世界中评估物体交互任务"
+        ],
+        "experiments_zh": "摘要说明在IsaacSim生态中训练，在仿真和真实世界中评估；仿真中考察多场景下位姿可供性的有效性，真实环境中验证多种物体交互任务并形成物体交互数据集。",
+        "limitations_zh": "摘要未说明，需要看正文核验。",
+        "read_suggestion_zh": "建议关注层级策略如何把可供性用于导航位姿选择，以及真实机器人验证是否能为ObjectNav式目标交互导航提供参考。",
+        "abstract_zh": "四足机器人的物体操作能力仍是开放研究挑战。以往研究多关注低层策略学习，但任务执行仍依赖专家设计的高层轨迹。自主选择目标物体上可交互的交互点和机器人基座可行位姿，可以避免预设计轨迹。本文提出三层层级强化学习框架，利用位姿可供性指导导航策略，并由导航策略驱动运动策略。同时，足部操作策略由交互点可供性指导，使四足机器人能够进行面向物体的位姿对齐和有效的末端执行器操作规划。该框架在IsaacSim中训练，并在仿真和真实世界中评估。研究在仿真多场景中考察位姿可供性的有效性，并在真实环境中验证多种物体交互任务，形成物体交互数据集。结果表明，该框架能够基于可供性自主识别候选位姿，并在无人指导下于真实世界成功执行物体操作任务。"
+      }
+    }
+  ],
+  "errors": []
+}

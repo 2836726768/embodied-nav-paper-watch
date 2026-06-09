@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WorldFly：一种基于世界模型的无人机导航视觉-语言-动作模型</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">WorldFly：一种基于世界模型的无人机导航视觉-语言-动作模型</h1>
+    <p class="paper-original">WorldFly: A World-Model-Based Vision-Language-Action Model for UAV Navigation</p>
+    <div class="paper-meta">
+      <span>Shengtao Zheng, Kai Li, Weichen Zhang, Yu Meng, Chen Gao, Xinlei Chen, Yong Li, Xiao-Ping Zhang</span>
+      <span>published 2026-06-04</span>
+      <span>cs.AI</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Planning / Policy</span><span class="tag">Embodied AI / VLA</span><span class="tag">Aerial / UAV</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了端到端 VLA 模型在无人机城市导航中，面对严重遮挡和急转弯导致的剧烈视角变化时，仅依赖历史观测直接预测动作而鲁棒性不足的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>WorldFly 让无人机在导航时先“想象”未来视角，再用这种空间想象来辅助动作决策。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出面向 UAV 导航的世界模型式 VLA 框架 WorldFly</li><li>通过双分支耦合流匹配联合生成未来视频预测和导航动作</li><li>构建 Urban Canyon Traversal Benchmark，用于评估城市峡谷场景中的遮挡、急转弯和空间理解</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>端到端视觉-语言-动作模型在无人机导航中显示出潜力，但现有方法通常依赖历史观测直接预测动作，在密集城市环境中，严重遮挡和急转弯会造成剧烈视角变化，从而带来困难。作者认为，世界模型所具备的“想象”未来状态能力，对部分可观测条件下的稳健决策至关重要。为此，论文构建了 Urban Canyon Traversal Benchmark，用于评估严重遮挡和剧烈视角变化场景中的空间理解。论文进一步提出 WorldFly，一种基于世界模型的 VLA 框架，通过双分支耦合流匹配机制联合生成未来视频预测和导航动作，从而用空间想象显式引导智能体策略。实验表明，WorldFly 在该 benchmark 上优于其他基线，尤其在未见环境中表现突出，验证了将世界模型集成到具身空中智能体中的有效性。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>End-to-end Vision-Language-Action (VLA) models have shown promise in UAV navigation. However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions. We argue that the ability to "imagine" future states -- inherent in World Models -- is critical for robust decision-making under such partial observability. To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions. To this end, we propose WorldFly, a novel world-model-based VLA framework that employs a dual-branch coupled flow matching mechanism to jointly generate future video predictions and navigation actions, thereby explicitly guiding the agent's policy via spatial imagination. Extensive evaluations on our benchmark demonstrate that WorldFly outperforms other baselines, particularly in unseen environments, validating the effectiveness of integrating world models into embodied aerial agents.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.06147v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.06147v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-04.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

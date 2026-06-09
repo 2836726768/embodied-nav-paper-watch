@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>李群中导航向量场距离函数的高效计算</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 6.1</span>
+      <span class="badge">rank #2</span>
+    </div>
+    <h1 class="paper-title">李群中导航向量场距离函数的高效计算</h1>
+    <p class="paper-original">Efficient Computation of Distance Functions for Navigation Vector Fields in Lie Groups</p>
+    <div class="paper-meta">
+      <span>Vinicius M. Gonçalves, João Baião, Felipe Bartelt, Douglas G. Macharet, Gustavo M. Freitas, Héctor Azpúrua, Luciano C. A. Pimenta</span>
+      <span>published 2026-06-04</span>
+      <span>cs.RO, cs.CG</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了基于向量场的机器人导航与路径跟踪中，在李群配置空间里反复计算机器人到曲线距离和最近点开销过高的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出一种更快计算李群中点到曲线距离的方法，用于提升机器人导航向量场控制的实时性。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验；尤其需核验在移动机器人、UAV导航、高维复杂轨迹和嵌入式实时控制中的适用范围。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出李群中点到G-多项式曲线距离的高效计算方法</li><li>将距离与最近点计算归约为少量多项式求根问题</li><li>给出SE(3)实用公式，并在仿真和机器人机械臂实验中验证</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>基于向量场的方法广泛用于机器人控制，并常用于路径跟踪。一些向量场方法需要反复计算机器人配置到曲线的距离及其最近点。最近，向量场被扩展到李群中，此时该计算可能很昂贵，尤其是在嵌入式平台上以高控制频率运行时。本文提出一种高效计算点到G-多项式曲线距离的方法，G-多项式曲线是将多项式曲线推广到矩阵李群的曲线表示。该方法利用曲线结构，将问题化为少量多项式求根计算。仿真结果显示，相比现有基于优化的方法，该方法在保持精度的同时显著减少计算时间。论文还给出SE(3)情况下的实用公式，并在机器人机械臂上进行实验验证。该方法已实现为在线可用的计算软件包。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Vector-field-based methods are widely used for robot control and are often applied to the path-tracking problem. Some vector field approaches require repeatedly computing the distance between the robot configuration and the curve, as well as the corresponding closest point. Recently, vector fields have been extended to Lie Groups. In this case, this computation can be expensive, especially when performed at high control frequencies on embedded platforms. This paper proposes a method for efficiently computing the distance between a point and a curve represented as what is called a G-polynomial curve, which is a curve representation that generalizes polynomial curves to matrix Lie groups. The proposed approach exploits the structure of these curves to reduce the problem to a small number of polynomial root-finding computations. Simulation results show that the method significantly reduces computation time while maintaining accuracy compared to existing optimization-based approaches. Practical formulas are also provided for the case of the group SE(3), and the method is validated experimentally on a robotic manipulator. The methodology is implemented in a computational package, available online.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.05372v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.05372v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-04.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+{
+  "label": "2026-06-08",
+  "date": "2026-06-08",
+  "generated_at": "2026-06-08 09:00:00 CST",
+  "count": 2,
+  "deep_count": 2,
+  "quick_count": 0,
+  "papers": [
+    {
+      "rank": 1,
+      "id": "2606.08992v1",
+      "slug": "2606.08992v1-spacevln-a-zero-shot-vision-and-language-navigation-agent-with-online-spatial-cognitiv",
+      "detail_url": "papers/2026-06-08/2606.08992v1-spacevln-a-zero-shot-vision-and-language-navigation-agent-with-online-spatial-cognitiv.html",
+      "title": "SpaceVLN: A Zero-Shot Vision-and-Language Navigation Agent with Online Spatial Cognitive Memory and Reasoning",
+      "authors": [
+        "Yucheng Deng",
+        "Pingrui Lai",
+        "Xinhai Li",
+        "Chenjia Bai",
+        "Xiaoheng Deng",
+        "Chengnuo Sun",
+        "Xuelong Li",
+        "Hua Yang"
+      ],
+      "summary": "Vision-and-Language Navigation in continuous environments requires agents to understand the spatial structure of previously unseen environments in order to follow language instructions. Although foundation models have opened a promising path toward zero-shot navigation without task-specific policy training, many navigators still rely on local visual cues and linear history-based reasoning, overlooking the spatial nature of navigation across explored regions, traversed paths, landmarks, and their spatial relations. In this paper, we propose SpaceVLN, a navigation agent built around Spatial Cognitive Memory and Task-Guided Spatial Reasoning. Specifically, SpaceVLN introduces an efficient stagewise closed-loop framework where planning and execution are organized around verifiable space--landmark stages. During navigation, the agent progressively abstracts explored regions into Spatial Waypoints and dynamically maintains subtask-grounded landmark evidence, forming a hierarchical Spatial Cognitive Memory for progress localization and spatial-relation understanding. Built on this memory, Spatial-CoT integrates task-progress reasoning with spatial perception, analysis, and prediction, enabling Task-Guided Spatial Reasoning for embodied navigation. The unified stage interface enables SpaceVLN to address both Vision-and-Language Navigation and Object-Goal Navigation under a unified zero-shot setting, without task-specific policy training. Across R2R-CE, RxR-CE, GN-Bench, and HM3D-OVON, SpaceVLN achieves state-of-the-art zero-shot performance, and real-robot deployment further validates its applicability. These results highlight Spatial Cognitive Memory and Task-Guided Spatial Reasoning as a practical foundation for stronger embodied navigation agents.",
+      "published": "2026-06-08",
+      "updated": "2026-06-08",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.08992v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.08992v1",
+      "score": 180.322,
+      "bm25_score": 167.522,
+      "phrase_score": 10.9,
+      "matched_keywords": [
+        "embodied navigation",
+        "object-goal navigation",
+        "spatial reasoning",
+        "localization"
+      ],
+      "reason": "命中 embodied navigation、object-goal navigation、spatial reasoning、localization；具身/机器人导航焦点明确；包含地图/场景图/空间推理导航线索",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 10.0,
+      "topic_lanes": [
+        "Robot Navigation",
+        "VLN",
+        "ObjectNav / GoalNav",
+        "Planning / Policy",
+        "Active Mapping / SLAM"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 10.0,
+        "topic_lanes": [
+          "Robot Navigation",
+          "VLN",
+          "ObjectNav / GoalNav",
+          "Planning / Policy",
+          "Active Mapping / SLAM"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "SpaceVLN 用在线空间认知记忆和任务引导空间推理，让智能体在零样本条件下同时处理 VLN 和 Object-Goal 导航。",
+        "motivation": "这篇论文解决了连续环境中零样本视觉语言导航智能体过度依赖局部视觉线索和线性历史推理、缺少对已探索区域、路径、地标及其空间关系建模的问题。",
+        "method": "论文提出 SpaceVLN，包含空间认知记忆和任务引导空间推理。它采用阶段式闭环框架，将规划和执行组织为可验证的空间—地标阶段；导航过程中把已探索区域抽象为 Spatial Waypoints，并动态维护与子任务相关的地标证据，形成层次化 Spatial Cognitive Memory；再通过 Spatial-CoT 结合任务进度推理、空间感知、分析和预测，实现面向具身导航的空间推理。",
+        "result": "摘要说明在 R2R-CE、RxR-CE、GN-Bench 和 HM3D-OVON 上取得最先进的零样本性能，并进行了真实机器人部署验证。",
+        "conclusion": "核心贡献是提出一种统一的零样本导航智能体框架，用层次化空间认知记忆和任务引导空间推理支持 VLN 与 Object-Goal Navigation，无需任务特定策略训练，并在多个基准和真实机器人部署中验证有效性。",
+        "limitation": "摘要未说明，需要看正文核验。",
+        "benchmark_hint": "Across R2R-CE, RxR-CE, GN-Bench, and HM3D-OVON, SpaceVLN achieves state-of-the-art zero-shot performance, and real-robot deployment further validates its applicability.",
+        "keyword_hits": {
+          "title": [],
+          "abstract": [
+            "embodied navigation",
+            "localization",
+            "object-goal navigation",
+            "spatial reasoning"
+          ]
+        },
+        "external_urls": [],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "Vision-and-Language Navigation in continuous environments requires agents to understand the spatial structure of previously unseen environments in order to follow language instructions."
+          },
+          {
+            "label": "方法证据",
+            "text": "Although foundation models have opened a promising path toward zero-shot navigation without task-specific policy training, many navigators still rely on local visual cues and linear history-based reasoning, overlooking the spatial nature of navigation across…"
+          },
+          {
+            "label": "结果证据",
+            "text": "Across R2R-CE, RxR-CE, GN-Bench, and HM3D-OVON, SpaceVLN achieves state-of-the-art zero-shot performance, and real-robot deployment further validates its applicability."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "SpaceVLN：具有在线空间认知记忆与推理的零样本视觉语言导航智能体",
+        "solved_problem_zh": "这篇论文解决了连续环境中零样本视觉语言导航智能体过度依赖局部视觉线索和线性历史推理、缺少对已探索区域、路径、地标及其空间关系建模的问题。",
+        "tldr_zh": "SpaceVLN 用在线空间认知记忆和任务引导空间推理，让智能体在零样本条件下同时处理 VLN 和 Object-Goal 导航。",
+        "relevance_zh": "与具身智能导航高度相关，直接面向 VLN、ObjectNav/GoalNav、连续环境导航、空间推理、地标记忆、进度定位和真实机器人部署。",
+        "problem_zh": "连续环境中的 VLN 需要智能体理解未见环境的空间结构并遵循语言指令，但现有基于基础模型的零样本导航方法仍常忽视跨探索区域、已走路径、地标及空间关系的空间化导航本质。",
+        "method_zh": "论文提出 SpaceVLN，包含空间认知记忆和任务引导空间推理。它采用阶段式闭环框架，将规划和执行组织为可验证的空间—地标阶段；导航过程中把已探索区域抽象为 Spatial Waypoints，并动态维护与子任务相关的地标证据，形成层次化 Spatial Cognitive Memory；再通过 Spatial-CoT 结合任务进度推理、空间感知、分析和预测，实现面向具身导航的空间推理。",
+        "contribution_zh": "核心贡献是提出一种统一的零样本导航智能体框架，用层次化空间认知记忆和任务引导空间推理支持 VLN 与 Object-Goal Navigation，无需任务特定策略训练，并在多个基准和真实机器人部署中验证有效性。",
+        "key_contributions_zh": [
+          "提出 Spatial Cognitive Memory，将已探索区域抽象为空间路标并维护子任务相关地标证据",
+          "提出 Spatial-CoT，将任务进度推理与空间感知、分析、预测结合用于具身导航",
+          "统一支持 VLN 和 Object-Goal Navigation 的零样本设置，并在 R2R-CE、RxR-CE、GN-Bench、HM3D-OVON 及真实机器人部署中验证"
+        ],
+        "experiments_zh": "摘要说明在 R2R-CE、RxR-CE、GN-Bench 和 HM3D-OVON 上取得最先进的零样本性能，并进行了真实机器人部署验证。",
+        "limitations_zh": "摘要未说明，需要看正文核验。",
+        "read_suggestion_zh": "建议重点阅读其空间认知记忆如何构建、Spatial Waypoints 与地标证据如何更新、Spatial-CoT 如何服务于进度定位和空间关系推理，以及其统一处理 VLN 与 ObjectNav 的阶段接口。",
+        "abstract_zh": "连续环境中的视觉语言导航要求智能体理解未见环境的空间结构以遵循语言指令。尽管基础模型为无需任务特定策略训练的零样本导航提供了可能，许多导航器仍依赖局部视觉线索和线性历史推理，忽略了探索区域、已走路径、地标及其空间关系的空间本质。论文提出 SpaceVLN，它围绕空间认知记忆和任务引导空间推理构建。SpaceVLN 采用高效的阶段式闭环框架，将规划和执行组织为可验证的空间—地标阶段；在导航中逐步将已探索区域抽象为空间路标，并动态维护子任务相关的地标证据，形成层次化空间认知记忆，用于进度定位和空间关系理解。基于该记忆，Spatial-CoT 将任务进度推理与空间感知、分析和预测结合，实现任务引导空间推理。统一阶段接口使 SpaceVLN 能在统一零样本设置下处理视觉语言导航和目标物体导航，无需任务特定策略训练。在 R2R-CE、RxR-CE、GN-Bench 和 HM3D-OVON 上，SpaceVLN 达到最先进的零样本性能，真实机器人部署进一步验证了适用性。"
+      }
+    },
+    {
+      "rank": 2,
+      "id": "2606.09268v1",
+      "slug": "2606.09268v1-vgp-nav-metric-aware-visual-geometric-perception-for-robot-navigation",
+      "detail_url": "papers/2026-06-08/2606.09268v1-vgp-nav-metric-aware-visual-geometric-perception-for-robot-navigation.html",
+      "title": "VGP-Nav: Metric-Aware Visual Geometric Perception for Robot Navigation",
+      "authors": [
+        "Hewei Pan",
+        "Weiye Zhu",
+        "Zekai Zhang",
+        "Zitong Huang",
+        "Rongtao Xu",
+        "Jinbao Wang",
+        "Feng Zheng"
+      ],
+      "summary": "Reliable robotic navigation necessitates the seamless integration of accurate global localization and dense, metric-consistent obstacle perception. A common strategy to achieve these capabilities involves integrating diverse sensing modalities: cameras offer rich visual features for localization, while active sensors like LiDAR provide direct metric measurements. However, such multi-sensor configurations necessitate complex spatial-temporal calibration and increase deployment overhead. Although vision-only approaches offer a low-cost and scalable alternative, existing monocular visual systems typically struggle to simultaneously achieve efficient, globally consistent localization and dense, metric-consistent geometric perception. To bridge this gap, we propose \\textbf{VGP-Nav}, a unified framework for \\textit{Metric-Aware Visual Geometric Perception} that relies solely on monocular RGB input to jointly support metric localization and obstacle perception. Our key insight is to anchor localization-grounded visual geometry to physically meaningful scale constraints derived from ground-plane geometry, thereby providing a reliable metric reference for monocular perception. VGP-Nav resolves monocular scale ambiguity online and produces localization-grounded, metric obstacle representations that are directly applicable to downstream planning. Extensive experiments demonstrate strong generalization across diverse environments and successful deployment on real mobile robots, highlighting the practicality of our approach for scalable, low-cost, and safe autonomous navigation.",
+      "published": "2026-06-08",
+      "updated": "2026-06-08",
+      "categories": [
+        "cs.RO"
+      ],
+      "abs_url": "https://arxiv.org/abs/2606.09268v1",
+      "pdf_url": "https://arxiv.org/pdf/2606.09268v1",
+      "score": 126.7956,
+      "bm25_score": 115.7956,
+      "phrase_score": 9.4,
+      "matched_keywords": [
+        "robot navigation",
+        "localization"
+      ],
+      "reason": "命中 robot navigation、localization；具身/机器人导航焦点明确",
+      "section": "精读区",
+      "priority": "High",
+      "score_10": 7.03,
+      "topic_lanes": [
+        "Robot Navigation",
+        "Planning / Policy",
+        "Active Mapping / SLAM"
+      ],
+      "study_type": "Robot Navigation",
+      "readout": {
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 7.03,
+        "topic_lanes": [
+          "Robot Navigation",
+          "Planning / Policy",
+          "Active Mapping / SLAM"
+        ],
+        "study_type": "Robot Navigation",
+        "tldr": "VGP-Nav 只用单目 RGB，通过地面几何约束恢复尺度，同时服务定位、障碍物感知和下游规划。",
+        "motivation": "这篇论文解决了单目 RGB 机器人导航中难以同时实现全局一致定位和稠密、尺度一致障碍物感知的问题。",
+        "method": "论文提出 VGP-Nav，一个仅依赖单目 RGB 输入的统一框架，用于尺度感知视觉几何感知。其核心是将由定位支撑的视觉几何锚定到来自地面几何的物理尺度约束，从而在线解决单目尺度歧义，并生成可用于下游规划的度量障碍物表示。",
+        "result": "摘要说明进行了广泛实验，展示了在多样环境中的强泛化能力，并成功部署到真实移动机器人上。",
+        "conclusion": "论文的主要贡献是提出一种单目视觉导航框架，在不依赖 LiDAR 等主动传感器的情况下，将度量定位和障碍物感知统一起来，并面向低成本、可扩展、安全自主导航。",
+        "limitation": "摘要未说明，需要看正文核验。",
+        "benchmark_hint": "",
+        "keyword_hits": {
+          "title": [
+            "robot navigation"
+          ],
+          "abstract": [
+            "localization"
+          ]
+        },
+        "external_urls": [],
+        "evidence": [
+          {
+            "label": "问题证据",
+            "text": "Although vision-only approaches offer a low-cost and scalable alternative, existing monocular visual systems typically struggle to simultaneously achieve efficient, globally consistent localization and dense, metric-consistent geometric perception."
+          },
+          {
+            "label": "方法证据",
+            "text": "To bridge this gap, we propose \\textbf{VGP-Nav}, a unified framework for \\textit{Metric-Aware Visual Geometric Perception} that relies solely on monocular RGB input to jointly support metric localization and obstacle perception."
+          },
+          {
+            "label": "结果证据",
+            "text": "A common strategy to achieve these capabilities involves integrating diverse sensing modalities: cameras offer rich visual features for localization, while active sensors like LiDAR provide direct metric measurements."
+          }
+        ],
+        "source": "OpenClaw"
+      },
+      "openclaw": {
+        "title_zh": "VGP-Nav：用于机器人导航的尺度感知视觉几何感知",
+        "solved_problem_zh": "这篇论文解决了单目 RGB 机器人导航中难以同时实现全局一致定位和稠密、尺度一致障碍物感知的问题。",
+        "tldr_zh": "VGP-Nav 只用单目 RGB，通过地面几何约束恢复尺度，同时服务定位、障碍物感知和下游规划。",
+        "relevance_zh": "与具身智能导航高度相关，聚焦机器人导航中的视觉定位、度量几何感知、障碍物表示和规划输入，可关联 PointNav、ObjectNav、VLN 等任务中的空间尺度推理与安全导航。",
+        "problem_zh": "可靠机器人导航需要准确全局定位和稠密、度量一致的障碍物感知。多传感器方案依赖相机和 LiDAR 等设备，带来时空标定复杂和部署成本增加；而现有纯视觉单目系统通常难以同时做到高效全局一致定位和稠密度量几何感知。",
+        "method_zh": "论文提出 VGP-Nav，一个仅依赖单目 RGB 输入的统一框架，用于尺度感知视觉几何感知。其核心是将由定位支撑的视觉几何锚定到来自地面几何的物理尺度约束，从而在线解决单目尺度歧义，并生成可用于下游规划的度量障碍物表示。",
+        "contribution_zh": "论文的主要贡献是提出一种单目视觉导航框架，在不依赖 LiDAR 等主动传感器的情况下，将度量定位和障碍物感知统一起来，并面向低成本、可扩展、安全自主导航。",
+        "key_contributions_zh": [
+          "提出 VGP-Nav 统一框架，仅用单目 RGB 支持度量定位和障碍物感知",
+          "利用地面几何提供物理尺度约束，在线缓解单目尺度歧义",
+          "生成与定位关联的度量障碍物表示，可直接用于下游导航规划，并在真实移动机器人上部署成功"
+        ],
+        "experiments_zh": "摘要说明进行了广泛实验，展示了在多样环境中的强泛化能力，并成功部署到真实移动机器人上。",
+        "limitations_zh": "摘要未说明，需要看正文核验。",
+        "read_suggestion_zh": "建议关注其单目尺度恢复、地面几何约束、定位与障碍物表示的耦合方式，以及这些度量表示如何接入导航规划；同时核验实验环境、基线、失败案例和真实机器人部署细节。",
+        "abstract_zh": "可靠机器人导航需要准确全局定位和稠密、度量一致的障碍物感知。常见做法是融合多种传感器，例如相机提供视觉特征用于定位，LiDAR 等主动传感器提供直接度量信息，但这会带来复杂标定和部署开销。纯视觉方案成本低且更易扩展，但现有单目系统通常难以同时实现高效全局一致定位和稠密度量几何感知。为弥合这一差距，论文提出 VGP-Nav，仅依赖单目 RGB 输入，联合支持度量定位和障碍物感知。核心思想是利用地面几何带来的物理尺度约束，为单目感知提供可靠度量参考。VGP-Nav 可在线解决单目尺度歧义，并输出可直接用于下游规划的度量障碍物表示。实验显示其在多样环境中具有较强泛化能力，并可成功部署在真实移动机器人上。"
+      }
+    }
+  ],
+  "errors": []
+}

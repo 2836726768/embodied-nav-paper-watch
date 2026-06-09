@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身智能导航论文日报 2026-06-03</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · 2026-06-03</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/2026-06-03.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-03</h1>
+<ul>
+<li>生成时间：2026-06-03 09:00:00 CST</li>
+<li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
+<li>扫描条目：644；时间窗口候选：456；入选：5</li>
+</ul>
+<ul>
+<li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
+</ul>
+<h2>今日精选</h2>
+<h3>1. WAM-Nav：用于统一视觉导航的非对称潜在世界-动作建模</h3>
+<ul>
+<li>原题：WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Ning Yang, Yan Huang, Kaiwen Peng, Ziheng He, Kai Wang, Cui Miao et al.</li>
+<li>日期：published 2026-06-03；updated 2026-06-03</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.04907v1">abs</a> / <a href="https://arxiv.org/pdf/2606.04907v1">PDF</a></li>
+<li>命中关键词：point-goal navigation, visual navigation, sim-to-real</li>
+<li>为什么和具身导航相关：与具身智能视觉导航高度相关，重点覆盖Point-Goal、Image-Goal、No-Goal探索、长时程动作规划、视觉前瞻和sim-to-real机器人导航。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了视觉导航中反应式策略缺乏前瞻推理、难以主动避障，以及传统视觉想象模块化方法误差累积和推理低效的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>WAM-Nav把动作生成和短期视觉前瞻联合建模，用一个统一策略支持图像目标、点目标和无目标探索导航。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出WAM-Nav潜在世界-动作模型，联合学习动作生成和潜在视觉前瞻</li>
+<li>使用共享Diffusion Transformer进行非对称联合扩散，减少自回归视觉预测的延迟和误差累积</li>
+<li>统一支持Image-Goal、Point-Goal和No-Goal探索，并在仿真和真实环境中验证sim-to-real效果</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明失败案例、计算开销细节、地图或场景图使用情况，以及不同环境复杂度下的局限，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其联合扩散建模是否适合替代VLN/ObjectNav/PointNav中的局部策略或预测模块，并重点核验真实机器人部署设置、推理延迟和与地图式方法的对比。</p>
+<h4>中文摘要</h4>
+<p>视觉导航需要在复杂几何和物理约束下生成平滑、无碰撞轨迹。现有反应式策略缺乏前瞻推理，传统视觉想象模块化方法存在误差累积和推理低效。WAM-Nav通过潜在世界-动作模型联合学习动作生成和视觉前瞻，使用共享Diffusion Transformer同时生成长时程动作和短时程视觉前瞻，并结合双流上下文条件和统一目标对齐模块，支持Image-Goal、Point-Goal和No-Goal探索。在ClutterScenes和InternScenes上表现出强泛化，并在真实室内外环境中实现有效零样本sim-to-real迁移。</p>
+<h4>英文摘要原文</h4>
+<p>Visual navigation requires generating smooth and collision-free trajectories under complex geometric and physical constraints. Existing reactive policies that directly map observations to actions lack anticipatory reasoning, limiting their ability to proactively avoid obstacles. While visual imagination offers predictive foresight, conventional modular approaches separate scene prediction from policy learning, often leading to error accumulation and inefficient inference. To address these limitations, we propose WAM-Nav, a Latent World-Action Model for embodied visual navigation that jointly learns action generation and latent visual foresight, enabling more robust and foresighted navigation decisions without compromising inference efficiency. Specifically, WAM-Nav utilizes a shared Diffusion Transformer for asymmetric joint diffusion to concurrently generate long-horizon actions and short-horizon visual foresight, reducing the inference latency and visual error accumulation inherent in multi-step autoregressive rollouts. To further encourage smooth and consistent trajectory generation, we introduce a dual-stream contextual conditioning mechanism that integrates episode-level ego-motion history with sequential visual observations. Combined with a unified goal alignment module that preserves balanced representations across goal types, WAM-Nav naturally supports Image-Goal, Point-Goal, and No-Goal exploration within a single policy. Extensive experiments on the challenging ClutterScenes and InternScenes benchmarks demonstrate strong generalization of WAM-Nav, particularly on Image-Goal and Point-Goal navigation, where it improves success rates by 15.7% and 3.3%, respectively. Real-world deployment further validates effective zero-shot sim-to-real transfer, achieving an average 85% task success rate across diverse indoor and outdoor environments.</p>
+<h3>2. AgenticDiffusion：用于基于视觉的无人机导航的智能体式扩散路径规划</h3>
+<ul>
+<li>原题：AgenticDiffusion: Agentic Diffusion-based Path Planning for Vision-Based UAV Navigation</li>
+<li>分区：精读区；评分：9.6/10</li>
+<li>作者：Faryal Batool, Muhammad Ahsan Mustafa, Fawad Mehboob, Valerii Serpiva, Dzmitry Tsetserukou</li>
+<li>日期：published 2026-06-03；updated 2026-06-03</li>
+<li>类别：cs.RO, cs.AI, eess.SY</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.04111v1">abs</a> / <a href="https://arxiv.org/pdf/2606.04111v1">PDF</a></li>
+<li>命中关键词：aerial navigation, open-vocabulary, path planning</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，重点在 UAV 室内导航、语言指令导航、开放词汇目标 grounding、多视角空间推理和基于扩散模型的路径规划。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了室内 UAV 在有限视野下进行高效探索、场景理解和可靠轨迹执行的问题，特别关注遮挡、目标可见性和全局场景结构推理不足。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>这篇论文把语言推理、开放词汇目标定位、多视角视觉和扩散路径规划结合起来，用于室内无人机导航。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出多视角 UAV 导航框架 AgenticDiffusion，结合 FPV 与俯视观测进行导航决策</li>
+<li>融合语言引导推理、开放词汇目标 grounding、扩散路径规划和 NMPC</li>
+<li>在 4 类真实 UAV 导航场景中验证，40 次真实试验总体任务成功率为 80%</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读多视角信息如何用于视角选择与空间推理、开放词汇 grounding 如何接入 UAV 导航、扩散规划器如何生成可执行轨迹，以及真实机器人实验设置是否适合迁移到 VLN、ObjectNav 或其他具身导航任务。</p>
+<h4>中文摘要</h4>
+<p>室内 UAV 导航需要在有限视野观测下实现高效探索、场景理解和可靠轨迹执行。现有基于视觉的导航框架通常依赖单视角观测，限制了其对遮挡、目标可见性和全局场景结构的推理能力。本文提出 AgenticDiffusion，一个多视角 UAV 导航框架，在统一的空中导航流程中协调语言引导推理、开放词汇目标 grounding、基于视觉的扩散规划和 NMPC。给定自然语言指令以及同步的第一人称视角和俯视观测，框架会确定最有信息量的导航视角，并在执行轨迹前生成任务计划。目标通过开放词汇 grounding 模型定位，随后由特定视角的扩散规划器生成 UAV 执行轨迹。通过互补视角，该框架减少重复目标探索，并提升杂乱室内环境中的导航效率。该框架在四个真实 UAV 导航场景中验证，涵盖自适应视角选择、多阶段任务执行、长时程导航和安全降落点选择。实验结果显示，40 次真实试验总体任务成功率为 80%，扩散规划器轨迹生成成功率为 100%。</p>
+<h4>英文摘要原文</h4>
+<p>Indoor UAV navigation requires efficient exploration, scene understanding, and reliable trajectory execution under limited field-of-view observations. Existing vision-based navigation frameworks typically rely on single-view observations, limiting their ability to reason about occlusions, target visibility, and global scene structure. In this work, we propose AgenticDiffusion, a multi-view UAV navigation framework that coordinates language-guided reasoning, open-vocabulary target grounding, vision-based diffusion planning, and NMPC within a unified aerial navigation pipeline. Given a natural language instruction and synchronized first-person-view (FPV) and top-view observations, the framework determines the most informative viewpoint for navigation and generates a mission plan prior to trajectory execution. The targets are localized using an open-vocabulary grounding model, after which viewpoint-specific diffusion planners generate navigation trajectories for UAV execution. Using complementary viewpoints, the proposed framework reduces repeated target exploration and improves navigation efficiency in cluttered indoor environments. The framework was validated in four real-world UAV navigation scenarios involving adaptive viewpoint selection, multi-stage mission execution, long-horizon navigation, and safe landing-site selection. The experimental results demonstrated an overall mission success rate of 80% in 40 real-world trials, while the diffusion planners achieved a trajectory generation success rate of 100%.</p>
+<h3>3. MineXplore：面向无GNSS地下环境的开源强化学习探索基准</h3>
+<ul>
+<li>原题：MineXplore: An Open-Source Reinforcement Learning Exploration Benchmark for GNSS-Denied Underground Environment</li>
+<li>分区：精读区；评分：6.6/10</li>
+<li>作者：Abhishek S, Badrikanath Praharaj, Sreeram MV</li>
+<li>日期：published 2026-06-03；updated 2026-06-03</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.04569v1">abs</a> / <a href="https://arxiv.org/pdf/2606.04569v1">PDF</a></li>
+<li>命中关键词：robot navigation, reinforcement learning</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦无GNSS地下机器人探索、强化学习策略、复杂隧道拓扑、地图几何重建和覆盖式导航任务；不涉及VLN、ObjectNav或PointNav。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了地下矿井中无GPS、弱光、环路丰富且非凸隧道拓扑下，缺少基于真实矿井几何并兼容GPU加速学习流程的开源机器人导航仿真基准问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出了一个基于MuJoCo的开源地下矿井机器人探索导航基准，并用PPO验证可进行稳定强化学习训练。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出开源MuJoCo地下矿井机器人导航探索基准MineXplore</li>
+<li>从真实智利地下铜矿测绘数据重建大规模隧道网络并加入多种环境属性</li>
+<li>提供单智能体PPO强化学习基线，验证稳定且可复现的覆盖式导航学习</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明真实机器人实验；局限性需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其环境重建流程、覆盖率奖励或评估设置、PPO基线可复现性，以及该地下拓扑是否可迁移到其他机器人导航和探索任务。</p>
+<h4>中文摘要</h4>
+<p>地下矿井对自主机器人导航提出极端挑战：GPS不可用、光照退化、隧道拓扑环路丰富且非凸。开源生态中尚不存在基于真实生产矿井几何并兼容GPU加速学习流程的仿真基准。论文提出MineXplore，这是一个基于MuJoCo的开源导航基准，来自Leung等2017年智利地下铜矿数据集。环境通过六阶段轮廓到MJCF流程重建104423平方米隧道网络，包含八边形墙体截面、LiDAR来源的粗糙墙面、三类地面摩擦区、全局5度坡度和周期性聚光照明。其几何保真度相对源测绘图IoU为0.9538，六个结构维度的表面纹理相似度为79.4%。通过RLlib在五个独立随机种子上训练单智能体PPO基线，最佳滚动覆盖率达到88.89%，其中3个种子达到90%覆盖目标，表明MineXplore支持在真实地下感知和拓扑条件下进行稳定、可复现的策略学习。</p>
+<h4>英文摘要原文</h4>
+<p>Underground mines present extreme conditions for autonomous robot navigation: GPS is denied, lighting is degraded, and tunnel topology is loop-rich and non-convex. Simulation benchmarks grounded in real production-mine geometry and compatible with GPU-accelerated learning pipelines do not yet exist in the open-source ecosystem. We present MineXplore, an open-source MuJoCo-based navigation benchmark derived from the Leung et al. 2017 Chilean underground copper mine dataset. The environment reconstructs a 104,423 sq.m tunnel network through an six-stage contour-to-MJCF pipeline incorporating octagonal wall cross-sections, LiDAR-sourced jagged wall geometry, three terrain friction zones, a global 5 degree incline, and periodic spot lighting. Geometric fidelity is validated at an Intersection over Union (IoU) of 0.9538 against the source survey map, and surface texture similarity scores 79.4% across six structural dimensions. A single-agent PPO baseline trained via RLlib across five independent random seeds achieves a best rolling coverage of 88.89% (3 of 5 seeds reaching the 90% coverage target), confirming that MineXplore supports stable and reproducible policy learning under realistic underground sensing and topology.</p>
+<h3>4. 环境可变性下视觉四旋翼导航世界模型的泛化</h3>
+<ul>
+<li>原题：Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation</li>
+<li>分区：速读区；评分：6.5/10</li>
+<li>作者：Luca Zanatta, Grzegorz Malczyk, Kostas Alexis</li>
+<li>日期：published 2026-06-03；updated 2026-06-03</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.05015v1">abs</a> / <a href="https://arxiv.org/pdf/2606.05015v1">PDF</a></li>
+<li>命中关键词：sim-to-real, reinforcement learning</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦视觉机器人导航、世界模型、强化学习策略、sim-to-real，以及真实四旋翼在未见环境中的导航部署。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了视觉四旋翼导航中，世界模型在不同环境随机性下是否鲁棒、以及这种鲁棒性如何影响仿真到真实迁移的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文系统评估 DreamerV3 世界模型在视觉四旋翼导航中的环境泛化能力，并验证其对真实四旋翼导航迁移的影响。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>系统研究不同环境随机性对视觉四旋翼导航世界模型泛化的影响</li>
+<li>通过跨环境验证覆盖自监督预训练和强化学习微调两个阶段</li>
+<li>在真实四旋翼未见环境中验证模型与导航策略，并包含传感器切断后的想象导航实验</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其世界模型泛化评估方式、自监督预训练指标与 sim-to-real 成功的关系，以及对视觉 UAV 导航和基于模型强化学习导航策略的启发。</p>
+<h4>中文摘要</h4>
+<p>世界模型是学习到的生成模型，可预测环境如何演化，已成为样本高效机器人学习的有前景工具。但它们对环境可变性的鲁棒性仍缺乏理解。为此，作者以视觉四旋翼导航为测试问题，系统研究在不同环境随机性水平下训练的 DreamerV3 世界模型，并在所有水平上进行跨环境验证，覆盖自监督学习预训练和强化学习微调。随后，作者将所有世界模型及其导航策略部署到真实四旋翼的未见环境中，其中包括一次开环运行：模型只接收 2.5 秒真实传感输入，随后所有传感器被切断，系统完全依靠想象完成 12 米导航。结果表明，自监督预训练阶段的世界模型鲁棒性是 sim-to-real 迁移的强预测因子：所有在跨环境自监督验证中泛化良好的模型都能成功部署到真实世界，并穿过最窄 0.67 米的间隙；而在仿真策略评估中表现最强的模型却在真实平台上失败。作者还发现离散潜变量大小和训练序列长度是决定世界模型质量的主要因素。</p>
+<h4>英文摘要原文</h4>
+<p>World models, learned generative models that predict how an environment evolves, have become a promising tool for sample-efficient robot learning. Yet how robust they are to environmental variability remains poorly understood. To address this, we conduct a systematic study using vision-based quadrotor navigation as a testbed problem, training DreamerV3-based world models under varying levels of environmental randomness and evaluating them across all levels through cross-environment validation, spanning both Self-Supervised Learning (SSL) pretraining and Reinforcement Learning (RL) fine-tuning. We then deploy all world models and associated navigation policies on a real quadrotor in unseen environments, including an open-loop run where the model receives just 2.5s of real sensory input before all sensors are cut off, leaving the system to navigate entirely in imagination over a 12m traverse. Our results show that world model robustness during SSL pretraining is a strong predictor of sim-to-real transfer: every model that generalized well in cross-environment SSL validation deployed successfully in the real world, passing through gaps as narrow as 0.67m, whereas the model that dominated simulation policy evaluation failed on the real platform. We further identify (a) the discrete latent size and (b) the training-sequence length as the dominant factors governing world model quality.</p>
+<h3>5. MAD：面向敏捷四旋翼飞行的地图感知世界模型</h3>
+<ul>
+<li>原题：MAD: Mapping-Aware World Models for Agile Quadrotor Flight</li>
+<li>分区：速读区；评分：6.1/10</li>
+<li>作者：Xinhong Zhang, Runqing Wang, Yunfan Ren, Ding Yu, Boyu Zhou, Jian Sun et al.</li>
+<li>日期：published 2026-06-03；updated 2026-06-03</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.04534v1">abs</a> / <a href="https://arxiv.org/pdf/2606.04534v1">PDF</a></li>
+<li>命中关键词：visual navigation, aerial navigation</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦视觉无人机导航、主动建图、局部占据地图、空间可见性推理、策略学习和真实四旋翼部署。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了杂乱场景中四旋翼仅依赖深度图到控制指令的反应式策略难以记忆已观测区域、推断附近占据空间并在部分可见和低延迟条件下安全高速飞行的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>MAD让无人机在飞行中学习带占据和可见性地图记忆的世界模型，从而更安全、更快地完成视觉导航和竞速。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出MAD地图感知世界模型，用占据和可见性栅格图重建替代原始图像重建作为核心自监督信号</li>
+<li>在DiffAero中使用GPU并行地图构建模块，为占据、可见性和本体状态学习提供高吞吐监督</li>
+<li>在仿真视觉导航、竞速和真实四旋翼室内外飞行中展示更高成功率、更快速度和更好跨任务迁移</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验具体场景复杂度、基线设置、真实机器人测试规模、传感器限制和对动态障碍或长程全局导航的适用性。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读其占据/可见性地图监督、循环潜在动力学设计、MAD-Dreamer与PPO/SHAC变体的差异，以及真实无人机部署设置；对研究UAV视觉导航、Active Mapping/SLAM结合策略学习、空间推理和端到端导航的研究者尤其值得关注。</p>
+<h4>中文摘要</h4>
+<p>在杂乱场景中进行敏捷四旋翼飞行，不能只依赖从深度图到控制命令的反应式映射；飞行器需要记住哪些区域已被观测，推断附近占据空间，并在部分可见和严格延迟条件下行动。本文提出Mapping-Aware Dreamer，即MAD，一种用于基于视觉的四旋翼飞行的几何感知世界模型。MAD不以原始图像重建作为主要自监督目标，而是学习循环潜在动力学，同时重建机器人中心的占据和可见性栅格地图以及本体状态。这一设计迫使潜在状态以直接服务于碰撞避免的形式编码局部几何、可见性历史和自运动。MAD在DiffAero中训练，使用GPU并行地图构建模块为占据和可见性提供高吞吐监督。学习到的表示被用于三种策略学习模式：基于想象的MAD-Dreamer，以及基于PPO和SHAC的特征提取器变体。在视觉导航和竞速任务中，基于MAD的智能体相比对应视觉-only基线取得更高成功率、更快飞行速度和更好跨任务迁移。模型还可以从深度观测中产生可解释的地图预测和准确的自运动估计。作者进一步将学习到的策略部署到搭载Intel RealSense D435i的真实四旋翼上，并展示了在有限感知下的室内外安全飞行，在仿真中达到9.66 m/s，在真实森林实验中达到5.05 m/s。这些结果表明，地图感知世界模型在模块化空中导航和端到端学习之间提供了一种实用折中。</p>
+<h4>英文摘要原文</h4>
+<p>Agile quadrotor flight in cluttered scenes requires more than a reactive mapping from a depth image to a control command: the vehicle must remember which regions have been observed, infer nearby occupied space, and act under partial visibility and tight latency. In this paper, we present Mapping-Aware Dreamer (MAD), a geometry-aware world model for vision-based quadrotor flight. Instead of using raw-image reconstruction as the main self-supervised objective, MAD learns recurrent latent dynamics that reconstruct robocentric occupancy and visibility grid maps together with proprioceptive states. This design forces the latent state to encode local geometry, visibility history, and ego-motion in a form that is directly relevant to collision avoidance. MAD is trained in DiffAero using a GPU-parallel map-construction module that provides high-throughput supervision for occupancy and visibility. The learned representation is used in three policy-learning modes: imagination-based MAD-Dreamer and feature-extractor variants based on PPO and SHAC. Across visual navigation and racing tasks, MAD-based agents achieve higher success rates, faster flight, and better cross-task transfer than corresponding vision-only baselines. The model also produces interpretable map predictions and accurate ego-motion estimates from depth observations. We further deploy the learned policy on a physical quadrotor with an Intel RealSense D435i and demonstrate safe indoor and outdoor flight under limited sensing, reaching 9.66 m/s in simulation and 5.05 m/s in real-world forest experiments. These results show that mapping-aware world models provide a practical middle ground between modular aerial navigation and end-to-end learning.</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.04907v1">WAM-Nav：用于统一视觉导航的非对称潜在世界-动作建模</a></td>
+<td>point-goal navigation, visual navigation, sim-to-real</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9.6</td>
+<td><a href="https://arxiv.org/abs/2606.04111v1">AgenticDiffusion：用于基于视觉的无人机导航的智能体式扩散路径规划</a></td>
+<td>aerial navigation, open-vocabulary, path planning</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6.6</td>
+<td><a href="https://arxiv.org/abs/2606.04569v1">MineXplore：面向无GNSS地下环境的开源强化学习探索基准</a></td>
+<td>robot navigation, reinforcement learning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6.5</td>
+<td><a href="https://arxiv.org/abs/2606.05015v1">环境可变性下视觉四旋翼导航世界模型的泛化</a></td>
+<td>sim-to-real, reinforcement learning</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6.1</td>
+<td><a href="https://arxiv.org/abs/2606.04534v1">MAD：面向敏捷四旋翼飞行的地图感知世界模型</a></td>
+<td>visual navigation, aerial navigation</td>
+</tr>
+</tbody>
+</table></div></article>
+</main>
+</body>
+</html>
