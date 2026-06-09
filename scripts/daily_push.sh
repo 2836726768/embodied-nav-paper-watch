@@ -4,6 +4,8 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NO_SITE=0
 DRY_RUN=0
+HAS_RUN_DATE=0
+HAS_DAYS=0
 for arg in "$@"; do
   if [ "$arg" = "--no-site" ]; then
     NO_SITE=1
@@ -11,9 +13,20 @@ for arg in "$@"; do
   if [ "$arg" = "--dry-run" ]; then
     DRY_RUN=1
   fi
+  if [ "$arg" = "--run-date" ] || [[ "$arg" == --run-date=* ]]; then
+    HAS_RUN_DATE=1
+  fi
+  if [ "$arg" = "--days" ] || [[ "$arg" == --days=* ]]; then
+    HAS_DAYS=1
+  fi
 done
 
-python3 "$ROOT_DIR/src/daily_paper_watch.py" "$@"
+RUN_DATE_ARGS=()
+if [ "$HAS_RUN_DATE" = "0" ] && [ "$HAS_DAYS" = "0" ] && [ "${PAPER_WATCH_ROLLING_WINDOW:-0}" != "1" ]; then
+  RUN_DATE_ARGS=(--run-date "$(TZ="${PAPER_WATCH_TZ:-Asia/Shanghai}" date +%F)")
+fi
+
+python3 "$ROOT_DIR/src/daily_paper_watch.py" "${RUN_DATE_ARGS[@]}" "$@"
 
 if [ "$NO_SITE" = "0" ] && [ -d "$ROOT_DIR/site" ]; then
   rm -rf "$ROOT_DIR/docs"
