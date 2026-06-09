@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IR-SIM：面向导航、学习与基准测试的轻量级技能原生仿真器</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 7.8</span>
+      <span class="badge">rank #2</span>
+    </div>
+    <h1 class="paper-title">IR-SIM：面向导航、学习与基准测试的轻量级技能原生仿真器</h1>
+    <p class="paper-original">IR-SIM: A Lightweight Skill-Native Simulator for Navigation, Learning, and Benchmarking</p>
+    <div class="paper-meta">
+      <span>Ruihua Han, Shuai Wang, Chengyang Li, Rui Gao, Xinyi Wang, Zhe Liu, Guoliang Li, Yupu Lu, Qi Hao, Jia Pan et al.</span>
+      <span>published 2026-06-08</span>
+      <span>cs.RO, cs.LG</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span><span class="tag">Embodied AI / VLA</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了机器人导航仿真中需要定制代码或复杂接口、阻碍快速原型设计和自动化算法开发的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>IR-SIM 用 YAML 和智能体技能把机器人导航场景快速搭建、复现、生成和测试变得更轻量。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出轻量级技能原生导航仿真器 IR-SIM，面向快速场景构建、机器人学习和基准测试</li><li>使用 YAML 描述机器人运动学、碰撞检测、LiDAR、可视化和行为模块，使场景可复现且易于文本驱动生成</li><li>展示自然语言构建导航场景、训练避障策略、评测社会导航策略，以及桥接高保真仿真和真实部署</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>本文提出 IR-SIM，一个轻量级技能原生机器人导航仿真器，用于快速场景构建、基准测试和机器人学习。它用 YAML 配置文件完整定义移动机器人运动学、几何碰撞检测、LiDAR 感知、可视化和行为模块，使仿真场景可描述、可复现，并可通过 IR-SIM agent skills 从文本提示生成和修改。生成的场景可用于导航算法自动基准测试和学习方法训练数据自动生成。IR-SIM 还提供到高保真仿真器和真实世界部署的桥接，便于在无需额外编码的情况下进一步验证算法。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Simulation plays a key role in automated robotics research supported by large language models (LLMs). However, existing simulators often require custom code or complex interfaces, creating a barrier to rapid prototyping and automated algorithm development. To this end, we propose the Intelligent Robot Simulator (IR-SIM), a lightweight skill-native navigation simulator designed for rapid scenario construction, benchmarking, and robot learning. In IR-SIM, scenarios are entirely defined by YAML configuration files that specify mobile robot kinematics, geometric collision checking, LiDAR sensing, visualization, and behavior modules. This design makes robotic simulation fully describable and reproducible, allowing scenarios to be generated and modified from text prompts through the proposed IR-SIM agent skills. The resulting scenarios can be used for automated benchmarking of navigation algorithms and for automated generation of training data for learning methods. Furthermore, IR-SIM provides bridges to high fidelity simulators and real world deployment, allowing users to validate their algorithms in more realistic settings after prototyping without extra coding. The experiments showcase the convenience and versatility of IR-SIM in multiple tasks: constructing navigation scenarios from natural language, training a collision avoidance policy, benchmarking social navigation policies, and bridging to high fidelity simulators and real world deployment. The project website is available at https://github.com/hanruihua/ir-sim.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.08729v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.08729v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-09.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
