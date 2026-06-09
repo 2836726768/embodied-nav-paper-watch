@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 JOB_NAME="${OPENCLAW_JOB_NAME:-embodied-nav-paper-watch}"
 SCHEDULE="${OPENCLAW_CRON_SCHEDULE:-0 9 * * *}"
 TIMEZONE="${OPENCLAW_CRON_TZ:-Asia/Shanghai}"
-PROMPT="${OPENCLAW_CRON_PROMPT:-Run this local command and send the generated Markdown report as the final reply: cd \"$ROOT_DIR\" && ./scripts/daily_push.sh}"
+PROMPT="${OPENCLAW_CRON_PROMPT:-Run this local command and send the generated Markdown report as the final reply: cd \"$ROOT_DIR\" && PAPER_WATCH_GIT_PUSH=1 ./scripts/daily_push.sh}"
 
 usage() {
   cat <<'USAGE'

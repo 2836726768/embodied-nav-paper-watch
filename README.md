@@ -71,6 +71,14 @@ cp -a site docs
 touch docs/.nojekyll
 ```
 
+自动提交并推送 GitHub Pages 发布目录：
+
+```bash
+PAPER_WATCH_GIT_PUSH=1 ./scripts/daily_push.sh
+```
+
+这会提交 `docs/` 和 `site/` 的变化，并推送到 `origin/main`。当前机器推荐使用 SSH remote，例如 `git@github.com:2836726768/embodied-nav-paper-watch.git`。
+
 只生成 Markdown、不生成网页：
 
 ```bash
@@ -91,7 +99,7 @@ cd /workspace/embodied-nav-paper-watch
 
 ```bash
 openclaw cron create "0 9 * * *" \
-  "Run this local command and send the generated Markdown report as the final reply: cd \"/workspace/embodied-nav-paper-watch\" && ./scripts/daily_push.sh" \
+  "Run this local command and send the generated Markdown report as the final reply: cd \"/workspace/embodied-nav-paper-watch\" && PAPER_WATCH_GIT_PUSH=1 ./scripts/daily_push.sh" \
   --name "embodied-nav-paper-watch" \
   --session isolated \
   --tz Asia/Shanghai \
