@@ -1,16 +1,16 @@
 {
   "current": {
-    "date": "2026-06-09",
-    "title": "具身智能导航论文日报 2026-06-09",
-    "generated_at": "2026-06-09 09:00:00 CST",
+    "date": "2026-06-10",
+    "title": "具身智能导航论文日报 2026-06-10",
+    "generated_at": "2026-06-10 09:00:00 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
       "cs.AI",
       "cs.LG"
     ],
-    "scanned_count": 74,
-    "candidate_count": 53,
+    "scanned_count": 0,
+    "candidate_count": 0,
     "selected_count": 0,
     "deep_count": 0,
     "quick_count": 0,
@@ -26,17 +26,17 @@
   },
   "history": [
     {
-      "date": "2026-06-09",
-      "title": "具身智能导航论文日报 2026-06-09",
-      "generated_at": "2026-06-09 09:00:00 CST",
+      "date": "2026-06-10",
+      "title": "具身智能导航论文日报 2026-06-10",
+      "generated_at": "2026-06-10 09:00:00 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
         "cs.AI",
         "cs.LG"
       ],
-      "scanned_count": 74,
-      "candidate_count": 53,
+      "scanned_count": 0,
+      "candidate_count": 0,
       "selected_count": 0,
       "deep_count": 0,
       "quick_count": 0,
@@ -49,6 +49,15 @@
         "enriched_count": 0,
         "warnings": []
       }
+    },
+    {
+      "date": "2026-06-09",
+      "title": "具身智能导航论文日报 2026-06-09",
+      "generated_at": "2026-06-09 09:00:00 CST",
+      "scanned_count": 74,
+      "candidate_count": 53,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-08",
