@@ -1,8 +1,8 @@
 {
   "current": {
-    "date": "2026-06-10",
-    "title": "具身智能导航论文日报 2026-06-10",
-    "generated_at": "2026-06-10 09:00:00 CST",
+    "date": "2026-06-11",
+    "title": "具身智能导航论文日报 2026-06-11",
+    "generated_at": "2026-06-11 09:00:00 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
@@ -26,9 +26,9 @@
   },
   "history": [
     {
-      "date": "2026-06-10",
-      "title": "具身智能导航论文日报 2026-06-10",
-      "generated_at": "2026-06-10 09:00:00 CST",
+      "date": "2026-06-11",
+      "title": "具身智能导航论文日报 2026-06-11",
+      "generated_at": "2026-06-11 09:00:00 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
@@ -49,6 +49,15 @@
         "enriched_count": 0,
         "warnings": []
       }
+    },
+    {
+      "date": "2026-06-10",
+      "title": "具身智能导航论文日报 2026-06-10",
+      "generated_at": "2026-06-10 09:00:00 CST",
+      "scanned_count": 0,
+      "candidate_count": 0,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-09",
