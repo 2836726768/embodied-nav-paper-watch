@@ -26,6 +26,12 @@ cd /workspace/embodied-nav-paper-watch
 ./scripts/daily_push.sh --days 3 --max-results 120 --max-items 10 --min-score 2.0
 ```
 
+日常推送默认使用 `days_window` 滚动窗口，以吸收 arXiv 公布时间和 API 可见时间的延迟。如果要补某个精确日期的历史归档，可以显式传入：
+
+```bash
+./scripts/daily_push.sh --run-date 2026-06-10 --days 1
+```
+
 默认会使用 OpenClaw 中文解读。如果只想用本地规则、不调用模型：
 
 ```bash

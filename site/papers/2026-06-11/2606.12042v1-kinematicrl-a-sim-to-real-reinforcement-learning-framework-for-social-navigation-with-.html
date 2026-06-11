@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 7.7</span>
+      <span class="badge">rank #6</span>
+    </div>
+    <h1 class="paper-title">KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</h1>
+    <p class="paper-original">KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility</p>
+    <div class="paper-meta">
+      <span>Zhiming Xu, Haodong Yang, Chengju Liu, Qijun Chen, Chenpeng Yao</span>
+      <span>published 2026-06-10</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">sim-to-real</span><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span><span class="tag">Sim2Real / Benchmark</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了社会导航中深度强化学习策略因一阶简化动力学和依赖特定场景的人体状态估计流程而难以真实部署的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出 KinematicRL，用更高阶控制、2D LiDAR 行人跟踪和残差门控，让社会导航强化学习策略更容易部署到真实差速机器人上。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验；尤其需核验不同人群密度、传感器噪声、复杂场景泛化和与其他社会导航方法的对比细节。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出面向差速机器人的二阶控制 DRL 动作空间，并用随机 iLQR 进行策略预训练</li><li>提出仅依赖 2D LiDAR 的聚类式行人跟踪管线，用空间接近性和速度相似性关联行人检测</li><li>提出无偏残差门控模块，以平衡反应和记忆行为并适应变化的人群数量</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>深度强化学习在社会导航中有潜力，但真实部署受到仿真到现实差距影响，主要来自简化的一阶动力学和依赖具体场景的人体状态估计管线。该工作提出统一框架以生成适合真实部署的动态可行导航策略。首先，理论分析表明，随着控制阶数增加，仿真与真实机器人位置之间的跟踪误差会指数衰减，因此使用更高阶控制输入作为 DRL 动作空间。论文为差速机器人设计二阶控制形式，并用随机迭代 LQR 通过散度最小化目标预训练策略。其次，为避免相机-LiDAR 融合带来的系统复杂度，论文提出仅使用 2D LiDAR 的聚类式行人跟踪管线，根据空间接近性和速度相似性关联人体检测，从而区分相近行人并通过时间聚合获得稳定速度估计。第三，论文提出无偏残差门控模块，以平衡反应式和记忆式行为，并处理随时间变化的人群数量。最终策略 KinematicRL 持续提升运动学性能，并能适应不同数量的检测行人。真实环境实验表明，结合所提出的跟踪管线后，KinematicRL 可在真实差速机器人上以最少修改部署。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Deep <mark class="hit-mark">Reinforcement Learning</mark> (DRL) has shown promise for social navigation, yet its real-world deployment remains hindered by a persistent <mark class="hit-mark">sim-to-real</mark> gap arising from simplified first-order dynamics and context-specific human state estimation pipelines. This work presents a unified framework that addresses these limitations to produce dynamically feasible navigation policies suitable for real-world deployment. First, theoretical analysis reveals that tracking error between simulated and actual robot position decays exponentially with increased control order, motivating the use of higher-order control inputs as DRL action space. A second-order control formulation tailored to differential drive robots is developed, complemented by a stochastic iterative Linear Quadratic Regulator (iLQR) that pretrains the policy via a divergence minimization objective. Second, to avoid the added system complexity of camera-LiDAR fusion, a cluster-based human tracking pipeline using only 2D LiDAR is introduced. Human detections are associated according to both spatial proximity and velocity similarity, enabling reliable differentiation of nearby pedestrians and yielding stable velocity estimates through temporal aggregation. Third, we introduce an unbiased residual gating block to balance reaction- and memory-based behaviors while handling time-varying crowd sizes, both critical for social navigation. The resulting policy, KinematicRL, consistently improves kinematic performance and adapts to varying number of detected humans. Experiments in real-world environments demonstrate that, when combined with the proposed tracking pipeline, KinematicRL can be deployed on a real differential drive robot with minimal modifications.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.12042v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.12042v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-11.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

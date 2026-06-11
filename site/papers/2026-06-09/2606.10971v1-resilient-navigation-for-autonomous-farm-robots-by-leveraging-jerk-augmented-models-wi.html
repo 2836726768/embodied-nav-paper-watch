@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>利用含加加速度模型与仅 IMU 扰动抑制实现自主农场机器人鲁棒导航</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 7.3</span>
+      <span class="badge">rank #8</span>
+    </div>
+    <h1 class="paper-title">利用含加加速度模型与仅 IMU 扰动抑制实现自主农场机器人鲁棒导航</h1>
+    <p class="paper-original">Resilient Navigation for Autonomous Farm Robots by Leveraging Jerk-Augmented Models with IMU-Only Disturbance Rejection</p>
+    <div class="paper-meta">
+      <span>Batu Candan, Mohammed Atallah, Simone Servadio, Saeed Arabi</span>
+      <span>published 2026-06-09</span>
+      <span>cs.RO, eess.SY</span>
+    </div>
+    <div class="paper-tags"><span class="tag">Robot Navigation</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了自主农业机器人在 GNSS、LiDAR、视觉等传感器中断以及越野高频振动下，导航状态估计精度下降的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出一种改进 EKF，让农场机器人在传感器异常和强振动时仍能更稳地估计位置。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出 jerk-augmented EKF 用于鲁棒导航状态估计</li><li>引入 MTF 自适应机制实时调整测量协方差矩阵</li><li>基于 Salin247 自主机器人真实数据验证并降低 3D 位置 RMSE</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>自主农业机器人的精确导航状态估计常受到 GNSS、LiDAR、视觉传感器中断以及越野环境高频振动影响。本文提出一种鲁棒导航算法，基于 jerk 增广扩展卡尔曼滤波器，并集成多调谐因子自适应方法。不同于假设测量噪声恒定的标准 EKF，该方法实时动态调整测量协方差矩阵，使系统能够应对突发扰动和传感器离群值。论文使用 Salin247 自主机器人真实世界数据进行评估，结果显示 jerk 增广与 MTF 自适应结合相比基线 EKF 显著降低 3D 位置 RMSE，并提供更好的航位推算能力。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Precise state estimation for navigation of autonomous agricultural robots is often compromised by sensor outages (GNSS/LiDAR/Visual) and high-frequency vibrations inherent in off-road environments. This paper proposes a robust navigation algorithm based on a jerk-augmented Extended Kalman Filter (EKF) integrated with a Multiple Tuning Factor (MTF) adaptation method. Unlike standard EKF approaches that assume constant measurement noise, our method dynamically adjusts the measurement covariance matrix in real-time, allowing the system to cope with sudden disturbances and sensor outliers. We evaluate the algorithm using real-world data from a Salin247 autonomous robot. Results demonstrate that jerk-augmentation combined with MTF adaptation significantly reduces 3D position Root Mean Square Error (RMSE) compared to baseline EKF models, providing superior dead-reckoning capabilities.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.10971v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.10971v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-09.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

@@ -31,18 +31,398 @@
     </div>
   </section>
   <section class="stat-grid" aria-label="统计">
-    <div class="stat-box"><strong></strong><span>论文</span></div>
-    <div class="stat-box"><strong></strong><span>精读</span></div>
-    <div class="stat-box"><strong></strong><span>速读</span></div>
-    <div class="stat-box"><strong></strong><span>候选</span></div>
+    <div class="stat-box"><strong>10</strong><span>论文</span></div>
+    <div class="stat-box"><strong>3</strong><span>精读</span></div>
+    <div class="stat-box"><strong>7</strong><span>速读</span></div>
+    <div class="stat-box"><strong>385</strong><span>候选</span></div>
   </section>
   <section class="watch-section">
     <h2>今日概览</h2>
-    <div class="overview"><p>今日筛到 0 篇具身智能导航相关论文，精读 0 篇、速读 0 篇。主题信号集中在 暂无明显聚类。优先阅读：暂无；中文解读由 OpenClaw/openai-codex/gpt-5.5 生成。</p></div>
+    <div class="overview"><p>今日筛到 10 篇具身智能导航相关论文，精读 3 篇、速读 7 篇。主题信号集中在 Robot Navigation(10)、Planning / Policy(7)、Embodied AI / VLA(2)、Semantic Mapping(1)。优先阅读：通过关系归纳偏置重新思考具身导航；AllDayNav：通过真实世界强化学习实现终身导航；GUIDE：用于端到端视觉导航的目标初始化方向理解；中文解读由 OpenClaw/openai-codex/gpt-5.5 生成。</p></div>
   </section>
   <section class="watch-section" id="papers">
     <h2>重点论文</h2>
-    <div class="paper-list"><p>暂无论文候选。</p></div>
+    <div class="paper-list"><article class="paper-card" id="paper-1">
+  <div class="paper-topline">
+    <span class="badge deep">精读区</span>
+    <span class="badge score">score 10.0</span>
+    <span class="badge">rank #1</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10348v1-rethinking-embodied-navigation-via-relational-inductive-bias.html">通过关系归纳偏置重新思考具身导航</a></h3>
+  <p class="paper-original">Rethinking Embodied Navigation via Relational Inductive Bias</p>
+  <div class="paper-meta">
+    <span>Weitao An, Chenghao Xu, Xu Yang, Cheng Deng</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">embodied navigation</span><span class="tag">objectnav</span><span class="tag">open-vocabulary</span><span class="tag">Robot Navigation</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了 ObjectNav 中开放词汇感知和视觉语言模型容易产生误导性语义线索、进而污染地图构建与导航决策的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>论文提出 DB-Nav，用物体关系中的激活与抑制偏置来更可靠地选择 ObjectNav 搜索区域。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出 DB-Nav 框架，通过双重关系偏置重塑 ObjectNav 搜索空间</li><li>设计激活偏置与抑制偏置，分别传播可靠上下文证据并压制不可靠区域</li><li>构建关系激活-抑制探索图，用在线观测和失败访问调制前沿探索价值</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10348v1-rethinking-embodied-navigation-via-relational-inductive-bias.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10348v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10348v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-2">
+  <div class="paper-topline">
+    <span class="badge deep">精读区</span>
+    <span class="badge score">score 9.6</span>
+    <span class="badge">rank #2</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10927v1-alldaynav-lifelong-navigation-via-real-world-reinforcement-learning.html">AllDayNav：通过真实世界强化学习实现终身导航</a></h3>
+  <p class="paper-original">AllDayNav: Lifelong Navigation via Real-World Reinforcement Learning</p>
+  <div class="paper-meta">
+    <span>Hang Yin, Yinan Liang, Jiazhao Zhang, Jiahang Liu, Minghan Li, Zhizheng Zhang et al.</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">embodied navigation</span><span class="tag">multimodal</span><span class="tag">open-vocabulary</span><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Semantic Mapping</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了动态环境中机器人如何从碎片化观测中持续形成场景理解，并进行可靠终身具身导航的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>AllDayNav 用自演化多模态记忆和强化学习，让机器人不依赖显式地图也能在长期动态环境中导航。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出 AllDayNav 终身自学习导航框架，面向动态环境中的具身导航</li><li>设计自演化多模态记忆，维护视觉关键帧、语义描述和时间上下文</li><li>通过强化学习隐式编码场景动态，并自主生成开放词汇指令、图像目标和结构化奖励</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10927v1-alldaynav-lifelong-navigation-via-real-world-reinforcement-learning.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10927v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10927v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-3">
+  <div class="paper-topline">
+    <span class="badge deep">精读区</span>
+    <span class="badge score">score 8.8</span>
+    <span class="badge">rank #3</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10832v1-guide-goal-initialized-directional-understanding-for-end-to-end-visual-navigation.html">GUIDE：用于端到端视觉导航的目标初始化方向理解</a></h3>
+  <p class="paper-original">GUIDE: Goal-Initialized Directional Understanding for End-to-End Visual Navigation</p>
+  <div class="paper-meta">
+    <span>Liang Wang, Jin Jin, KanZhong Yao, YiBin Wu, Fangqiang Ding, Jin Wang et al.</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">visual navigation</span><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了腿式机器人视觉导航中依赖持续目标更新和外部状态估计的问题，并缓解部分可观测下策略容易短视、陷入死胡同或复杂结构布局的导航困难。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>GUIDE让机器人只在开始时获得一次目标信息，之后依靠自身空间记忆和深度感知完成端到端导航。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出目标初始化导航设定：目标只在回合开始给出一次，之后依靠内部空间记忆导航</li><li>提出GUIDE端到端强化学习框架，结合本体感知历史、自运动表征和原始深度流</li><li>在仿真和真实四足机器人场景中验证，可在密集杂物和结构化迷宫中安全导航</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10832v1-guide-goal-initialized-directional-understanding-for-end-to-end-visual-navigation.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10832v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10832v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-4">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.8</span>
+    <span class="badge">rank #4</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10449v1-guidewalk-learning-unified-autonomous-navigation-and-locomotion-for-humanoid-robots-ac.html">GuideWalk：面向多样地形的人形机器人统一自主导航与运动学习</a></h3>
+  <p class="paper-original">GuideWalk: Learning Unified Autonomous Navigation and Locomotion for Humanoid Robots across Versatile Terrains</p>
+  <div class="paper-meta">
+    <span>Haoxuan Han, Chen Chen, Linao Gong, Xin Yang, Hao Hu, Junhong Guo et al.</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了人形机器人在多样地形中导航时，如何同时实现避障规划与动态可行动作控制的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>GuideWalk把可通行性感知的导航引导和地形自适应运动控制统一到一个端到端策略中，让人形机器人更稳定地导航。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出统一端到端框架GuideWalk，整合导航引导与人形机器人运动控制</li><li>设计显式速度引导导航模块，将避障与地形条件解耦以支持多样环境规划</li><li>提出复合教师蒸馏，并结合强化学习和辅助行为克隆提升策略鲁棒性</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10449v1-guidewalk-learning-unified-autonomous-navigation-and-locomotion-for-humanoid-robots-ac.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10449v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10449v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-5">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.8</span>
+    <span class="badge">rank #5</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.11636v1-safer-nav-enhancing-safety-for-visual-robot-navigation-via-segmentation-aware-fine-tun.html">SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</a></h3>
+  <p class="paper-original">SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning</p>
+  <div class="paper-meta">
+    <span>Geonyeong Ko, Giung Lee, Changjoo Nam</span>
+    <span>published 2026-06-10</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">robot navigation</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了基于RGB视觉的机器人导航模型在陌生环境、未见障碍物或分布偏移条件下仍能朝目标前进但容易产生不安全轨迹的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>论文通过把障碍物边界和可通行自由空间结构融入视觉导航策略微调中，降低机器人碰撞率。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出分割感知微调方法，将障碍物边界和可通行自由空间结构融入RGB导航策略</li><li>方法兼容多种基于RGB的导航骨干模型</li><li>在多机器人平台、室内环境以及静态和动态障碍场景中，相比ViNT、NoMaD及其CARE增强版本降低碰撞频率</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.11636v1-safer-nav-enhancing-safety-for-visual-robot-navigation-via-segmentation-aware-fine-tun.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.11636v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.11636v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-6">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.7</span>
+    <span class="badge">rank #6</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.12042v1-kinematicrl-a-sim-to-real-reinforcement-learning-framework-for-social-navigation-with-.html">KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</a></h3>
+  <p class="paper-original">KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility</p>
+  <div class="paper-meta">
+    <span>Zhiming Xu, Haodong Yang, Chengju Liu, Qijun Chen, Chenpeng Yao</span>
+    <span>published 2026-06-10</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">sim-to-real</span><span class="tag">reinforcement learning</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了社会导航中深度强化学习策略因一阶简化动力学和依赖特定场景的人体状态估计流程而难以真实部署的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>论文提出 KinematicRL，用更高阶控制、2D LiDAR 行人跟踪和残差门控，让社会导航强化学习策略更容易部署到真实差速机器人上。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验；尤其需核验不同人群密度、传感器噪声、复杂场景泛化和与其他社会导航方法的对比细节。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出面向差速机器人的二阶控制 DRL 动作空间，并用随机 iLQR 进行策略预训练</li><li>提出仅依赖 2D LiDAR 的聚类式行人跟踪管线，用空间接近性和速度相似性关联行人检测</li><li>提出无偏残差门控模块，以平衡反应和记忆行为并适应变化的人群数量</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.12042v1-kinematicrl-a-sim-to-real-reinforcement-learning-framework-for-social-navigation-with-.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.12042v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.12042v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-7">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.3</span>
+    <span class="badge">rank #7</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10577v1-agenticnav-zero-shot-vision-and-language-navigation-as-a-tool-calling-harness.html">AgenticNav：将零样本视觉语言导航作为工具调用框架</a></h3>
+  <p class="paper-original">AgenticNav: Zero-Shot Vision-and-Language Navigation as a Tool-Calling Harness</p>
+  <div class="paper-meta">
+    <span>Yijian Li, Changze Li, Hantian Shi, Jiaying Luo, Jiyuan Cai, Ming Yang et al.</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">VLN</span><span class="tag">VLN-CE</span><span class="tag">Robot Navigation</span><span class="tag">VLN</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了连续环境中零样本视觉语言导航过度依赖学习式航点预测器、深度输入利用不足以及记忆上下文冗余的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>AgenticNav把VLN-CE做成一个让VLM调用动作、深度和记忆工具的轻量导航框架。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出面向零样本VLN-CE的AgenticNav轻量工具调用导航框架</li><li>设计像素级动作工具和按需像素深度工具，减少对学习式航点预测器的依赖</li><li>引入紧凑地图记忆和选择性视觉回忆，并在R2R-CE零样本方法中达到新的SOTA表现</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10577v1-agenticnav-zero-shot-vision-and-language-navigation-as-a-tool-calling-harness.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10577v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10577v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-8">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.1</span>
+    <span class="badge">rank #8</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10903v1-agninav-configuration-driven-cross-embodiment-local-planning-for-robot-navigation.html">AgniNav：面向机器人导航的配置驱动跨本体局部规划</a></h3>
+  <p class="paper-original">AgniNav: Configuration-Driven Cross-Embodiment Local Planning for Robot Navigation</p>
+  <div class="paper-meta">
+    <span>Tianhao Zang, Siwei Cheng, Haidong Huang, Shanze Wang, Wei Zhang</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">robot navigation</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了单目局部导航策略难以在不同机器人本体、相机高度和足迹尺寸之间零重训练迁移的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>AgniNav用机器人安全包络参数同时配置感知和局部规划，让单目导航可跨轮式、四足和人形平台部署。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验；尤其需核验场景多样性、长距离导航能力、动态障碍处理、失败案例和与其他单目导航方法的对比。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出基于四参数安全包络的跨本体局部导航框架</li><li>用高度条件化的单目图像到伪激光扫描网络建模碰撞相关空间</li><li>在Turtlebot2、Unitree Go2和Accelerated Evolution K1真实机器人上验证零重训练导航</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10903v1-agninav-configuration-driven-cross-embodiment-local-planning-for-robot-navigation.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10903v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10903v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-9">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 7.0</span>
+    <span class="badge">rank #9</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10495v1-act-on-what-you-see-unlocking-safe-social-navigation-in-vision-language-action-models.html">看见什么就对什么行动：释放视觉-语言-动作模型中的安全社交导航能力</a></h3>
+  <p class="paper-original">Act on What You See: Unlocking Safe Social Navigation in Vision-Language-Action Models</p>
+  <div class="paper-meta">
+    <span>Qingzi Wang, Xiyang Wu, Guangyao Shi, Dianwei Chen, Xianfeng Yang, Dinesh Manocha</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO</span>
+  </div>
+  <div class="paper-tags"><span class="tag">Robot Navigation</span><span class="tag">Embodied AI / VLA</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了预训练视觉-语言-动作模型虽然内部已有行人与物体区分和未来碰撞信号，但行为克隆无法把这些信号转化为安全社交导航动作的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>论文提出 SALSA，让 VLA 机器人策略更好利用已有视觉表征，提前避开行人并减少近碰撞。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出无需人工标注的两阶段后训练框架 SALSA，用于安全社交导航</li><li>通过社交行为对齐和反事实人-物场景对，提升 VLA 对行人与物体的动作区分能力</li><li>通过时间安全对齐引入自动生成的未来风险监督，实现更具预判性的碰撞避免</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10495v1-act-on-what-you-see-unlocking-safe-social-navigation-in-vision-language-action-models.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10495v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10495v1">PDF</a>
+  </div>
+</article>
+<article class="paper-card" id="paper-10">
+  <div class="paper-topline">
+    <span class="badge quick">速读区</span>
+    <span class="badge score">score 6.9</span>
+    <span class="badge">rank #10</span>
+  </div>
+  <h3 class="paper-title"><a href="papers/2026-06-11/2606.10971v1-resilient-navigation-for-autonomous-farm-robots-by-leveraging-jerk-augmented-models-wi.html">利用含加加速度模型与仅 IMU 扰动抑制实现自主农场机器人鲁棒导航</a></h3>
+  <p class="paper-original">Resilient Navigation for Autonomous Farm Robots by Leveraging Jerk-Augmented Models with IMU-Only Disturbance Rejection</p>
+  <div class="paper-meta">
+    <span>Batu Candan, Mohammed Atallah, Simone Servadio, Saeed Arabi</span>
+    <span>published 2026-06-09</span>
+    <span>cs.RO, eess.SY</span>
+  </div>
+  <div class="paper-tags"><span class="tag">Robot Navigation</span></div>
+  <div class="paper-note-grid">
+    <section class="note-block wide">
+      <h3>解决的问题</h3>
+      <p>这篇论文解决了自主农业机器人在 GNSS、LiDAR、视觉等传感器中断以及越野高频振动下，导航状态估计精度下降的问题。</p>
+    </section>
+    <section class="note-block">
+      <h3>TL;DR（一句话总结）</h3>
+      <p>论文提出一种改进 EKF，让农场机器人在传感器异常和强振动时仍能更稳地估计位置。</p>
+    </section>
+    <section class="note-block">
+      <h3>局限性</h3>
+      <p>摘要未说明，需要看正文核验。</p>
+    </section>
+    <section class="note-block wide">
+      <h3>核心贡献</h3>
+      <ul><li>提出 jerk-augmented EKF 用于鲁棒导航状态估计</li><li>引入 MTF 自适应机制实时调整测量协方差矩阵</li><li>基于 Salin247 自主机器人真实数据验证并降低 3D 位置 RMSE</li></ul>
+    </section>
+  </div>
+  <div class="paper-actions">
+    <a class="button primary" href="papers/2026-06-11/2606.10971v1-resilient-navigation-for-autonomous-farm-robots-by-leveraging-jerk-augmented-models-wi.html">阅读详情</a>
+    <a class="button" href="https://arxiv.org/abs/2606.10971v1">Abs</a>
+    <a class="button" href="https://arxiv.org/pdf/2606.10971v1">PDF</a>
+  </div>
+</article>
+</div>
   </section>
 </main>
 <script src="assets/app.js"></script>

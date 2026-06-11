@@ -31,15 +31,375 @@
   </section>
   <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-11</h1>
 <ul>
-<li>生成时间：2026-06-11 09:00:00 CST</li>
+<li>生成时间：2026-06-11 15:27:18 CST</li>
 <li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
-<li>扫描条目：0；时间窗口候选：0；入选：0</li>
+<li>扫描条目：480；时间窗口候选：385；入选：10</li>
 </ul>
 <ul>
 <li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
 </ul>
 <h2>今日精选</h2>
-<p>今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 <code>min_score</code> 或增大 <code>days_window</code> 做补扫。</p></article>
+<h3>1. 通过关系归纳偏置重新思考具身导航</h3>
+<ul>
+<li>原题：Rethinking Embodied Navigation via Relational Inductive Bias</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Weitao An, Chenghao Xu, Xu Yang, Cheng Deng</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10348v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10348v1">PDF</a></li>
+<li>命中关键词：embodied navigation, objectnav, open-vocabulary</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦未知环境中的 ObjectNav、开放词汇感知、语义线索可靠性、前沿探索和关系图式空间推理。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了 ObjectNav 中开放词汇感知和视觉语言模型容易产生误导性语义线索、进而污染地图构建与导航决策的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出 DB-Nav，用物体关系中的激活与抑制偏置来更可靠地选择 ObjectNav 搜索区域。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出 DB-Nav 框架，通过双重关系偏置重塑 ObjectNav 搜索空间</li>
+<li>设计激活偏置与抑制偏置，分别传播可靠上下文证据并压制不可靠区域</li>
+<li>构建关系激活-抑制探索图，用在线观测和失败访问调制前沿探索价值</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读其关系激活-抑制探索图如何与前沿探索结合，以及抑制偏置如何处理开放词汇误检和失败探索；适合关注 ObjectNav、语义地图和空间关系推理的研究者。</p>
+<h4>中文摘要</h4>
+<p>ObjectNav 要求智能体在未知环境中通过视觉观测定位目标。现有方法通常依赖开放词汇检测器或视觉语言模型判断去哪里搜索，但常忽略哪些语义线索不可信。开放词汇感知容易产生系统性误导证据，包括假阳性、过时静态先验，以及缺少具身验证导致的重复失败探索，从而污染地图构建和决策。这些错误源于真实场景中的结构化物体关系。为此，论文提出 DB-Nav，通过双重关系偏置重塑搜索空间。它将目标中心关系分解为激活偏置和抑制偏置，前者传播上下文证据，后者通过感知混淆和动作级证伪抑制不可靠区域。这些偏置被统一到关系激活-抑制探索图中，并利用在线观测和失败访问调制前沿探索价值。ObjectNav 基准实验显示，DB-Nav 在 SR 和 SPL 上显著优于现有方法，提供了轻量、可解释、鲁棒且无需昂贵在线 VLM 推理的导航框架。</p>
+<h4>英文摘要原文</h4>
+<p>Object navigation requires an agent to locate a target in an unknown environment through visual observations. Existing methods typically rely on open-vocabulary detectors or vision-language models (VLMs) to answer where to search, but often overlook what not to trust - which semantic cues are unreliable. Open-vocabulary perception is prone to systematic misleading evidence: false positives, outdated static priors, and repeated failed exploration due to lack of embodied verification, which contaminates mapping and decision-making. Such errors are rooted in structured object relations in real-world scenes. To address this, we propose DB-Nav, a framework that reshapes the search space via dual relational biases. It factorizes target-centric relations into an Activation Bias (propagates contextual evidence) and an Inhibition Bias (suppresses unreliable regions via perceptual confusion and action-level falsification). These biases are unified into a Relational Activation-Inhibition Exploration Graph that modulates frontier exploration values using online observations and failed accesses. Experiments on ObjectNav benchmarks show that DB-Nav significantly outperforms existing methods in success rate (SR) and Success weighted by Path Length (SPL), offering a lightweight, interpretable, and robust navigation framework without costly online VLM reasoning.</p>
+<h3>2. AllDayNav：通过真实世界强化学习实现终身导航</h3>
+<ul>
+<li>原题：AllDayNav: Lifelong Navigation via Real-World Reinforcement Learning</li>
+<li>分区：精读区；评分：9.6/10</li>
+<li>作者：Hang Yin, Yinan Liang, Jiazhao Zhang, Jiahang Liu, Minghan Li, Zhizheng Zhang et al.</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10927v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10927v1">PDF</a></li>
+<li>命中关键词：embodied navigation, multimodal, open-vocabulary, reinforcement learning</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦机器人终身导航、动态场景理解、多模态记忆、开放词汇指令、图像目标和强化学习策略，可作为显式地图或场景图之外的导航思路参考。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了动态环境中机器人如何从碎片化观测中持续形成场景理解，并进行可靠终身具身导航的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>AllDayNav 用自演化多模态记忆和强化学习，让机器人不依赖显式地图也能在长期动态环境中导航。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出 AllDayNav 终身自学习导航框架，面向动态环境中的具身导航</li>
+<li>设计自演化多模态记忆，维护视觉关键帧、语义描述和时间上下文</li>
+<li>通过强化学习隐式编码场景动态，并自主生成开放词汇指令、图像目标和结构化奖励</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读其多模态记忆如何更新、开放词汇指令和图像目标如何生成、结构化奖励如何构造，以及其相对显式地图和场景图导航方法的适用边界。</p>
+<h4>中文摘要</h4>
+<p>动态环境中的终身具身导航要求机器人从碎片化观测中形成持久场景理解，而依赖显式地图或场景图的现有方法仍然困难，并且难以泛化到结构化环境之外。论文提出 AllDayNav，一个终身自学习导航框架，通过强化学习将场景动态隐式编码到十亿级参数的大模型中，并由自演化多模态记忆支持，该记忆维护和更新视觉关键帧、语义描述和时间上下文，同时自主生成开放词汇指令、图像目标和结构化奖励。在合成与真实世界环境中，跨房间、跨回合和跨任务实验表明，AllDayNav 成功率接近 100%，并在路径效率和鲁棒性上持续超过强地图式、VLM 和 RL 基线，展示了隐式记忆驱动强化学习可作为显式建图的可扩展替代方案，用于可靠终身导航。</p>
+<h4>英文摘要原文</h4>
+<p>Lifelong embodied navigation in dynamic environments requires robots to form persistent scene understanding from fragmentary observations, which remains difficult for existing methods that rely on explicit maps or scene graphs and struggle to generalize beyond structured settings. We propose AllDayNav, a lifelong self-learning navigation framework that implicitly encodes scene dynamics into the billion-scale parameters of a large model via reinforcement learning, powered by a self-evolving multimodal memory that maintains and updates visual keyframes, semantic descriptions, and temporal context while autonomously generating open-vocabulary instructions, image goals, and structured rewards. Experiments in both synthetic and real-world environments across cross-room, cross-episode, and cross-task scenarios show that AllDayNav achieves success rates approaching $100\%$ and consistently surpasses strong map-based, VLM, and RL baselines in path efficiency and robustness, demonstrating implicit, memory-driven reinforcement learning as a scalable alternative to explicit mapping for reliable lifelong navigation.</p>
+<h3>3. GUIDE：用于端到端视觉导航的目标初始化方向理解</h3>
+<ul>
+<li>原题：GUIDE: Goal-Initialized Directional Understanding for End-to-End Visual Navigation</li>
+<li>分区：精读区；评分：8.8/10</li>
+<li>作者：Liang Wang, Jin Jin, KanZhong Yao, YiBin Wu, Fangqiang Ding, Jin Wang et al.</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10832v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10832v1">PDF</a></li>
+<li>命中关键词：visual navigation, reinforcement learning</li>
+<li>为什么和具身导航相关：该工作与具身智能导航高度相关，聚焦机器人视觉导航、强化学习策略、空间记忆、方向感知和无先验地图的真实四足机器人导航。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了腿式机器人视觉导航中依赖持续目标更新和外部状态估计的问题，并缓解部分可观测下策略容易短视、陷入死胡同或复杂结构布局的导航困难。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>GUIDE让机器人只在开始时获得一次目标信息，之后依靠自身空间记忆和深度感知完成端到端导航。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出目标初始化导航设定：目标只在回合开始给出一次，之后依靠内部空间记忆导航</li>
+<li>提出GUIDE端到端强化学习框架，结合本体感知历史、自运动表征和原始深度流</li>
+<li>在仿真和真实四足机器人场景中验证，可在密集杂物和结构化迷宫中安全导航</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其目标初始化导航设定、空间锚点预测器如何形成长期方向记忆，以及真实机器人部署是否可迁移到VLN、ObjectNav或PointNav等更通用导航任务。</p>
+<h4>中文摘要</h4>
+<p>面向腿式机器人的学习式视觉导航通常依赖分层状态估计持续更新目标，以提供稳定方向参考，但这会增加传感和计算开销，也偏离完全端到端移动自主。在部分可观测条件下，策略容易短视，并陷入死胡同或复杂结构布局。为解决这些问题，论文研究目标初始化导航：目标只在回合开始提供一次，机器人之后必须依靠内部空间记忆而非外部模块的后续目标更新运行。论文提出GUIDE，一个完全端到端强化学习框架，用于培养内部方向意识。GUIDE包含空间锚点预测器，利用多频率本体感知历史提取自运动表征，从而维持长时程空间上下文；同时利用原始深度流感知局部环境几何。论文在仿真和真实四足机器人场景中评估该框架，实验表明GUIDE能学习可靠的自运动和方向意识，使端到端部署的策略在没有后续目标引导或先验地图的情况下安全穿越密集杂物和结构化迷宫。</p>
+<h4>英文摘要原文</h4>
+<p>Learning-based visual navigation for legged robots typically relies on continuous goal updates from hierarchical state estimation to provide a persistent directional reference. This reliance incurs additional sensory and computational overhead and deviates from fully end-to-end mobile autonomy. Furthermore, under partial observability, policies are prone to learn myopic behaviors, easily becoming trapped in dead ends and complex structural layouts. To address these limitations, we investigate a goal-initialized navigation setting, where the target is provided only once at the beginning of an episode, requiring the robot to operate based on intrinsic spatial memory without subsequent goal updates from external modules. In this work, we propose GUIDE, a fully end-to-end reinforcement learning framework designed to cultivate internal directional awareness. Specifically, GUIDE incorporates a spatial anchor predictor that leverages multi-frequency proprioceptive history to extract egomotion representations, thereby maintaining a persistent long-horizon spatial context for navigation. Concurrently, it utilizes raw depth streams to perceive local environmental geometry. We evaluate the proposed framework across both simulation and real-world scenarios on a quadruped robot. Experiments show that GUIDE learns reliable egomotion and directional awareness, enabling a fully end-to-end deployed policy to safely navigate through dense clutter and structured mazes without subsequent goal guidance or prior maps.</p>
+<h3>4. GuideWalk：面向多样地形的人形机器人统一自主导航与运动学习</h3>
+<ul>
+<li>原题：GuideWalk: Learning Unified Autonomous Navigation and Locomotion for Humanoid Robots across Versatile Terrains</li>
+<li>分区：速读区；评分：7.8/10</li>
+<li>作者：Haoxuan Han, Chen Chen, Linao Gong, Xin Yang, Hao Hu, Junhong Guo et al.</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10449v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10449v1">PDF</a></li>
+<li>命中关键词：reinforcement learning</li>
+<li>为什么和具身导航相关：该工作与具身智能导航高度相关，重点面向人形机器人导航、避障、地形可通行性判断、规划与策略学习，尤其关注导航决策和运动可行性的耦合。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了人形机器人在多样地形中导航时，如何同时实现避障规划与动态可行动作控制的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>GuideWalk把可通行性感知的导航引导和地形自适应运动控制统一到一个端到端策略中，让人形机器人更稳定地导航。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出统一端到端框架GuideWalk，整合导航引导与人形机器人运动控制</li>
+<li>设计显式速度引导导航模块，将避障与地形条件解耦以支持多样环境规划</li>
+<li>提出复合教师蒸馏，并结合强化学习和辅助行为克隆提升策略鲁棒性</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其导航模块如何表达可通行性与速度引导，以及教师蒸馏和强化学习如何兼顾目标导航、避障和人形动态稳定性。</p>
+<h4>中文摘要</h4>
+<p>人形机器人已经具备较强的运动能力，但在多样地形上可靠导航仍具挑战，因为避障必须与动态可行的运动协调。本文提出GuideWalk，一个统一的端到端框架，将可通行性感知的导航引导与地形自适应运动教师结合起来用于人形机器人导航。具体来说，论文引入一个导航模块提供显式速度引导，将避障与地形条件解耦，从而支持多样环境中的鲁棒规划。论文提出复合教师蒸馏方案，将面向目标的命令和动态一致的动作聚合并蒸馏为单一策略。为进一步提升鲁棒性，蒸馏策略通过强化学习和辅助行为克隆目标进行优化，以在促进探索的同时保留理想教师行为。实验表明GuideWalk实现了稳定有效的导航，同时保持了稳定的人形机器人运动。</p>
+<h4>英文摘要原文</h4>
+<p>Humanoid robots have achieved strong locomotion capabilities, but reliable navigation on versatile terrains remains challenging because obstacle avoidance must be coordinated with dynamically feasible motion. In this work, we present GuideWalk, a unified end-to-end framework that integrates traversability-aware navigation guidance with terrain-adaptive locomotion teacher for humanoid navigation. Specifically, we introduce a navigation module that provides explicit velocity guidance, decoupling obstacle avoidance from terrain conditions to enable robust planning across diverse environments. We propose a composite teacher distillation scheme, where goal-directed commands and dynamically consistent actions are aggregated and distilled into a single policy. To further improve robustness, the distilled policy is refined with reinforcement learning and an auxiliary behavior cloning objective, which promotes exploration while preserving desirable teacher behaviors. Experiments demonstrate that GuideWalk achieves stable and effective navigation while maintaining stable humanoid locomotion.</p>
+<h3>5. SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</h3>
+<ul>
+<li>原题：SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning</li>
+<li>分区：速读区；评分：7.8/10</li>
+<li>作者：Geonyeong Ko, Giung Lee, Changjoo Nam</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.11636v1">abs</a> / <a href="https://arxiv.org/pdf/2606.11636v1">PDF</a></li>
+<li>命中关键词：robot navigation</li>
+<li>为什么和具身导航相关：与具身智能中的视觉机器人导航高度相关，重点关注RGB输入下的导航策略安全性、障碍物理解、可通行空间建模和跨平台机器人部署。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了基于RGB视觉的机器人导航模型在陌生环境、未见障碍物或分布偏移条件下仍能朝目标前进但容易产生不安全轨迹的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文通过把障碍物边界和可通行自由空间结构融入视觉导航策略微调中，降低机器人碰撞率。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出分割感知微调方法，将障碍物边界和可通行自由空间结构融入RGB导航策略</li>
+<li>方法兼容多种基于RGB的导航骨干模型</li>
+<li>在多机器人平台、室内环境以及静态和动态障碍场景中，相比ViNT、NoMaD及其CARE增强版本降低碰撞频率</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其分割感知微调如何表示障碍物边界和自由空间，以及这种安全结构是否可迁移到VLN、ObjectNav、PointNav或其他具身导航策略中。</p>
+<h4>中文摘要</h4>
+<p>基于视觉的导航模型，尤其是基础模型，能够仅从RGB观测生成可行轨迹。然而，即使是先进的Transformer和扩散式策略，在包含未见障碍物或条件偏移的陌生部署环境中也难以泛化，导致轨迹虽然朝向目标但不安全。已有工作通过外部轨迹修正或内部几何先验提升安全性，但策略并未被显式训练来表示障碍物边界或可通行自由空间结构。为此，论文提出一种导航模型，通过微调将这些结构直接纳入策略，并兼容多种RGB视觉骨干。在多个机器人平台、室内环境以及静态和动态障碍场景中，该方法相较ViNT、NoMaD及其CARE增强版本减少了碰撞频率，同时保持目标到达性能。</p>
+<h4>英文摘要原文</h4>
+<p>Vision-based navigation models, particularly foundation models, generate viable trajectories from RGB observations alone. However, even state-of-the-art transformer- and diffusion-based policies struggle to generalize in unfamiliar deployment environments containing unseen obstacles or shifted conditions. The resulting trajectories often remain goal-directed but unsafe. Existing efforts improve safety through external trajectory correction or internal geometric priors, yet the resulting policies are not trained to explicitly represent obstacle boundaries or traversable free-space structure. To address this, we propose a navigation model that incorporates these structures directly into the policy via fine-tuning and is designed to be compatible with diverse RGB-based backbones. Across multiple robot platforms, indoor environments, and static and dynamic obstacle scenarios, our method reduces collision frequency relative to ViNT, NoMaD, and their CARE-augmented variants while maintaining goal-reaching performance.</p>
+<h3>6. KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</h3>
+<ul>
+<li>原题：KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility</li>
+<li>分区：速读区；评分：7.7/10</li>
+<li>作者：Zhiming Xu, Haodong Yang, Chengju Liu, Qijun Chen, Chenpeng Yao</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.12042v1">abs</a> / <a href="https://arxiv.org/pdf/2606.12042v1">PDF</a></li>
+<li>命中关键词：sim-to-real, reinforcement learning</li>
+<li>为什么和具身导航相关：与具身智能中的机器人社会导航、Sim2Real 强化学习、局部规划和动态人群避障高度相关，重点面向真实差速机器人导航，而非 VLN、ObjectNav 或 PointNav。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了社会导航中深度强化学习策略因一阶简化动力学和依赖特定场景的人体状态估计流程而难以真实部署的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出 KinematicRL，用更高阶控制、2D LiDAR 行人跟踪和残差门控，让社会导航强化学习策略更容易部署到真实差速机器人上。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出面向差速机器人的二阶控制 DRL 动作空间，并用随机 iLQR 进行策略预训练</li>
+<li>提出仅依赖 2D LiDAR 的聚类式行人跟踪管线，用空间接近性和速度相似性关联行人检测</li>
+<li>提出无偏残差门控模块，以平衡反应和记忆行为并适应变化的人群数量</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验；尤其需核验不同人群密度、传感器噪声、复杂场景泛化和与其他社会导航方法的对比细节。</p>
+<h4>阅读建议</h4>
+<p>建议关注其二阶控制动作空间如何缩小 Sim2Real 差距、2D LiDAR 行人跟踪是否适合自己的机器人平台，以及残差门控对动态人群规模的处理方式。</p>
+<h4>中文摘要</h4>
+<p>深度强化学习在社会导航中有潜力，但真实部署受到仿真到现实差距影响，主要来自简化的一阶动力学和依赖具体场景的人体状态估计管线。该工作提出统一框架以生成适合真实部署的动态可行导航策略。首先，理论分析表明，随着控制阶数增加，仿真与真实机器人位置之间的跟踪误差会指数衰减，因此使用更高阶控制输入作为 DRL 动作空间。论文为差速机器人设计二阶控制形式，并用随机迭代 LQR 通过散度最小化目标预训练策略。其次，为避免相机-LiDAR 融合带来的系统复杂度，论文提出仅使用 2D LiDAR 的聚类式行人跟踪管线，根据空间接近性和速度相似性关联人体检测，从而区分相近行人并通过时间聚合获得稳定速度估计。第三，论文提出无偏残差门控模块，以平衡反应式和记忆式行为，并处理随时间变化的人群数量。最终策略 KinematicRL 持续提升运动学性能，并能适应不同数量的检测行人。真实环境实验表明，结合所提出的跟踪管线后，KinematicRL 可在真实差速机器人上以最少修改部署。</p>
+<h4>英文摘要原文</h4>
+<p>Deep Reinforcement Learning (DRL) has shown promise for social navigation, yet its real-world deployment remains hindered by a persistent sim-to-real gap arising from simplified first-order dynamics and context-specific human state estimation pipelines. This work presents a unified framework that addresses these limitations to produce dynamically feasible navigation policies suitable for real-world deployment. First, theoretical analysis reveals that tracking error between simulated and actual robot position decays exponentially with increased control order, motivating the use of higher-order control inputs as DRL action space. A second-order control formulation tailored to differential drive robots is developed, complemented by a stochastic iterative Linear Quadratic Regulator (iLQR) that pretrains the policy via a divergence minimization objective. Second, to avoid the added system complexity of camera-LiDAR fusion, a cluster-based human tracking pipeline using only 2D LiDAR is introduced. Human detections are associated according to both spatial proximity and velocity similarity, enabling reliable differentiation of nearby pedestrians and yielding stable velocity estimates through temporal aggregation. Third, we introduce an unbiased residual gating block to balance reaction- and memory-based behaviors while handling time-varying crowd sizes, both critical for social navigation. The resulting policy, KinematicRL, consistently improves kinematic performance and adapts to varying number of detected humans. Experiments in real-world environments demonstrate that, when combined with the proposed tracking pipeline, KinematicRL can be deployed on a real differential drive robot with minimal modifications.</p>
+<h3>7. AgenticNav：将零样本视觉语言导航作为工具调用框架</h3>
+<ul>
+<li>原题：AgenticNav: Zero-Shot Vision-and-Language Navigation as a Tool-Calling Harness</li>
+<li>分区：速读区；评分：7.3/10</li>
+<li>作者：Yijian Li, Changze Li, Hantian Shi, Jiaying Luo, Jiyuan Cai, Ming Yang et al.</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10577v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10577v1">PDF</a></li>
+<li>命中关键词：VLN, VLN-CE</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，聚焦零样本VLN-CE、机器人导航、视觉语言决策、深度感知和历史轨迹记忆。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了连续环境中零样本视觉语言导航过度依赖学习式航点预测器、深度输入利用不足以及记忆上下文冗余的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>AgenticNav把VLN-CE做成一个让VLM调用动作、深度和记忆工具的轻量导航框架。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出面向零样本VLN-CE的AgenticNav轻量工具调用导航框架</li>
+<li>设计像素级动作工具和按需像素深度工具，减少对学习式航点预测器的依赖</li>
+<li>引入紧凑地图记忆和选择性视觉回忆，并在R2R-CE零样本方法中达到新的SOTA表现</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议VLN-CE、零样本机器人导航和VLM规划研究者重点阅读动作工具如何从目标像素转为可执行运动、深度工具的调用方式、地图记忆表示以及R2R-CE和真实世界验证细节。</p>
+<h4>中文摘要</h4>
+<p>连续环境中的零样本视觉语言导航近期因大型视觉语言模型而变得可行，但现有方法常依赖学习式航点预测器提出可导航动作，限制动作空间且未充分利用深度输入；记忆也常通过累积冗长文本或视觉历史，或检索跨回合经验来实现。本文将零样本VLN-CE重新思考为VLM与环境之间的agentic接口，提出AgenticNav，一个暴露动作、深度和记忆为可调用工具的轻量导航框架。动作工具让VLM直接在RGB观测中选择目标像素并转为运动；深度工具允许按需请求关键像素的精确距离；记忆由紧凑地图图像总结历史轨迹，并通过回忆工具选择性访问过去视觉观测。在R2R-CE上，AgenticNav在相同VLM骨干下达到零样本方法新的SOTA，真实世界验证也显示其零样本泛化优势，消融表明动作工具、深度工具和agentic记忆均有贡献。</p>
+<h4>英文摘要原文</h4>
+<p>Zero-shot vision-and-language navigation in continuous environments (VLN-CE) has recently become feasible with large vision-language models (VLMs). However, existing methods typically rely on learned waypoint predictors to propose navigable actions. This severely limits the model&#x27;s action space and fails to leverage depth inputs effectively. Moreover, memory is commonly handled by accumulating long textual or visual histories with substantial irrelevant context, or by retrieving cross-episode experiences, which weakens the zero-shot setting. In this paper, we rethink zero-shot VLN-CE as an agentic interface between the VLM and the environment, and present AgenticNav, a lightweight navigation harness that exposes action, depth, and memory as callable tools. Instead of choosing from predicted waypoints, the action tool allows the VLM to directly select a target pixel in RGB observations, converting it into executable motion. Depth is exposed through an on-demand pixel-depth tool, enabling the VLM to request precise metric distances only where they matter. For memory, AgenticNav provides a compact map image summarizing the historical trajectory, paired with a recall tool that allows the VLM to selectively revisit past visual observations without overwhelming the prompt context. On the R2R-CE benchmark, AgenticNav establishes new state-of-the-art (SOTA) performance among zero-shot methods given the same VLM backbone. Real-world validation further highlights its zero-shot generalization compared to prior methods. Ablations show that our action tool design outperforms traditional waypoint predictors, and that depth tool and agentic memory further contribute to navigation performance.</p>
+<h3>8. AgniNav：面向机器人导航的配置驱动跨本体局部规划</h3>
+<ul>
+<li>原题：AgniNav: Configuration-Driven Cross-Embodiment Local Planning for Robot Navigation</li>
+<li>分区：速读区；评分：7.1/10</li>
+<li>作者：Tianhao Zang, Siwei Cheng, Haidong Huang, Shanze Wang, Wei Zhang</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10903v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10903v1">PDF</a></li>
+<li>命中关键词：robot navigation</li>
+<li>为什么和具身导航相关：与具身智能导航中的机器人局部规划、单目视觉导航、跨本体迁移和碰撞安全强相关，重点不在VLN/ObjectNav/PointNav语义任务，而在底层导航策略与空间碰撞推理。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了单目局部导航策略难以在不同机器人本体、相机高度和足迹尺寸之间零重训练迁移的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>AgniNav用机器人安全包络参数同时配置感知和局部规划，让单目导航可跨轮式、四足和人形平台部署。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出基于四参数安全包络的跨本体局部导航框架</li>
+<li>用高度条件化的单目图像到伪激光扫描网络建模碰撞相关空间</li>
+<li>在Turtlebot2、Unitree Go2和Accelerated Evolution K1真实机器人上验证零重训练导航</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验；尤其需核验场景多样性、长距离导航能力、动态障碍处理、失败案例和与其他单目导航方法的对比。</p>
+<h4>阅读建议</h4>
+<p>建议重点阅读安全包络参数定义、伪激光扫描标签生成、尺寸感知局部规划器和真实机器人实验设置；若研究VLN/ObjectNav，可关注其作为底层局部避障与跨本体执行模块的潜在价值。</p>
+<h4>中文摘要</h4>
+<p>单目局部导航适合轻量机器人，但现有视觉策略常与特定身体、相机高度和足迹耦合，跨平台迁移需要重训练或主动深度硬件。AgniNav提出配置驱动的局部导航框架，用碰撞相关高度、前长、后长和半宽定义安全包络。高度条件化单目图像到伪激光扫描网络，其余参数配置局部规划器进行碰撞检测。训练使用彩色-深度数据生成的高度条件扫描标签。作者称这是首个将感知和规划共同条件化于共享碰撞包络配置的单目局部导航框架，可零重训练部署到轮式、四足和人形平台，并在三类真实机器人上取得较高成功率和30 Hz运行速度。</p>
+<h4>英文摘要原文</h4>
+<p>Monocular local navigation is attractive for lightweight robots, but existing vision-based policies often couple perception to a specific body, camera height, and footprint, making transfer from wheeled bases to legged platforms dependent on retraining or active depth hardware. This paper introduces AgniNav, a configuration-driven local navigation framework that standardizes cross-embodiment transfer at the collision-envelope level. Each robot is specified by a measurable four-parameter safety envelope: collision-relevant height, front length, rear length, and half width. The height parameter conditions an image-to-scan network to predict a one-dimensional, collision-relevant pseudo-laserscan from a monocular color image, while the remaining footprint parameters configure a dimension-aware local planner for collision checking. Training uses height-conditioned column-minimum scan labels generated from paired color-depth data, allowing the same image to supervise different safety envelopes without collecting robot-specific data. To the best of our knowledge, AgniNav is the first monocular local-navigation framework that jointly conditions perception and planning on a shared collision-envelope configuration for zero-retraining deployment across wheeled, quadruped, and humanoid platforms. Real-robot experiments on a Turtlebot2, Unitree Go2, and Accelerated Evolution K1 achieve 39/40, 18/20, and 18/20 successes with 0/40, 1/20, and 2/20 collisions, respectively, while running at 30 Hz on Jetson Orin.</p>
+<h3>9. 看见什么就对什么行动：释放视觉-语言-动作模型中的安全社交导航能力</h3>
+<ul>
+<li>原题：Act on What You See: Unlocking Safe Social Navigation in Vision-Language-Action Models</li>
+<li>分区：速读区；评分：7.0/10</li>
+<li>作者：Qingzi Wang, Xiyang Wu, Guangyao Shi, Dianwei Chen, Xianfeng Yang, Dinesh Manocha</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10495v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10495v1">PDF</a></li>
+<li>命中关键词：BM25 token match</li>
+<li>为什么和具身导航相关：与机器人社交导航和具身智能导航高度相关，重点在 VLA 策略如何区分行人与普通障碍物，并进行面向未来风险的安全动作生成。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了预训练视觉-语言-动作模型虽然内部已有行人与物体区分和未来碰撞信号，但行为克隆无法把这些信号转化为安全社交导航动作的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出 SALSA，让 VLA 机器人策略更好利用已有视觉表征，提前避开行人并减少近碰撞。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出无需人工标注的两阶段后训练框架 SALSA，用于安全社交导航</li>
+<li>通过社交行为对齐和反事实人-物场景对，提升 VLA 对行人与物体的动作区分能力</li>
+<li>通过时间安全对齐引入自动生成的未来风险监督，实现更具预判性的碰撞避免</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其反事实人-物场景构造、未来风险监督生成方式，以及这些对齐方法是否可迁移到 VLN、ObjectNav、PointNav 或更复杂机器人导航场景。</p>
+<h4>中文摘要</h4>
+<p>安全社交导航要求机器人区分人和普通障碍物，并在危险临近前做出反应。作者发现，预训练 VLA 模型的内部表征已经包含行人与物体的区分信息和未来碰撞信号，但行为克隆无法将这些信号转化为合适的社交导航动作。为此，论文提出 SALSA，一个两阶段、无需标注的后训练框架：第一阶段进行社交行为对齐，将中间层社交特征连接到动作头，并利用反事实人-物场景对打破视觉显著性捷径；第二阶段进行时间安全对齐，通过自动生成的未来风险监督，使机器人能够提前避免碰撞。在 SCAND 和真实世界部署中，SALSA 将近碰撞减少 86.4%，并将社交反事实准确率从 53% 提升到 93%。结果表明，通过更好地对齐潜在表征与动作生成，预训练 VLA 策略可以适配到更安全的社交导航。</p>
+<h4>英文摘要原文</h4>
+<p>Safe social navigation requires robots to distinguish people from ordinary obstacles and to react before danger becomes imminent. We show that pretrained Vision-Language-Action (VLA) models already encode pedestrian-object distinctions and future collision signals in their internal representations, but behavior cloning fails to translate these signals into socially appropriate actions. To address this mismatch, we propose SALSA, a two-stage annotation-free post-training framework: (1) social behavioral alignment bridges intermediate-layer social features to the action head and trains on counterfactual human-object scene pairs to break visual saliency shortcuts; (2) temporal safety alignment provides automatically generated future-risk supervision to enable anticipatory collision avoidance. On SCAND and real-world deployment, SALSA reduces near-collisions by 86.4% and improves social counterfactual accuracy from 53% to 93%, demonstrating that safer social navigation can be achieved by teaching VLA policies to act on representations they already possess. These results show that pretrained VLA policies can be adapted for safer social navigation by better aligning their latent representations with action generation.</p>
+<h3>10. 利用含加加速度模型与仅 IMU 扰动抑制实现自主农场机器人鲁棒导航</h3>
+<ul>
+<li>原题：Resilient Navigation for Autonomous Farm Robots by Leveraging Jerk-Augmented Models with IMU-Only Disturbance Rejection</li>
+<li>分区：速读区；评分：6.9/10</li>
+<li>作者：Batu Candan, Mohammed Atallah, Simone Servadio, Saeed Arabi</li>
+<li>日期：published 2026-06-09；updated 2026-06-09</li>
+<li>类别：cs.RO, eess.SY</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.10971v1">abs</a> / <a href="https://arxiv.org/pdf/2606.10971v1">PDF</a></li>
+<li>命中关键词：BM25 token match</li>
+<li>为什么和具身导航相关：与机器人导航和状态估计高度相关，重点在农业越野场景中的鲁棒导航；不涉及 VLN、ObjectNav、PointNav、地图构建、场景图或语言空间推理。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了自主农业机器人在 GNSS、LiDAR、视觉等传感器中断以及越野高频振动下，导航状态估计精度下降的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出一种改进 EKF，让农场机器人在传感器异常和强振动时仍能更稳地估计位置。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出 jerk-augmented EKF 用于鲁棒导航状态估计</li>
+<li>引入 MTF 自适应机制实时调整测量协方差矩阵</li>
+<li>基于 Salin247 自主机器人真实数据验证并降低 3D 位置 RMSE</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其 jerk 增广 EKF 状态建模、MTF 协方差自适应策略，以及在传感器中断场景下的 dead-reckoning 评估设置；若研究视觉导航、语义地图或 VLN，可作为底层鲁棒定位模块参考。</p>
+<h4>中文摘要</h4>
+<p>自主农业机器人的精确导航状态估计常受到 GNSS、LiDAR、视觉传感器中断以及越野环境高频振动影响。本文提出一种鲁棒导航算法，基于 jerk 增广扩展卡尔曼滤波器，并集成多调谐因子自适应方法。不同于假设测量噪声恒定的标准 EKF，该方法实时动态调整测量协方差矩阵，使系统能够应对突发扰动和传感器离群值。论文使用 Salin247 自主机器人真实世界数据进行评估，结果显示 jerk 增广与 MTF 自适应结合相比基线 EKF 显著降低 3D 位置 RMSE，并提供更好的航位推算能力。</p>
+<h4>英文摘要原文</h4>
+<p>Precise state estimation for navigation of autonomous agricultural robots is often compromised by sensor outages (GNSS/LiDAR/Visual) and high-frequency vibrations inherent in off-road environments. This paper proposes a robust navigation algorithm based on a jerk-augmented Extended Kalman Filter (EKF) integrated with a Multiple Tuning Factor (MTF) adaptation method. Unlike standard EKF approaches that assume constant measurement noise, our method dynamically adjusts the measurement covariance matrix in real-time, allowing the system to cope with sudden disturbances and sensor outliers. We evaluate the algorithm using real-world data from a Salin247 autonomous robot. Results demonstrate that jerk-augmentation combined with MTF adaptation significantly reduces 3D position Root Mean Square Error (RMSE) compared to baseline EKF models, providing superior dead-reckoning capabilities.</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.10348v1">通过关系归纳偏置重新思考具身导航</a></td>
+<td>embodied navigation, objectnav, open-vocabulary</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9.6</td>
+<td><a href="https://arxiv.org/abs/2606.10927v1">AllDayNav：通过真实世界强化学习实现终身导航</a></td>
+<td>embodied navigation, multimodal, open-vocabulary, reinforcement learning</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8.8</td>
+<td><a href="https://arxiv.org/abs/2606.10832v1">GUIDE：用于端到端视觉导航的目标初始化方向理解</a></td>
+<td>visual navigation, reinforcement learning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7.8</td>
+<td><a href="https://arxiv.org/abs/2606.10449v1">GuideWalk：面向多样地形的人形机器人统一自主导航与运动学习</a></td>
+<td>reinforcement learning</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7.8</td>
+<td><a href="https://arxiv.org/abs/2606.11636v1">SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</a></td>
+<td>robot navigation</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7.7</td>
+<td><a href="https://arxiv.org/abs/2606.12042v1">KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</a></td>
+<td>sim-to-real, reinforcement learning</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7.3</td>
+<td><a href="https://arxiv.org/abs/2606.10577v1">AgenticNav：将零样本视觉语言导航作为工具调用框架</a></td>
+<td>VLN, VLN-CE</td>
+</tr>
+<tr>
+<td>8</td>
+<td>7.1</td>
+<td><a href="https://arxiv.org/abs/2606.10903v1">AgniNav：面向机器人导航的配置驱动跨本体局部规划</a></td>
+<td>robot navigation</td>
+</tr>
+<tr>
+<td>9</td>
+<td>7.0</td>
+<td><a href="https://arxiv.org/abs/2606.10495v1">看见什么就对什么行动：释放视觉-语言-动作模型中的安全社交导航能力</a></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>6.9</td>
+<td><a href="https://arxiv.org/abs/2606.10971v1">利用含加加速度模型与仅 IMU 扰动抑制实现自主农场机器人鲁棒导航</a></td>
+<td></td>
+</tr>
+</tbody>
+</table></div></article>
 </main>
 </body>
 </html>

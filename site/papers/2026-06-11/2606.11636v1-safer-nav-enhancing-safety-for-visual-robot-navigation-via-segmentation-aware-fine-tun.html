@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge quick">速读区</span>
+      <span class="badge score">score 7.8</span>
+      <span class="badge">rank #5</span>
+    </div>
+    <h1 class="paper-title">SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</h1>
+    <p class="paper-original">SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning</p>
+    <div class="paper-meta">
+      <span>Geonyeong Ko, Giung Lee, Changjoo Nam</span>
+      <span>published 2026-06-10</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">robot navigation</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了基于RGB视觉的机器人导航模型在陌生环境、未见障碍物或分布偏移条件下仍能朝目标前进但容易产生不安全轨迹的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文通过把障碍物边界和可通行自由空间结构融入视觉导航策略微调中，降低机器人碰撞率。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出分割感知微调方法，将障碍物边界和可通行自由空间结构融入RGB导航策略</li><li>方法兼容多种基于RGB的导航骨干模型</li><li>在多机器人平台、室内环境以及静态和动态障碍场景中，相比ViNT、NoMaD及其CARE增强版本降低碰撞频率</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>基于视觉的导航模型，尤其是基础模型，能够仅从RGB观测生成可行轨迹。然而，即使是先进的Transformer和扩散式策略，在包含未见障碍物或条件偏移的陌生部署环境中也难以泛化，导致轨迹虽然朝向目标但不安全。已有工作通过外部轨迹修正或内部几何先验提升安全性，但策略并未被显式训练来表示障碍物边界或可通行自由空间结构。为此，论文提出一种导航模型，通过微调将这些结构直接纳入策略，并兼容多种RGB视觉骨干。在多个机器人平台、室内环境以及静态和动态障碍场景中，该方法相较ViNT、NoMaD及其CARE增强版本减少了碰撞频率，同时保持目标到达性能。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Vision-based navigation models, particularly foundation models, generate viable trajectories from RGB observations alone. However, even state-of-the-art transformer- and diffusion-based policies struggle to generalize in unfamiliar deployment environments containing unseen obstacles or shifted conditions. The resulting trajectories often remain goal-directed but unsafe. Existing efforts improve safety through external trajectory correction or internal geometric priors, yet the resulting policies are not trained to explicitly represent obstacle boundaries or traversable free-space structure. To address this, we propose a navigation model that incorporates these structures directly into the policy via fine-tuning and is designed to be compatible with diverse RGB-based backbones. Across multiple robot platforms, indoor environments, and static and dynamic obstacle scenarios, our method reduces collision frequency relative to ViNT, NoMaD, and their CARE-augmented variants while maintaining goal-reaching performance.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.11636v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.11636v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-11.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

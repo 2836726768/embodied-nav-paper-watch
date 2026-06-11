@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>通过关系归纳偏置重新思考具身导航</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">通过关系归纳偏置重新思考具身导航</h1>
+    <p class="paper-original">Rethinking Embodied Navigation via Relational Inductive Bias</p>
+    <div class="paper-meta">
+      <span>Weitao An, Chenghao Xu, Xu Yang, Cheng Deng</span>
+      <span>published 2026-06-09</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">embodied navigation</span><span class="tag">objectnav</span><span class="tag">open-vocabulary</span><span class="tag">Robot Navigation</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>这篇论文解决了 ObjectNav 中开放词汇感知和视觉语言模型容易产生误导性语义线索、进而污染地图构建与导航决策的问题。</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>论文提出 DB-Nav，用物体关系中的激活与抑制偏置来更可靠地选择 ObjectNav 搜索区域。</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>摘要未说明，需要看正文核验。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>提出 DB-Nav 框架，通过双重关系偏置重塑 ObjectNav 搜索空间</li><li>设计激活偏置与抑制偏置，分别传播可靠上下文证据并压制不可靠区域</li><li>构建关系激活-抑制探索图，用在线观测和失败访问调制前沿探索价值</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>ObjectNav 要求智能体在未知环境中通过视觉观测定位目标。现有方法通常依赖开放词汇检测器或视觉语言模型判断去哪里搜索，但常忽略哪些语义线索不可信。开放词汇感知容易产生系统性误导证据，包括假阳性、过时静态先验，以及缺少具身验证导致的重复失败探索，从而污染地图构建和决策。这些错误源于真实场景中的结构化物体关系。为此，论文提出 DB-Nav，通过双重关系偏置重塑搜索空间。它将目标中心关系分解为激活偏置和抑制偏置，前者传播上下文证据，后者通过感知混淆和动作级证伪抑制不可靠区域。这些偏置被统一到关系激活-抑制探索图中，并利用在线观测和失败访问调制前沿探索价值。ObjectNav 基准实验显示，DB-Nav 在 SR 和 SPL 上显著优于现有方法，提供了轻量、可解释、鲁棒且无需昂贵在线 VLM 推理的导航框架。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Object navigation requires an agent to locate a target in an unknown environment through visual observations. Existing methods typically rely on <mark class="hit-mark">open-vocabulary</mark> detectors or vision-language models (VLMs) to answer where to search, but often overlook what not to trust - which semantic cues are unreliable. <mark class="hit-mark">Open-vocabulary</mark> perception is prone to systematic misleading evidence: false positives, outdated static priors, and repeated failed exploration due to lack of embodied verification, which contaminates mapping and decision-making. Such errors are rooted in structured object relations in real-world scenes. To address this, we propose DB-Nav, a framework that reshapes the search space via dual relational biases. It factorizes target-centric relations into an Activation Bias (propagates contextual evidence) and an Inhibition Bias (suppresses unreliable regions via perceptual confusion and action-level falsification). These biases are unified into a Relational Activation-Inhibition Exploration Graph that modulates frontier exploration values using online observations and failed accesses. Experiments on <mark class="hit-mark">ObjectNav</mark> benchmarks show that DB-Nav significantly outperforms existing methods in success rate (SR) and Success weighted by Path Length (SPL), offering a lightweight, interpretable, and robust navigation framework without costly online VLM reasoning.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.10348v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.10348v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-11.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

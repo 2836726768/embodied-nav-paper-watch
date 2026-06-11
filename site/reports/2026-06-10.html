@@ -24,13 +24,198 @@
 <ul>
 <li>生成时间：2026-06-10 09:00:00 CST</li>
 <li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
-<li>扫描条目：0；时间窗口候选：0；入选：0</li>
+<li>扫描条目：494；时间窗口候选：380；入选：5</li>
 </ul>
 <ul>
 <li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
 </ul>
 <h2>今日精选</h2>
-<p>今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 <code>min_score</code> 或增大 <code>days_window</code> 做补扫。</p></article>
+<h3>1. SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</h3>
+<ul>
+<li>原题：SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Geonyeong Ko, Giung Lee, Changjoo Nam</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.11636v1">abs</a> / <a href="https://arxiv.org/pdf/2606.11636v1">PDF</a></li>
+<li>命中关键词：robot navigation</li>
+<li>为什么和具身导航相关：与具身智能中的视觉机器人导航高度相关，重点关注RGB输入下的导航策略安全性、障碍物理解、可通行空间建模和跨平台机器人部署。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了基于RGB视觉的机器人导航模型在陌生环境、未见障碍物或分布偏移条件下仍能朝目标前进但容易产生不安全轨迹的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文通过把障碍物边界和可通行自由空间结构融入视觉导航策略微调中，降低机器人碰撞率。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出分割感知微调方法，将障碍物边界和可通行自由空间结构融入RGB导航策略</li>
+<li>方法兼容多种基于RGB的导航骨干模型</li>
+<li>在多机器人平台、室内环境以及静态和动态障碍场景中，相比ViNT、NoMaD及其CARE增强版本降低碰撞频率</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其分割感知微调如何表示障碍物边界和自由空间，以及这种安全结构是否可迁移到VLN、ObjectNav、PointNav或其他具身导航策略中。</p>
+<h4>中文摘要</h4>
+<p>基于视觉的导航模型，尤其是基础模型，能够仅从RGB观测生成可行轨迹。然而，即使是先进的Transformer和扩散式策略，在包含未见障碍物或条件偏移的陌生部署环境中也难以泛化，导致轨迹虽然朝向目标但不安全。已有工作通过外部轨迹修正或内部几何先验提升安全性，但策略并未被显式训练来表示障碍物边界或可通行自由空间结构。为此，论文提出一种导航模型，通过微调将这些结构直接纳入策略，并兼容多种RGB视觉骨干。在多个机器人平台、室内环境以及静态和动态障碍场景中，该方法相较ViNT、NoMaD及其CARE增强版本减少了碰撞频率，同时保持目标到达性能。</p>
+<h4>英文摘要原文</h4>
+<p>Vision-based navigation models, particularly foundation models, generate viable trajectories from RGB observations alone. However, even state-of-the-art transformer- and diffusion-based policies struggle to generalize in unfamiliar deployment environments containing unseen obstacles or shifted conditions. The resulting trajectories often remain goal-directed but unsafe. Existing efforts improve safety through external trajectory correction or internal geometric priors, yet the resulting policies are not trained to explicitly represent obstacle boundaries or traversable free-space structure. To address this, we propose a navigation model that incorporates these structures directly into the policy via fine-tuning and is designed to be compatible with diverse RGB-based backbones. Across multiple robot platforms, indoor environments, and static and dynamic obstacle scenarios, our method reduces collision frequency relative to ViNT, NoMaD, and their CARE-augmented variants while maintaining goal-reaching performance.</p>
+<h3>2. KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</h3>
+<ul>
+<li>原题：KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility</li>
+<li>分区：精读区；评分：9.9/10</li>
+<li>作者：Zhiming Xu, Haodong Yang, Chengju Liu, Qijun Chen, Chenpeng Yao</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.12042v1">abs</a> / <a href="https://arxiv.org/pdf/2606.12042v1">PDF</a></li>
+<li>命中关键词：sim-to-real, reinforcement learning</li>
+<li>为什么和具身导航相关：与具身智能中的机器人社会导航、Sim2Real 强化学习、局部规划和动态人群避障高度相关，重点面向真实差速机器人导航，而非 VLN、ObjectNav 或 PointNav。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了社会导航中深度强化学习策略因一阶简化动力学和依赖特定场景的人体状态估计流程而难以真实部署的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出 KinematicRL，用更高阶控制、2D LiDAR 行人跟踪和残差门控，让社会导航强化学习策略更容易部署到真实差速机器人上。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出面向差速机器人的二阶控制 DRL 动作空间，并用随机 iLQR 进行策略预训练</li>
+<li>提出仅依赖 2D LiDAR 的聚类式行人跟踪管线，用空间接近性和速度相似性关联行人检测</li>
+<li>提出无偏残差门控模块，以平衡反应和记忆行为并适应变化的人群数量</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验；尤其需核验不同人群密度、传感器噪声、复杂场景泛化和与其他社会导航方法的对比细节。</p>
+<h4>阅读建议</h4>
+<p>建议关注其二阶控制动作空间如何缩小 Sim2Real 差距、2D LiDAR 行人跟踪是否适合自己的机器人平台，以及残差门控对动态人群规模的处理方式。</p>
+<h4>中文摘要</h4>
+<p>深度强化学习在社会导航中有潜力，但真实部署受到仿真到现实差距影响，主要来自简化的一阶动力学和依赖具体场景的人体状态估计管线。该工作提出统一框架以生成适合真实部署的动态可行导航策略。首先，理论分析表明，随着控制阶数增加，仿真与真实机器人位置之间的跟踪误差会指数衰减，因此使用更高阶控制输入作为 DRL 动作空间。论文为差速机器人设计二阶控制形式，并用随机迭代 LQR 通过散度最小化目标预训练策略。其次，为避免相机-LiDAR 融合带来的系统复杂度，论文提出仅使用 2D LiDAR 的聚类式行人跟踪管线，根据空间接近性和速度相似性关联人体检测，从而区分相近行人并通过时间聚合获得稳定速度估计。第三，论文提出无偏残差门控模块，以平衡反应式和记忆式行为，并处理随时间变化的人群数量。最终策略 KinematicRL 持续提升运动学性能，并能适应不同数量的检测行人。真实环境实验表明，结合所提出的跟踪管线后，KinematicRL 可在真实差速机器人上以最少修改部署。</p>
+<h4>英文摘要原文</h4>
+<p>Deep Reinforcement Learning (DRL) has shown promise for social navigation, yet its real-world deployment remains hindered by a persistent sim-to-real gap arising from simplified first-order dynamics and context-specific human state estimation pipelines. This work presents a unified framework that addresses these limitations to produce dynamically feasible navigation policies suitable for real-world deployment. First, theoretical analysis reveals that tracking error between simulated and actual robot position decays exponentially with increased control order, motivating the use of higher-order control inputs as DRL action space. A second-order control formulation tailored to differential drive robots is developed, complemented by a stochastic iterative Linear Quadratic Regulator (iLQR) that pretrains the policy via a divergence minimization objective. Second, to avoid the added system complexity of camera-LiDAR fusion, a cluster-based human tracking pipeline using only 2D LiDAR is introduced. Human detections are associated according to both spatial proximity and velocity similarity, enabling reliable differentiation of nearby pedestrians and yielding stable velocity estimates through temporal aggregation. Third, we introduce an unbiased residual gating block to balance reaction- and memory-based behaviors while handling time-varying crowd sizes, both critical for social navigation. The resulting policy, KinematicRL, consistently improves kinematic performance and adapts to varying number of detected humans. Experiments in real-world environments demonstrate that, when combined with the proposed tracking pipeline, KinematicRL can be deployed on a real differential drive robot with minimal modifications.</p>
+<h3>3. Embodied-BenchClaw：用于构建具身空间智能基准的自主多智能体系统</h3>
+<ul>
+<li>原题：Embodied-BenchClaw: An Autonomous Multi-Agent System for Embodied Spatial Intelligence Benchmark Construction</li>
+<li>分区：精读区；评分：7.2/10</li>
+<li>作者：Baoyang Jiang, Fengchun Zhang, Leyuan Wang, Haotian Li, Yida Wang, Zhe Ji et al.</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.AI</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.11909v1">abs</a> / <a href="https://arxiv.org/pdf/2606.11909v1">PDF</a></li>
+<li>命中关键词：robot navigation, spatial reasoning</li>
+<li>为什么和具身导航相关：与具身智能导航高度相关，覆盖室内外空间推理、四足机器人导航、UAV/航拍理解等任务，可用于评估导航、空间理解和具身场景能力。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了具身空间智能基准构建费人工、难复用、难维护且容易随模型进步而饱和的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>论文提出一个多智能体系统，可根据用户评测意图自动生成并持续更新具身空间智能基准。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出面向具身空间智能基准构建的自主多智能体系统 Embodied-BenchClaw</li>
+<li>设计五阶段流水线与规划、构建、评估三个智能体协同机制</li>
+<li>构建覆盖室内外空间推理、四足机器人导航、UAV/航拍理解等多类基准</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其基准生成流程、技能库、质量控制机制，以及对四足机器人导航、UAV 理解和室内外空间推理任务的适配方式。</p>
+<h4>中文摘要</h4>
+<p>具身空间智能评测需要基准，但基准构建费力、难复用、难维护，且静态基准容易饱和。论文提出 Embodied-BenchClaw，一个用于构建具身空间智能基准的自主智能体系统。给定用户评测意图后，系统通过意图蓝图、数据收集、结构化与清洗、基准合成、评估报告五阶段流程，自动生成完整且可持续更新的基准包。该流程由规划、构建和评估三个智能体协调，并通过可扩展技能库和过程质量控制提升可组合性、可验证性和可修复性。论文实例化了多个基准，覆盖室内空间推理、室外空间推理、机器人操作、四足机器人导航、UAV/航拍理解和静态基准增强。实验包括人工评估、裁判评估、一致性检查、成本分析和消融，表明该系统可减少人工工作并构建有用的具身空间基准。</p>
+<h4>英文摘要原文</h4>
+<p>Benchmarks are essential for evaluating embodied spatial intelligence, yet their construction is labor-intensive, hard to reuse, and difficult to maintain. Existing embodied benchmarks are often static and may quickly become saturated as models improve, limiting their ability to distinguish new capabilities. We propose Embodied-BenchClaw, an autonomous agentic system for constructing embodied spatial intelligence benchmarks. Given a user-specified evaluation intent, Embodied-BenchClaw automatically produces a complete and continually updatable benchmark package through a five-stage pipeline: intent blueprinting, data collection, structuring and cleaning, benchmark synthesis, and evaluation reporting. The pipeline is coordinated by three agents for planning, construction, and evaluation. To improve reusability and reliability, Embodied-BenchClaw introduces an extensible Skill Library and process quality control, enabling benchmark construction to be composable, verifiable, and repairable. We instantiate multiple benchmarks covering indoor spatial reasoning, outdoor spatial reasoning, robotic manipulation, quadruped robot navigation, UAV/aerial-view understanding, and static benchmark enhancement. These benchmarks span diverse embodied carriers, data sources, and spatial capabilities. Experiments with human evaluation, judge-based assessment, consistency checks, cost analysis, and ablations show that Embodied-BenchClaw can construct verifiable, executable, maintainable, and diagnostically useful embodied spatial benchmarks with reduced manual effort.</p>
+<h3>4. 通过闭环仿射激活编辑引导多机器人行为</h3>
+<ul>
+<li>原题：Steering Multirobot Behavior via Closed-Loop Affine Activation Editing</li>
+<li>分区：速读区；评分：6.9/10</li>
+<li>作者：Satyajeet Das, Darren Chiu, Shashank Hegde, Gaurav S. Sukhatme</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.11489v1">abs</a> / <a href="https://arxiv.org/pdf/2606.11489v1">PDF</a></li>
+<li>命中关键词：navigation policy</li>
+<li>为什么和具身导航相关：与机器人导航和导航策略高度相关，重点在多机器人/多 UAV 导航中对冻结策略进行在线行为引导，可关联到 PointNav 式目标导航、避障、队形保持和空间风险规避等问题。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了冻结导航策略在不微调或重训练的情况下，如何在部署时适应新的多机器人行为需求的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>CLAE 在推理时编辑导航策略的中间激活，让多四旋翼机器人在保持到达目标和避障能力的同时表现出新行为。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出 CLAE 推理时闭环仿射激活编辑框架，无需修改基础策略权重和动作头</li>
+<li>结合稀疏自编码器、行为相关潜变量探测和轻量级强化学习引导策略，实现状态相关的在线行为转向</li>
+<li>在多四旋翼导航中展示个体速度控制、队形保持和规避摄像头暴露等新行为</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验</p>
+<h4>阅读建议</h4>
+<p>建议关注 CLAE 是否能迁移到其他导航策略与任务，如 ObjectNav、VLN 或 PointNav，以及激活编辑对原始导航成功率、避障安全性和多机器人协同稳定性的影响。</p>
+<h4>中文摘要</h4>
+<p>真实世界机器人需要在预训练策略能力范围之外适应新行为。策略微调或重训练可能导致灾难性遗忘，降低预训练策略的基础性能。为此，论文提出 CLAE，即闭环仿射激活编辑：一种推理时框架，通过编辑中间激活来引导冻结策略的行为，同时保持基础策略权重和下游动作头不变。CLAE 将行为引导视为闭环问题，其输出会编辑策略激活，并根据机器人状态、环境、目标行为和多机器人上下文在线适应。该方法在冻结策略激活上训练稀疏自编码器，通过事后探测选择与行为相关的潜在特征，并学习一个轻量级的基于强化学习的引导策略，在推理时对选中潜变量施加状态相关的仿射编辑。论文在一个冻结的多四旋翼导航策略上验证 CLAE，该策略原本只执行单一任务：让机器人避开障碍并导航到一组目标位置。通过大量仿真和物理测试，结果显示 CLAE 能在导航到目标位置的同时，引导单个机器人的速度模式，协调多机器人保持期望队形，并产生全新行为，使机器人减少暴露于环境中监控摄像头的风险。</p>
+<h4>英文摘要原文</h4>
+<p>Real-world robots need to adapt their behavior beyond the envelope of their pre-trained policy. Policy finetuning or retraining are options, but they risk catastrophic forgetting, degrading the pretrained policy&#x27;s base performance. To combat this, we introduce CLAE: Closed-Loop Affine Activation Editing, an inference-time framework for steering the behavior of a frozen policy by editing intermediate activations while keeping the base policy weights and downstream action head untouched. CLAE approaches behavior steering as a closed-loop problem whose outputs edit policy activations that adapt online to the robot state, environment, target behavior, and multi-robot context. It trains a sparse autoencoder over frozen-policy activations, selects behavior-relevant latent features via post-hoc probing, and learns a lightweight RL-based steering policy that applies state-dependent affine edits to selected latents during inference. We validate CLAE on a frozen multi-quadrotor navigation policy trained to perform a single task: navigating robots to a set of goal locations while avoiding obstacles. Through extensive simulations and physical tests, we show that while navigating to their goal positions, CLAE can 1. steer individual robot behavior by controlling each robot&#x27;s velocity profile; 2. coordinate multirobot behavior by preserving a desired formation; and 3. produce entirely new behavior wherein robots are required to reduce their exposure to surveillance cameras in the environment.</p>
+<h3>5. JOIN：基于锚定抓取条件的双臂辅助操作，通过对抗、推理与导航实现协同</h3>
+<ul>
+<li>原题：JOIN: Anchor-Grasp-Conditioned Joining via Opposition, Inference, and Navigation for Bimanual Assistive Manipulation</li>
+<li>分区：速读区；评分：5.2/10</li>
+<li>作者：Drake Moore, Matt Cheng, Xiang Zhi Tan, Taşkın Padır</li>
+<li>日期：published 2026-06-10；updated 2026-06-10</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.11151v1">abs</a> / <a href="https://arxiv.org/pdf/2606.11151v1">PDF</a></li>
+<li>命中关键词：BM25 token match</li>
+<li>为什么和具身导航相关：与具身机器人导航相关，重点在移动机械臂为双臂操作选择导航站位，并结合任务语义、空间几何和抓取条件完成辅助操作。</li>
+</ul>
+<h4>解决的问题</h4>
+<p>这篇论文解决了轮椅单臂辅助系统难以完成开罐、倒液体、端托盘等双手日常任务时，如何召唤移动机械臂并决定其站位与抓取的问题。</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>JOIN让轮椅上的固定机械臂先抓住物体，再让移动机械臂通过视觉语言推理、几何规划和导航去合适位置补上一只“手”。</p>
+<h4>核心贡献</h4>
+<ul>
+<li>提出异构按需双臂辅助系统，由轮椅安装的锚定臂与被召唤的移动机械臂协同完成任务</li>
+<li>将双臂加入问题分解为规划、驾驶和抓取三个阶段，涉及导航站位与条件抓取决策</li>
+<li>提出轮椅参考的对抗评分和任务条件方向可操作性，并在真实机器人平台上验证</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>摘要未说明，需要看正文核验。</p>
+<h4>阅读建议</h4>
+<p>建议关注其“站位选择+抓取条件”的任务分解方式，以及VLM与几何工具如何服务于移动机械臂导航和空间推理；若研究ObjectNav、机器人导航到可操作位姿或具身辅助操作，该文值得细读。</p>
+<h4>中文摘要</h4>
+<p>辅助移动与操作平台作为恢复残障人士独立性的手段受到关注。虽然它们能完成许多基本日常活动，但开罐、倒液体、端托盘和基础备餐等大量任务本质上需要双臂，单臂系统难以完成。给轮椅增加第二只机械臂并不现实，因为会增加功耗、成本，并占用转移和移动所需空间。作者提出一种异构按需双臂系统：轮椅上的锚定臂在需要时由被召唤的移动机械臂加入，后者作为补充臂。核心技术问题被称为双臂加入：锚定臂已经完成抓取，补充臂必须选择站在哪里以及抓取什么来完成任务。作者将该问题分解为规划、驾驶和抓取三个阶段，并表明视觉语言模型结合标准几何工具可提供足够的任务级知识，用于解决一类代表性双臂日常辅助任务。JOIN贡献了轮椅参考的对抗评分和任务条件方向可操作性。系统在Kinova Gen3锚定臂和Hello Robot Stretch 3补充臂上评估，在代表性的同物体和异物体任务中，JOIN完成19/20次尝试，高于现有方法的14/20，并显著减少操作员纠正。</p>
+<h4>英文摘要原文</h4>
+<p>Assistive mobility and manipulation platforms have received increasing attention as a means of restoring independence to individuals with disabilities. While effective for many basic activities of daily living (ADLs), a significant percentage of everyday tasks such as opening a jar, pouring a liquid, lifting a tray, or basic meal preparation, is fundamentally bimanual and remains out of reach for any single-arm system. Adding a second arm to a wheelchair is impractical, due to the additional power draw, cost, and the loss of space required for transfers and mobility. We instead propose a heterogeneous, on-demand bimanual system, in which a wheelchair-mounted anchor arm is joined when needed by a summoned mobile manipulator that serves as a complement arm. The central technical problem, which we call bimanual joining, is conditional: the anchor has already committed to a grasp, and the complement arm must choose where to stand and what to grasp to complete the task. We formulate bimanual joining as a three-phase decomposition (plan, drive, grasp) and show that a vision-language model (VLM), coupled with standard geometric tools, provides task-level knowledge sufficient to solve a representative class of bimanual ADLs. Our system JOIN, contributes (i) a wheelchair-referenced opposition score, and (ii) task-conditioned directional manipulability. We evaluate JOIN on a Kinova Gen3 anchor and a Hello Robot Stretch~3 complement on representative same-object and different-object tasks. JOIN accomplished more attempts (19/20) than state-of-the-art methods (14/20) and required markedly less correction by the operator.</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.11636v1">SAFER-Nav：通过分割感知微调提升视觉机器人导航安全性</a></td>
+<td>robot navigation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9.9</td>
+<td><a href="https://arxiv.org/abs/2606.12042v1">KinematicRL：面向具备运动动力学可行性的社会导航仿真到现实强化学习框架</a></td>
+<td>sim-to-real, reinforcement learning</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7.2</td>
+<td><a href="https://arxiv.org/abs/2606.11909v1">Embodied-BenchClaw：用于构建具身空间智能基准的自主多智能体系统</a></td>
+<td>robot navigation, spatial reasoning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6.9</td>
+<td><a href="https://arxiv.org/abs/2606.11489v1">通过闭环仿射激活编辑引导多机器人行为</a></td>
+<td>navigation policy</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5.2</td>
+<td><a href="https://arxiv.org/abs/2606.11151v1">JOIN：基于锚定抓取条件的双臂辅助操作，通过对抗、推理与导航实现协同</a></td>
+<td></td>
+</tr>
+</tbody>
+</table></div></article>
 </main>
 </body>
 </html>

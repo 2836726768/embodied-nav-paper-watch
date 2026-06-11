@@ -5,7 +5,6 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NO_SITE=0
 DRY_RUN=0
 HAS_RUN_DATE=0
-HAS_DAYS=0
 for arg in "$@"; do
   if [ "$arg" = "--no-site" ]; then
     NO_SITE=1
@@ -16,13 +15,10 @@ for arg in "$@"; do
   if [ "$arg" = "--run-date" ] || [[ "$arg" == --run-date=* ]]; then
     HAS_RUN_DATE=1
   fi
-  if [ "$arg" = "--days" ] || [[ "$arg" == --days=* ]]; then
-    HAS_DAYS=1
-  fi
 done
 
 RUN_DATE_ARGS=()
-if [ "$HAS_RUN_DATE" = "0" ] && [ "$HAS_DAYS" = "0" ] && [ "${PAPER_WATCH_ROLLING_WINDOW:-0}" != "1" ]; then
+if [ "$HAS_RUN_DATE" = "0" ] && [ "${PAPER_WATCH_EXACT_DAILY:-0}" = "1" ]; then
   RUN_DATE_ARGS=(--run-date "$(TZ="${PAPER_WATCH_TZ:-Asia/Shanghai}" date +%F)")
 fi
 
