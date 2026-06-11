@@ -1,4 +1,5 @@
 import unittest
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -6,9 +7,11 @@ from zoneinfo import ZoneInfo
 
 from src.daily_paper_watch import (
     Paper,
+    archived_paper_ids,
     build_current_meta,
     generate_site,
     load_config,
+    remove_already_archived,
     render_report,
     score_papers,
     write_report,
@@ -84,6 +87,64 @@ class DailyPaperWatchTests(unittest.TestCase):
             "min_score": 2.0,
         }
         self.assertEqual(score_papers(papers, config), [])
+
+    def test_archived_ids_skip_current_date(self):
+        with TemporaryDirectory() as tmp:
+            site_dir = Path(tmp) / "site"
+            old_dir = site_dir / "docs" / "202606" / "09"
+            current_dir = site_dir / "docs" / "202606" / "11"
+            old_dir.mkdir(parents=True)
+            current_dir.mkdir(parents=True)
+            (old_dir / "papers.meta.json").write_text(
+                json.dumps({"date": "2026-06-09", "papers": [{"id": "2606.10001v1"}]}),
+                encoding="utf-8",
+            )
+            (current_dir / "papers.meta.json").write_text(
+                json.dumps({"date": "2026-06-11", "papers": [{"id": "2606.10002v1"}]}),
+                encoding="utf-8",
+            )
+
+            ids = archived_paper_ids(site_dir, exclude_date="2026-06-11")
+            self.assertEqual(ids, {"2606.10001v1"})
+
+    def test_remove_already_archived(self):
+        now = datetime.now(timezone.utc)
+        papers = [
+            Paper(
+                paper_id="2606.10001v1",
+                title="Embodied Navigation with Semantic Memory",
+                authors=("A. Researcher",),
+                summary="A robot navigation paper about embodied navigation and semantic map memory.",
+                published=now,
+                updated=now,
+                categories=("cs.RO",),
+                abs_url="https://arxiv.org/abs/2606.10001v1",
+                pdf_url="https://arxiv.org/pdf/2606.10001v1",
+            ),
+            Paper(
+                paper_id="2606.10002v1",
+                title="Vision-Language Navigation with Spatial Memory",
+                authors=("B. Researcher",),
+                summary="A robot navigation paper about vision-language navigation in 3D scenes.",
+                published=now,
+                updated=now,
+                categories=("cs.RO",),
+                abs_url="https://arxiv.org/abs/2606.10002v1",
+                pdf_url="https://arxiv.org/pdf/2606.10002v1",
+            ),
+        ]
+        config = {
+            "priority_keywords": ["embodied navigation", "vision-language navigation", "robot navigation"],
+            "keywords": ["semantic map"],
+            "related_keywords": ["3D scenes"],
+            "exclude_keywords": [],
+            "strict_focus": True,
+            "min_score": 2.0,
+        }
+        scored = score_papers(papers, config)
+        fresh, skipped = remove_already_archived(scored, {"2606.10001v1"})
+        self.assertEqual(skipped, 1)
+        self.assertEqual([item.paper.paper_id for item in fresh], ["2606.10002v1"])
 
     def test_generate_static_site(self):
         now = datetime.now(timezone.utc)

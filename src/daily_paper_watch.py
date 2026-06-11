@@ -599,6 +599,37 @@ def existing_report_selected_count(report_path: Path) -> int:
         return 0
 
 
+def archived_paper_ids(site_dir: Path, *, exclude_date: str | None = None) -> set[str]:
+    ids: set[str] = set()
+    docs_root = site_dir / "docs"
+    if not docs_root.exists():
+        return ids
+    for meta_path in docs_root.glob("*/*/papers.meta.json"):
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if exclude_date and str(meta.get("date") or meta.get("label") or "") == exclude_date:
+            continue
+        papers = meta.get("papers")
+        if not isinstance(papers, list):
+            continue
+        for paper in papers:
+            if not isinstance(paper, dict):
+                continue
+            paper_id = str(paper.get("id") or "").strip()
+            if paper_id:
+                ids.add(paper_id)
+    return ids
+
+
+def remove_already_archived(scored: list[ScoredPaper], archived_ids: set[str]) -> tuple[list[ScoredPaper], int]:
+    if not archived_ids:
+        return scored, 0
+    fresh = [item for item in scored if item.paper.paper_id not in archived_ids]
+    return fresh, len(scored) - len(fresh)
+
+
 def html_attr(value: Any) -> str:
     return html.escape(str(value or ""), quote=True)
 
@@ -1764,6 +1795,7 @@ def build_current_meta(
     run_time: datetime,
     tz: ZoneInfo,
     max_items: int,
+    duplicate_skipped_count: int = 0,
 ) -> dict[str, Any]:
     selected = scored[:max_items]
     local_time = run_time.astimezone(tz)
@@ -1787,6 +1819,7 @@ def build_current_meta(
         "scanned_count": scanned_count,
         "candidate_count": candidate_count,
         "selected_count": len(selected),
+        "duplicate_skipped_count": duplicate_skipped_count,
         "deep_count": deep_count,
         "quick_count": quick_count,
         "topic_counts": dict(topic_counts.most_common()),
@@ -2016,6 +2049,7 @@ def render_report_from_meta(current_meta: dict[str, Any], config: dict[str, Any]
     domain = str(config.get("domain_name") or "具身智能导航")
     papers = current_meta.get("papers", []) if isinstance(current_meta.get("papers"), list) else []
     categories = ", ".join(str(item) for item in current_meta.get("categories", [])) or ", ".join(as_list(config, "categories"))
+    duplicate_skipped_count = int(current_meta.get("duplicate_skipped_count") or 0)
     lines: list[str] = [
         f"# {domain}论文日报 {current_meta.get('date')}",
         "",
@@ -2036,11 +2070,14 @@ def render_report_from_meta(current_meta: dict[str, Any], config: dict[str, Any]
         lines.append("")
 
     if not papers:
+        empty_note = "今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 `min_score` 或增大 `days_window` 做补扫。"
+        if duplicate_skipped_count:
+            empty_note = f"今天没有筛到新的具身智能导航论文；滚动窗口中有 {duplicate_skipped_count} 篇已在历史日报收录，已自动跳过。"
         lines.extend(
             [
                 "## 今日精选",
                 "",
-                "今天没有筛到达到阈值的具身智能导航相关新论文。可以临时调低 `min_score` 或增大 `days_window` 做补扫。",
+                empty_note,
                 "",
             ]
         )
@@ -2642,6 +2679,7 @@ def write_docs_style_outputs(site_dir: Path, current_meta: dict[str, Any]) -> No
         "date": date_text,
         "generated_at": current_meta.get("generated_at"),
         "count": current_meta.get("selected_count"),
+        "duplicate_skipped_count": current_meta.get("duplicate_skipped_count", 0),
         "deep_count": current_meta.get("deep_count"),
         "quick_count": current_meta.get("quick_count"),
         "papers": current_meta.get("papers", []),
@@ -4461,6 +4499,13 @@ def main(argv: list[str]) -> int:
         papers, scanned_count, fetch_warnings = fetch_recent_papers(config, days=days, max_results=max_results)
     scored = score_papers(papers, config)
     target_report_path = out_dir / f"{run_time.astimezone(tz):%Y-%m-%d}.md"
+    duplicate_skipped_count = 0
+    if not args.run_date:
+        report_date = f"{run_time.astimezone(tz):%Y-%m-%d}"
+        scored, duplicate_skipped_count = remove_already_archived(
+            scored,
+            archived_paper_ids(site_dir, exclude_date=report_date),
+        )
     if scanned_count == 0 and not papers and fetch_warnings and existing_report_selected_count(target_report_path) > 0:
         print(
             f"[paper-watch] arXiv fetch failed; keeping existing report/site {target_report_path}",
@@ -4477,6 +4522,7 @@ def main(argv: list[str]) -> int:
         run_time=run_time,
         tz=tz,
         max_items=max_items,
+        duplicate_skipped_count=duplicate_skipped_count,
     )
     current_meta = enrich_current_meta_with_openclaw(current_meta, config)
     report = render_report_from_meta(current_meta, config)
