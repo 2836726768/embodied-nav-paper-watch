@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身智能导航论文日报 2026-06-13</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · 2026-06-13</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/2026-06-13.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-13</h1>
+<ul>
+<li>生成时间：2026-06-13 09:00:07 CST</li>
+<li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
+<li>扫描条目：480；时间窗口候选：372；入选：2</li>
+</ul>
+<ul>
+<li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
+</ul>
+<h2>抓取或生成警告</h2>
+<ul>
+<li>OpenClaw: 2606.13494v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：NavWAM: A Navigation World Action Model for Goal-Conditioned Visual Navigation\n作者：Daichi Azuma, Taiki Miyanishi, Koya Sakamoto, Shuhei Kurita, Yaonan Zhu, Petr Khrapchenkov, Motoaki Kawanabe, Yusuke Iwasawa\n类别：cs.RO, cs.CV\n命中关键词：navigation policy, visual navigation, goal-conditioned\n主题标签：Robot Navigation, ObjectNav / GoalNav, Planning / Policy\n推荐理由：命中 navigation policy、visual navigation、goal-conditioned；具身/机器人导航焦点明确\n英文摘要：\nGoal-conditioned visual navigation requires a robot to act under partial observability by anticipating how its motion will change the future egocentric view and whether that change brings it closer to the goal. Navigation world models provide such visual foresight, but they remain prediction modules that require an external planner to convert predicted futures into closed-loop control. We propose Navigation World Action Model (NavWAM), a diffusion-transformer policy that turns navigation world-model prediction into executable action by representing future observations, goal-progress values, and action chunks in a shared latent sequence. By learning future prediction jointly with the action and value targets that determine closed-loop behavior, NavWAM makes visual foresight directly usable for robot control. We build NavWAM through simulation pretraining and real-robot adaptation, and evaluate it on image-goal navigation against planning-based world models and a representative direct navigation policy. Across offline benchmarks and closed-loop real-robot deployment, NavWAM improves over planning-based world-model baselines in our evaluations while using the default policy mode without CEM-style action search. Project page: https://dachii-azm.github.io/navwam/\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.12550v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：Foresight: Iterative Reasoning About Clues that Matter for Navigation\n作者：Arthur Zhang, Carl Qi, Donne Su, Xiangyun Meng, Amy Zhang, Joydeep Biswas\n类别：cs.RO, cs.AI\n命中关键词：mapless navigation, reinforcement learning\n主题标签：Robot Navigation, Planning / Policy\n推荐理由：命中 mapless navigation、reinforcement learning；具身/机器人导航焦点明确\n英文摘要：\nOpen-world mapless navigation from sparse language instructions requires resolving underspecified goals and inferring which environmental cues are relevant for reaching the goal. For instance, reaching an out-of-view destination may require interpreting ramps, signs, or detours that reveal where to go or which route to take. Prior works are limited by their reliance on known navigation factors and closed-set factor categories, or identify cues before motion planning and miss plan-dependent cues. We argue that pretrained Vision-Language Models (VLMs) can discover novel instruction-relevant cues, but require adaptation to focus on which cues matter and how they should influence motion planning. We realize these ideas in Foresight, a test-time framework in which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the language goal and visual context. Subsequent plans are conditioned on prior critiques, enabling iterative motion refinement before execution. To align plan critiques and refinements with open-set behavior preferences, we learn a reward model from human feedback and use it to post-train the VLM with reinforcement learning in the plan-critique loop. In offline evaluations and 6 real-world environments, Foresight improves average task success by 37% and reduces interventions per mission by 52% relative to state-of-the-art test-time reasoning and foundation-model baselines, while running in real-time on a Jetson AGX Orin. We will release code, data, and training details to support future work on test-time reasoning for robot motion refinement. Additional videos at: https://amrl.cs.utexas.edu/foresight\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+</ul>
+<h2>今日精选</h2>
+<h3>1. NavWAM: A Navigation World Action Model for Goal-Conditioned Visual Navigation</h3>
+<ul>
+<li>原题：NavWAM: A Navigation World Action Model for Goal-Conditioned Visual Navigation</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Daichi Azuma, Taiki Miyanishi, Koya Sakamoto, Shuhei Kurita, Yaonan Zhu, Petr Khrapchenkov et al.</li>
+<li>日期：published 2026-06-11；updated 2026-06-11</li>
+<li>类别：cs.RO, cs.CV</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.13494v1">abs</a> / <a href="https://arxiv.org/pdf/2606.13494v1">PDF</a></li>
+<li>命中关键词：navigation policy, visual navigation, goal-conditioned</li>
+<li>为什么和具身导航相关：命中 navigation policy、visual navigation、goal-conditioned；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Goal-conditioned visual navigation requires a robot to act under partial observability by anticipating how its motion will change the future egocentric view and whether that change brings it closer to the goal.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, ObjectNav / GoalNav, Planning / Policy；核心线索：Navigation world models provide such visual foresight, but they remain prediction modules that require an external planner to convert predicted futures into closed-loop control.；结果线索：Across offline benchmarks and closed-loop real-robot deployment, NavWAM improves over planning-based world-model baselines in our evaluations while using the default pol…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：Navigation world models provide such visual foresight, but they remain prediction modules that require an external planner to convert predicted futures into closed-loop control.</li>
+<li>实验/结果：Across offline benchmarks and closed-loop real-robot deployment, NavWAM improves over planning-based world-model baselines in our evaluations while using the default policy mode without CEM-style action search.</li>
+<li>命中 navigation policy、visual navigation、goal-conditioned；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Goal-conditioned visual navigation requires a robot to act under partial observability by anticipating how its motion will change the future egocentric view and whether that change brings it closer to the goal. Navigation world models provide such visual foresight, but they remain prediction modules that require an external planner to convert predicted futures into closed-loop control. We propose Navigation World Action Model (NavWAM), a diffusion-transformer policy that turns navigation world-model prediction into executable action by representing future observations, goal-progress values, and action chunks in a shared latent sequence. By learning future prediction jointly with the action and value targets that determine closed-loop behavior, NavWAM makes visual foresight directly usable for robot control. We build NavWAM through simulation pretraining and real-robot adaptation, and evaluate it on image-goal navigation against planning-based world models and a representative direct navigation policy. Across offline benchmarks and closed-loop real-robot deployment, NavWAM improves over planning-based world-model baselines in our evaluations while using the default policy mode without CEM-style action search. Project page: https://dachii-azm.github.io/navwam/</p>
+<h3>2. Foresight: Iterative Reasoning About Clues that Matter for Navigation</h3>
+<ul>
+<li>原题：Foresight: Iterative Reasoning About Clues that Matter for Navigation</li>
+<li>分区：精读区；评分：7.2/10</li>
+<li>作者：Arthur Zhang, Carl Qi, Donne Su, Xiangyun Meng, Amy Zhang, Joydeep Biswas</li>
+<li>日期：published 2026-06-11；updated 2026-06-11</li>
+<li>类别：cs.RO, cs.AI</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.12550v1">abs</a> / <a href="https://arxiv.org/pdf/2606.12550v1">PDF</a></li>
+<li>命中关键词：mapless navigation, reinforcement learning</li>
+<li>为什么和具身导航相关：命中 mapless navigation、reinforcement learning；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Open-world mapless navigation from sparse language instructions requires resolving underspecified goals and inferring which environmental cues are relevant for reaching the goal.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Planning / Policy；核心线索：We realize these ideas in Foresight, a test-time framework in which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the language goal and vis…；结果线索：In offline evaluations and 6 real-world environments, Foresight improves average task success by 37% and reduces interventions per mission by 52% relative to state-of-th…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：We realize these ideas in Foresight, a test-time framework in which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the language goal and visual context.</li>
+<li>实验/结果：In offline evaluations and 6 real-world environments, Foresight improves average task success by 37% and reduces interventions per mission by 52% relative to state-of-the-art test-time reasoning and foundation-model baselines, wh…</li>
+<li>命中 mapless navigation、reinforcement learning；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Open-world mapless navigation from sparse language instructions requires resolving underspecified goals and inferring which environmental cues are relevant for reaching the goal. For instance, reaching an out-of-view destination may require interpreting ramps, signs, or detours that reveal where to go or which route to take. Prior works are limited by their reliance on known navigation factors and closed-set factor categories, or identify cues before motion planning and miss plan-dependent cues. We argue that pretrained Vision-Language Models (VLMs) can discover novel instruction-relevant cues, but require adaptation to focus on which cues matter and how they should influence motion planning. We realize these ideas in Foresight, a test-time framework in which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the language goal and visual context. Subsequent plans are conditioned on prior critiques, enabling iterative motion refinement before execution. To align plan critiques and refinements with open-set behavior preferences, we learn a reward model from human feedback and use it to post-train the VLM with reinforcement learning in the plan-critique loop. In offline evaluations and 6 real-world environments, Foresight improves average task success by 37% and reduces interventions per mission by 52% relative to state-of-the-art test-time reasoning and foundation-model baselines, while running in real-time on a Jetson AGX Orin. We will release code, data, and training details to support future work on test-time reasoning for robot motion refinement. Additional videos at: https://amrl.cs.utexas.edu/foresight</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.13494v1">NavWAM: A Navigation World Action Model for Goal-Conditioned Visual Navigation</a></td>
+<td>navigation policy, visual navigation, goal-conditioned</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7.2</td>
+<td><a href="https://arxiv.org/abs/2606.12550v1">Foresight: Iterative Reasoning About Clues that Matter for Navigation</a></td>
+<td>mapless navigation, reinforcement learning</td>
+</tr>
+</tbody>
+</table></div></article>
+</main>
+</body>
+</html>
