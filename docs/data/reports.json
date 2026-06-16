@@ -1,22 +1,25 @@
 {
   "current": {
-    "date": "2026-06-15",
-    "title": "具身智能导航论文日报 2026-06-15",
-    "generated_at": "2026-06-15 09:00:07 CST",
+    "date": "2026-06-16",
+    "title": "具身智能导航论文日报 2026-06-16",
+    "generated_at": "2026-06-16 09:00:14 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
       "cs.AI",
       "cs.LG"
     ],
-    "scanned_count": 480,
+    "scanned_count": 240,
     "candidate_count": 0,
     "selected_count": 0,
     "duplicate_skipped_count": 0,
     "deep_count": 0,
     "quick_count": 0,
     "topic_counts": {},
-    "warnings": [],
+    "warnings": [
+      "cs.AI: HTTP 429 Unknown Error",
+      "cs.LG: HTTP 429 Unknown Error"
+    ],
     "papers": [],
     "openclaw": {
       "enabled": true,
@@ -27,23 +30,26 @@
   },
   "history": [
     {
-      "date": "2026-06-15",
-      "title": "具身智能导航论文日报 2026-06-15",
-      "generated_at": "2026-06-15 09:00:07 CST",
+      "date": "2026-06-16",
+      "title": "具身智能导航论文日报 2026-06-16",
+      "generated_at": "2026-06-16 09:00:14 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
         "cs.AI",
         "cs.LG"
       ],
-      "scanned_count": 480,
+      "scanned_count": 240,
       "candidate_count": 0,
       "selected_count": 0,
       "duplicate_skipped_count": 0,
       "deep_count": 0,
       "quick_count": 0,
       "topic_counts": {},
-      "warnings": [],
+      "warnings": [
+        "cs.AI: HTTP 429 Unknown Error",
+        "cs.LG: HTTP 429 Unknown Error"
+      ],
       "papers": [],
       "openclaw": {
         "enabled": true,
@@ -51,6 +57,15 @@
         "enriched_count": 0,
         "warnings": []
       }
+    },
+    {
+      "date": "2026-06-15",
+      "title": "具身智能导航论文日报 2026-06-15",
+      "generated_at": "2026-06-15 09:00:07 CST",
+      "scanned_count": 480,
+      "candidate_count": 0,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-14",
