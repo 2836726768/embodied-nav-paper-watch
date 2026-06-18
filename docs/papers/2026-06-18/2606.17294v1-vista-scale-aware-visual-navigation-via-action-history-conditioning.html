@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VISTA: Scale-Aware Visual Navigation via Action History Conditioning</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 9.7</span>
+      <span class="badge">rank #3</span>
+    </div>
+    <h1 class="paper-title">VISTA: Scale-Aware Visual Navigation via Action History Conditioning</h1>
+    <p class="paper-original">VISTA: Scale-Aware Visual Navigation via Action History Conditioning</p>
+    <div class="paper-meta">
+      <span>Maeva Guerrier, Koki Kobayashi, Simon Roy, Jana Pavlasek, Giovanni Beltrame</span>
+      <span>published 2026-06-16</span>
+      <span>cs.RO, cs.LG</span>
+    </div>
+    <div class="paper-tags"><span class="tag">visual navigation</span><span class="tag">Robot Navigation</span><span class="tag">Planning / Policy</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>问题/背景：Vision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments.</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>方向：Robot Navigation, Planning / Policy；核心线索：We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model's predi…；结果线索：VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office…</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>方法线索：We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model's predictions and the robot's actual physical d…</li><li>实验/结果：VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demons…</li><li>命中 visual navigation；具身/机器人导航焦点明确</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Vision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments. To maintain generality, many vision-based navigation models predict normalized actions. However, this normalization introduces a critical deployment vulnerability: applying different scaling factors to the same normalized trajectory alters its physical geometry, which degrades navigation performance and increases collision risks. We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model's predictions and the robot's actual physical displacement. Furthermore, current VNMs often struggle in visually repetitive environments that lack distinct features. To resolve this issue, we integrate a DINOv3 encoder, whose richer representations enable our model to capture both spatial and geometric dimensions between observations. VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demonstrating consistent path following in unseen environments.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.17294v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.17294v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-18.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

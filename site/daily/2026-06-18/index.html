@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具身智能导航论文日报 2026-06-18</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <section class="watch-hero">
+    <p class="kicker">Daily Report · 2026-06-18</p>
+    <h1>具身智能导航论文日报</h1>
+    <p class="lead">固定日期页面，保留当天完整 Markdown 日报内容。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="../../reports/2026-06-18.html">Markdown 全文</a>
+      <a class="button" href="../../archive/index.html">返回归档</a>
+    </div>
+  </section>
+  <article class="markdown-page"><h1>具身智能导航论文日报 2026-06-18</h1>
+<ul>
+<li>生成时间：2026-06-18 09:00:09 CST</li>
+<li>来源：arXiv 公开 API；类别：cs.RO, cs.CV, cs.AI, cs.LG</li>
+<li>扫描条目：480；时间窗口候选：375；入选：8</li>
+</ul>
+<ul>
+<li>中文解读：OpenClaw / openai-codex/gpt-5.5</li>
+</ul>
+<h2>抓取或生成警告</h2>
+<ul>
+<li>OpenClaw: 2606.16400v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：SemGeoNav:A Safety-Guided Visual Navigation Approach with Semantic Reasoning and Geometric Planning\n作者：Yu Liu, Zongyang Chen, Yan Guo, Chao Liu, Xianfei Pan\n类别：cs.RO\n命中关键词：visual navigation\n主题标签：Robot Navigation, Planning / Policy\n推荐理由：命中 visual navigation；具身/机器人导航焦点明确\n英文摘要：\nLearning-based visual navigation has enhanced semantic goal-reaching capabilities. However, due to their black-box nature, purely end-to-end models often lack explicit geometric constraints, leading to unpredictable and unreliable obstacle avoidance in open environments. Conversely, traditional geometric planners ensure safety but struggle with high-dimensional visual targets. To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the reliable local planning ability of geometry-based methods, achieving robust image-based navigation while significantly improving obstacle avoidance. Furthermore, we introduce a temporal trajectory smoothing mechanism to ensure continuous and stable robot motion. We evaluated SemGeoNav on a Unitree Go2 quadruped robot in real-world environments. The results demonstrate that SemGeoNav outperforms existing representative methods, including ViNT and NoMaD, achieving higher success rates and shorter navigation times.\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.16935v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation\n作者：Jan-Niklas Klein, Sona Ghahremani, Christian Medeiros Adriano, Holger Giese\n类别：cs.RO, cs.AI, cs.LG\n命中关键词：semantic mapping, open-vocabulary, SLAM\n主题标签：Robot Navigation, Semantic Mapping, Active Mapping / SLAM\n推荐理由：命中 semantic mapping、open-vocabulary、SLAM；具身/机器人导航焦点明确；包含地图/场景图/空间推理导航线索\n英文摘要：\nRovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial observability. To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps from RGB-D data. Building on VLMaps-style approaches, CrossMaps integrates multi-scale CLIP embeddings with confidence-aware fusion and a dual-memory architecture consisting of Short-Term Memory (STM) and Long-Term Memory (LTM). The STM aggregates noisy visual observations using geometric, semantic, and temporal confidence cues, while confident and coherent cells are promoted to the LTM as persistent semantic landmarks. Designed for deployment with a Jetson Orin-powered UGV alongside SLAM, CrossMaps runs in real time and produces semantic heatmaps that can be queried with natural language to guide rover navigation.\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.17294v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &quot;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：VISTA: Scale-Aware Visual Navigation via Action History Conditioning\n作者：Maeva Guerrier, Koki Kobayashi, Simon Roy, Jana Pavlasek, Giovanni Beltrame\n类别：cs.RO, cs.LG\n命中关键词：visual navigation\n主题标签：Robot Navigation, Planning / Policy\n推荐理由：命中 visual navigation；具身/机器人导航焦点明确\n英文摘要：\nVision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments. To maintain generality, many vision-based navigation models predict normalized actions. However, this normalization introduces a critical deployment vulnerability: applying different scaling factors to the same normalized trajectory alters its physical geometry, which degrades navigation performance and increases collision risks. We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model&#x27;s predictions and the robot&#x27;s actual physical displacement. Furthermore, current VNMs often struggle in visually repetitive environments that lack distinct features. To resolve this issue, we integrate a DINOv3 encoder, whose richer representations enable our model to capture both spatial and geometric dimensions between observations. VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demonstrating consistent path following in unseen environments.\n&quot;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.18235v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：EvolveNav: Proactive Preflection and Self-Evolving Memory for Zero-Shot Object Goal Navigation\n作者：Qi Chai, Wenhao Shen, Nanjie Yao, Yue Xia, Kaiyong Zhao, Jie Ma, Guosheng Lin, Hao Wang\n类别：cs.AI\n命中关键词：object goal navigation, object-goal navigation\n主题标签：ObjectNav / GoalNav\n推荐理由：命中 object goal navigation、object-goal navigation；具身/机器人导航焦点明确\n英文摘要：\nZero-Shot Object-Goal Navigation (ZS-OGN) requires embodied agents to explore and locate target objects without any prior training. To this end, recent methods leverage foundation models. But they typically rely on static priors and lack adaptation, which leads to repeated errors and costly trial and error. In this paper, we propose a self-evolving ZS-OGN framework that enables continuous test-time improvement. Specifically, we build an agentic rule memory by extracting actionable knowledge from past trajectories. Then, we propose a retrieval strategy based on upper confidence bound, selecting effective rules by balancing semantic relevance and historical success. In addition, we introduce a memory-guided preflection module that forecasts potential outcomes before action, reducing inefficient exploration. Extensive experiments show that our method outperforms existing zero-shot baselines, achieving a 10.1\\% improvement in success rate with fewer unnecessary steps.\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.16953v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks\n作者：Zhizheng Liu, Honglin He, Vivek Alumootil, Akshat Pandya, Brad Squicciarini, Wayne Wu, Bolei Zhou\n类别：cs.RO\n命中关键词：visual navigation\n主题标签：Robot Navigation\n推荐理由：命中 visual navigation；具身/机器人导航焦点明确\n英文摘要：\nUrban sidewalk navigation presents significant challenges due to complex structural layouts, dynamic pedestrian behaviors, and long distances. While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation. To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks. Built upon NVIDIA Isaac Sim, SidewalkBench brings GPU-accelerated simulation of diverse, high-fidelity sidewalk environments, including both procedurally generated and real-world scanned scenes. We further populate the scenes with rich, reactive event-based pedestrian behaviors and flexible, efficient animation, enabling standardized model evaluation under realistic real-world settings. We conduct a comprehensive evaluation of 9 visual navigation models on 330 unit-test scenarios, 800 pedestrian-reactive scenarios, and 105 long-horizon scenarios. Our findings highlight that pedestrian interaction and long-horizon robustness remain critical bottlenecks for existing models, and scaling up sidewalk training with synthetic data emerges as a promising solution.\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.16902v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models\n作者：Dongbin Na, Chanwoo Kim, Soonbin Rho, Giyun Choi, Gangbok Lee, Dooyoung Hong\n类别：cs.RO, cs.AI\n命中关键词：localization\n主题标签：Robot Navigation, Planning / Policy, Active Mapping / SLAM\n推荐理由：命中 localization；具身/机器人导航焦点明确\n英文摘要：\nThis work addresses spatial question answering for service robots traversing long egocentric routes. Given a query such as &quot;where can I find a dry cleaner on the way back home?&quot;, the system returns a metric coordinate that downstream navigation components can act on. Prior Spatial Question Answering approaches leverage retrieval-augmented agents built on closed-source models such as GPT-4o for path exploration. However, robots operating in the real world often cannot reliably depend on online closed-source models due to network instability, communication latency, and deployment cost. It creates a need for open-source based Spatial Question Answering approaches that can run onboard the robot, yet prior research in this direction remains limited. This work proposes BinTrack, a simple yet effective, fully open-source spatial-localization agent that leverages the temporal ordering of a robot\&#x27;s trajectory. BinTrack performs a binary search over the trajectory segments between two anchor landmarks identified from a query. It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmark, the most challenging setting that has so far required strong reasoning agents such as GPT-4o. Furthermore, its optimized inference strategy consistently yields more than a 1.5x inference speedup over previous approaches. Finally, this work releases GangnamLoop, a novel and practical multi-trip outdoor benchmark collected by deploying a real quadruped robot on public streets with the anonymization policy. It revisits the same locations under different outdoor conditions and pairs the robot\&#x27;s low viewpoint with the human owner\&#x27;s. The source codes and datasets are publicly available at https://github.com/ndb796/BinaryTracking\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.17630v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &quot;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：FLAP: FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation\n作者：Mengke Zhang, Sitong Li, Tiancheng Lai, Ruitian Pang, Mingxuan Zhang, Qingcheng Chen, Fei Gao, Chao Xu\n类别：cs.RO\n命中关键词：无显式关键词\n主题标签：Robot Navigation, Planning / Policy, Aerial / UAV\n推荐理由：具身/机器人导航焦点明确\n英文摘要：\nSafe and efficient trajectory planning in unknown, cluttered 3D environments constitutes a critical bottleneck for deploying Unmanned Aerial Vehicles (UAVs) in real-world applications. This challenge is further exacerbated by the limited field-of-view (FOV) and sensing range of onboard sensors. Many existing methods either make simplistic assumptions about unexplored space or rely on conservative heuristics such as speed limits or fixed perception patterns, reducing efficiency and generalizing poorly across different sensor types. In this work, we propose a novel planning framework that directly integrates active perception into trajectory optimization, thereby improving safety while preserving efficiency. The perception constraints are derived from the UAV&#x27;s dynamic model and formulated in the sensor coordinate frame, which enables precise handling of FOV geometry. The velocity-triggered activation mechanism enables the planner to balance perception and motion efficiency. We introduce an active perception sub-trajectory segment with parametric start-time optimization, mitigating collision risks from late obstacle detection. Our formulation enables active perception during arbitrary 3D maneuvers, extending beyond prior methods designed mainly for horizontal motion. All constraints and penalties are incorporated into a differentiable optimization problem, so the planner requires only a simple front-end global path for guidance, rather than a computationally expensive perception-aware path generator. Extensive simulations and real-world experiments demonstrate robust performance across diverse unknown environments with varying sensor configurations.\n&quot;]&#x27; returned non-zero exit status 1.</li>
+<li>OpenClaw: 2606.17183v1: CalledProcessError: Command &#x27;[&#x27;openclaw&#x27;, &#x27;infer&#x27;, &#x27;model&#x27;, &#x27;run&#x27;, &#x27;--json&#x27;, &#x27;--model&#x27;, &#x27;openai-codex/gpt-5.5&#x27;, &#x27;--thinking&#x27;, &#x27;minimal&#x27;, &#x27;--prompt&#x27;, &#x27;你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\n\n输出要求：\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\n- 所有字段必须是中文短文本。\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\n\nJSON 字段：\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\n\n字段说明：\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\n\n论文信息：\n标题：VL-MemKnG: Hybrid Memory with a Spatio-Temporal Knowledge Graph for Question Answering over Long Egocentric Navigation Trajectories\n作者：Svetlana Lukina, Mohamad Al Mdfaa, Gloria Haro, Sergey Zagoruyko, Gonzalo Ferrer\n类别：cs.RO\n命中关键词：无显式关键词\n主题标签：Robot Navigation\n推荐理由：具身/机器人导航焦点明确\n英文摘要：\nAnswering navigation-relevant questions over long egocentric videos requires retrieving and organizing evidence distributed across distant temporal moments while maintaining spatial and contextual consistency. Although long-context vision--language models can achieve strong answer quality, they are computationally expensive for long trajectories and inefficient for repeated querying. Recent graph-based approaches such as VL-KnG address this challenge through persistent spatio-temporal knowledge graphs, but graph-centric retrieval alone may underrepresent broader temporal continuity and contextual cues. We present VL-MemKnG, a hybrid memory framework that extends VL-KnG by combining a spatio-temporal knowledge graph with persistent segment-level contextual memory. The knowledge graph captures structured relational information and long-range object associations, while segment-level memory preserves broader temporal context for long-horizon evidence retrieval. A hybrid retrieval-and-reasoning module jointly operates over both memory representations to produce evidence-grounded answers and temporally organized supporting evidence. We also introduce WalkieKnowledgeT+, an extension of WalkieKnowledge for long-horizon navigation-oriented video question answering. The benchmark includes temporally distributed reasoning tasks requiring evidence aggregation across multiple non-cooccurring moments. On WalkieKnowledgeT+, VL-MemKnG improves Top-1 retrieval accuracy from 58% to 67% and Recall@1 from 34.50% to 40.55%, outperforming all compared methods, including Gemini 2.5 Pro and Qwen 3.5+. The gains are particularly pronounced on temporal-global and temporally scattered aggregation questions, demonstrating the benefits of combining structured relational memory with segment-level contextual memory while maintaining efficient query-time inference.\n&#x27;]&#x27; returned non-zero exit status 1.</li>
+</ul>
+<h2>今日精选</h2>
+<h3>1. SemGeoNav:A Safety-Guided Visual Navigation Approach with Semantic Reasoning and Geometric Planning</h3>
+<ul>
+<li>原题：SemGeoNav:A Safety-Guided Visual Navigation Approach with Semantic Reasoning and Geometric Planning</li>
+<li>分区：精读区；评分：10.0/10</li>
+<li>作者：Yu Liu, Zongyang Chen, Yan Guo, Chao Liu, Xianfei Pan</li>
+<li>日期：published 2026-06-15；updated 2026-06-15</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.16400v1">abs</a> / <a href="https://arxiv.org/pdf/2606.16400v1">PDF</a></li>
+<li>命中关键词：visual navigation</li>
+<li>为什么和具身导航相关：命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：The results demonstrate that SemGeoNav outperforms existing representative methods, including ViNT and NoMaD, achieving higher success rates and shorter navigation times.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Planning / Policy；核心线索：To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the re…；结果线索：To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-en…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the reliable local planning ability of geometr…</li>
+<li>实验/结果：To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the reliable local planning ability of geometr…</li>
+<li>命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Learning-based visual navigation has enhanced semantic goal-reaching capabilities. However, due to their black-box nature, purely end-to-end models often lack explicit geometric constraints, leading to unpredictable and unreliable obstacle avoidance in open environments. Conversely, traditional geometric planners ensure safety but struggle with high-dimensional visual targets. To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the reliable local planning ability of geometry-based methods, achieving robust image-based navigation while significantly improving obstacle avoidance. Furthermore, we introduce a temporal trajectory smoothing mechanism to ensure continuous and stable robot motion. We evaluated SemGeoNav on a Unitree Go2 quadruped robot in real-world environments. The results demonstrate that SemGeoNav outperforms existing representative methods, including ViNT and NoMaD, achieving higher success rates and shorter navigation times.</p>
+<h3>2. CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</h3>
+<ul>
+<li>原题：CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</li>
+<li>分区：精读区；评分：9.9/10</li>
+<li>作者：Jan-Niklas Klein, Sona Ghahremani, Christian Medeiros Adriano, Holger Giese</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO, cs.AI, cs.LG</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.16935v1">abs</a> / <a href="https://arxiv.org/pdf/2606.16935v1">PDF</a></li>
+<li>命中关键词：semantic mapping, open-vocabulary, SLAM</li>
+<li>为什么和具身导航相关：命中 semantic mapping、open-vocabulary、SLAM；具身/机器人导航焦点明确；包含地图/场景图/空间推理导航线索</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Rovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial obse…</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Semantic Mapping, Active Mapping / SLAM；核心线索：To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps from RGB-D data.</li>
+<li>实验/结果：摘要未明确给出实验结果，需要进入论文正文核验。</li>
+<li>命中 semantic mapping、open-vocabulary、SLAM；具身/机器人导航焦点明确；包含地图/场景图/空间推理导航线索</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Rovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial observability. To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps from RGB-D data. Building on VLMaps-style approaches, CrossMaps integrates multi-scale CLIP embeddings with confidence-aware fusion and a dual-memory architecture consisting of Short-Term Memory (STM) and Long-Term Memory (LTM). The STM aggregates noisy visual observations using geometric, semantic, and temporal confidence cues, while confident and coherent cells are promoted to the LTM as persistent semantic landmarks. Designed for deployment with a Jetson Orin-powered UGV alongside SLAM, CrossMaps runs in real time and produces semantic heatmaps that can be queried with natural language to guide rover navigation.</p>
+<h3>3. VISTA: Scale-Aware Visual Navigation via Action History Conditioning</h3>
+<ul>
+<li>原题：VISTA: Scale-Aware Visual Navigation via Action History Conditioning</li>
+<li>分区：精读区；评分：9.7/10</li>
+<li>作者：Maeva Guerrier, Koki Kobayashi, Simon Roy, Jana Pavlasek, Giovanni Beltrame</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO, cs.LG</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.17294v1">abs</a> / <a href="https://arxiv.org/pdf/2606.17294v1">PDF</a></li>
+<li>命中关键词：visual navigation</li>
+<li>为什么和具身导航相关：命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Vision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Planning / Policy；核心线索：We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model&#x27;s predi…；结果线索：VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model&#x27;s predictions and the robot&#x27;s actual physical d…</li>
+<li>实验/结果：VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demons…</li>
+<li>命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Vision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments. To maintain generality, many vision-based navigation models predict normalized actions. However, this normalization introduces a critical deployment vulnerability: applying different scaling factors to the same normalized trajectory alters its physical geometry, which degrades navigation performance and increases collision risks. We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model&#x27;s predictions and the robot&#x27;s actual physical displacement. Furthermore, current VNMs often struggle in visually repetitive environments that lack distinct features. To resolve this issue, we integrate a DINOv3 encoder, whose richer representations enable our model to capture both spatial and geometric dimensions between observations. VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demonstrating consistent path following in unseen environments.</p>
+<h3>4. EvolveNav: Proactive Preflection and Self-Evolving Memory for Zero-Shot Object Goal Navigation</h3>
+<ul>
+<li>原题：EvolveNav: Proactive Preflection and Self-Evolving Memory for Zero-Shot Object Goal Navigation</li>
+<li>分区：速读区；评分：9.7/10</li>
+<li>作者：Qi Chai, Wenhao Shen, Nanjie Yao, Yue Xia, Kaiyong Zhao, Jie Ma et al.</li>
+<li>日期：published 2026-06-17；updated 2026-06-17</li>
+<li>类别：cs.AI</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.18235v1">abs</a> / <a href="https://arxiv.org/pdf/2606.18235v1">PDF</a></li>
+<li>命中关键词：object goal navigation, object-goal navigation</li>
+<li>为什么和具身导航相关：命中 object goal navigation、object-goal navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Zero-Shot Object-Goal Navigation (ZS-OGN) requires embodied agents to explore and locate target objects without any prior training.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：ObjectNav / GoalNav；核心线索：In this paper, we propose a self-evolving ZS-OGN framework that enables continuous test-time improvement.；结果线索：Extensive experiments show that our method outperforms existing zero-shot baselines, achieving a 10.1\% improvement in success rate with fewer unnecessary steps.</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：In this paper, we propose a self-evolving ZS-OGN framework that enables continuous test-time improvement.</li>
+<li>实验/结果：Extensive experiments show that our method outperforms existing zero-shot baselines, achieving a 10.1\% improvement in success rate with fewer unnecessary steps.</li>
+<li>命中 object goal navigation、object-goal navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Zero-Shot Object-Goal Navigation (ZS-OGN) requires embodied agents to explore and locate target objects without any prior training. To this end, recent methods leverage foundation models. But they typically rely on static priors and lack adaptation, which leads to repeated errors and costly trial and error. In this paper, we propose a self-evolving ZS-OGN framework that enables continuous test-time improvement. Specifically, we build an agentic rule memory by extracting actionable knowledge from past trajectories. Then, we propose a retrieval strategy based on upper confidence bound, selecting effective rules by balancing semantic relevance and historical success. In addition, we introduce a memory-guided preflection module that forecasts potential outcomes before action, reducing inefficient exploration. Extensive experiments show that our method outperforms existing zero-shot baselines, achieving a 10.1\% improvement in success rate with fewer unnecessary steps.</p>
+<h3>5. SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks</h3>
+<ul>
+<li>原题：SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks</li>
+<li>分区：速读区；评分：8.6/10</li>
+<li>作者：Zhizheng Liu, Honglin He, Vivek Alumootil, Akshat Pandya, Brad Squicciarini, Wayne Wu et al.</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.16953v1">abs</a> / <a href="https://arxiv.org/pdf/2606.16953v1">PDF</a></li>
+<li>命中关键词：visual navigation</li>
+<li>为什么和具身导航相关：命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Our findings highlight that pedestrian interaction and long-horizon robustness remain critical bottlenecks for existing models, and scaling up sidewalk training with synthetic data emerges as a promising solution.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation；核心线索：To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks.；结果线索：While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation.</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks.</li>
+<li>实验/结果：While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation.</li>
+<li>命中 visual navigation；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Urban sidewalk navigation presents significant challenges due to complex structural layouts, dynamic pedestrian behaviors, and long distances. While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation. To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks. Built upon NVIDIA Isaac Sim, SidewalkBench brings GPU-accelerated simulation of diverse, high-fidelity sidewalk environments, including both procedurally generated and real-world scanned scenes. We further populate the scenes with rich, reactive event-based pedestrian behaviors and flexible, efficient animation, enabling standardized model evaluation under realistic real-world settings. We conduct a comprehensive evaluation of 9 visual navigation models on 330 unit-test scenarios, 800 pedestrian-reactive scenarios, and 105 long-horizon scenarios. Our findings highlight that pedestrian interaction and long-horizon robustness remain critical bottlenecks for existing models, and scaling up sidewalk training with synthetic data emerges as a promising solution.</p>
+<h3>6. Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models</h3>
+<ul>
+<li>原题：Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models</li>
+<li>分区：速读区；评分：7.0/10</li>
+<li>作者：Dongbin Na, Chanwoo Kim, Soonbin Rho, Giyun Choi, Gangbok Lee, Dooyoung Hong</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO, cs.AI</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.16902v1">abs</a> / <a href="https://arxiv.org/pdf/2606.16902v1">PDF</a></li>
+<li>命中关键词：localization</li>
+<li>为什么和具身导航相关：命中 localization；具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：It creates a need for open-source based Spatial Question Answering approaches that can run onboard the robot, yet prior research in this direction remains limited.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Planning / Policy, Active Mapping / SLAM；核心线索：It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmar…；结果线索：It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmark, the most challenging setting that has…</li>
+<li>实验/结果：It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmark, the most challenging setting that has…</li>
+<li>命中 localization；具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>This work addresses spatial question answering for service robots traversing long egocentric routes. Given a query such as &quot;where can I find a dry cleaner on the way back home?&quot;, the system returns a metric coordinate that downstream navigation components can act on. Prior Spatial Question Answering approaches leverage retrieval-augmented agents built on closed-source models such as GPT-4o for path exploration. However, robots operating in the real world often cannot reliably depend on online closed-source models due to network instability, communication latency, and deployment cost. It creates a need for open-source based Spatial Question Answering approaches that can run onboard the robot, yet prior research in this direction remains limited. This work proposes BinTrack, a simple yet effective, fully open-source spatial-localization agent that leverages the temporal ordering of a robot&#x27;s trajectory. BinTrack performs a binary search over the trajectory segments between two anchor landmarks identified from a query. It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmark, the most challenging setting that has so far required strong reasoning agents such as GPT-4o. Furthermore, its optimized inference strategy consistently yields more than a 1.5x inference speedup over previous approaches. Finally, this work releases GangnamLoop, a novel and practical multi-trip outdoor benchmark collected by deploying a real quadruped robot on public streets with the anonymization policy. It revisits the same locations under different outdoor conditions and pairs the robot&#x27;s low viewpoint with the human owner&#x27;s. The source codes and datasets are publicly available at https://github.com/ndb796/BinaryTracking</p>
+<h3>7. FLAP: FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation</h3>
+<ul>
+<li>原题：FLAP: FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation</li>
+<li>分区：速读区；评分：4.9/10</li>
+<li>作者：Mengke Zhang, Sitong Li, Tiancheng Lai, Ruitian Pang, Mingxuan Zhang, Qingcheng Chen et al.</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.17630v1">abs</a> / <a href="https://arxiv.org/pdf/2606.17630v1">PDF</a></li>
+<li>命中关键词：BM25 token match</li>
+<li>为什么和具身导航相关：具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：This challenge is further exacerbated by the limited field-of-view (FOV) and sensing range of onboard sensors.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation, Planning / Policy, Aerial / UAV；核心线索：In this work, we propose a novel planning framework that directly integrates active perception into trajectory optimization, thereby improving safety while preserving efficiency.；结果线索：Extensive simulations and real-world experiments demonstrate robust performance across diverse unknown environments with varying sensor configurations.</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：In this work, we propose a novel planning framework that directly integrates active perception into trajectory optimization, thereby improving safety while preserving efficiency.</li>
+<li>实验/结果：Extensive simulations and real-world experiments demonstrate robust performance across diverse unknown environments with varying sensor configurations.</li>
+<li>具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Safe and efficient trajectory planning in unknown, cluttered 3D environments constitutes a critical bottleneck for deploying Unmanned Aerial Vehicles (UAVs) in real-world applications. This challenge is further exacerbated by the limited field-of-view (FOV) and sensing range of onboard sensors. Many existing methods either make simplistic assumptions about unexplored space or rely on conservative heuristics such as speed limits or fixed perception patterns, reducing efficiency and generalizing poorly across different sensor types. In this work, we propose a novel planning framework that directly integrates active perception into trajectory optimization, thereby improving safety while preserving efficiency. The perception constraints are derived from the UAV&#x27;s dynamic model and formulated in the sensor coordinate frame, which enables precise handling of FOV geometry. The velocity-triggered activation mechanism enables the planner to balance perception and motion efficiency. We introduce an active perception sub-trajectory segment with parametric start-time optimization, mitigating collision risks from late obstacle detection. Our formulation enables active perception during arbitrary 3D maneuvers, extending beyond prior methods designed mainly for horizontal motion. All constraints and penalties are incorporated into a differentiable optimization problem, so the planner requires only a simple front-end global path for guidance, rather than a computationally expensive perception-aware path generator. Extensive simulations and real-world experiments demonstrate robust performance across diverse unknown environments with varying sensor configurations.</p>
+<h3>8. VL-MemKnG: Hybrid Memory with a Spatio-Temporal Knowledge Graph for Question Answering over Long Egocentric Navigation Trajectories</h3>
+<ul>
+<li>原题：VL-MemKnG: Hybrid Memory with a Spatio-Temporal Knowledge Graph for Question Answering over Long Egocentric Navigation Trajectories</li>
+<li>分区：速读区；评分：4.8/10</li>
+<li>作者：Svetlana Lukina, Mohamad Al Mdfaa, Gloria Haro, Sergey Zagoruyko, Gonzalo Ferrer</li>
+<li>日期：published 2026-06-16；updated 2026-06-16</li>
+<li>类别：cs.RO</li>
+<li>链接：<a href="https://arxiv.org/abs/2606.17183v1">abs</a> / <a href="https://arxiv.org/pdf/2606.17183v1">PDF</a></li>
+<li>命中关键词：BM25 token match</li>
+<li>为什么和具身导航相关：具身/机器人导航焦点明确</li>
+</ul>
+<h4>解决的问题</h4>
+<p>问题/背景：Answering navigation-relevant questions over long egocentric videos requires retrieving and organizing evidence distributed across distant temporal moments while maintaining spatial and contextual consistency.</p>
+<h4>TL;DR（一句话总结）</h4>
+<p>方向：Robot Navigation；核心线索：We present VL-MemKnG, a hybrid memory framework that extends VL-KnG by combining a spatio-temporal knowledge graph with persistent segment-level contextual memory.；结果线索：Although long-context vision--language models can achieve strong answer quality, they are computationally expensive for long trajectories and inefficient for repeated qu…</p>
+<h4>核心贡献</h4>
+<ul>
+<li>方法线索：We present VL-MemKnG, a hybrid memory framework that extends VL-KnG by combining a spatio-temporal knowledge graph with persistent segment-level contextual memory.</li>
+<li>实验/结果：Although long-context vision--language models can achieve strong answer quality, they are computationally expensive for long trajectories and inefficient for repeated querying.</li>
+<li>具身/机器人导航焦点明确</li>
+</ul>
+<h4>局限性 / 需要核验</h4>
+<p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+<h4>阅读建议</h4>
+<p>建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。</p>
+<h4>中文摘要</h4>
+<p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+<h4>英文摘要原文</h4>
+<p>Answering navigation-relevant questions over long egocentric videos requires retrieving and organizing evidence distributed across distant temporal moments while maintaining spatial and contextual consistency. Although long-context vision--language models can achieve strong answer quality, they are computationally expensive for long trajectories and inefficient for repeated querying. Recent graph-based approaches such as VL-KnG address this challenge through persistent spatio-temporal knowledge graphs, but graph-centric retrieval alone may underrepresent broader temporal continuity and contextual cues. We present VL-MemKnG, a hybrid memory framework that extends VL-KnG by combining a spatio-temporal knowledge graph with persistent segment-level contextual memory. The knowledge graph captures structured relational information and long-range object associations, while segment-level memory preserves broader temporal context for long-horizon evidence retrieval. A hybrid retrieval-and-reasoning module jointly operates over both memory representations to produce evidence-grounded answers and temporally organized supporting evidence. We also introduce WalkieKnowledgeT+, an extension of WalkieKnowledge for long-horizon navigation-oriented video question answering. The benchmark includes temporally distributed reasoning tasks requiring evidence aggregation across multiple non-cooccurring moments. On WalkieKnowledgeT+, VL-MemKnG improves Top-1 retrieval accuracy from 58% to 67% and Recall@1 from 34.50% to 40.55%, outperforming all compared methods, including Gemini 2.5 Pro and Qwen 3.5+. The gains are particularly pronounced on temporal-global and temporally scattered aggregation questions, demonstrating the benefits of combining structured relational memory with segment-level contextual memory while maintaining efficient query-time inference.</p>
+<h2>候选速览</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Score</th>
+<th>中文标题</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10.0</td>
+<td><a href="https://arxiv.org/abs/2606.16400v1">SemGeoNav:A Safety-Guided Visual Navigation Approach with Semantic Reasoning and Geometric Planning</a></td>
+<td>visual navigation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9.9</td>
+<td><a href="https://arxiv.org/abs/2606.16935v1">CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</a></td>
+<td>semantic mapping, open-vocabulary, SLAM</td>
+</tr>
+<tr>
+<td>3</td>
+<td>9.7</td>
+<td><a href="https://arxiv.org/abs/2606.17294v1">VISTA: Scale-Aware Visual Navigation via Action History Conditioning</a></td>
+<td>visual navigation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9.7</td>
+<td><a href="https://arxiv.org/abs/2606.18235v1">EvolveNav: Proactive Preflection and Self-Evolving Memory for Zero-Shot Object Goal Navigation</a></td>
+<td>object goal navigation, object-goal navigation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>8.6</td>
+<td><a href="https://arxiv.org/abs/2606.16953v1">SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks</a></td>
+<td>visual navigation</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7.0</td>
+<td><a href="https://arxiv.org/abs/2606.16902v1">Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models</a></td>
+<td>localization</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4.9</td>
+<td><a href="https://arxiv.org/abs/2606.17630v1">FLAP: FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation</a></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>4.8</td>
+<td><a href="https://arxiv.org/abs/2606.17183v1">VL-MemKnG: Hybrid Memory with a Spatio-Temporal Knowledge Graph for Question Answering over Long Egocentric Navigation Trajectories</a></td>
+<td></td>
+</tr>
+</tbody>
+</table></div></article>
+</main>
+</body>
+</html>

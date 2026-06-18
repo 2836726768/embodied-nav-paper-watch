@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 9.9</span>
+      <span class="badge">rank #2</span>
+    </div>
+    <h1 class="paper-title">CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</h1>
+    <p class="paper-original">CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation</p>
+    <div class="paper-meta">
+      <span>Jan-Niklas Klein, Sona Ghahremani, Christian Medeiros Adriano, Holger Giese</span>
+      <span>published 2026-06-16</span>
+      <span>cs.RO, cs.AI, cs.LG</span>
+    </div>
+    <div class="paper-tags"><span class="tag">semantic mapping</span><span class="tag">open-vocabulary</span><span class="tag">SLAM</span><span class="tag">Robot Navigation</span><span class="tag">Semantic Mapping</span><span class="tag">Active Mapping / SLAM</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>问题/背景：Rovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial obse…</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>方向：Robot Navigation, Semantic Mapping, Active Mapping / SLAM；核心线索：To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps…</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>方法线索：To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps from RGB-D data.</li><li>实验/结果：摘要未明确给出实验结果，需要进入论文正文核验。</li><li>命中 semantic mapping、open-vocabulary、SLAM；具身/机器人导航焦点明确；包含地图/场景图/空间推理导航线索</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>Rovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial observability. To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware <mark class="hit-mark">open-vocabulary</mark> <mark class="hit-mark">semantic mapping</mark> pipeline that constructs language-queryable maps from RGB-D data. Building on VLMaps-style approaches, CrossMaps integrates multi-scale CLIP embeddings with confidence-aware fusion and a dual-memory architecture consisting of Short-Term Memory (STM) and Long-Term Memory (LTM). The STM aggregates noisy visual observations using geometric, semantic, and temporal confidence cues, while confident and coherent cells are promoted to the LTM as persistent semantic landmarks. Designed for deployment with a Jetson Orin-powered UGV alongside <mark class="hit-mark">SLAM</mark>, CrossMaps runs in real time and produces semantic heatmaps that can be queried with natural language to guide rover navigation.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.16935v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.16935v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-18.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
