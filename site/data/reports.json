@@ -1,66 +1,489 @@
 {
   "current": {
-    "date": "2026-06-19",
-    "title": "具身智能导航论文日报 2026-06-19",
-    "generated_at": "2026-06-19 09:00:10 CST",
+    "date": "2026-06-20",
+    "title": "具身智能导航论文日报 2026-06-20",
+    "generated_at": "2026-06-20 09:00:10 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
       "cs.AI",
       "cs.LG"
     ],
-    "scanned_count": 0,
-    "candidate_count": 0,
-    "selected_count": 0,
+    "scanned_count": 240,
+    "candidate_count": 227,
+    "selected_count": 2,
     "duplicate_skipped_count": 0,
-    "deep_count": 0,
+    "deep_count": 2,
     "quick_count": 0,
-    "topic_counts": {},
+    "topic_counts": {
+      "Aerial / UAV": 2,
+      "VLN": 1,
+      "Robot Navigation": 1,
+      "Planning / Policy": 1
+    },
     "warnings": [
       "cs.RO: TimeoutError: The read operation timed out",
-      "cs.CV: TimeoutError: The read operation timed out",
-      "cs.AI: TimeoutError: The read operation timed out",
-      "cs.LG: TimeoutError: The read operation timed out"
+      "cs.AI: HTTP 429 Unknown Error",
+      "OpenClaw: 2606.20045v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View\\n作者：Fanfu Xue, En Yu, Yantian Shen, Zhikun Hu, Hongjun Wang, Yang Yang, Xindi Wang, Jiande Sun\\n类别：cs.CV, cs.AI\\n命中关键词：vision-language navigation, VLN\\n主题标签：VLN, Aerial / UAV\\n推荐理由：命中 vision-language navigation、VLN；具身/机器人导航焦点明确\\n英文摘要：\\nUAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.\\n']' returned non-zero exit status 1.",
+      "OpenClaw: 2606.20491v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation\\n作者：Fatma Youssef Mohammed, Grzegorz Malczyk, Kostas Alexis\\n类别：cs.RO, cs.CV\\n命中关键词：reinforcement learning\\n主题标签：Robot Navigation, Planning / Policy, Aerial / UAV\\n推荐理由：命中 reinforcement learning；具身/机器人导航焦点明确\\n英文摘要：\\nHuman visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.\\n']' returned non-zero exit status 1."
     ],
-    "papers": [],
+    "papers": [
+      {
+        "rank": 1,
+        "id": "2606.20045v1",
+        "slug": "2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view",
+        "detail_url": "papers/2026-06-20/2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view.html",
+        "title": "See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View",
+        "authors": [
+          "Fanfu Xue",
+          "En Yu",
+          "Yantian Shen",
+          "Zhikun Hu",
+          "Hongjun Wang",
+          "Yang Yang",
+          "Xindi Wang",
+          "Jiande Sun"
+        ],
+        "summary": "UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.",
+        "published": "2026-06-18",
+        "updated": "2026-06-18",
+        "categories": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "abs_url": "https://arxiv.org/abs/2606.20045v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.20045v1",
+        "score": 167.4249,
+        "bm25_score": 150.3249,
+        "phrase_score": 16.5,
+        "matched_keywords": [
+          "vision-language navigation",
+          "VLN"
+        ],
+        "reason": "命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 10.0,
+        "topic_lanes": [
+          "VLN",
+          "Aerial / UAV"
+        ],
+        "study_type": "VLN",
+        "readout": {
+          "section": "精读区",
+          "priority": "High",
+          "score_10": 10.0,
+          "topic_lanes": [
+            "VLN",
+            "Aerial / UAV"
+          ],
+          "study_type": "VLN",
+          "tldr": "方向：VLN, Aerial / UAV；核心线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ab…；结果线索：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution…",
+          "motivation": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+          "method": "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+          "result": "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+          "conclusion": "阅读判断：命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+          "limitation": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+          "benchmark_hint": "To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotatio…",
+          "keyword_hits": {
+            "title": [
+              "vision-language navigation"
+            ],
+            "abstract": [
+              "VLN"
+            ]
+          },
+          "external_urls": [
+            "https://github.com/xuefanfu/3DG-VLN"
+          ],
+          "evidence": [
+            {
+              "label": "问题证据",
+              "text": "UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly."
+            },
+            {
+              "label": "方法证据",
+              "text": "To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability."
+            },
+            {
+              "label": "结果证据",
+              "text": "To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotatio…"
+            }
+          ],
+          "source": "local"
+        },
+        "openclaw": {
+          "title_zh": "See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View",
+          "solved_problem_zh": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+          "tldr_zh": "方向：VLN, Aerial / UAV；核心线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ab…；结果线索：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution…",
+          "relevance_zh": "命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+          "problem_zh": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+          "method_zh": "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+          "contribution_zh": "阅读判断：命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+          "key_contributions_zh": [
+            "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+            "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+            "命中 vision-language navigation、VLN；具身/机器人导航焦点明确"
+          ],
+          "experiments_zh": "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+          "limitations_zh": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+          "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
+          "abstract_zh": "OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。"
+        }
+      },
+      {
+        "rank": 2,
+        "id": "2606.20491v1",
+        "slug": "2606.20491v1-fast-human-attention-prediction-for-fixation-guided-active-perception-in-autonomous-na",
+        "detail_url": "papers/2026-06-20/2606.20491v1-fast-human-attention-prediction-for-fixation-guided-active-perception-in-autonomous-na.html",
+        "title": "Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation",
+        "authors": [
+          "Fatma Youssef Mohammed",
+          "Grzegorz Malczyk",
+          "Kostas Alexis"
+        ],
+        "summary": "Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.",
+        "published": "2026-06-19",
+        "updated": "2026-06-19",
+        "categories": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "abs_url": "https://arxiv.org/abs/2606.20491v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.20491v1",
+        "score": 130.3183,
+        "bm25_score": 128.0183,
+        "phrase_score": 0.4,
+        "matched_keywords": [
+          "reinforcement learning"
+        ],
+        "reason": "命中 reinforcement learning；具身/机器人导航焦点明确",
+        "section": "精读区",
+        "priority": "High",
+        "score_10": 7.78,
+        "topic_lanes": [
+          "Robot Navigation",
+          "Planning / Policy",
+          "Aerial / UAV"
+        ],
+        "study_type": "Robot Navigation",
+        "readout": {
+          "section": "精读区",
+          "priority": "High",
+          "score_10": 7.78,
+          "topic_lanes": [
+            "Robot Navigation",
+            "Planning / Policy",
+            "Aerial / UAV"
+          ],
+          "study_type": "Robot Navigation",
+          "tldr": "方向：Robot Navigation, Planning / Policy, Aerial / UAV；核心线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feat…；结果线索：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+          "motivation": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+          "method": "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+          "result": "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+          "conclusion": "阅读判断：命中 reinforcement learning；具身/机器人导航焦点明确",
+          "limitation": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+          "benchmark_hint": "Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+          "keyword_hits": {
+            "title": [],
+            "abstract": [
+              "reinforcement learning"
+            ]
+          },
+          "external_urls": [],
+          "evidence": [
+            {
+              "label": "问题证据",
+              "text": "Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models."
+            },
+            {
+              "label": "方法证据",
+              "text": "To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction."
+            },
+            {
+              "label": "结果证据",
+              "text": "Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score."
+            }
+          ],
+          "source": "local"
+        },
+        "openclaw": {
+          "title_zh": "Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation",
+          "solved_problem_zh": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+          "tldr_zh": "方向：Robot Navigation, Planning / Policy, Aerial / UAV；核心线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feat…；结果线索：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+          "relevance_zh": "命中 reinforcement learning；具身/机器人导航焦点明确",
+          "problem_zh": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+          "method_zh": "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+          "contribution_zh": "阅读判断：命中 reinforcement learning；具身/机器人导航焦点明确",
+          "key_contributions_zh": [
+            "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+            "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "命中 reinforcement learning；具身/机器人导航焦点明确"
+          ],
+          "experiments_zh": "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+          "limitations_zh": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+          "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
+          "abstract_zh": "OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。"
+        }
+      }
+    ],
     "openclaw": {
       "enabled": true,
       "model": "openai-codex/gpt-5.5",
-      "enriched_count": 0,
-      "warnings": []
+      "enriched_count": 2,
+      "warnings": [
+        "2606.20045v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View\\n作者：Fanfu Xue, En Yu, Yantian Shen, Zhikun Hu, Hongjun Wang, Yang Yang, Xindi Wang, Jiande Sun\\n类别：cs.CV, cs.AI\\n命中关键词：vision-language navigation, VLN\\n主题标签：VLN, Aerial / UAV\\n推荐理由：命中 vision-language navigation、VLN；具身/机器人导航焦点明确\\n英文摘要：\\nUAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.\\n']' returned non-zero exit status 1.",
+        "2606.20491v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation\\n作者：Fatma Youssef Mohammed, Grzegorz Malczyk, Kostas Alexis\\n类别：cs.RO, cs.CV\\n命中关键词：reinforcement learning\\n主题标签：Robot Navigation, Planning / Policy, Aerial / UAV\\n推荐理由：命中 reinforcement learning；具身/机器人导航焦点明确\\n英文摘要：\\nHuman visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.\\n']' returned non-zero exit status 1."
+      ]
     }
   },
   "history": [
     {
-      "date": "2026-06-19",
-      "title": "具身智能导航论文日报 2026-06-19",
-      "generated_at": "2026-06-19 09:00:10 CST",
+      "date": "2026-06-20",
+      "title": "具身智能导航论文日报 2026-06-20",
+      "generated_at": "2026-06-20 09:00:10 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
         "cs.AI",
         "cs.LG"
       ],
-      "scanned_count": 0,
-      "candidate_count": 0,
-      "selected_count": 0,
+      "scanned_count": 240,
+      "candidate_count": 227,
+      "selected_count": 2,
       "duplicate_skipped_count": 0,
-      "deep_count": 0,
+      "deep_count": 2,
       "quick_count": 0,
-      "topic_counts": {},
+      "topic_counts": {
+        "Aerial / UAV": 2,
+        "VLN": 1,
+        "Robot Navigation": 1,
+        "Planning / Policy": 1
+      },
       "warnings": [
         "cs.RO: TimeoutError: The read operation timed out",
-        "cs.CV: TimeoutError: The read operation timed out",
-        "cs.AI: TimeoutError: The read operation timed out",
-        "cs.LG: TimeoutError: The read operation timed out"
+        "cs.AI: HTTP 429 Unknown Error",
+        "OpenClaw: 2606.20045v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View\\n作者：Fanfu Xue, En Yu, Yantian Shen, Zhikun Hu, Hongjun Wang, Yang Yang, Xindi Wang, Jiande Sun\\n类别：cs.CV, cs.AI\\n命中关键词：vision-language navigation, VLN\\n主题标签：VLN, Aerial / UAV\\n推荐理由：命中 vision-language navigation、VLN；具身/机器人导航焦点明确\\n英文摘要：\\nUAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.\\n']' returned non-zero exit status 1.",
+        "OpenClaw: 2606.20491v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation\\n作者：Fatma Youssef Mohammed, Grzegorz Malczyk, Kostas Alexis\\n类别：cs.RO, cs.CV\\n命中关键词：reinforcement learning\\n主题标签：Robot Navigation, Planning / Policy, Aerial / UAV\\n推荐理由：命中 reinforcement learning；具身/机器人导航焦点明确\\n英文摘要：\\nHuman visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.\\n']' returned non-zero exit status 1."
       ],
-      "papers": [],
+      "papers": [
+        {
+          "rank": 1,
+          "id": "2606.20045v1",
+          "slug": "2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view",
+          "detail_url": "papers/2026-06-20/2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view.html",
+          "title": "See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View",
+          "authors": [
+            "Fanfu Xue",
+            "En Yu",
+            "Yantian Shen",
+            "Zhikun Hu",
+            "Hongjun Wang",
+            "Yang Yang",
+            "Xindi Wang",
+            "Jiande Sun"
+          ],
+          "summary": "UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.",
+          "published": "2026-06-18",
+          "updated": "2026-06-18",
+          "categories": [
+            "cs.CV",
+            "cs.AI"
+          ],
+          "abs_url": "https://arxiv.org/abs/2606.20045v1",
+          "pdf_url": "https://arxiv.org/pdf/2606.20045v1",
+          "score": 167.4249,
+          "bm25_score": 150.3249,
+          "phrase_score": 16.5,
+          "matched_keywords": [
+            "vision-language navigation",
+            "VLN"
+          ],
+          "reason": "命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+          "section": "精读区",
+          "priority": "High",
+          "score_10": 10.0,
+          "topic_lanes": [
+            "VLN",
+            "Aerial / UAV"
+          ],
+          "study_type": "VLN",
+          "readout": {
+            "section": "精读区",
+            "priority": "High",
+            "score_10": 10.0,
+            "topic_lanes": [
+              "VLN",
+              "Aerial / UAV"
+            ],
+            "study_type": "VLN",
+            "tldr": "方向：VLN, Aerial / UAV；核心线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ab…；结果线索：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution…",
+            "motivation": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+            "method": "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+            "result": "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+            "conclusion": "阅读判断：命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+            "limitation": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+            "benchmark_hint": "To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotatio…",
+            "keyword_hits": {
+              "title": [
+                "vision-language navigation"
+              ],
+              "abstract": [
+                "VLN"
+              ]
+            },
+            "external_urls": [
+              "https://github.com/xuefanfu/3DG-VLN"
+            ],
+            "evidence": [
+              {
+                "label": "问题证据",
+                "text": "UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly."
+              },
+              {
+                "label": "方法证据",
+                "text": "To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability."
+              },
+              {
+                "label": "结果证据",
+                "text": "To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotatio…"
+              }
+            ],
+            "source": "local"
+          },
+          "openclaw": {
+            "title_zh": "See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View",
+            "solved_problem_zh": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+            "tldr_zh": "方向：VLN, Aerial / UAV；核心线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ab…；结果线索：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution…",
+            "relevance_zh": "命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+            "problem_zh": "问题/背景：UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly.",
+            "method_zh": "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+            "contribution_zh": "阅读判断：命中 vision-language navigation、VLN；具身/机器人导航焦点明确",
+            "key_contributions_zh": [
+              "方法线索：To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability.",
+              "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+              "命中 vision-language navigation、VLN；具身/机器人导航焦点明确"
+            ],
+            "experiments_zh": "实验/结果：To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and co…",
+            "limitations_zh": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+            "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
+            "abstract_zh": "OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。"
+          }
+        },
+        {
+          "rank": 2,
+          "id": "2606.20491v1",
+          "slug": "2606.20491v1-fast-human-attention-prediction-for-fixation-guided-active-perception-in-autonomous-na",
+          "detail_url": "papers/2026-06-20/2606.20491v1-fast-human-attention-prediction-for-fixation-guided-active-perception-in-autonomous-na.html",
+          "title": "Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation",
+          "authors": [
+            "Fatma Youssef Mohammed",
+            "Grzegorz Malczyk",
+            "Kostas Alexis"
+          ],
+          "summary": "Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.",
+          "published": "2026-06-19",
+          "updated": "2026-06-19",
+          "categories": [
+            "cs.RO",
+            "cs.CV"
+          ],
+          "abs_url": "https://arxiv.org/abs/2606.20491v1",
+          "pdf_url": "https://arxiv.org/pdf/2606.20491v1",
+          "score": 130.3183,
+          "bm25_score": 128.0183,
+          "phrase_score": 0.4,
+          "matched_keywords": [
+            "reinforcement learning"
+          ],
+          "reason": "命中 reinforcement learning；具身/机器人导航焦点明确",
+          "section": "精读区",
+          "priority": "High",
+          "score_10": 7.78,
+          "topic_lanes": [
+            "Robot Navigation",
+            "Planning / Policy",
+            "Aerial / UAV"
+          ],
+          "study_type": "Robot Navigation",
+          "readout": {
+            "section": "精读区",
+            "priority": "High",
+            "score_10": 7.78,
+            "topic_lanes": [
+              "Robot Navigation",
+              "Planning / Policy",
+              "Aerial / UAV"
+            ],
+            "study_type": "Robot Navigation",
+            "tldr": "方向：Robot Navigation, Planning / Policy, Aerial / UAV；核心线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feat…；结果线索：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "motivation": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+            "method": "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+            "result": "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "conclusion": "阅读判断：命中 reinforcement learning；具身/机器人导航焦点明确",
+            "limitation": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+            "benchmark_hint": "Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "keyword_hits": {
+              "title": [],
+              "abstract": [
+                "reinforcement learning"
+              ]
+            },
+            "external_urls": [],
+            "evidence": [
+              {
+                "label": "问题证据",
+                "text": "Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models."
+              },
+              {
+                "label": "方法证据",
+                "text": "To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction."
+              },
+              {
+                "label": "结果证据",
+                "text": "Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score."
+              }
+            ],
+            "source": "local"
+          },
+          "openclaw": {
+            "title_zh": "Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation",
+            "solved_problem_zh": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+            "tldr_zh": "方向：Robot Navigation, Planning / Policy, Aerial / UAV；核心线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feat…；结果线索：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "relevance_zh": "命中 reinforcement learning；具身/机器人导航焦点明确",
+            "problem_zh": "问题/背景：Human visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models.",
+            "method_zh": "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+            "contribution_zh": "阅读判断：命中 reinforcement learning；具身/机器人导航焦点明确",
+            "key_contributions_zh": [
+              "方法线索：To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction.",
+              "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+              "命中 reinforcement learning；具身/机器人导航焦点明确"
+            ],
+            "experiments_zh": "实验/结果：Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score.",
+            "limitations_zh": "核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。",
+            "read_suggestion_zh": "建议先核验任务设置、评测环境、真实机器人或仿真泛化结果。",
+            "abstract_zh": "OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。"
+          }
+        }
+      ],
       "openclaw": {
         "enabled": true,
         "model": "openai-codex/gpt-5.5",
-        "enriched_count": 0,
-        "warnings": []
+        "enriched_count": 2,
+        "warnings": [
+          "2606.20045v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View\\n作者：Fanfu Xue, En Yu, Yantian Shen, Zhikun Hu, Hongjun Wang, Yang Yang, Xindi Wang, Jiande Sun\\n类别：cs.CV, cs.AI\\n命中关键词：vision-language navigation, VLN\\n主题标签：VLN, Aerial / UAV\\n推荐理由：命中 vision-language navigation、VLN；具身/机器人导航焦点明确\\n英文摘要：\\nUAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.\\n']' returned non-zero exit status 1.",
+          "2606.20491v1: CalledProcessError: Command '['openclaw', 'infer', 'model', 'run', '--json', '--model', 'openai-codex/gpt-5.5', '--thinking', 'minimal', '--prompt', '你是具身智能导航方向的论文阅读助手。请只基于下面给出的标题、关键词和 arXiv 摘要，生成中文解读；不要补充摘要里没有的信息。\\n\\n输出要求：\\n- 只输出一个 JSON 对象，不要 Markdown，不要解释。\\n- 所有字段必须是中文短文本。\\n- key_contributions_zh 必须是 3 个左右的中文字符串数组。\\n- 如果摘要没有说明实验、局限或真实机器人结果，请明确写“摘要未说明”。\\n- 面向具身智能导航研究者，强调导航任务、地图/场景图/空间推理、VLN/ObjectNav/PointNav、机器人或 UAV 导航等相关性。\\n\\nJSON 字段：\\ntitle_zh, solved_problem_zh, tldr_zh, relevance_zh, problem_zh, method_zh, contribution_zh, key_contributions_zh, experiments_zh, limitations_zh, read_suggestion_zh, abstract_zh\\n\\n字段说明：\\n- solved_problem_zh：用“这篇论文解决了……”的方式说明解决的问题。\\n- tldr_zh：TL;DR，一句话，用最通俗、最精炼的语言说明论文在做什么。\\n- key_contributions_zh：3 个左右 Bullet 要点，说明核心贡献，例如新架构、新训练范式、Benchmark 刷新、真实机器人验证、开源数据/代码等；没有就写摘要未说明。\\n- limitations_zh：局限性或需要核验的地方；摘要没有说就写“摘要未说明，需要看正文核验”。\\n\\n论文信息：\\n标题：Fast Human Attention Prediction for Fixation-guided Active Perception in Autonomous Navigation\\n作者：Fatma Youssef Mohammed, Grzegorz Malczyk, Kostas Alexis\\n类别：cs.RO, cs.CV\\n命中关键词：reinforcement learning\\n主题标签：Robot Navigation, Planning / Policy, Aerial / UAV\\n推荐理由：命中 reinforcement learning；具身/机器人导航焦点明确\\n英文摘要：\\nHuman visual attention relies on structured scanpaths to efficiently process scenes, yet instilling this behavior into robot autonomy is in its infancy and hindered by the high,computational costs of existing predictive models. To address this, we introduce GazeLNN, a computationally lightweight,scanpath prediction model that leverages Liquid Neural Networks as its recurrent engine and employs MobileNetV3 for feature extraction. Operating auto-regressively, the architecture predicts sequential fixation heatmaps conditioned on the current visual stimulus and fixation history. Despite requiring only 0.61 GFLOPs, GazeLNN achieves state-of-the-art performance on the MIT Low Resolution dataset achieving 0.47 ScanMatch score. It outperforms existing recurrent baselines across diverse evaluation metrics, while reducing computational costs by 99.40% and accelerating inference by up to six times. To investigate the role of human attention modeling in robot autonomy and demonstrate the practical utility of this highly efficient architecture, we integrate GazeLNN into an active camera-robot control policy trained via Reinforcement Learning. This integration enables human-fixation-guided perception during autonomous navigation, validated through successful real-world deployments on an aerial robot.\\n']' returned non-zero exit status 1."
+        ]
       }
+    },
+    {
+      "date": "2026-06-19",
+      "title": "具身智能导航论文日报 2026-06-19",
+      "generated_at": "2026-06-19 09:00:10 CST",
+      "scanned_count": 0,
+      "candidate_count": 0,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-18",
