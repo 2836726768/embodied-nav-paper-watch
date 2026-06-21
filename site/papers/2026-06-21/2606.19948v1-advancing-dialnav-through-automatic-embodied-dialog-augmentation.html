@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advancing DialNav through Automatic Embodied Dialog Augmentation</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 10.0</span>
+      <span class="badge">rank #1</span>
+    </div>
+    <h1 class="paper-title">Advancing DialNav through Automatic Embodied Dialog Augmentation</h1>
+    <p class="paper-original">Advancing DialNav through Automatic Embodied Dialog Augmentation</p>
+    <div class="paper-meta">
+      <span>Leekyeung Han, Sangwon Jung, Hyunji Min, Jinseong Jeong, Minyoung Kim, Paul Hongsuck Seo</span>
+      <span>published 2026-06-18</span>
+      <span>cs.AI</span>
+    </div>
+    <div class="paper-tags"><span class="tag">VLN</span><span class="tag">localization</span><span class="tag">VLN</span><span class="tag">Active Mapping / SLAM</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>问题/背景：While DialNav~\cite{han2025dialnav} provides a framework for holistic evaluation of the dialog--execution loop in photorealistic indoor navigation, its performance remains limited by a critical scarcity of training data (2K episo…</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>方向：VLN, Active Mapping / SLAM；核心线索：While DialNav~\cite{han2025dialnav} provides a framework for holistic evaluation of the dialog--execution loop in photorealistic indoor navigation, its performance remains limited by a crit…；结果线索：By combining these complementary solutions, our model substantially outperforms the baseline in success rate on both \textbf{Val Seen} (58.24, \textbf{+89\%}) and \textb…</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>方法线索：While DialNav~\cite{han2025dialnav} provides a framework for holistic evaluation of the dialog--execution loop in photorealistic indoor navigation, its performance remains limited by a critical scarcity of training data (2K episo…</li><li>实验/结果：By combining these complementary solutions, our model substantially outperforms the baseline in success rate on both \textbf{Val Seen} (58.24, \textbf{+89\%}) and \textbf{Val Unseen} (29.05, \textbf{+100\%}) splits, establishing…</li><li>命中 VLN、localization；具身/机器人导航焦点明确</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p>For embodied agents capable of physical interaction, the capability to create and understand dialog is crucial to ensure both safety and effectiveness. While DialNav~\cite{han2025dialnav} provides a framework for holistic evaluation of the dialog--execution loop in photorealistic indoor navigation, its performance remains limited by a critical scarcity of training data (2K episodes). To address this, we propose an automatic generation pipeline, and construct the \textbf{RAINbow} dataset, a large-scale training dataset with 238K episodes for DialNav. Our pipeline converts existing <mark class="hit-mark">VLN</mark> datasets into multi-turn dialog and creates cost-efficient and high-quality dataset. Then, we introduce two additional complementary advances to unlock the data's full potential: (1) Dual-Strategy Training, a navigation training scheme to align the navigation training with the dynamic dialog-navigation loop, and (2) a <mark class="hit-mark">localization</mark> model that leverages <mark class="hit-mark">VLN</mark> knowledge. By combining these complementary solutions, our model substantially outperforms the baseline in success rate on both \textbf{Val Seen} (58.24, \textbf{+89\%}) and \textbf{Val Unseen} (29.05, \textbf{+100\%}) splits, establishing a new state of the art.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.19948v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.19948v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-21.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

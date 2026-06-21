@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates</title>
+  <link rel="stylesheet" href="../../assets/app.css">
+</head>
+<body>
+<header class="watch-header">
+  <a class="watch-brand" href="../../index.html">Embodied Nav Paper Reader</a>
+  <nav class="watch-nav" aria-label="Primary">
+    <a href="../../index.html">今日</a>
+    <a href="../../archive/index.html">归档</a>
+    <a href="../../index.html#papers">论文</a>
+    <a href="../../archive/index.html">日报</a>
+    <span>中文</span>
+    <span>English</span>
+  </nav>
+</header>
+
+<main class="watch-shell">
+  <article class="paper-detail">
+    <div class="paper-topline">
+      <span class="badge deep">精读区</span>
+      <span class="badge score">score 9.6</span>
+      <span class="badge">rank #2</span>
+    </div>
+    <h1 class="paper-title">GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates</h1>
+    <p class="paper-original">GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates</p>
+    <div class="paper-meta">
+      <span>Nastaran Darabi, Divake Kumar, Sina Tayebati, Devashri Naik, Amit Ranjan Trivedi</span>
+      <span>published 2026-06-19</span>
+      <span>cs.RO</span>
+    </div>
+    <div class="paper-tags"><span class="tag">vision-language navigation</span><span class="tag">Robot Navigation</span><span class="tag">VLN</span><span class="tag">Planning / Policy</span></div>
+    <div class="paper-note-grid">
+      <section class="note-block wide">
+        <h3>解决的问题</h3>
+        <p>问题/背景：Reliable deployment, therefore, requires uncertainty signals that anticipate emerging failure dynamics during execution rather than reflect only instantaneous action entropy.</p>
+      </section>
+      <section class="note-block">
+        <h3>TL;DR（一句话总结）</h3>
+        <p>方向：Robot Navigation, VLN, Planning / Policy；核心线索：We introduce \emph{GroundControl}, a trajectory-consistent uncertainty estimator defined as statistical deviation from nominal goal-directed distance-to-goal dynamics aggregated over an epi…；结果线索：Vision-language navigation agents achieve competitive average success on benchmark tasks, yet failures often arise through predictable trajectory-level breakdowns such a…</p>
+      </section>
+      <section class="note-block">
+        <h3>局限性</h3>
+        <p>核验重点：摘要可能没有完整交代失败案例、消融设置、真实机器人验证或泛化边界。</p>
+      </section>
+      <section class="note-block wide">
+        <h3>核心贡献</h3>
+        <ul><li>方法线索：We introduce \emph{GroundControl}, a trajectory-consistent uncertainty estimator defined as statistical deviation from nominal goal-directed distance-to-goal dynamics aggregated over an episode.</li><li>实验/结果：Vision-language navigation agents achieve competitive average success on benchmark tasks, yet failures often arise through predictable trajectory-level breakdowns such as oscillation, stagnation, or inefficient detours.</li><li>命中 vision-language navigation；具身/机器人导航焦点明确</li></ul>
+      </section>
+    </div>
+    <section class="abstract-block">
+      <h2>中文摘要</h2>
+      <p>OpenClaw 中文摘要暂未生成；请参考下方英文摘要原文。</p>
+    </section>
+    <section class="abstract-block">
+      <h2>英文摘要原文</h2>
+      <p><mark class="hit-mark">Vision-language navigation</mark> agents achieve competitive average success on benchmark tasks, yet failures often arise through predictable trajectory-level breakdowns such as oscillation, stagnation, or inefficient detours. Reliable deployment, therefore, requires uncertainty signals that anticipate emerging failure dynamics during execution rather than reflect only instantaneous action entropy. We introduce \emph{GroundControl}, a trajectory-consistent uncertainty estimator defined as statistical deviation from nominal goal-directed distance-to-goal dynamics aggregated over an episode. GroundControl models distance evolution using a constant-velocity Kalman filter and combines normalized innovation statistics with complementary trajectory features capturing progress, monotonicity, path efficiency, and oscillatory behavior. The resulting uncertainty score reflects geometric and temporal inconsistency in navigation behavior rather than local prediction dispersion. To evaluate uncertainty quality independently of task success, we formalize \emph{Selective Risk--Coverage Navigation (SRCN)}, a protocol that measures how effectively an uncertainty score ranks episodes by failure or inefficiency using risk--coverage curves and AURC / E-AURC summaries. Across five EB-Navigation splits ($N=300$ episodes), trajectory-consistent uncertainty achieves near-oracle ordering under success-based selective risk, with weighted-average $\mathrm{E\text{-}AURC}_{\mathrm{SR}}=0.0024$ for the GPT-4o model, substantially outperforming entropy-, conformal-, and heuristic baselines. Under SPL-based selective evaluation, GroundControl consistently achieves the lowest AURC and E-AURC across models and navigation splits. These results show that modeling deviation from goal-directed dynamics provides an interpretable and robust signal for anticipating navigation failures in vision-language agents.</p>
+    </section>
+    <div class="paper-actions">
+      <a class="button primary" href="https://arxiv.org/abs/2606.20479v1">Abs</a>
+      <a class="button" href="https://arxiv.org/pdf/2606.20479v1">PDF</a>
+      <a class="button" href="../../reports/2026-06-21.html">日报全文</a>
+    </div>
+  </article>
+</main>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
