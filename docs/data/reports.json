@@ -1,22 +1,27 @@
 {
   "current": {
-    "date": "2026-06-22",
-    "title": "具身智能导航论文日报 2026-06-22",
-    "generated_at": "2026-06-22 09:00:08 CST",
+    "date": "2026-06-23",
+    "title": "具身智能导航论文日报 2026-06-23",
+    "generated_at": "2026-06-23 09:00:08 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
       "cs.AI",
       "cs.LG"
     ],
-    "scanned_count": 480,
+    "scanned_count": 0,
     "candidate_count": 0,
     "selected_count": 0,
     "duplicate_skipped_count": 0,
     "deep_count": 0,
     "quick_count": 0,
     "topic_counts": {},
-    "warnings": [],
+    "warnings": [
+      "cs.RO: HTTP 429 Unknown Error",
+      "cs.CV: TimeoutError: The read operation timed out",
+      "cs.AI: HTTP 429 Unknown Error",
+      "cs.LG: HTTP 429 Too Many Requests"
+    ],
     "papers": [],
     "openclaw": {
       "enabled": true,
@@ -27,23 +32,28 @@
   },
   "history": [
     {
-      "date": "2026-06-22",
-      "title": "具身智能导航论文日报 2026-06-22",
-      "generated_at": "2026-06-22 09:00:08 CST",
+      "date": "2026-06-23",
+      "title": "具身智能导航论文日报 2026-06-23",
+      "generated_at": "2026-06-23 09:00:08 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
         "cs.AI",
         "cs.LG"
       ],
-      "scanned_count": 480,
+      "scanned_count": 0,
       "candidate_count": 0,
       "selected_count": 0,
       "duplicate_skipped_count": 0,
       "deep_count": 0,
       "quick_count": 0,
       "topic_counts": {},
-      "warnings": [],
+      "warnings": [
+        "cs.RO: HTTP 429 Unknown Error",
+        "cs.CV: TimeoutError: The read operation timed out",
+        "cs.AI: HTTP 429 Unknown Error",
+        "cs.LG: HTTP 429 Too Many Requests"
+      ],
       "papers": [],
       "openclaw": {
         "enabled": true,
@@ -51,6 +61,15 @@
         "enriched_count": 0,
         "warnings": []
       }
+    },
+    {
+      "date": "2026-06-22",
+      "title": "具身智能导航论文日报 2026-06-22",
+      "generated_at": "2026-06-22 09:00:08 CST",
+      "scanned_count": 480,
+      "candidate_count": 0,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-21",
