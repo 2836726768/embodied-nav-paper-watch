@@ -1,8 +1,8 @@
 {
   "current": {
-    "date": "2026-06-23",
-    "title": "具身智能导航论文日报 2026-06-23",
-    "generated_at": "2026-06-23 09:00:08 CST",
+    "date": "2026-06-24",
+    "title": "具身智能导航论文日报 2026-06-24",
+    "generated_at": "2026-06-24 09:00:09 CST",
     "categories": [
       "cs.RO",
       "cs.CV",
@@ -19,7 +19,7 @@
     "warnings": [
       "cs.RO: HTTP 429 Unknown Error",
       "cs.CV: TimeoutError: The read operation timed out",
-      "cs.AI: HTTP 429 Unknown Error",
+      "cs.AI: HTTP 429 Too Many Requests",
       "cs.LG: HTTP 429 Too Many Requests"
     ],
     "papers": [],
@@ -32,9 +32,9 @@
   },
   "history": [
     {
-      "date": "2026-06-23",
-      "title": "具身智能导航论文日报 2026-06-23",
-      "generated_at": "2026-06-23 09:00:08 CST",
+      "date": "2026-06-24",
+      "title": "具身智能导航论文日报 2026-06-24",
+      "generated_at": "2026-06-24 09:00:09 CST",
       "categories": [
         "cs.RO",
         "cs.CV",
@@ -51,7 +51,7 @@
       "warnings": [
         "cs.RO: HTTP 429 Unknown Error",
         "cs.CV: TimeoutError: The read operation timed out",
-        "cs.AI: HTTP 429 Unknown Error",
+        "cs.AI: HTTP 429 Too Many Requests",
         "cs.LG: HTTP 429 Too Many Requests"
       ],
       "papers": [],
@@ -61,6 +61,15 @@
         "enriched_count": 0,
         "warnings": []
       }
+    },
+    {
+      "date": "2026-06-23",
+      "title": "具身智能导航论文日报 2026-06-23",
+      "generated_at": "2026-06-23 09:00:08 CST",
+      "scanned_count": 0,
+      "candidate_count": 0,
+      "selected_count": 0,
+      "papers": []
     },
     {
       "date": "2026-06-22",
